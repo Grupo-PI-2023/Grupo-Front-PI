@@ -30,7 +30,7 @@ export default function NavbarAuthenticated() {
 	};
 
 	return (
-		<div className="fixed left-0 right-0 top-0 z-50 bg-white px-16 py-5 shadow-xl">
+		<div className="fixed left-0 right-0 top-0 z-50 bg-[#F4F4F4] px-16 py-5 shadow-xl">
 			<div className="flex items-center justify-between">
 				<Image
 					src="/assets/navbar/logo-engetec.svg"

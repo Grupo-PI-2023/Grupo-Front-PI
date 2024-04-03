@@ -89,8 +89,8 @@ export default function CadastroUser() {
 	}
 
 	return (
-		<div className="container mb-6 mt-52 flex justify-center">
-			<div className="w-1/2">
+		<div className="container mb-6 mt-52 flex justify-center ">
+			<div className="w-1/2 bg-white shadow-md px-28 py-10 rounded-2xl">
 				<h1
 					className="text-center text-2xl font-bold text-black"
 					style={{ color: '#4B00E0' }}
