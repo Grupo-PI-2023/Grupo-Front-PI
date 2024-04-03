@@ -1,10 +1,12 @@
 // import { Area } from "../area/index.repository";
 
+import { Area } from "../area/index.repository";
+
 export type Comissao = {
     id?: string
     name: string;
     email: string;
-    senha: string;
+    senha?: string;
     cpf: string;
     instituicao: string;
     certificado?: string | null;
@@ -14,7 +16,7 @@ export type Comissao = {
     organizador: boolean | null ;
     avaliador: boolean | null ;
     chair: boolean | null ;
-    areaConhecimento?: (string | undefined)[];
+    areaConhecimento?: (Area | string | undefined)[];
 }
 export interface IComissaoRepository {
     create(comissao: Comissao): Promise<Comissao>;

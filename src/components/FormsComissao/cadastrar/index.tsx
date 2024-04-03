@@ -145,7 +145,7 @@ export default function CadastroComissao() {
 
 	return (
 		<div className="container mb-6 mt-52 flex justify-center">
-			<div className="w-1/2">
+			<div className="w-[60vw]">
 				<h1
 					className="text-center text-2xl font-bold text-black"
 					style={{ color: '#4B00E0' }}
@@ -156,7 +156,7 @@ export default function CadastroComissao() {
 				<p className="text-center text-sm text-black">
 					Cadastro como parte da comissão, possível mais de uma função
 				</p>
-				<form className="mt-8 w-full bg-white" onSubmit={handleSubmit}>
+				<form className="mt-8 card" onSubmit={handleSubmit}>
 					<div className="flex justify-center gap-5">
 						<div className="w-full">
 							<div className="mb-5 flex flex-col">

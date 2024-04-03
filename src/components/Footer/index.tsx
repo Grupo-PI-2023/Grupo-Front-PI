@@ -8,7 +8,7 @@ import * as S from './styles';
 
 export default function Footer() {
 	return (
-		<S.ContainerFooter className="bg-white px-5 pb-7 pt-16">
+		<S.ContainerFooter className="bg-[#F4F4F4] px-5 pb-7 pt-16">
 			<div className="flex items-end justify-between">
 				<div>
 					<p className="mb-2 text-center text-base font-bold text-white">

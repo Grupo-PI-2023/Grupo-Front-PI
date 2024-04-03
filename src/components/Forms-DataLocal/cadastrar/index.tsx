@@ -6,7 +6,6 @@ import axios from 'axios';
 
 import { Area } from '@/lib/repository/area/index.repository';
 import { Event } from '@/lib/repository/event/index.repository';
-// import moment from 'moment';
 import AlertCard from '@/components/AlertCard';
 
 type CriarEventoProps = {
@@ -101,7 +100,7 @@ export default function DataLocal({ handleNextClick }: CriarEventoProps) {
 					Data e Local
 				</h1>
 				<AlertCard message='Evento cadastrado com sucesso' show={showCard}/>
-				<form className="mt-8 w-full bg-white" onSubmit={handleSubmit}>
+				<form className="mt-8 w-full card" onSubmit={handleSubmit}>
 					<div className="flex justify-center gap-5">
 						<div className="w-full">
 							<div className="mb-5 flex flex-col">

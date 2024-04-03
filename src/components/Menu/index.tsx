@@ -17,8 +17,8 @@ export default function Menu() {
 	const router = useRouter()
 	
 	return (
-		<div className="container mb-6 mt-52 flex justify-center">
-			<div className="w-1/2">
+		<div className="container mb-6 mt-52 flex justify-center ">
+			<div className="w-1/2 ">
 				<h1
 					className="text-center text-2xl font-bold text-black"
 					style={{ color: '#ef0037' }}
@@ -29,7 +29,7 @@ export default function Menu() {
 					Andamento da criação do Evento, acesse a área que deseja modificar ou
 					incluir
 				</p>
-				<div className="mt-5 w-full bg-white">
+				<div className="mt-5 w-full">
 					<div className="flex justify-end">
 						<button
 							className="mb-6 w-1/3 rounded-lg border-none py-1.5 text-center text-sm font-medium text-white"

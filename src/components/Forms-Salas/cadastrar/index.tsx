@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 
 import axios from 'axios';
 import { toNumber } from 'lodash';
-// import moment from 'moment';
 
 import { Sala } from '@/lib/repository/sala/index.repository';
 import AlertCard from '@/components/AlertCard';
@@ -100,7 +99,7 @@ export default function VisualizarSala({ handleNextClick }: CriarEventoProps) {
 				</h2>
 			</div>
 
-			<form className="mt-8 flex flex-col bg-white" onSubmit={handleAddOnTable}>
+			<form className="mt-8 flex flex-col card" onSubmit={handleAddOnTable}>
 				<div className="mb-5 flex flex-row gap-6">
 					<div className="mb-5 flex flex-col">
 						<label className="mb-2 text-sm font-medium " htmlFor="tipo">
