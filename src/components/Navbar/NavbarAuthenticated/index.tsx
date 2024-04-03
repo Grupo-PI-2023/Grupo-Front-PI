@@ -30,7 +30,7 @@ export default function NavbarAuthenticated() {
 	};
 
 	return (
-		<div className="fixed left-0 right-0 top-0 z-50 bg-white px-16 py-5 shadow-xl">
+		<div className="fixed left-0 right-0 top-0 z-50 bg-[#F4F4F4] px-16 py-5 shadow-xl">
 			<div className="flex items-center justify-between">
 				<Image
 					src="/assets/navbar/logo-engetec.svg"
@@ -47,30 +47,30 @@ export default function NavbarAuthenticated() {
 						Página Inicial
 					</S.OptionMenu>
 					<S.OptionMenu
-						onClick={() => handleOptionClick('/evento/meus-eventos')}
+						onClick={() => handleOptionClick('/dashboard/evento/meus-eventos')}
 						className="cursor-pointer text-base"
-						selected={currentOption === '/evento/meus-eventos'}
+						selected={currentOption === '/dashboard/evento/meus-eventos'}
 					>
 						Meus Eventos
 					</S.OptionMenu>
 					<S.OptionMenu
-						onClick={() => handleOptionClick('/evento/criar-evento')}
+						onClick={() => handleOptionClick('/dashboard/evento/criar-evento')}
 						className="cursor-pointer text-base"
-						selected={currentOption === '/evento/criar-evento'}
+						selected={currentOption === '/dashboard/evento/criar-evento'}
 					>
 						Criar Evento
 					</S.OptionMenu>
 					<S.OptionMenu
-						onClick={() => handleOptionClick('/artigos')}
+						onClick={() => handleOptionClick('/dashboard/artigos')}
 						className="cursor-pointer text-base"
-						selected={currentOption === '/artigos'}
+						selected={currentOption === '/dashboard/artigos'}
 					>
 						Artigos
 					</S.OptionMenu>
 					<S.OptionMenu
-						onClick={() => handleOptionClick('/certificados')}
+						onClick={() => handleOptionClick('/dashboard/certificados')}
 						className="cursor-pointer text-base"
-						selected={currentOption === '/certificados'}
+						selected={currentOption === '/dashboard/certificados'}
 					>
 						Certificados
 					</S.OptionMenu>
