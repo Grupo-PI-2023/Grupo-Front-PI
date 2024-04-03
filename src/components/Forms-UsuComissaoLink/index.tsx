@@ -1,5 +1,7 @@
 'use client';
 
+import useClipboard from "@/hooks/useClipboard";
+
 type CriarEventoProps = {
 	handleNextClick: () => void;
 };
@@ -11,6 +13,8 @@ export default function CadastrarUsuario({
 		e.preventDefault();
 		handleNextClick();
 	};
+	const copyToClipboard = useClipboard()
+	const generatedLink = 'quero só ver se o cardoso vai fazer isso kkkkkk'
 
 	return (
 		<div className="container mb-6 mt-52 flex flex-col items-center">
@@ -48,14 +52,16 @@ export default function CadastrarUsuario({
 								type="text"
 								name="link"
 								id="link"
+								// defaultValue={generatedLink}
 								placeholder="https://link.com"
 								readOnly
 							/>
 						</div>
 
 						<button
-							className="absolute ml-96 mt-44 w-28 rounded-xl py-2 text-center text-base"
-							style={{ backgroundColor: '#B7B7B7' }}
+							className="absolute ml-96 mt-44 w-28 rounded-xl py-2 text-center text-base bg-[#B7B7B7]"
+							onClick={() => copyToClipboard(generatedLink)}
+							type="button"
 						>
 							copiar
 						</button>

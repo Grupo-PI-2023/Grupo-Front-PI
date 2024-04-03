@@ -10,6 +10,7 @@ import Sessao from '@/components/Forms-Sessao/cadastrar';
 import Menu from '@/components/Menu';
 
 import * as S from './styles';
+import CriarAtividade from '@/components/Form-Atividades';
 // import Arquivos from '@/components/Forms-Arquivos';
 
 type TabbarProps = {
@@ -39,7 +40,9 @@ export default function Tabbar({
 				// 	<Arquivos handleNextClick={() => handleOptionClick('atividades')} />
 				// );
 			case 'atividades':
-				return;
+				return(
+					<CriarAtividade handleNextClick={() => handleOptionClick('usuarios')} />
+				)
 			case 'usuarios':
 				return (
 					<CadastrarUsuario
@@ -58,7 +61,7 @@ export default function Tabbar({
 	};
 	return (
 		<div>
-			<div className="fixed left-0 right-0 top-24 z-40 bg-white px-28 pb-5 pt-8 shadow">
+			<div className="fixed left-0 right-0 top-24 z-40 bg-[#F4F4F4] px-28 pb-5 pt-8 shadow">
 				<div className="flex flex-wrap items-center justify-center gap-5">
 					<div className="flex items-center gap-2">
 						<S.OptionMenu

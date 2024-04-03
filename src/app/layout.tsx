@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="pt-br">
-			<body className={quicksand.className}>
+			<body className={quicksand.className + ' bg-[#F4F4F4]'}>
 				<StyledComponentsRegistry>
 					<ScreenProvider>{children}</ScreenProvider>
 				</StyledComponentsRegistry>
