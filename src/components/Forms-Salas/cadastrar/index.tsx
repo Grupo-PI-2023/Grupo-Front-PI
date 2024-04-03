@@ -69,6 +69,7 @@ export default function VisualizarSala({ handleNextClick }: CriarEventoProps) {
 		}
 		// handleNextClick();
 	};
+	
 	const handleAddOnTable = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		setSalas((prev) => [
