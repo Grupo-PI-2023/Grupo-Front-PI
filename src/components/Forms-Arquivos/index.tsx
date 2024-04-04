@@ -170,11 +170,11 @@ export default function Arquivos({ handleNextClick }: CriarEventoProps) {
 				>
 					Arquivos
 				</h1>
-				<AlertCard message="Salas cadastradas com sucesso" show={showCard} />
+				<AlertCard message="Arquivos cadastradas com sucesso" show={showCard} />
 				<h2 className="text-center" style={{ color: '#000000' }}>
 					Arquivos que serão submetidos pelos participantes
 				</h2>
-				<form className="mt-8 w-full bg-white" onSubmit={handleAddOnTable}>
+				<form className="mt-8 w-full " onSubmit={handleAddOnTable}>
 					<div className="flex justify-center gap-5">
 						<div className="w-full">
 							<div className="mb-5 flex flex-col">
@@ -570,24 +570,6 @@ export default function Arquivos({ handleNextClick }: CriarEventoProps) {
 								})}
 							</>
 						)}
-						{/* <tr className="h-14">
-						<td scope="row" className="">
-							Palestra
-						</td>
-						<td className="">4</td>
-						<td className="">2344</td>
-						<td className="">67</td>
-						<td className="">Plástico</td>
-					</tr>
-					<tr className="h-14" style={{ backgroundColor: '#E4E4E4' }}>
-						<td scope="row" className="">
-							aaaa
-						</td>
-						<td className="">7</td>
-						<td className="">20</td>
-						<td className="">74</td>
-						<td className="">Inteligência</td>
-					</tr> */}
 					</tbody>
 				</table>
 			</div>
