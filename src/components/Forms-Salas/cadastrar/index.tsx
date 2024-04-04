@@ -5,8 +5,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { toNumber } from 'lodash';
 
-import { Sala } from '@/lib/repository/sala/index.repository';
 import AlertCard from '@/components/AlertCard';
+import { Sala } from '@/lib/repository/sala/index.repository';
 
 type CriarEventoProps = {
 	handleNextClick: () => void;
@@ -30,7 +30,7 @@ export default function VisualizarSala({ handleNextClick }: CriarEventoProps) {
 
 		const eventId = localStorage.getItem('eventId');
 		// const eventId = '5a57554e-fb55-4022-9873-0e67df9ed507';
-		console.log(salas)
+		console.log(salas);
 
 		if (eventId) {
 			let salasCreated: Sala[] = [];
@@ -69,7 +69,7 @@ export default function VisualizarSala({ handleNextClick }: CriarEventoProps) {
 		}
 		// handleNextClick();
 	};
-	
+
 	const handleAddOnTable = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		setSalas((prev) => [
@@ -79,7 +79,7 @@ export default function VisualizarSala({ handleNextClick }: CriarEventoProps) {
 				numero: toNumber(numero),
 				limitePessoas: toNumber(limite),
 				temaSala: tema,
-				tipo
+				tipo,
 			},
 		]);
 	};
@@ -93,13 +93,13 @@ export default function VisualizarSala({ handleNextClick }: CriarEventoProps) {
 				>
 					Salas
 				</h1>
-				<AlertCard message='Salas cadastradas com sucesso' show={showCard} />
+				<AlertCard message="Salas cadastradas com sucesso" show={showCard} />
 				<h2 className="text-center" style={{ color: '#000000' }}>
 					Salas que irão ser utilizadas no evento, insira uma de cada vez
 				</h2>
 			</div>
 
-			<form className="mt-8 flex flex-col card" onSubmit={handleAddOnTable}>
+			<form className="mt-8 flex flex-col" onSubmit={handleAddOnTable}>
 				<div className="mb-5 flex flex-row gap-6">
 					<div className="mb-5 flex flex-col">
 						<label className="mb-2 text-sm font-medium " htmlFor="tipo">
@@ -175,35 +175,15 @@ export default function VisualizarSala({ handleNextClick }: CriarEventoProps) {
 					</div>
 				</div>
 
-				<div className="mb-5 flex flex-row gap-6">
-					<div className="mb flex flex-col">
-						<label className="mb-2 text-sm font-medium" htmlFor="tema">
-							Tema:
-						</label>
-						<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
-							<input
-								className="w-48 rounded-md border-0 bg-white text-sm outline-none"
-								type="text"
-								name="tema"
-								id="tema"
-								placeholder="Digite o Tema"
-								value={tema}
-								onChange={(e) => setTema(e.target.value)}
-								required
-							/>
-						</div>
-					</div>
-
-					<div className="mt-6 flex items-center justify-center gap-6">
-						<button
-							className="w-56
+				<div className="mt-6 flex items-center justify-center gap-6">
+					<button
+						className="w-56
                     rounded-xl border-none p-2 text-center text-base font-medium text-white"
-							style={{ backgroundColor: '#4C1FA6' }}
-							type="submit"
-						>
-							Cadastrar Sala
-						</button>
-					</div>
+						style={{ backgroundColor: '#4C1FA6' }}
+						type="submit"
+					>
+						Cadastrar Sala
+					</button>
 				</div>
 			</form>
 
@@ -269,24 +249,6 @@ export default function VisualizarSala({ handleNextClick }: CriarEventoProps) {
 							})}
 						</>
 					)}
-					{/* <tr className="h-14">
-						<td scope="row" className="">
-							Palestra
-						</td>
-						<td className="">4</td>
-						<td className="">2344</td>
-						<td className="">67</td>
-						<td className="">Plástico</td>
-					</tr>
-					<tr className="h-14" style={{ backgroundColor: '#E4E4E4' }}>
-						<td scope="row" className="">
-							aaaa
-						</td>
-						<td className="">7</td>
-						<td className="">20</td>
-						<td className="">74</td>
-						<td className="">Inteligência</td>
-					</tr> */}
 				</tbody>
 			</table>
 		</div>

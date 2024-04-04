@@ -90,7 +90,7 @@ export default function CadastroUser() {
 
 	return (
 		<div className="container mb-6 mt-52 flex justify-center ">
-			<div className="w-1/2 bg-white shadow-md px-28 py-10 rounded-2xl">
+			<div className="w-[70vw] bg-white shadow-md px-28 py-10 rounded-2xl">
 				<h1
 					className="text-center text-2xl font-bold text-black"
 					style={{ color: '#4B00E0' }}
@@ -275,7 +275,7 @@ export default function CadastroUser() {
 					<div className="mb-6">
 						<p className="text-center text-xs font-normal text-slate-400">
 							Já tem uma conta？
-							<a className="font-bold underline" style={{ color: '#4B00E0' }}>
+							<a className="font-bold underline text-[#4B00E0] cursor-pointer" href='/login'>
 								Log in
 							</a>
 						</p>

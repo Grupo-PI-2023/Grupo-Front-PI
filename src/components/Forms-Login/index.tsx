@@ -64,6 +64,14 @@ export default function LoginForm() {
 							</div>
 						</div>
 					</div>
+					<div className="mb-6">
+						<p className="text-center text-xs font-normal text-slate-400">
+							Não possui cadastro？
+							<a className="font-bold underline text-[#4B00E0] cursor-pointer" href='/cadastrar'>
+								Cadastrar aqui
+							</a>
+						</p>
+					</div>
 					<div className="flex items-center justify-center gap-5 mt-10">
 						<button
 							className="mb-6 rounded-xl border-none py-2 px-10 text-center text-base font-medium text-white"

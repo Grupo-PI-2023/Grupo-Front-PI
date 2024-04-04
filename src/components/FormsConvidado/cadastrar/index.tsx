@@ -29,7 +29,7 @@ export default function CadastroConvidado() {
 
 	return (
 		<div className="container mb-6 mt-52 flex justify-center">
-			<div className="w-1/2">
+			<div className="w-[70vw]">
 				<h1
 					className="text-center text-2xl font-bold text-black"
 					style={{ color: '#4B00E0' }}
@@ -39,7 +39,7 @@ export default function CadastroConvidado() {
 				<p className="text-center text-sm text-black">
 					Cadastro como convidado
 				</p>
-				<form className="mt-8 w-full bg-white">
+				<form className="mt-8 w-full card">
 					<div className="flex justify-center gap-5">
 						<div className="w-full">
 							<div className="mb-5 flex flex-col">
@@ -212,7 +212,7 @@ export default function CadastroConvidado() {
 					<div className="mb-6">
 						<p className="text-center text-xs font-normal text-slate-400">
 							Já tem uma conta？
-							<a className="font-bold underline" style={{ color: '#4B00E0' }}>
+							<a className="font-bold underline text-[#4B00E0] cursor-pointer" href='/login'>
 								Log in
 							</a>
 						</p>

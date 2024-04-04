@@ -228,10 +228,10 @@ export default function EditarEvento() {
 					className="text-center text-2xl font-bold text-black"
 					style={{ color: '#ef0037' }}
 				>
-					Crie seu próprio evento!
+					Edite seu evento!
 				</h1>
 				<AlertCard message='Evento atualizado com sucesso' show={showCard} />
-				<form className="mt-8 w-full card" onSubmit={handleSubmit}>
+				<form className="mt-8 w-full" onSubmit={handleSubmit}>
 					<div className="flex justify-center gap-5">
 						<div className="w-full">
 							<div className="mb-5 flex flex-col">

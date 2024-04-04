@@ -23,12 +23,6 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 	const [guestEmail, setGuestEmail] = useState('');
 	const [timeActivity, setTimeActivity] = useState('');
 	const [activities, setActivities] = useState<Activity[]>([]);
-	// const [adm, setAdm] = useState('ec2b4562-3234-4df9-ba5b-4b9a8226e39b');
-
-	// no proximo form terá:
-	// const [local, setLocal] = useState('');
-	// const [dataInicio, setDataInicio] = useState();
-	// const [dataFinal, setDataFinal] = useState('');
 
 	const handleNextButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
@@ -123,7 +117,7 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 				<h2 className="text-center" style={{ color: '#000000' }}>
 					Atividades presentes durante o evento
 				</h2>
-				<form className="mt-8 w-full bg-white" onSubmit={handleAddOnTable}>
+				<form className="mt-8 w-full" onSubmit={handleAddOnTable}>
 					<div className="flex justify-center gap-5">
 						<div className="w-full">
 							<div className="mb-5 flex flex-col">
@@ -270,83 +264,19 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 							</div>
 						</div>
 					</div>
-					{/* <div className="flex justify-center"> */}
-					{/* <div className="mb-5 flex flex-col">
-							<label className="mb-2 text-sm font-medium" htmlFor="areas">
-								Áreas de Conhecimento
-							</label>
-							<div>
-								<div className="mb-3 flex items-center">
-									<div className="w-full rounded-md border border-gray-300 bg-white px-4 py-2">
-										<input
-											className="w-full rounded-md border-0 bg-white text-sm outline-none"
-											type="text"
-											name="areas"
-											value={areas[areas.length - 1]}
-											onChange={(e) =>
-												handleAreaChange(
-													areas.length - 1,
-													e.target.value,
-													setAreas
-												)
-											}
-											placeholder="Áreas de Conhecimento da Comissão"
-											required
-										/>
-									</div>
-									<div
-										className="ml-3 cursor-pointer rounded-full px-2"
-										onClick={() => handleAddArea(setAreas)}
-										style={{ backgroundColor: '#4B00E0' }}
-									>
-										<p className="text-xl font-bold text-white">+</p>
-									</div>
-								</div>
-								<div className="flex gap-2.5">
-									{areas.map((area, index) => (
-										<div
-											key={index}
-											className="flex items-center rounded-full border border-gray-300 bg-white px-2 py-0.5"
-										>
-											<div className="w-full">
-												<input
-													className="w-full rounded-md border-0 bg-white text-sm outline-none"
-													type="text"
-													name="areas"
-													value={area}
-													onChange={(e) =>
-														handleAreaChange(index, e.target.value, setAreas)
-													}
-													readOnly
-													required
-												/>
-											</div>
-											<div
-												className="ml-2 cursor-pointer rounded-full px-1"
-												style={{ backgroundColor: '#ef0037' }}
-												onClick={() => handleRemoveArea(index, setAreas)}
-											>
-												<FaTimes className="w-2 text-white" />
-											</div>
-										</div>
-									))}
-								</div>
-							</div>
-						</div> */}
-					{/* </div> */}
 
 					<div className="flex items-center justify-center gap-5">
 						<button
 							className="mb-6 w-3/12 rounded-xl border-none p-2 text-center text-base font-medium text-white"
 							style={{ backgroundColor: '#4C1FA6' }}
 							type="submit"
-							// onClick={handleNextButtonClick}
+							onClick={handleNextButtonClick}
 						>
 							Cadastrar Atividade
 						</button>
 					</div>
 				</form>
-				<div className="flex items-center justify-center gap-5">
+				<div className="flex items-center justify-center gap-5 mt-8">
 					<button
 						className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
 						style={{ backgroundColor: '#8A8A8A' }}
@@ -358,7 +288,7 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 						className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
 						style={{ backgroundColor: '#EF0037' }}
 						type="submit"
-						// onClick={handleNextButtonClick}
+						onClick={handleNextButtonClick}
 					>
 						Avançar
 					</button>
@@ -409,24 +339,6 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 									})}
 								</>
 							)}
-							{/* <tr className="h-14">
-						<td scope="row" className="">
-							Palestra
-						</td>
-						<td className="">4</td>
-						<td className="">2344</td>
-						<td className="">67</td>
-						<td className="">Plástico</td>
-					</tr>
-					<tr className="h-14" style={{ backgroundColor: '#E4E4E4' }}>
-						<td scope="row" className="">
-							aaaa
-						</td>
-						<td className="">7</td>
-						<td className="">20</td>
-						<td className="">74</td>
-						<td className="">Inteligência</td>
-					</tr> */}
 						</tbody>
 					</table>
 				</div>

@@ -10,50 +10,13 @@ import FixedSelect, { FixedOptionsType } from './FixedSelect';
 
 import { Area } from '@/lib/repository/area/index.repository';
 import { Comissao } from '@/lib/repository/comission/index.repository';
+import useClipboard from '@/hooks/useClipboard';
 
 export default function EditarComissao() {
 	// card for status from back
 	const [showCard, setShowCard] = useState(false);
 	
-	// card for clipboar
-	const [showCardClip, setShowCardClip] = useState(false);
-	const renderClipCard = (clipRes?: boolean): React.ReactNode => {
-		if (!clipRes) {
-			return (
-				<AlertCard
-					message="Texto copiado para área de transferência"
-					show={showCardClip && !clipRes}
-				/>
-			);
-		}
-		if (clipRes) {
-			return (
-				<AlertCard
-					message="Cardoso cornao falhou em copiar o texto"
-					show={showCardClip && clipRes}
-					color="text-red-600"
-				/>
-			);
-		}
-	};
-	const copyToClipboard = async () => {
-		try {
-			await navigator.clipboard.writeText(lattes);
-			console.log('Texto copiado para a área de transferência');
-			setShowCardClip(true);
-			renderClipCard(true);
-			setTimeout(() => {
-				setShowCardClip(false);
-			}, 3000);
-		} catch (err) {
-			console.log('Falha ao copiar o texto', err);
-			setShowCardClip(true);
-			renderClipCard(false);
-			setTimeout(() => {
-				setShowCardClip(false);
-			}, 3000);
-		}
-	};
+	const {copyToClipboard, renderClipCard} = useClipboard()
 
 	// estilo areas:
 	const customStyles = {
@@ -251,7 +214,7 @@ export default function EditarComissao() {
 					className="text-center text-2xl font-bold text-black"
 					style={{ color: '#5321BF' }}
 				>
-					Editar Comissão
+					Informações do Usuário - Editar Comissão
 				</h1>
 				<AlertCard message="Comissao cadastrada com sucesso" show={showCard} />
 				{renderClipCard()}
@@ -424,7 +387,7 @@ export default function EditarComissao() {
 									/>
 									<button
 										className="rounded-md bg-[#B7B7B7] px-4 py-2 text-center text-base"
-										onClick={copyToClipboard}
+										onClick={() => copyToClipboard(lattes)}
 										type="button"
 									>
 										Copiar

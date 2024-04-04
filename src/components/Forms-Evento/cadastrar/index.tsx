@@ -9,12 +9,14 @@ import { FiUpload } from 'react-icons/fi';
 import { Area } from '@/lib/repository/area/index.repository';
 import { Comissao } from '@/lib/repository/comission/index.repository';
 import { Event } from '@/lib/repository/event/index.repository';
+import InputImg from '@/components/InputImg';
 
 type CriarEventoProps = {
 	handleNextClick: () => void;
 };
 
 export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
+	const [image, setImage] = useState<any | null>(null);
 	const [nome, setNome] = useState('');
 	const [email, setEmail] = useState('');
 	const [descricao, setDescricao] = useState('');
@@ -162,7 +164,7 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 				>
 					Crie seu próprio evento!
 				</h1>
-				<form className="mt-8 w-full card" onSubmit={handleSubmit}>
+				<form className="mt-8 w-full" onSubmit={handleSubmit}>
 					<div className="flex justify-center gap-5">
 						<div className="w-full">
 							<div className="mb-5 flex flex-col">
@@ -447,77 +449,28 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 						</div>
 					</div>
 					<div className="flex justify-center">
-						{/* <div className="mb-5 flex flex-col">
-							<label className="mb-2 text-sm font-medium" htmlFor="areas">
-								Áreas de Conhecimento
-							</label>
-							<div>
-								<div className="mb-3 flex items-center">
-									<div className="w-full rounded-md border border-gray-300 bg-white px-4 py-2">
-										<input
-											className="w-full rounded-md border-0 bg-white text-sm outline-none"
-											type="text"
-											name="areas"
-											value={areas[areas.length - 1]}
-											onChange={(e) =>
-												handleAreaChange(
-													areas.length - 1,
-													e.target.value,
-													setAreas
-												)
-											}
-											placeholder="Áreas de Conhecimento da Comissão"
-											required
-										/>
-									</div>
-									<div
-										className="ml-3 cursor-pointer rounded-full px-2"
-										onClick={() => handleAddArea(setAreas)}
-										style={{ backgroundColor: '#4B00E0' }}
-									>
-										<p className="text-xl font-bold text-white">+</p>
-									</div>
-								</div>
-								<div className="flex gap-2.5">
-									{areas.map((area, index) => (
-										<div
-											key={index}
-											className="flex items-center rounded-full border border-gray-300 bg-white px-2 py-0.5"
-										>
-											<div className="w-full">
-												<input
-													className="w-full rounded-md border-0 bg-white text-sm outline-none"
-													type="text"
-													name="areas"
-													value={area}
-													onChange={(e) =>
-														handleAreaChange(index, e.target.value, setAreas)
-													}
-													readOnly
-													required
-												/>
-											</div>
-											<div
-												className="ml-2 cursor-pointer rounded-full px-1"
-												style={{ backgroundColor: '#ef0037' }}
-												onClick={() => handleRemoveArea(index, setAreas)}
-											>
-												<FaTimes className="w-2 text-white" />
-											</div>
-										</div>
-									))}
-								</div>
-							</div>
-						</div> */}
 						<div className="mb-6 flex flex-col">
 							<label className="mb-2 text-sm font-medium" htmlFor="file">
 								Anexar Logo
 							</label>
 
-							<div className="flex w-full items-center justify-center rounded-md border-0 bg-gray-200 px-4 py-5">
+							<div className="flex  w-full items-center justify-center rounded-md border-0 bg-gray-200 px-4 py-5">
 								<label htmlFor="fileInput" className="cursor-pointer">
 									<FiUpload className="mx-2 h-5 w-5 text-black" />{' '}
 								</label>
+								{/* <InputImg
+                                setImage={setImage}
+                                className='container-img-profile-preview'
+                                imgPreviewClassName='
+								radius-[50%]
+								h-[5rem]
+								w-[5rem]
+								cursor-pointer 
+								object-cover
+								'
+                                imgPreview={image?.preview}
+                            	/> */}
+
 								<input
 									type="file"
 									id="fileInput"
