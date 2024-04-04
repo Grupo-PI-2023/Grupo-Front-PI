@@ -2,16 +2,16 @@
 
 import { useState } from 'react';
 
-import CadastrarUsuario from '@/components/Forms-UsuComissaoLink';
-import CriarEvento from '@/components/Forms-Evento/cadastrar';
+import Arquivos from '@/components/Forms-Arquivos';
+import CriarAtividade from '@/components/Form-Atividades';
 import DataLocal from '@/components/Forms-DataLocal/cadastrar';
+import CriarEvento from '@/components/Forms-Evento/cadastrar';
 import VisualizarSala from '@/components/Forms-Salas/cadastrar';
 import Sessao from '@/components/Forms-Sessao/cadastrar';
+import CadastrarUsuario from '@/components/Forms-UsuComissaoLink';
 import Menu from '@/components/Menu';
 
 import * as S from './styles';
-import CriarAtividade from '@/components/Form-Atividades';
-// import Arquivos from '@/components/Forms-Arquivos';
 
 type TabbarProps = {
 	currentOption: string;
@@ -35,10 +35,9 @@ export default function Tabbar({
 					<DataLocal handleNextClick={() => handleOptionClick('usuarios')} />
 				);
 			case 'arquivos':
-				return;
-				// return(
-				// 	<Arquivos handleNextClick={() => handleOptionClick('atividades')} />
-				// );
+				return (
+					<Arquivos handleNextClick={() => handleOptionClick('atividades')} />
+				);
 			case 'atividades':
 				return(
 					<CriarAtividade handleNextClick={() => handleOptionClick('usuarios')} />
@@ -51,7 +50,9 @@ export default function Tabbar({
 				);
 			case 'salas':
 				return (
-					<VisualizarSala handleNextClick={() => handleOptionClick('sessoes')} />
+					<VisualizarSala
+						handleNextClick={() => handleOptionClick('sessoes')}
+					/>
 				);
 			case 'sessoes':
 				return <Sessao />;
