@@ -155,14 +155,14 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 
 	return (
 		<div className="container mb-6 mt-52 flex justify-center">
-			<div className="w-1/2">
+			<div className="w-[60vw]">
 				<h1
 					className="text-center text-2xl font-bold text-black"
 					style={{ color: '#ef0037' }}
 				>
 					Crie seu próprio evento!
 				</h1>
-				<form className="mt-8 w-full bg-white" onSubmit={handleSubmit}>
+				<form className="mt-8 w-full card" onSubmit={handleSubmit}>
 					<div className="flex justify-center gap-5">
 						<div className="w-full">
 							<div className="mb-5 flex flex-col">
