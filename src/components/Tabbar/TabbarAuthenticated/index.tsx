@@ -19,10 +19,7 @@ type TabbarProps = {
 	handleOptionClick: (option: string) => void;
 };
 
-export default function Tabbar({
-	currentOption,
-	handleOptionClick,
-}: TabbarProps) {
+export default function Tabbar({ currentOption, handleOptionClick}: TabbarProps) {
 	const renderContent = () => {
 		switch (currentOption) {
 			case 'menu':

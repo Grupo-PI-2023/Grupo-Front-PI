@@ -27,7 +27,7 @@ export default function CriarArea({ handleNextClick }: CriarAreaProps) {
 		setTableData(newData);
 	  };
 
-	  //Função nao funciona
+	  //Função nao funciona, falta implementar
 	const handleRemoveArea = (
 		index: number,
 		setTableData: React.Dispatch<React.SetStateAction<string[]>>
