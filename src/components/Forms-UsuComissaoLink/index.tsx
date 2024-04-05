@@ -1,6 +1,9 @@
 'use client';
 
+
+import AlertCard from "@/components/AlertCard";
 import useClipboard from "@/hooks/useClipboard";
+import { useState } from "react";
 
 type CriarEventoProps = {
 	handleNextClick: () => void;
@@ -13,7 +16,9 @@ export default function CadastrarUsuario({
 		e.preventDefault();
 		handleNextClick();
 	};
-	const copyToClipboard = useClipboard()
+
+	const {copyToClipboard, renderClipCard} = useClipboard()
+
 	const generatedLink = 'quero só ver se o cardoso vai fazer isso kkkkkk'
 
 	return (
@@ -25,6 +30,7 @@ export default function CadastrarUsuario({
 				>
 					Cadastrar Usuários
 				</h1>
+				{renderClipCard()}
 				<h2 className="text-center" style={{ color: '#000000' }}>
 					Cadastre os membros da equipe
 				</h2>

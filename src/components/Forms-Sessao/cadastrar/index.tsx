@@ -154,7 +154,7 @@ export default function Sessao() {
 				</h2>
 			</div>
 
-			<form className="mt-8 flex flex-col card" onSubmit={handleAddOnTable}>
+			<form className="mt-8 flex flex-col" onSubmit={handleAddOnTable}>
 				<div className="mb-5 flex flex-col">
 					<label className="mb-2 text-sm font-medium" htmlFor="tempoSessao">
 						Tempo por Sessão:

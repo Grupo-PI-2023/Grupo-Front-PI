@@ -5,8 +5,6 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-import { BiSearch } from 'react-icons/bi';
-
 import * as S from './styles';
 
 export default function NavbarAuthenticated() {
@@ -24,13 +22,8 @@ export default function NavbarAuthenticated() {
 		router.push(`${option}`);
 	};
 
-	const handleSearch = (e: any) => {
-		e.preventDefault();
-		router.push(`/results?q=${query}`);
-	};
-
 	return (
-		<div className="fixed left-0 right-0 top-0 z-50 bg-[#F4F4F4] px-16 py-5 shadow-xl">
+		<div className="fixed left-0 right-0 top-0 z-50 bg-[#F4F4F4] px-16 py-5 shadow-md">
 			<div className="flex items-center justify-between">
 				<Image
 					src="/assets/navbar/logo-engetec.svg"
@@ -51,6 +44,13 @@ export default function NavbarAuthenticated() {
 						className="cursor-pointer text-base"
 						selected={currentOption === '/dashboard/evento/meus-eventos'}
 					>
+						Menu do Evento
+					</S.OptionMenu>
+					<S.OptionMenu
+						onClick={() => handleOptionClick('/evento/eventos-criados')}
+						className="cursor-pointer text-base"
+						selected={currentOption === '/evento/eventos-criados'}
+					>
 						Meus Eventos
 					</S.OptionMenu>
 					<S.OptionMenu
@@ -66,6 +66,20 @@ export default function NavbarAuthenticated() {
 						selected={currentOption === '/dashboard/artigos'}
 					>
 						Artigos
+					</S.OptionMenu>
+					<S.OptionMenu
+						onClick={() => handleOptionClick('/dashboard/editar/editar-comissao')}
+						className="cursor-pointer text-base"
+						selected={currentOption === '/dashboard/editar/editar-comissao'}
+					>
+						Editar Comissao
+					</S.OptionMenu>
+					<S.OptionMenu
+						onClick={() => handleOptionClick('/dashboard/editar/editar-sessao')}
+						className="cursor-pointer text-base"
+						selected={currentOption === '/dashboard/editar/editar-sessao'}
+					>
+						Editar Sessao
 					</S.OptionMenu>
 					<S.OptionMenu
 						onClick={() => handleOptionClick('/dashboard/certificados')}

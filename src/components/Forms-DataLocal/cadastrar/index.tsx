@@ -100,7 +100,7 @@ export default function DataLocal({ handleNextClick }: CriarEventoProps) {
 					Data e Local
 				</h1>
 				<AlertCard message='Evento cadastrado com sucesso' show={showCard}/>
-				<form className="mt-8 w-full card" onSubmit={handleSubmit}>
+				<form className="mt-8 w-full" onSubmit={handleSubmit}>
 					<div className="flex justify-center gap-5">
 						<div className="w-full">
 							<div className="mb-5 flex flex-col">
@@ -245,10 +245,10 @@ export default function DataLocal({ handleNextClick }: CriarEventoProps) {
 							</div>
 						</div>
 					</div>
-					<div className="flex justify-center">
-						<div className="mb-6 flex flex-col">
+					<div className="flex justify-start mb-8">
+						<div className="flex items-center gap-5">
 							<label
-								className="mb-2 text-center text-sm font-medium"
+								className="text-center font-medium text-base mr-5"
 								htmlFor="evento"
 							>
 								Período
@@ -279,7 +279,7 @@ export default function DataLocal({ handleNextClick }: CriarEventoProps) {
 												htmlFor={`checkbox-${index}`}
 											>
 												<div
-													className="mr-2 flex h-3.5 w-3.5 items-center justify-center"
+													className="mr-2 flex h-4 w-4 items-center justify-center"
 													style={
 														checkboxes[index]
 															? {

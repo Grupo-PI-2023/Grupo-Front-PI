@@ -3,57 +3,21 @@
 import { useEffect, useState } from 'react';
 
 import axios from 'axios';
-import Select from 'react-select';
+// import Select from 'react-select';
 
 import AlertCard from '@/components/AlertCard';
 import FixedSelect, { FixedOptionsType } from './FixedSelect';
+import Select, { OptionsType } from './Select';
 
 import { Area } from '@/lib/repository/area/index.repository';
 import { Comissao } from '@/lib/repository/comission/index.repository';
+import useClipboard from '@/hooks/useClipboard';
 
 export default function EditarComissao() {
 	// card for status from back
 	const [showCard, setShowCard] = useState(false);
 	
-	// card for clipboar
-	const [showCardClip, setShowCardClip] = useState(false);
-	const renderClipCard = (clipRes?: boolean): React.ReactNode => {
-		if (!clipRes) {
-			return (
-				<AlertCard
-					message="Texto copiado para área de transferência"
-					show={showCardClip && !clipRes}
-				/>
-			);
-		}
-		if (clipRes) {
-			return (
-				<AlertCard
-					message="Cardoso cornao falhou em copiar o texto"
-					show={showCardClip && clipRes}
-					color="text-red-600"
-				/>
-			);
-		}
-	};
-	const copyToClipboard = async () => {
-		try {
-			await navigator.clipboard.writeText(lattes);
-			console.log('Texto copiado para a área de transferência');
-			setShowCardClip(true);
-			renderClipCard(true);
-			setTimeout(() => {
-				setShowCardClip(false);
-			}, 3000);
-		} catch (err) {
-			console.log('Falha ao copiar o texto', err);
-			setShowCardClip(true);
-			renderClipCard(false);
-			setTimeout(() => {
-				setShowCardClip(false);
-			}, 3000);
-		}
-	};
+	const {copyToClipboard, renderClipCard} = useClipboard()
 
 	// estilo areas:
 	const customStyles = {
@@ -87,7 +51,7 @@ export default function EditarComissao() {
 		});
 	};
 
-	const [turno, setTurno] = useState(['']);
+	//retornar um index: number
 	function getSelectedItem(booleanArray: boolean[], stringArray: string[]) {
 		if (!Array.isArray(booleanArray) || !Array.isArray(stringArray)) {
 			throw new Error('Os parâmetros devem ser arrays');
@@ -103,6 +67,7 @@ export default function EditarComissao() {
 	}
 
 	const checkboxPeriodo = ['Matutino', 'Vespertino', 'Noturno'];
+	const [turno, setTurno] = useState(checkboxPeriodo);
 	const [checkboxesPeriodos, setCheckboxesPeri] = useState(
 		checkboxPeriodo.map(() => false)
 	);
@@ -116,7 +81,18 @@ export default function EditarComissao() {
 
 	// areas:
 	const [realAreas, setRealAreas] = useState<(string | undefined)[]>([]);
-	let optionsArea: FixedOptionsType[] = [];
+	let optionsArea: FixedOptionsType[] = [
+		{
+			value: 0,
+			label: 'boa sorte guilherme',
+			isFixed: true
+		},
+		{
+			value: 1,
+			label: 'isso é mock time',
+			isFixed: true
+		},
+	];
 
 	const [areas, setAreas] = useState(['']);
 	const [ass, setAss] = useState(['']);
@@ -251,7 +227,7 @@ export default function EditarComissao() {
 					className="text-center text-2xl font-bold text-black"
 					style={{ color: '#5321BF' }}
 				>
-					Editar Comissão
+					Informações do Usuário - Editar Comissão
 				</h1>
 				<AlertCard message="Comissao cadastrada com sucesso" show={showCard} />
 				{renderClipCard()}
@@ -374,8 +350,10 @@ export default function EditarComissao() {
 								<label className="mb-2 text-sm font-medium" htmlFor="turno">
 									Turno
 								</label>
-								<div className="w-full">
-									<Select
+								<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
+									<Select options={turno.map((tur, i) => ({label: tur, value: i}))} preSelect={0} disabled={false} />
+
+									{/* <Select
 										name="turnos"
 										className="basic-multi-select border-gray-300"
 										classNamePrefix="select"
@@ -401,7 +379,7 @@ export default function EditarComissao() {
 											label: turno,
 										}))}
 										// onChange={(choice) => setTurno(choice.map((a) => a.label))}
-									/>
+									/> */}
 								</div>
 							</div>
 
@@ -424,7 +402,7 @@ export default function EditarComissao() {
 									/>
 									<button
 										className="rounded-md bg-[#B7B7B7] px-4 py-2 text-center text-base"
-										onClick={copyToClipboard}
+										onClick={() => copyToClipboard(lattes)}
 										type="button"
 									>
 										Copiar
