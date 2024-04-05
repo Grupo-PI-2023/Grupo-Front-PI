@@ -10,6 +10,9 @@ import Sessao from '@/components/Forms-Sessao';
 import Menu from '@/components/Menu';
 
 import * as S from './styles';
+import React from 'react';
+import CriarArea from '../../CriarAreaConhecimento';
+import CriarAtividade from '../../CriarAtividade';
 
 type TabbarProps = {
 	currentOption: string;
@@ -52,6 +55,12 @@ export default function Tabbar({
 				);
 			case 'sessoes':
 				return <Sessao />;
+			case 'criar-area':
+				return <CriarArea 
+					handleNextClick={() => handleOptionClick('criar-evento')} />
+			case 'criar-atividade':
+				return <CriarAtividade
+					handleNextClick={() => handleOptionClick('criar-atividade')} />
 			default:
 				return null;
 		}

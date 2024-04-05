@@ -1,9 +1,18 @@
 'use client';
 
+import React from 'react';
 import { useEffect, useState } from 'react';
 
+type CriarAreaProps = {
+	handleNextClick: () => void;
+};
 
-export default function CriarArea() {
+
+export default function CriarArea({ handleNextClick }: CriarAreaProps) {
+	const handleNextButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+		e.preventDefault();
+		handleNextClick();
+	};
 
 	const [tableData, setTableData] = useState<string[]>([]);
 
@@ -109,6 +118,7 @@ export default function CriarArea() {
                     rounded-xl border-none p-2 text-center text-base font-medium text-white"
 					style={{ backgroundColor: '#8A8A8A' }}
 					type="submit"
+					onClick={handleNextButtonClick}
 				>
 					Voltar
 				</button>
@@ -116,6 +126,7 @@ export default function CriarArea() {
 					className="w-56
                     rounded-xl border-none p-2 text-center text-base font-medium text-white"
 					style={{ backgroundColor: '#EF0037' }}
+					onClick={handleNextButtonClick}
 					type="button"
 				>
 					Salvar
