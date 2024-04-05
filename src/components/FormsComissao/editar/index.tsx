@@ -7,7 +7,7 @@ import axios from 'axios';
 
 import AlertCard from '@/components/AlertCard';
 import FixedSelect, { FixedOptionsType } from './FixedSelect';
-import Select from './Select';
+import Select, { OptionsType } from './Select';
 
 import { Area } from '@/lib/repository/area/index.repository';
 import { Comissao } from '@/lib/repository/comission/index.repository';
@@ -51,8 +51,6 @@ export default function EditarComissao() {
 		});
 	};
 
-	const [turno, setTurno] = useState(['']);
-
 	//retornar um index: number
 	function getSelectedItem(booleanArray: boolean[], stringArray: string[]) {
 		if (!Array.isArray(booleanArray) || !Array.isArray(stringArray)) {
@@ -69,6 +67,7 @@ export default function EditarComissao() {
 	}
 
 	const checkboxPeriodo = ['Matutino', 'Vespertino', 'Noturno'];
+	const [turno, setTurno] = useState(checkboxPeriodo);
 	const [checkboxesPeriodos, setCheckboxesPeri] = useState(
 		checkboxPeriodo.map(() => false)
 	);
@@ -82,7 +81,18 @@ export default function EditarComissao() {
 
 	// areas:
 	const [realAreas, setRealAreas] = useState<(string | undefined)[]>([]);
-	let optionsArea: FixedOptionsType[] = [];
+	let optionsArea: FixedOptionsType[] = [
+		{
+			value: 0,
+			label: 'boa sorte guilherme',
+			isFixed: true
+		},
+		{
+			value: 1,
+			label: 'isso é mock time',
+			isFixed: true
+		},
+	];
 
 	const [areas, setAreas] = useState(['']);
 	const [ass, setAss] = useState(['']);
@@ -340,7 +350,7 @@ export default function EditarComissao() {
 								<label className="mb-2 text-sm font-medium" htmlFor="turno">
 									Turno
 								</label>
-								<div className="w-full">
+								<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
 									<Select options={turno.map((tur, i) => ({label: tur, value: i}))} preSelect={0} disabled={false} />
 
 									{/* <Select

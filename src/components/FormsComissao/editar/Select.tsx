@@ -9,20 +9,22 @@ type SelectType = {
     preSelect: number,
     disabled: boolean
 }
+
 const Select = ({
     preSelect,
     disabled,
     options
 }: SelectType) => {
 	return (
+		// { `w-full rounded-md border-0 bg-[#B7B7B7] text-sm outline-none` + 
+        //     disabled 
+        //     ? 'bg-[#b2b2b2]' 
+        //     :'bg-amber-900'}
+        //     disabled={disabled}
 		<select
 			name="areas"
 			id="areas"
-			className={ 'width-[100%] border-1 bg-white, h-auto rounded-[0.375rem] border-gray-300 text-[0.875rem]' + 
-            disabled 
-            ? 'bg-[#b2b2b2]' 
-            :'bg-white'}
-            disabled={disabled}
+			className={`w-full rounded-md border-0 ${disabled ? 'bg-[#B7B7B7]' : 'bg-white'}  text-sm outline-none`}
 		>
 			{options.map((area, index) => {
 				return (

@@ -68,6 +68,20 @@ export default function NavbarAuthenticated() {
 						Artigos
 					</S.OptionMenu>
 					<S.OptionMenu
+						onClick={() => handleOptionClick('/dashboard/editar/editar-comissao')}
+						className="cursor-pointer text-base"
+						selected={currentOption === '/dashboard/editar/editar-comissao'}
+					>
+						Editar Comissao
+					</S.OptionMenu>
+					<S.OptionMenu
+						onClick={() => handleOptionClick('/dashboard/editar/editar-sessao')}
+						className="cursor-pointer text-base"
+						selected={currentOption === '/dashboard/editar/editar-sessao'}
+					>
+						Editar Sessao
+					</S.OptionMenu>
+					<S.OptionMenu
 						onClick={() => handleOptionClick('/dashboard/certificados')}
 						className="cursor-pointer text-base"
 						selected={currentOption === '/dashboard/certificados'}
