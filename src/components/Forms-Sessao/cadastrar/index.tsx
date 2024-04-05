@@ -191,7 +191,7 @@ export default function Sessao() {
 				</div> */}
 
 				<button
-					className="ml-16 h-12 w-48
+					className="h-12 w-52
                     rounded-xl border-2 border-solid  border-black bg-transparent p-2 text-center text-base font-medium text-black"
 					type="submit"
 				>
