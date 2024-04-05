@@ -3,10 +3,11 @@
 import { useEffect, useState } from 'react';
 
 import axios from 'axios';
-import Select from 'react-select';
+// import Select from 'react-select';
 
 import AlertCard from '@/components/AlertCard';
 import FixedSelect, { FixedOptionsType } from './FixedSelect';
+import Select from './Select';
 
 import { Area } from '@/lib/repository/area/index.repository';
 import { Comissao } from '@/lib/repository/comission/index.repository';
@@ -51,6 +52,8 @@ export default function EditarComissao() {
 	};
 
 	const [turno, setTurno] = useState(['']);
+
+	//retornar um index: number
 	function getSelectedItem(booleanArray: boolean[], stringArray: string[]) {
 		if (!Array.isArray(booleanArray) || !Array.isArray(stringArray)) {
 			throw new Error('Os parâmetros devem ser arrays');
@@ -338,7 +341,9 @@ export default function EditarComissao() {
 									Turno
 								</label>
 								<div className="w-full">
-									<Select
+									<Select options={turno.map((tur, i) => ({label: tur, value: i}))} preSelect={0} disabled={false} />
+
+									{/* <Select
 										name="turnos"
 										className="basic-multi-select border-gray-300"
 										classNamePrefix="select"
@@ -364,7 +369,7 @@ export default function EditarComissao() {
 											label: turno,
 										}))}
 										// onChange={(choice) => setTurno(choice.map((a) => a.label))}
-									/>
+									/> */}
 								</div>
 							</div>
 

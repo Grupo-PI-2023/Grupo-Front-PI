@@ -163,7 +163,7 @@ export default function Arquivos({ handleNextClick }: CriarEventoProps) {
 
 	return (
 		<div className="container mb-6 mt-52 flex justify-center">
-			<div className="w-1/2">
+			<div className="w-[60vw]">
 				<h1
 					className="text-center text-2xl font-bold text-black"
 					style={{ color: '#ef0037' }}

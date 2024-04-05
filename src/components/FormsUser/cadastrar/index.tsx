@@ -90,7 +90,7 @@ export default function CadastroUser() {
 
 	return (
 		<div className="container mb-6 mt-52 flex justify-center ">
-			<div className="w-[70vw] bg-white shadow-md px-28 py-10 rounded-2xl">
+			<div className="w-[60vw]">
 				<h1
 					className="text-center text-2xl font-bold text-black"
 					style={{ color: '#4B00E0' }}
@@ -100,7 +100,7 @@ export default function CadastroUser() {
 				<AlertCard message='Aluno cadastrado com sucesso' show={showCard} />
 				
 				<p className="text-center text-sm text-black">Cadastro como usuário</p>
-				<form className="mt-8 w-full bg-white" onSubmit={handleSubmit}>
+				<form className="mt-8 w-full card" onSubmit={handleSubmit}>
 					<div className="flex items-center justify-center gap-5">
 						<div className="w-full">
 							<div className="mb-5 flex flex-col">

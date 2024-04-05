@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-
 import CadastroComissao from '../FormsComissao/cadastrar';
 import CadastroConvidado from '../FormsConvidado/cadastrar';
 import CadastroUser from '../FormsUser/cadastrar';
@@ -23,7 +21,9 @@ export default function Tabbar({
 			case 'cadastrar-convidado':
 				return <CadastroConvidado />;
 			case 'cadastrar-comissao':
-				return <CadastroComissao />;
+				return <CadastroComissao.CadastroComissao />;
+			case 'cadastrar-comissao-for-adm':
+				return <CadastroComissao.CadastroComissaoForAdm />;
 			default:
 				return null;
 		}
@@ -62,6 +62,18 @@ export default function Tabbar({
 						</S.OptionMenu>
 						<S.IconComission
 							selected={currentOption === 'cadastrar-comissao'}
+						/>
+					</div>
+					<div className="flex items-center gap-2">
+						<S.OptionMenu
+							onClick={() => handleOptionClick('cadastrar-comissao-for-adm')}
+							className="flex-shrink-0 cursor-pointer text-sm"
+							selected={currentOption === 'cadastrar-comissao-for-adm'}
+						>
+							Cadastrar Comissão Para Admin
+						</S.OptionMenu>
+						<S.IconComission
+							selected={currentOption === 'cadastrar-comissao-for-adm'}
 						/>
 					</div>
 				</div>

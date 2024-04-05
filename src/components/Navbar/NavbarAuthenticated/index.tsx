@@ -5,8 +5,6 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-import { BiSearch } from 'react-icons/bi';
-
 import * as S from './styles';
 
 export default function NavbarAuthenticated() {
@@ -22,11 +20,6 @@ export default function NavbarAuthenticated() {
 	const handleOptionClick = (option: any) => {
 		setCurrentOption(option);
 		router.push(`${option}`);
-	};
-
-	const handleSearch = (e: any) => {
-		e.preventDefault();
-		router.push(`/results?q=${query}`);
 	};
 
 	return (
@@ -50,6 +43,13 @@ export default function NavbarAuthenticated() {
 						onClick={() => handleOptionClick('/dashboard/evento/meus-eventos')}
 						className="cursor-pointer text-base"
 						selected={currentOption === '/dashboard/evento/meus-eventos'}
+					>
+						Menu do Evento
+					</S.OptionMenu>
+					<S.OptionMenu
+						onClick={() => handleOptionClick('/evento/eventos-criados')}
+						className="cursor-pointer text-base"
+						selected={currentOption === '/evento/eventos-criados'}
 					>
 						Meus Eventos
 					</S.OptionMenu>
