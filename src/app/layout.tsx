@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Quicksand } from 'next/font/google';
 
-import ScreenProvider from '@/contexts/screen/ScreenProvider';
+import ScreenProvider from '@/contexts/ScreenProvider';
 
 import StyledComponentsRegistry from '../lib/registry';
 import './globals.css';

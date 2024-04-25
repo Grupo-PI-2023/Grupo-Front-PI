@@ -1,6 +1,7 @@
 'use client';
 
-import CadastroComissao from '../FormsComissao/cadastrar';
+import CadastroEditorChefe from '../Forms-EditorChefe/cadastrar/CadastroEditorChefe';
+import CadastroComissao from '../FormsComissao/cadastrar/CadastroComissao';
 import CadastroConvidado from '../FormsConvidado/cadastrar';
 import CadastroUser from '../FormsUser/cadastrar';
 import * as S from './styles';
@@ -21,9 +22,9 @@ export default function Tabbar({
 			case 'cadastrar-convidado':
 				return <CadastroConvidado />;
 			case 'cadastrar-comissao':
-				return <CadastroComissao.CadastroComissao />;
-			case 'cadastrar-comissao-for-adm':
-				return <CadastroComissao.CadastroComissaoForAdm />;
+				return <CadastroComissao />;
+			case 'cadastrar-editorchefe':
+				return <CadastroEditorChefe />
 			default:
 				return null;
 		}
@@ -66,14 +67,14 @@ export default function Tabbar({
 					</div>
 					<div className="flex items-center gap-2">
 						<S.OptionMenu
-							onClick={() => handleOptionClick('cadastrar-comissao-for-adm')}
+							onClick={() => handleOptionClick('cadastrar-editorchefe')}
 							className="flex-shrink-0 cursor-pointer text-sm"
-							selected={currentOption === 'cadastrar-comissao-for-adm'}
+							selected={currentOption === 'cadastrar-editorchefe'}
 						>
-							Cadastrar Comissão Para Admin
+							Cadastrar Editor Chefe
 						</S.OptionMenu>
-						<S.IconComission
-							selected={currentOption === 'cadastrar-comissao-for-adm'}
+						<S.IconEditor
+							selected={currentOption === 'cadastrar-editorchefe'}
 						/>
 					</div>
 				</div>

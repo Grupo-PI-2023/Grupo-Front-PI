@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 
 import axios from 'axios';
 
-import { Area } from '@/lib/repository/area/index.repository';
-import { Event } from '@/lib/repository/event/index.repository';
+import { Area } from '@/repository/area/index.repository';
+import { Event } from '@/repository/event/index.repository';
 import AlertCard from '@/components/AlertCard';
 
 type CriarEventoProps = {

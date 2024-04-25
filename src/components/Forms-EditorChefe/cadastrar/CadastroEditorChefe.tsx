@@ -1,24 +1,17 @@
 'use client';
 
-import { comissaoRequest } from '@/lib/repository';
-import { Comissao } from '@/lib/repository/comission/index.repository';
 import { useState } from 'react';
 
-import { FaTimes } from 'react-icons/fa';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 
-export default function CadastroComissao() {
+export default function CadastroEditorChefe() {
 	const [passwordVisible, setPasswordVisible] = useState(false);
 	const [password, setPassword] = useState('');
-	const [name, setName] = useState('');
-	const [cpf, setCpf] = useState('');
-	const [email, setEmail] = useState('');
-	const [instituicao, setInst] = useState('');
-	const [turno, setTurno] = useState('');
-	const [lattes, setLattes] = useState('');
 	const [confirmpasswordVisible, setConfirmpasswordVisible] = useState(false);
 	const [confirmpassword, setConfirmpassword] = useState('');
-		
+    const [instituicao, setInst] = useState('');
+    const [lattes, setLattes] = useState('');
+
 	const handleTogglePasswordVisibility = () => {
 		setPasswordVisible(!passwordVisible);
 	};
@@ -26,48 +19,23 @@ export default function CadastroComissao() {
 		setConfirmpasswordVisible(!confirmpasswordVisible);
 	};
 
-	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		const data: Comissao = {
-			name,
-			cpf,
-			email,
-			instituicao,
-			turno,
-			lattes,
-			adm: true,
-			organizador: true,
-			chair: true,
-			avaliador: true,
-			senha: password,
-			// certificado: '',
-		}
-		try {
-			const result : Comissao = await comissaoRequest.create(data)
-			localStorage.setItem('comissao', JSON.stringify(result))
-			console.log(data);
-		} catch (error) {
-			console.log(error);
-		}
-
-	}
-
-
 	return (
 		<div className="container mb-6 mt-52 flex justify-center">
-			<div className="w-1/2">
+			<div className="w-[60vw]">
 				<h1
 					className="text-center text-2xl font-bold text-black"
 					style={{ color: '#4B00E0' }}
 				>
-					Cadastrar Comissão
+					Cadastrar Editor Chefe
 				</h1>
 				<p className="text-center text-sm text-black">
-					Cadastro como parte da comissão, possível mais de uma função
+					Cadastro como editor chefe, ele irá ter que passa por uma aprovação
+					para ter acesso como editor chefe
 				</p>
-				<form className="mt-8 w-full bg-white" onSubmit={handleSubmit}>
+				<form className="card mt-8 w-full">
 					<div className="flex justify-center gap-5">
 						<div className="w-full">
+
 							<div className="mb-5 flex flex-col">
 								<label className="mb-2 text-sm font-medium" htmlFor="fullName">
 									Nome completo
@@ -79,27 +47,28 @@ export default function CadastroComissao() {
 										type="text"
 										name="fullName"
 										id="fullName"
-										placeholder="Nome da Comissão"
-										value={name}
-										onChange={(e) => setName(e.target.value)}
+										placeholder="Nome do Convidado"
 										required
 									/>
 								</div>
 							</div>
 							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="cpf">
-									CPF
+								<label
+									className="mb-2 text-sm font-medium"
+									htmlFor="instituicao"
+								>
+									Instituição Referente
 								</label>
 
 								<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
 									<input
 										className="w-full rounded-md border-0 bg-white text-sm outline-none"
 										type="text"
-										name="cpf"
-										id="cpf"
-										placeholder="CPF da Comissão"
-										value={cpf}
-										onChange={(e) => setCpf(e.target.value)}
+										name="instituicao"
+										id="instituicao"
+										placeholder="Instituição do Usuário"
+										value={instituicao}
+										onChange={(e) => setInst(e.target.value)}
 										required
 									/>
 								</div>
@@ -115,13 +84,14 @@ export default function CadastroComissao() {
 										type="email"
 										name="email"
 										id="email"
-										placeholder="emailcomissao@email.com"
-										value={email}
-										onChange={(e) => setEmail(e.target.value)}
+										placeholder="emailconvidado@email.com"
 										required
 									/>
 								</div>
 							</div>
+
+						</div>
+						<div className="w-full">
 							<div className="mb-5 flex flex-col">
 								<label className="mb-2 text-sm font-medium" htmlFor="password">
 									Senha
@@ -134,7 +104,7 @@ export default function CadastroComissao() {
 										onChange={(e) => setPassword(e.target.value)}
 										name="password"
 										id="password"
-										placeholder="Senha da Comissão"
+										placeholder="Senha do Convidado"
 										required
 									/>
 									{passwordVisible ? (
@@ -162,7 +132,7 @@ export default function CadastroComissao() {
 										onChange={(e) => setConfirmpassword(e.target.value)}
 										name="password"
 										id="password"
-										placeholder="Senha da Comissão"
+										placeholder="Senha do Convidado"
 										required
 									/>
 									{confirmpasswordVisible ? (
@@ -178,49 +148,7 @@ export default function CadastroComissao() {
 									)}
 								</div>
 							</div>
-						</div>
-						<div className="w-full">
-							<div className="mb-5 flex flex-col">
-								<label
-									className="mb-2 text-sm font-medium"
-									htmlFor="instituicao"
-								>
-									Instituição Referente
-								</label>
 
-								<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
-									<input
-										className="w-full rounded-md border-0 bg-white text-sm outline-none"
-										type="text"
-										name="instituicao"
-										id="instituicao"
-										placeholder="Instituição da Comissão"
-										value={instituicao}
-										onChange={(e) => setInst(e.target.value)}
-										required
-									/>
-								</div>
-							</div>
-							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="turno">
-									Turno
-								</label>
-
-								<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
-									<select
-										className="w-full rounded-md border-0 bg-white text-sm outline-none"
-										name="turno"
-										id="turno"
-										required
-										value={turno}
-										onChange={(e) => setTurno(e.target.value)}
-									>
-										<option value="Matutino">Matutino</option>
-										<option value="Vespertino">Vespertino</option>
-										<option value="Noturno">Noturno</option>
-									</select>
-								</div>
-							</div>
 							<div className="mb-5 flex flex-col">
 								<label className="mb-2 text-sm font-medium" htmlFor="link">
 									Link Lattes
@@ -234,17 +162,21 @@ export default function CadastroComissao() {
 										id="link"
 										placeholder="link Lattes da Comissão"
 										value={lattes}
-										onChange={(e) => setLattes(e.target.value)}	
+										onChange={(e) => setLattes(e.target.value)}
 										required
 									/>
 								</div>
 							</div>
+
 						</div>
 					</div>
 					<div className="mb-6">
 						<p className="text-center text-xs font-normal text-slate-400">
 							Já tem uma conta？
-							<a className="font-bold underline" style={{ color: '#4B00E0' }}>
+							<a
+								className="cursor-pointer font-bold text-[#4B00E0] underline"
+								href="/login"
+							>
 								Log in
 							</a>
 						</p>

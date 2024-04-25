@@ -6,7 +6,7 @@ import axios from 'axios';
 import { FaTimes } from 'react-icons/fa';
 import { FiUpload } from 'react-icons/fi';
 
-import { Arquivo } from '@/lib/repository/arquivo/index.repository';
+import { Arquivo } from '@/repository/arquivo/index.repository';
 
 import AlertCard from '../AlertCard';
 

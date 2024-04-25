@@ -9,10 +9,11 @@ import { FiEye, FiEyeOff } from 'react-icons/fi';
 import Select from 'react-select';
 
 import AlertCard from '@/components/AlertCard';
-import { Area } from '@/lib/repository/area/index.repository';
-import { Comissao } from '@/lib/repository/comission/index.repository';
+import { Area } from '@/repository/area/index.repository';
+import { Comissao } from '@/repository/comission/index.repository';
 import mockedOptionAreas from '@/mocks/OptionsAreas';
 import mockedOptionTurnos from '@/mocks/OptionsTurnos';
+
 
 type LabelValue = {
 	label: string;
@@ -20,6 +21,9 @@ type LabelValue = {
 };
 
 export default function CadastroComissao() {
+
+	const [isAdmin, setIsAdmin] = useState(false);
+
 	const [passwordVisible, setPasswordVisible] = useState(false);
 	const [password, setPassword] = useState('');
 	const [name, setName] = useState('');
@@ -43,11 +47,35 @@ export default function CadastroComissao() {
 		});
 	};
 
-	const [areas, setAreas] = useState<LabelValue[]>([
-		{ value: '1', label: 'Area 1' },
-		{ value: '2', label: 'Area 2' },
-	]);
+	const [areas, setAreas] = useState<LabelValue[]>(mockedOptionAreas);
 	const [realAreas, setRealAreas] = useState<(string | undefined)[]>([]);
+
+	const [subareas, setSubAreas] = useState(['']);
+	const [ass, setAss] = useState(['']);
+	const handleAddSubArea = (
+		setSubArea: React.Dispatch<React.SetStateAction<string[]>>
+	) => {
+		const lastArea =
+			setSubArea === setSubAreas ? subareas[subareas.length - 1] : ass[ass.length - 1];
+		if (lastArea.trim() !== '') {
+			setSubArea((prevAreas) => [...prevAreas, '']);
+		}
+	};
+	const handleRemoveSubArea = (
+		index: number,
+		setSubArea: React.Dispatch<React.SetStateAction<string[]>>
+	) => {
+		setSubArea((prevAreas) => prevAreas.filter((_, i) => i !== index));
+	};
+	const handleSubAreaChange = (
+		index: number,
+		value: string,
+		setSubArea: React.Dispatch<React.SetStateAction<string[]>>
+	) => {
+		const newAreas = [...(setSubArea === setSubAreas ? subareas : ass)];
+		newAreas[index] = value;
+		setSubArea(newAreas);
+	};
 
 	const customStyles = {
 		control: (provided: any) => ({
@@ -70,6 +98,7 @@ export default function CadastroComissao() {
 
 	useEffect(() => {
 		async function getAreas() {
+			setIsAdmin(false);
 			try {
 				const id = localStorage.getItem('eventId');
 
@@ -165,9 +194,9 @@ export default function CadastroComissao() {
 					Cadastro como parte da comissão, possível mais de uma função
 				</p>
 				<form className="card mt-8" onSubmit={handleSubmit}>
-					<div className="flex justify-center gap-5">
-						<div className="w-full">
-							<div className="mb-5 flex flex-col">
+					<div className="flex flex-wrap justify-center items-center gap-5">
+
+							<div className="mb-5 w-[45%] flex flex-col">
 								<label className="mb-2 text-sm font-medium" htmlFor="fullName">
 									Nome completo
 								</label>
@@ -185,27 +214,9 @@ export default function CadastroComissao() {
 									/>
 								</div>
 							</div>
-							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="cpf">
-									CPF
-								</label>
-
-								<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
-									<input
-										className="w-full rounded-md border-0 bg-white text-sm outline-none"
-										type="text"
-										name="cpf"
-										id="cpf"
-										placeholder="CPF da Comissão"
-										value={cpf}
-										onChange={(e) => setCpf(e.target.value)}
-										required
-									/>
-								</div>
-							</div>
-							<div className="mb-5 flex flex-col">
+							<div className="mb-5 w-[45%] flex flex-col">
 								<label className="mb-2 text-sm font-medium" htmlFor="email">
-									Email
+									E-mail
 								</label>
 
 								<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
@@ -221,137 +232,69 @@ export default function CadastroComissao() {
 									/>
 								</div>
 							</div>
-							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="password">
-									Senha
-								</label>
-								<div className="flex items-center justify-between rounded-md border border-gray-300 bg-white px-4 py-2.5">
-									<input
-										className="w-11/12 rounded-md border-0 bg-white text-sm outline-none"
-										type={passwordVisible ? 'text' : 'password'}
-										value={password}
-										onChange={(e) => setPassword(e.target.value)}
-										name="password"
-										id="password"
-										placeholder="Senha da Comissão"
-										required
-									/>
-									{passwordVisible ? (
-										<FiEye
-											className="h-4 w-4 text-black"
-											onClick={handleTogglePasswordVisibility}
-										/>
-									) : (
-										<FiEyeOff
-											className="h-4 w-4 text-black"
-											onClick={handleTogglePasswordVisibility}
-										/>
-									)}
-								</div>
-							</div>
-							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="password">
-									Confirmar Senha
-								</label>
-								<div className="flex items-center justify-between rounded-md border border-gray-300 bg-white px-4 py-2.5">
-									<input
-										className="w-11/12 rounded-md border-0 bg-white text-sm outline-none"
-										type={confirmpasswordVisible ? 'text' : 'password'}
-										value={confirmpassword}
-										onChange={(e) => setConfirmpassword(e.target.value)}
-										name="password"
-										id="password"
-										placeholder="Senha da Comissão"
-										required
-									/>
-									{confirmpasswordVisible ? (
-										<FiEye
-											className="h-4 w-4 text-black"
-											onClick={handleToggleConfirmPasswordVisibility}
-										/>
-									) : (
-										<FiEyeOff
-											className="h-4 w-4 text-black"
-											onClick={handleToggleConfirmPasswordVisibility}
-										/>
-									)}
-								</div>
-							</div>
-						</div>
-						<div className="w-full">
-							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="areas">
-									Áreas de Conhecimento
-								</label>
-								<div className="w-full">
-									<Select
-										isMulti
-										name="areas"
-										options={areas}
-										className="basic-multi-select border-gray-300"
-										classNamePrefix="select"
-										styles={customStyles}
-										onChange={(choice) =>
-											setRealAreas(choice.map((a) => a.value))
-										}
-									/>
-								</div>
-							</div>
-							<div className="mb-5 flex flex-col">
-								<label
-									className="mb-2 text-sm font-medium"
-									htmlFor="instituicao"
-								>
-									Instituição Referente
-								</label>
 
-								<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
-									<input
-										className="w-full rounded-md border-0 bg-white text-sm outline-none"
-										type="text"
-										name="instituicao"
-										id="instituicao"
-										placeholder="Instituição da Comissão"
-										value={instituicao}
-										onChange={(e) => setInst(e.target.value)}
-										required
-									/>
-								</div>
-							</div>
-							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="turno">
-									Turno
-								</label>
-								<div className="w-full">
-									<Select
-										name="turnos"
-										options={mockedOptionTurnos}
-										className="basic-multi-select border-gray-300"
-										classNamePrefix="select"
-										styles={customStyles}
-										onChange={(choice) => setTurno(choice?.label)}
-									/>
-								</div>
-							</div>
-							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="link">
-									Link Lattes
-								</label>
+							{ !isAdmin && (
+								<>
+									<div className="mb-5 w-[45%] flex flex-col">
+										<label className="mb-2 text-sm font-medium" htmlFor="password">
+											Senha
+										</label>
+										<div className="flex items-center justify-between rounded-md border border-gray-300 bg-white px-4 py-2.5">
+											<input
+												className="w-11/12 rounded-md border-0 bg-white text-sm outline-none"
+												type={passwordVisible ? 'text' : 'password'}
+												value={password}
+												onChange={(e) => setPassword(e.target.value)}
+												name="password"
+												id="password"
+												placeholder="Senha da Comissão"
+												required
+											/>
+											{passwordVisible ? (
+												<FiEye
+													className="h-4 w-4 text-black"
+													onClick={handleTogglePasswordVisibility}
+												/>
+											) : (
+												<FiEyeOff
+													className="h-4 w-4 text-black"
+													onClick={handleTogglePasswordVisibility}
+												/>
+											)}
+										</div>
+									</div>
+									<div className="mb-5 w-[45%] flex flex-col">
+										<label className="mb-2 text-sm font-medium" htmlFor="password">
+											Confirmar Senha
+										</label>
+										<div className="flex items-center justify-between rounded-md border border-gray-300 bg-white px-4 py-2.5">
+											<input
+												className="w-11/12 rounded-md border-0 bg-white text-sm outline-none"
+												type={confirmpasswordVisible ? 'text' : 'password'}
+												value={confirmpassword}
+												onChange={(e) => setConfirmpassword(e.target.value)}
+												name="password"
+												id="password"
+												placeholder="Senha da Comissão"
+												required
+											/>
+											{confirmpasswordVisible ? (
+												<FiEye
+													className="h-4 w-4 text-black"
+													onClick={handleToggleConfirmPasswordVisibility}
+												/>
+											) : (
+												<FiEyeOff
+													className="h-4 w-4 text-black"
+													onClick={handleToggleConfirmPasswordVisibility}
+												/>
+											)}
+										</div>
+									</div>
+								</>
+							)}
 
-								<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
-									<input
-										className="w-full rounded-md border-0 bg-white text-sm outline-none"
-										type="url"
-										name="link"
-										id="link"
-										placeholder="link Lattes da Comissão"
-										value={lattes}
-										onChange={(e) => setLattes(e.target.value)}
-										required
-									/>
-								</div>
-							</div>
-							<div className="mb-5">
+							<div className="mb-5 w-[45%]">
 								<label className="mb-2 text-sm font-medium" htmlFor="funcao">
 									Função no Evento
 								</label>
@@ -410,9 +353,160 @@ export default function CadastroComissao() {
 									))}
 								</div>
 							</div>
+							<div className="mb-5 w-[45%] flex flex-col">
+								<label
+									className="mb-2 text-sm font-medium"
+									htmlFor="instituicao"
+								>
+									Instituição Referente
+								</label>
+
+								<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
+									<input
+										className="w-full rounded-md border-0 bg-white text-sm outline-none"
+										type="text"
+										name="instituicao"
+										id="instituicao"
+										placeholder="Instituição da Comissão"
+										value={instituicao}
+										onChange={(e) => setInst(e.target.value)}
+										required
+									/>
+								</div>
+							</div>
+
+							<div className="mb-5 w-[45%] flex flex-col">
+								<label className="mb-2 text-sm font-medium" htmlFor="areas">
+									Áreas de Conhecimento
+								</label>
+								<div className="w-full">
+									<Select
+										isMulti
+										name="areas"
+										options={areas}
+										className="basic-multi-select border-gray-300"
+										classNamePrefix="select"
+										styles={customStyles}
+										onChange={(choice) =>
+											setRealAreas(choice.map((a) => a.value))
+										}
+									/>
+								</div>
+							</div>
+
+							<div className="mb-5 w-[45%] flex flex-col">
+								<label className="mb-2 text-sm font-medium" htmlFor="areas">
+									Sub Áreas de Conhecimento
+								</label>
+								<div>
+									<div className="mb-3 ">
+										<div className="w-full px-4 py-2 flex items-center justify-around rounded-md border border-gray-300 bg-white">
+
+											<input
+												className="w-full bg-white text-sm outline-none"
+												type="text"
+												name="subareas"
+												value={subareas[subareas.length - 1]}
+												onChange={(e) =>
+													handleSubAreaChange(
+														subareas.length - 1,
+														e.target.value,
+														setSubAreas
+													)
+												}
+												placeholder="Áreas de Conhecimento da Comissão"
+												required
+											/>
+
+											<div
+												className="cursor-pointer border-slate-900 border-[1px] h-[2rem] w-[2.2rem] rounded-full flex justify-center items-center m-0 p-0"
+												onClick={() => handleAddSubArea(setSubAreas)}
+											>
+												<p className="text-xl font-bold ">+</p>
+											</div>
+										</div>
+									</div>
+									<div className="flex gap-2.5 flex-wrap">
+										{subareas.map((area, index) => (
+											<div
+												key={index}
+												className="flex items-center rounded-full border border-gray-300 bg-white px-2 py-0.5"
+											>
+												<div className="w-full">
+													<input
+														className="w-full rounded-md border-0 bg-white text-sm outline-none"
+														type="text"
+														name="subareas"
+														value={area}
+														onChange={(e) =>
+															handleSubAreaChange(index, e.target.value, setSubAreas)
+														}
+														readOnly
+														required
+													/>
+												</div>
+												<div
+													className="ml-2 cursor-pointer rounded-full px-1"
+													style={{ backgroundColor: '#ef0037' }}
+													onClick={() => handleRemoveSubArea(index, setSubAreas)}
+												>
+													<FaTimes className="w-2 text-white" />
+												</div>
+											</div>
+										))}
+									</div>
+								</div>
+							</div>
+
+							<div className="mb-5 w-[45%] flex flex-col">
+								<label className="mb-2 text-sm font-medium" htmlFor="turno">
+									Turno
+								</label>
+								<div className="w-full">
+									<Select
+										name="turnos"
+										options={mockedOptionTurnos}
+										className="basic-multi-select border-gray-300"
+										classNamePrefix="select"
+										styles={customStyles}
+										onChange={(choice) => setTurno(choice?.label)}
+									/>
+								</div>
+							</div>
+							<div className="mb-5 w-[45%] flex flex-col">
+								<label className="mb-2 text-sm font-medium" htmlFor="link">
+									Link Lattes
+								</label>
+
+								<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
+									<input
+										className="w-full rounded-md border-0 bg-white text-sm outline-none"
+										type="url"
+										name="link"
+										id="link"
+										placeholder="link Lattes da Comissão"
+										value={lattes}
+										onChange={(e) => setLattes(e.target.value)}
+										required
+									/>
+								</div>
+							</div>
+
+							<div className="mb-5 flex w-[45%] items-center justify-around ">
+							<label className="text-sm font-medium">
+								Cadastrar mais Instituições
+							</label>
+
+							<button
+								className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-red-500"
+								type="button"
+							>
+								<p className="text-3xl text-white">+</p>
+							</button>
 						</div>
+
 					</div>
-					<div className="mb-6">
+					<div className="my-6">
 						<p className="text-center text-xs font-normal text-slate-400">
 							Já tem uma conta？
 							<a

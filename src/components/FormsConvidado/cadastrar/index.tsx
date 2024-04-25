@@ -9,11 +9,21 @@ export default function CadastroConvidado() {
 	const [password, setPassword] = useState('');
 	const [confirmpasswordVisible, setConfirmpasswordVisible] = useState(false);
 	const [confirmpassword, setConfirmpassword] = useState('');
-	const checkboxNames = ['Palestrante', 'Mentor', 'Outro'];
-	const [checkboxes, setCheckboxes] = useState(checkboxNames.map(() => false));
 
-	const handleCheckboxChange = (index: any) => {
-		setCheckboxes((prev) => {
+	const checkboxCharge = ['Palestrante', 'Mentor', 'Outro'];
+	const [checkboxesCharge, setCheckboxesCharge] = useState(checkboxCharge.map(() => false));
+	const handleCheckboxCharge = (index: any) => {
+		setCheckboxesCharge((prev) => {
+			const newCheckboxes = [...prev];
+			newCheckboxes[index] = !newCheckboxes[index];
+			return newCheckboxes;
+		});
+	};
+
+	const checkboxPeriod = ['Manhã', 'Tarde', 'Noite'];
+	const [checkboxesPeriod, setCheckboxesPeriod] = useState(checkboxPeriod.map(() => false));
+	const handleCheckboxPeriod = (index: any) => {
+		setCheckboxesCharge((prev) => {
 			const newCheckboxes = [...prev];
 			newCheckboxes[index] = !newCheckboxes[index];
 			return newCheckboxes;
@@ -37,7 +47,7 @@ export default function CadastroConvidado() {
 					Cadastrar Convidado
 				</h1>
 				<p className="text-center text-sm text-black">
-					Cadastro como convidado
+					Cadastrar como convidado
 				</p>
 				<form className="mt-8 w-full card">
 					<div className="flex justify-center gap-5">
@@ -59,19 +69,63 @@ export default function CadastroConvidado() {
 								</div>
 							</div>
 							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="cpf">
-									CPF
+								<label className="mb-2 text-sm font-medium" htmlFor="periodoDePreferencia">
+									Período de preferência:
 								</label>
 
-								<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
-									<input
-										className="w-full rounded-md border-0 bg-white text-sm outline-none"
-										type="text"
-										name="cpf"
-										id="cpf"
-										placeholder="CPF do Convidado"
-										required
-									/>
+								<div className="flex items-center gap-3 py-2.5">
+									{checkboxPeriod.map((name, index) => (
+										<div key={index}>
+											<div className="flex items-center">
+												<input
+													className="hidden"
+													type="checkbox"
+													name={`checkbox-${index}`}
+													id={`checkbox-${index}`}
+													checked={checkboxesPeriod[index]}
+													onChange={() => handleCheckboxPeriod(index)}
+												/>
+												<label
+													className="flex cursor-pointer items-center"
+													style={
+														checkboxesPeriod[index]
+															? {
+																	color: '#4B00E0',
+															  }
+															: {
+																	color: '#000',
+															  }
+													}
+													htmlFor={`checkbox-${index}`}
+												>
+													<div
+														className="mr-2 flex h-3.5 w-3.5 items-center justify-center"
+														style={
+															checkboxesPeriod[index]
+																? {
+																		backgroundColor: '#4B00E0',
+																		border: '1px solid #4B00E0',
+																  }
+																: {
+																		backgroundColor: '#fff',
+																		border: '1px solid #4B00E0',
+																  }
+														}
+													>
+														{checkboxesPeriod[index] && (
+															<svg
+																className="pointer-events-none h-2 w-3 fill-current text-white"
+																viewBox="0 0 20 20"
+															>
+																<path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
+															</svg>
+														)}
+													</div>
+													<span className="text-sm font-medium">{name}</span>
+												</label>
+											</div>
+										</div>
+									))}
 								</div>
 							</div>
 							<div className="mb-5 flex flex-col">
@@ -153,7 +207,7 @@ export default function CadastroConvidado() {
 									Função no Evento
 								</label>
 								<div className="flex items-center gap-3 py-2.5">
-									{checkboxNames.map((name, index) => (
+									{checkboxCharge.map((name, index) => (
 										<div key={index}>
 											<div className="flex items-center">
 												<input
@@ -161,13 +215,13 @@ export default function CadastroConvidado() {
 													type="checkbox"
 													name={`checkbox-${index}`}
 													id={`checkbox-${index}`}
-													checked={checkboxes[index]}
-													onChange={() => handleCheckboxChange(index)}
+													checked={checkboxesCharge[index]}
+													onChange={() => handleCheckboxCharge(index)}
 												/>
 												<label
 													className="flex cursor-pointer items-center"
 													style={
-														checkboxes[index]
+														checkboxesCharge[index]
 															? {
 																	color: '#4B00E0',
 															  }
@@ -180,7 +234,7 @@ export default function CadastroConvidado() {
 													<div
 														className="mr-2 flex h-3.5 w-3.5 items-center justify-center"
 														style={
-															checkboxes[index]
+															checkboxesCharge[index]
 																? {
 																		backgroundColor: '#4B00E0',
 																		border: '1px solid #4B00E0',
@@ -191,7 +245,7 @@ export default function CadastroConvidado() {
 																  }
 														}
 													>
-														{checkboxes[index] && (
+														{checkboxesCharge[index] && (
 															<svg
 																className="pointer-events-none h-2 w-3 fill-current text-white"
 																viewBox="0 0 20 20"
@@ -207,6 +261,7 @@ export default function CadastroConvidado() {
 									))}
 								</div>
 							</div>
+
 						</div>
 					</div>
 					<div className="mb-6">

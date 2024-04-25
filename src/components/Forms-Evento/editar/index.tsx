@@ -6,9 +6,9 @@ import axios from 'axios';
 import { FaTimes } from 'react-icons/fa';
 import { FiUpload } from 'react-icons/fi';
 
-import { Area } from '@/lib/repository/area/index.repository';
-import { Comissao } from '@/lib/repository/comission/index.repository';
-import { Event } from '@/lib/repository/event/index.repository';
+import { Area } from '@/repository/area/index.repository';
+import { Comissao } from '@/repository/comission/index.repository';
+import { Event } from '@/repository/event/index.repository';
 import AlertCard from '@/components/AlertCard';
 
 export default function EditarEvento() {

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { AiOutlineUserAdd } from 'react-icons/ai';
 import { BiSolidSchool } from 'react-icons/bi';
 import { BsEnvelopePlus } from 'react-icons/bs';
+import { CiPen } from "react-icons/ci";
 
 type TabbarProps = {
 	selected: boolean;
@@ -19,5 +20,8 @@ export const IconInvite = styled(BsEnvelopePlus)<TabbarProps>`
 	color: ${(props) => (props.selected ? '#ef0037' : '#9f9f9f')};
 `;
 export const IconComission = styled(BiSolidSchool)<TabbarProps>`
+	color: ${(props) => (props.selected ? '#ef0037' : '#9f9f9f')};
+`;
+export const IconEditor = styled(CiPen)<TabbarProps>`
 	color: ${(props) => (props.selected ? '#ef0037' : '#9f9f9f')};
 `;

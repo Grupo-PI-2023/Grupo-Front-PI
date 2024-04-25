@@ -9,8 +9,8 @@ import AlertCard from '@/components/AlertCard';
 import FixedSelect, { FixedOptionsType } from './FixedSelect';
 import Select, { OptionsType } from './Select';
 
-import { Area } from '@/lib/repository/area/index.repository';
-import { Comissao } from '@/lib/repository/comission/index.repository';
+import { Area } from '@/repository/area/index.repository';
+import { Comissao } from '@/repository/comission/index.repository';
 import useClipboard from '@/hooks/useClipboard';
 
 export default function EditarComissao() {
