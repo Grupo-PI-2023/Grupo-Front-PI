@@ -5,10 +5,13 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FaTimes } from 'react-icons/fa';
 import { FiUpload } from 'react-icons/fi';
+import { IoIosClose } from "react-icons/io";
 
 import { Area } from '@/lib/repository/area/index.repository';
 import { Comissao } from '@/lib/repository/comission/index.repository';
 import { Event } from '@/lib/repository/event/index.repository';
+import TagsInput from 'react-tagsinput';
+import 'react-tagsinput/react-tagsinput.css';
 import InputImg from '@/components/InputImg';
 
 type CriarEventoProps = {
@@ -56,31 +59,24 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 	const [checkboxesGerar, setCheckboxesGerar] = useState(
 		checkboxGerar.map(() => false)
 	);
-	const [areas, setAreas] = useState(['']);
-	const [ass, setAss] = useState(['']);
-	const handleAddArea = (
-		setArea: React.Dispatch<React.SetStateAction<string[]>>
-	) => {
-		const lastArea =
-			setArea === setAreas ? areas[areas.length - 1] : ass[ass.length - 1];
-		if (lastArea.trim() !== '') {
-			setArea((prevAreas) => [...prevAreas, '']);
-		}
+
+	const [tags, setTags] = useState([]);
+
+	const handleChange = (tags: any) => {
+		setTags(tags);
 	};
-	const handleRemoveArea = (
-		index: number,
-		setArea: React.Dispatch<React.SetStateAction<string[]>>
-	) => {
-		setArea((prevAreas) => prevAreas.filter((_, i) => i !== index));
-	};
-	const handleAreaChange = (
-		index: number,
-		value: string,
-		setArea: React.Dispatch<React.SetStateAction<string[]>>
-	) => {
-		const newAreas = [...(setArea === setAreas ? areas : ass)];
-		newAreas[index] = value;
-		setArea(newAreas);
+
+	const handleRenderTag = (props: any) => {
+		const { tag, key, disabled, onRemove, classNameRemove, getTagDisplayValue, ...other } = props;
+
+		return (
+			<span key={key} {...other}>
+				{getTagDisplayValue(tag)}
+				{!disabled && (
+					<a className='ml-2 text-xs cursor-pointer' onClick={() => onRemove(key)}>x</a>
+				)}
+			</span>
+		);
 	};
 
 	const handleCheckboxChangeEvento = (index: any) => {
@@ -112,27 +108,6 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 		setFile(null);
 	};
 
-	// useEffect(() => {
-	// 	const getInfos = async () => {
-	// 		try {
-	// 			const id = localStorage.getItem('eventId');
-	// 			const result = await axios.get(
-	// 				`http://localhost:5002/area-event/${id}`
-	// 			);
-	// 			const response = await axios.get(
-	// 				'http://localhost:5002/comissao?adm=true'
-	// 			);
-	// 			if (result.data.areas && response.data.comissao) {
-	// 				setAreas(result.data.areas);
-	// 				setAdmins(response.data.comissao);
-	// 			}
-	// 		} catch (error) {
-	// 			console.log(error);
-	// 		}
-	// 	};
-	// 	getInfos();
-	// }, []);
-
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		localStorage.clear();
@@ -150,7 +125,7 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 			tipo,
 			logo: file ? file.name : null,
 		};
-		localStorage.setItem('areas', JSON.stringify(areas));
+		localStorage.setItem('areas', JSON.stringify(tags));
 		localStorage.setItem('event', JSON.stringify(event));
 		handleNextClick();
 	};
@@ -286,11 +261,11 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 													style={
 														checkboxes[index]
 															? {
-																	color: '#4B00E0',
-															  }
+																color: '#4B00E0',
+															}
 															: {
-																	color: '#000',
-															  }
+																color: '#000',
+															}
 													}
 													htmlFor={`checkbox-${index}`}
 												>
@@ -299,13 +274,13 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 														style={
 															checkboxes[index]
 																? {
-																		backgroundColor: '#4B00E0',
-																		border: '1px solid #4B00E0',
-																  }
+																	backgroundColor: '#4B00E0',
+																	border: '1px solid #4B00E0',
+																}
 																: {
-																		backgroundColor: '#fff',
-																		border: '1px solid #4B00E0',
-																  }
+																	backgroundColor: '#fff',
+																	border: '1px solid #4B00E0',
+																}
 														}
 													>
 														{checkboxes[index] && (
@@ -345,11 +320,11 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 													style={
 														checkboxesGerar[index]
 															? {
-																	color: '#4B00E0',
-															  }
+																color: '#4B00E0',
+															}
 															: {
-																	color: '#000',
-															  }
+																color: '#000',
+															}
 													}
 													htmlFor={`checkbox1-${index}`}
 												>
@@ -358,13 +333,13 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 														style={
 															checkboxesGerar[index]
 																? {
-																		backgroundColor: '#4B00E0',
-																		border: '1px solid #4B00E0',
-																  }
+																	backgroundColor: '#4B00E0',
+																	border: '1px solid #4B00E0',
+																}
 																: {
-																		backgroundColor: '#fff',
-																		border: '1px solid #4B00E0',
-																  }
+																	backgroundColor: '#fff',
+																	border: '1px solid #4B00E0',
+																}
 														}
 													>
 														{checkboxesGerar[index] && (
@@ -390,59 +365,19 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 								</label>
 								<div>
 									<div className="mb-3 flex items-center">
-										<div className="w-full rounded-md border border-gray-300 bg-white px-4 py-2">
-											<input
-												className="w-full rounded-md border-0 bg-white text-sm outline-none"
-												type="text"
-												name="areas"
-												value={areas[areas.length - 1]}
-												onChange={(e) =>
-													handleAreaChange(
-														areas.length - 1,
-														e.target.value,
-														setAreas
-													)
-												}
-												placeholder="Áreas de Conhecimento da Comissão"
-												required
-											/>
+										<div className="w-full rounded-md border border-gray-300 bg-white">
+											<TagsInput className='w-full rounded-md border-0 bg-white text-sm outline-none px-4 py-1' addOnBlur={true}
+												addOnPaste={true} value={tags} onChange={handleChange}
+												inputProps={{
+													className: "w-full outline-none py-2",
+													placeholder: 'Adicionar áreas',
+												}}
+												tagProps={{
+													className: "text-white rounded px-2 text-xs mr-2 bg-purple-500 text-center",
+												}}
+												removeKeys={[8, 46]}
+												renderTag={handleRenderTag} />
 										</div>
-										<div
-											className="ml-3 cursor-pointer rounded-full px-2"
-											onClick={() => handleAddArea(setAreas)}
-											style={{ backgroundColor: '#4B00E0' }}
-										>
-											<p className="text-xl font-bold text-white">+</p>
-										</div>
-									</div>
-									<div className="flex gap-2.5">
-										{areas.map((area, index) => (
-											<div
-												key={index}
-												className="flex items-center rounded-full border border-gray-300 bg-white px-2 py-0.5"
-											>
-												<div className="w-full">
-													<input
-														className="w-full rounded-md border-0 bg-white text-sm outline-none"
-														type="text"
-														name="areas"
-														value={area}
-														onChange={(e) =>
-															handleAreaChange(index, e.target.value, setAreas)
-														}
-														readOnly
-														required
-													/>
-												</div>
-												<div
-													className="ml-2 cursor-pointer rounded-full px-1"
-													style={{ backgroundColor: '#ef0037' }}
-													onClick={() => handleRemoveArea(index, setAreas)}
-												>
-													<FaTimes className="w-2 text-white" />
-												</div>
-											</div>
-										))}
 									</div>
 								</div>
 							</div>
@@ -496,7 +431,7 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 							className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
 							style={{ backgroundColor: '#EF0037' }}
 							type="submit"
-							// onClick={handleNextButtonClick}
+						// onClick={handleNextButtonClick}
 						>
 							Avançar
 						</button>
