@@ -37,8 +37,8 @@ export default function CadastrarUsuario({
 			</div>
 
 			<div
-				className="mt-8 flex h-96 w-2/4 flex-col items-center justify-center rounded-lg border-neutral-400"
-				style={{ backgroundColor: '#E4E4E4' }}
+				className="mt-8 flex h-96 w-3/4 flex-col items-center justify-center rounded-lg border-neutral-400 border" 
+				// style={{ backgroundColor: '#E4E4E4' }}
 			>
 				<form className="fle flex-col">
 					<div className="flex flex-col gap-4">
@@ -84,7 +84,7 @@ export default function CadastrarUsuario({
 							<button
 								className="w-44
                     rounded-xl border-none p-2 text-center text-base font-medium text-white"
-								style={{ backgroundColor: '#EF0037' }}
+								style={{ backgroundColor: '#4B00E0' }}
 								type="submit"
 								onClick={handleNextButtonClick}
 							>
@@ -103,7 +103,7 @@ export default function CadastrarUsuario({
 
 			<table className="mt-12 w-1/2 text-center">
 				<thead style={{ backgroundColor: '#E4E4E4' }}>
-					<tr className="h-14">
+					<tr className="h-14 rounded-sm">
 						<th scope="col">Função</th>
 						<th scope="col" className="">
 							Nome
@@ -117,7 +117,7 @@ export default function CadastrarUsuario({
 					</tr>
 				</thead>
 				<tbody>
-					<tr className="h-20">
+					<tr className="h-20 rounded-sm">
 						<td className="">Administrador</td>
 						<td className="">Heitor Golsavez</td>
 						<td className="">heitor@gmail.com</td>
