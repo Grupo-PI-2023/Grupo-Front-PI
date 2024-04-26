@@ -5,22 +5,21 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FaTimes } from 'react-icons/fa';
 import { FiUpload } from 'react-icons/fi';
-import { IoIosClose } from "react-icons/io";
+import TagsInput from 'react-tagsinput';
+import 'react-tagsinput/react-tagsinput.css';
 
+import InputImg from '@/components/InputImg';
 import { Area } from '@/lib/repository/area/index.repository';
 import { Comissao } from '@/lib/repository/comission/index.repository';
 import { Event } from '@/lib/repository/event/index.repository';
-import TagsInput from 'react-tagsinput';
-import 'react-tagsinput/react-tagsinput.css';
-import InputImg from '@/components/InputImg';
 
 type CriarEventoProps = {
 	handleNextClick: () => void;
 };
 
 export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
-	const [image, setImage] = useState<any | null>(null);
 	const [nome, setNome] = useState('');
+	const [nomeEditor, setNomeEditor] = useState('');
 	const [email, setEmail] = useState('');
 	const [descricao, setDescricao] = useState('');
 	const [tipo, setTipo] = useState('');
@@ -55,25 +54,43 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 
 	const checkboxEvento = ['Público', 'Privado'];
 	const [checkboxes, setCheckboxes] = useState(checkboxEvento.map(() => false));
-	const checkboxGerar = ['Anais', 'Certificados'];
+	const checkboxGerar = ['Proceedings', 'Certificados'];
 	const [checkboxesGerar, setCheckboxesGerar] = useState(
 		checkboxGerar.map(() => false)
 	);
 
-	const [tags, setTags] = useState([]);
+	const [corpo, setCorpo] = useState([]);
+	const [apoiador, setApoiador] = useState([]);
 
-	const handleChange = (tags: any) => {
-		setTags(tags);
+	const handleChangeCorpo = (tags: any) => {
+		setCorpo(tags);
+	};
+
+	const handleChangeApoiador = (tags: any) => {
+		setApoiador(tags);
 	};
 
 	const handleRenderTag = (props: any) => {
-		const { tag, key, disabled, onRemove, classNameRemove, getTagDisplayValue, ...other } = props;
+		const {
+			tag,
+			key,
+			disabled,
+			onRemove,
+			classNameRemove,
+			getTagDisplayValue,
+			...other
+		} = props;
 
 		return (
 			<span key={key} {...other}>
 				{getTagDisplayValue(tag)}
 				{!disabled && (
-					<a className='ml-2 text-xs cursor-pointer' onClick={() => onRemove(key)}>x</a>
+					<a
+						className="ml-2 cursor-pointer text-center font-mono text-xs font-bold text-[#4B00E0]"
+						onClick={() => onRemove(key)}
+					>
+						x
+					</a>
 				)}
 			</span>
 		);
@@ -95,17 +112,32 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 	};
 
 	const [file, setFile] = useState<File | null>(null);
+	const [previewURL, setPreviewURL] = useState<string | null>(null);
+	const [showModal, setShowModal] = useState(false);
 
 	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const selectedFile = e.target.files && e.target.files[0];
-
+		setFile(selectedFile || null);
 		if (selectedFile) {
-			setFile(selectedFile);
+			const reader = new FileReader();
+			reader.onloadend = () => {
+				setPreviewURL(reader.result as string);
+			};
+			reader.readAsDataURL(selectedFile);
 		}
 	};
 
 	const handleFileDelete = () => {
 		setFile(null);
+		setPreviewURL(null);
+	};
+
+	const openModal = () => {
+		setShowModal(true);
+	};
+
+	const closeModal = () => {
+		setShowModal(false);
 	};
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -125,7 +157,6 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 			tipo,
 			logo: file ? file.name : null,
 		};
-		localStorage.setItem('areas', JSON.stringify(tags));
 		localStorage.setItem('event', JSON.stringify(event));
 		handleNextClick();
 	};
@@ -161,6 +192,37 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 								</div>
 							</div>
 							<div className="mb-5 flex flex-col">
+								<label
+									className="mb-2 text-sm font-medium"
+									htmlFor="nomeEditor"
+								>
+									Nome do Editor Chefe
+								</label>
+
+								<div className="flex items-center gap-2">
+									<div className="w-11/12 rounded-md border border-gray-300 bg-white px-4 py-2">
+										<select
+											className="w-full rounded-md border-0 bg-white text-sm outline-none"
+											name="nomeEditor"
+											id="nomeEditor"
+											value={nomeEditor}
+											onChange={(e) => setNome(e.target.value)}
+											required
+										>
+											<option value="Eduardo">Eduardo Lima</option>
+										</select>
+									</div>
+									<div className="w-10 rounded-xl bg-[#EF0037]">
+										<a
+											href="#"
+											className="flex cursor-pointer items-center justify-center text-3xl font-semibold text-white"
+										>
+											+
+										</a>
+									</div>
+								</div>
+							</div>
+							<div className="mb-5 flex flex-col">
 								<label className="mb-2 text-sm font-medium" htmlFor="descricao">
 									Descrição do Evento
 								</label>
@@ -179,15 +241,18 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 								</div>
 							</div>
 							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="select">
-									Selecione
+								<label
+									className="mb-2 text-sm font-medium"
+									htmlFor="modalidade"
+								>
+									Modalidade
 								</label>
 
 								<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
 									<select
 										className="w-full rounded-md border-0 bg-white text-sm outline-none"
-										name="select"
-										id="select"
+										name="modalidade"
+										id="modalidade"
 										value={tipo}
 										onChange={(e) => setTipo(e.target.value)}
 										required
@@ -261,11 +326,11 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 													style={
 														checkboxes[index]
 															? {
-																color: '#4B00E0',
-															}
+																	color: '#4B00E0',
+															  }
 															: {
-																color: '#000',
-															}
+																	color: '#000',
+															  }
 													}
 													htmlFor={`checkbox-${index}`}
 												>
@@ -274,13 +339,13 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 														style={
 															checkboxes[index]
 																? {
-																	backgroundColor: '#4B00E0',
-																	border: '1px solid #4B00E0',
-																}
+																		backgroundColor: '#4B00E0',
+																		border: '1px solid #4B00E0',
+																  }
 																: {
-																	backgroundColor: '#fff',
-																	border: '1px solid #4B00E0',
-																}
+																		backgroundColor: '#fff',
+																		border: '1px solid #4B00E0',
+																  }
 														}
 													>
 														{checkboxes[index] && (
@@ -320,11 +385,11 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 													style={
 														checkboxesGerar[index]
 															? {
-																color: '#4B00E0',
-															}
+																	color: '#4B00E0',
+															  }
 															: {
-																color: '#000',
-															}
+																	color: '#000',
+															  }
 													}
 													htmlFor={`checkbox1-${index}`}
 												>
@@ -333,13 +398,13 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 														style={
 															checkboxesGerar[index]
 																? {
-																	backgroundColor: '#4B00E0',
-																	border: '1px solid #4B00E0',
-																}
+																		backgroundColor: '#4B00E0',
+																		border: '1px solid #4B00E0',
+																  }
 																: {
-																	backgroundColor: '#fff',
-																	border: '1px solid #4B00E0',
-																}
+																		backgroundColor: '#fff',
+																		border: '1px solid #4B00E0',
+																  }
 														}
 													>
 														{checkboxesGerar[index] && (
@@ -360,24 +425,78 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 							</div>
 
 							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="areas">
-									Áreas de Conhecimento
+								<label className="mb-2 text-sm font-medium" htmlFor="corpo">
+									Corpo Editorial
 								</label>
 								<div>
-									<div className="mb-3 flex items-center">
+									<div className="flex items-center">
 										<div className="w-full rounded-md border border-gray-300 bg-white">
-											<TagsInput className='w-full rounded-md border-0 bg-white text-sm outline-none px-4 py-1' addOnBlur={true}
-												addOnPaste={true} value={tags} onChange={handleChange}
+											<TagsInput
+												className="w-full rounded-md border-0 bg-white px-4 py-1 text-sm outline-none"
+												addOnBlur={true}
+												addOnPaste={true}
+												value={corpo}
+												onChange={handleChangeCorpo}
 												inputProps={{
-													className: "w-full outline-none py-2",
-													placeholder: 'Adicionar áreas',
+													className: 'w-full outline-none my-2',
+													placeholder: 'Corpo Editorial',
 												}}
 												tagProps={{
-													className: "text-white rounded px-2 text-xs mr-2 bg-purple-500 text-center",
+													className:
+														'text-white rounded pl-2 pr-1 pb-1.5 pt-1 text-xs mr-2 bg-purple-500 text-center',
 												}}
 												removeKeys={[8, 46]}
-												renderTag={handleRenderTag} />
+												renderTag={handleRenderTag}
+											/>
 										</div>
+									</div>
+								</div>
+							</div>
+							<div className="mb-5 flex flex-col">
+								<label className="mb-2 text-sm font-medium" htmlFor="apoiador">
+									Apoiador
+								</label>
+								<div>
+									<div className="flex items-center">
+										<div className="w-full rounded-md border border-gray-300 bg-white">
+											<TagsInput
+												className="w-full rounded-md border-0 bg-white px-4 py-1 text-sm outline-none"
+												addOnBlur={true}
+												addOnPaste={true}
+												value={apoiador}
+												onChange={handleChangeApoiador}
+												inputProps={{
+													className: 'w-full outline-none my-2',
+													placeholder: 'Apoiador',
+												}}
+												tagProps={{
+													className:
+														'text-white rounded pl-2 pr-1 pb-1.5 pt-1 text-xs mr-2 bg-purple-500 text-center',
+												}}
+												removeKeys={[8, 46]}
+												renderTag={handleRenderTag}
+											/>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div className="mb-5 flex flex-col">
+								<div className="mt-5 flex items-center gap-2">
+									<div className="w-11/12 rounded-md border border-gray-300 bg-white px-4 py-2">
+										<input
+											className="w-full rounded-md border-0 bg-white text-sm outline-none"
+											value="Cadastrar áreas de conhecimento do evento "
+											onChange={(e) => setNome(e.target.value)}
+											readOnly
+										/>
+									</div>
+									<div className="w-10 rounded-xl bg-[#EF0037]">
+										<a
+											href="#"
+											className="flex cursor-pointer items-center justify-center text-3xl font-semibold text-white"
+										>
+											+
+										</a>
 									</div>
 								</div>
 							</div>
@@ -385,53 +504,76 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 					</div>
 					<div className="flex justify-center">
 						<div className="mb-6 flex flex-col">
-							<label className="mb-2 text-sm font-medium" htmlFor="file">
+							<label
+								className="mb-2 text-center text-sm font-medium"
+								htmlFor="file"
+							>
 								Anexar Logo
 							</label>
 
-							<div className="flex  w-full items-center justify-center rounded-md border-0 bg-gray-200 px-4 py-5">
-								<label htmlFor="fileInput" className="cursor-pointer">
-									<FiUpload className="mx-2 h-5 w-5 text-black" />{' '}
-								</label>
-								{/* <InputImg
-                                setImage={setImage}
-                                className='container-img-profile-preview'
-                                imgPreviewClassName='
-								radius-[50%]
-								h-[5rem]
-								w-[5rem]
-								cursor-pointer 
-								object-cover
-								'
-                                imgPreview={image?.preview}
-                            	/> */}
-
-								<input
-									type="file"
-									id="fileInput"
-									name="file"
-									style={{ display: 'none' }}
-									onChange={(e) => handleFileChange(e)}
-									required
-								/>
-								<span className="text-sm">{file ? file.name : ''}</span>
-								{file && (
-									<button
-										className="ml-2 mr-1 cursor-pointer rounded-full bg-red-500 px-1"
-										onClick={handleFileDelete}
-									>
-										<FaTimes className="w-2 text-white" />
-									</button>
+							<div
+								className={`flex w-full justify-center rounded-md border-0 ${
+									previewURL ? 'bg-transparent py-3' : 'bg-gray-200 px-4 py-5'
+								}`}
+							>
+								{!previewURL && ( // Renderiza o ícone de upload somente se não houver previewURL
+									<label htmlFor="fileInput" className="cursor-pointer">
+										<FiUpload className="mx-2 h-5 w-5 text-black" />{' '}
+									</label>
 								)}
+
+								<div className="flex flex-col items-end">
+									<input
+										type="file"
+										id="fileInput"
+										name="file"
+										style={{ display: 'none' }}
+										onChange={(e) => handleFileChange(e)}
+										required
+									/>
+									{file && (
+										<button
+											className="-mr-1 -mt-3 cursor-pointer rounded-full bg-red-500 p-0.5"
+											onClick={handleFileDelete}
+										>
+											<FaTimes className="text-[9px] text-white" />
+										</button>
+									)}
+									{previewURL ? (
+										<>
+											<img
+												src={previewURL}
+												alt="Preview"
+												className="mr-2 max-h-20 max-w-full cursor-pointer"
+												onClick={openModal}
+											/>
+											{showModal && (
+												<div
+													className="fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center bg-black bg-opacity-80 py-20"
+													onClick={closeModal} // Fecha o modal quando o fundo escuro é clicado
+												>
+													<img
+														src={previewURL}
+														alt="Preview"
+														className="max-h-full max-w-full"
+														onClick={closeModal} // fecha o modal quando a imagem é clicada
+													/>
+												</div>
+											)}
+										</>
+									) : (
+										<span className="text-sm">{file ? file.name : ''}</span>
+									)}
+								</div>
 							</div>
 						</div>
 					</div>
 					<div className="flex items-center justify-center gap-5">
 						<button
 							className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
-							style={{ backgroundColor: '#EF0037' }}
+							style={{ backgroundColor: '#4B00E0' }}
 							type="submit"
-						// onClick={handleNextButtonClick}
+							onClick={handleNextButtonClick}
 						>
 							Avançar
 						</button>
