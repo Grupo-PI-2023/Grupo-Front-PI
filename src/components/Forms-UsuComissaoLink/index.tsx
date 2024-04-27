@@ -17,6 +17,7 @@ import filter from './filter.png';
 import timeIcon from './sandIcon.png';
 import sandWhite from './sandWhite.png';
 import search from './search.png';
+import viewIcon from './viewIcon.png';
 
 type CriarEventoProps = {
 	handleNextClick: () => void;
@@ -247,8 +248,9 @@ export default function CadastrarUsuario({
 							<td className="">heitor@gmail.com</td>
 							<td className="">
 								<div className="flex flex-col items-center gap-2">
-									<button className="mt-2 w-32 rounded-xl border-2 border-solid  border-black bg-transparent p-2 text-center text-sm text-black">
-										Ver mais
+									<button className="mt-2 flex w-32 items-center justify-around rounded-xl border-2 border-solid  border-black bg-transparent p-2 text-center text-sm text-black">
+										<p>Ver mais</p>
+										<Image src={viewIcon} alt="" height={18} />
 									</button>
 									<button className="mb-2 mt-2 w-32 rounded-xl border-2 border-solid  border-rose-500 bg-transparent p-2 text-center text-sm text-rose-500">
 										Mudar Função
@@ -284,8 +286,9 @@ export default function CadastrarUsuario({
 							<td className="">heitor@gmail.com</td>
 							<td className="">
 								<div className="flex flex-col items-center gap-2">
-									<button className="mt-2 w-32 rounded-xl border-2 border-solid  border-black bg-transparent p-2 text-center text-sm text-black">
-										Ver mais
+									<button className="mt-2 flex w-32 items-center justify-around rounded-xl border-2 border-solid  border-black bg-transparent p-2 text-center text-sm text-black">
+										<p>Ver mais</p>
+										<Image src={viewIcon} alt="" height={18} />
 									</button>
 									<button className="mb-2 mt-2 w-32 rounded-xl border-2 border-solid  border-rose-500 bg-transparent p-2 text-center text-sm text-rose-500">
 										Mudar Função
@@ -339,8 +342,9 @@ export default function CadastrarUsuario({
 							<td className="">heitor@gmail.com</td>
 							<td className="">
 								<div className="flex flex-col items-center gap-2">
-									<button className="mt-2 w-32 rounded-xl border-2 border-solid  border-black bg-transparent p-2 text-center text-sm text-black">
-										Ver mais
+									<button className="mt-2 flex w-32 items-center justify-around rounded-xl border-2 border-solid  border-black bg-transparent p-2 text-center text-sm text-black">
+										<p>Ver mais</p>
+										<Image src={viewIcon} alt="" height={18} />
 									</button>
 									<button className="mb-2 mt-2 w-32 rounded-xl border-2 border-solid  border-rose-500 bg-transparent p-2 text-center text-sm text-rose-500">
 										Mudar Função
@@ -371,8 +375,9 @@ export default function CadastrarUsuario({
 							<td className="">heitor@gmail.com</td>
 							<td className="">
 								<div className="flex flex-col items-center gap-2">
-									<button className="mt-2 w-32 rounded-xl border-2 border-solid  border-black bg-transparent p-2 text-center text-sm text-black">
-										Ver mais
+									<button className="mt-2 flex w-32 items-center justify-around rounded-xl border-2 border-solid  border-black bg-transparent p-2 text-center text-sm text-black">
+										<p>Ver mais</p>
+										<Image src={viewIcon} alt="" height={18} />
 									</button>
 									<button className="mb-2 mt-2 w-32 rounded-xl border-2 border-solid  border-rose-500 bg-transparent p-2 text-center text-sm text-rose-500">
 										Mudar Função
@@ -427,8 +432,9 @@ export default function CadastrarUsuario({
 							<td className="">heitor@gmail.com</td>
 							<td className="">
 								<div className="flex flex-col items-center gap-2">
-									<button className="mt-2 w-32 rounded-xl border-2 border-solid  border-black bg-transparent p-2 text-center text-sm text-black">
-										Ver mais
+									<button className="mt-2 flex w-32 items-center justify-around rounded-xl border-2 border-solid  border-black bg-transparent p-2 text-center text-sm text-black">
+										<p>Ver mais</p>
+										<Image src={viewIcon} alt="" height={18} />
 									</button>
 									<button className="mb-2 mt-2 w-32 rounded-xl border-2 border-solid  border-rose-500 bg-transparent p-2 text-center text-sm text-rose-500">
 										Mudar Função
@@ -459,8 +465,9 @@ export default function CadastrarUsuario({
 							<td className="">heitor@gmail.com</td>
 							<td className="">
 								<div className="flex flex-col items-center gap-2">
-									<button className="mt-2 w-32 rounded-xl border-2 border-solid  border-black bg-transparent p-2 text-center text-sm text-black">
-										Ver mais
+									<button className="mt-2 flex w-32 items-center justify-around rounded-xl border-2 border-solid  border-black bg-transparent p-2 text-center text-sm text-black">
+										<p>Ver mais</p>
+										<Image src={viewIcon} alt="" height={18} />
 									</button>
 									<button className="mb-2 mt-2 w-32 rounded-xl border-2 border-solid  border-rose-500 bg-transparent p-2 text-center text-sm text-rose-500">
 										Mudar Função
