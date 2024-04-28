@@ -9,6 +9,7 @@ import axios from 'axios';
 import { Activity } from '@/lib/repository/activity/index.repository';
 
 import EditLogo from './editLogo.png';
+import RemoveLogo from "./trashLogo.png"
 
 type CriarEventoProps = {
 	handleNextClick: () => void;
@@ -82,8 +83,7 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 	// 	handleNextClick();
 	// };
 
-	const handleAddOnTable = (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
+	const handleAddOnTable = () => {
 		setActivities((prev) => [
 			...prev,
 			{
@@ -99,11 +99,19 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 		setTitle('');
 		setDescricao('');
 		setDia('');
-		setTypeActivity('')
+		setTypeActivity('');
 		setGuestName('');
 		setGuestEmail('');
 		setTimeActivity('');
 	};
+
+	const itemToRemove = (i: any) => {
+		setActivities((prevActivities) => {
+		  const updatedArray = [...prevActivities];
+		  updatedArray.splice(i, 1); 
+		  return updatedArray;
+		});
+	  };
 
 	return (
 		<div className="container mb-6 mt-52 flex justify-center">
@@ -182,7 +190,7 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 								</label>
 
 								<div className="mb-3 flex items-center">
-									<div className="rounded-md border border-gray-300 w-full bg-white px-4 py-2">
+									<div className="w-full rounded-md border border-gray-300 bg-white px-4 py-2">
 										<select
 											className="w-full rounded-md border-0 bg-white text-sm outline-none"
 											name="selectType"
@@ -265,18 +273,18 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 						</div>
 					</div>
 
-					<div className="flex items-center justify-center gap-5">
+					<div className="flex items-center justify-center gap-5" style={{marginTop: '4rem'}}>
 						<button
 							className="mb-6 w-3/12 rounded-xl border-none p-2 text-center text-base font-medium text-white"
-							style={{ backgroundColor: '#4C1FA6' }}
-							type="submit"
-							onClick={handleNextButtonClick}
+							style={{ backgroundColor: '#0391C9' }}
+							type="button"
+							onClick={handleAddOnTable}
 						>
 							Cadastrar Atividade
 						</button>
 					</div>
 				</form>
-				<div className="flex items-center justify-center gap-5 mt-8">
+				<div className="mt-8 flex items-center justify-center gap-5">
 					<button
 						className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
 						style={{ backgroundColor: '#8A8A8A' }}
@@ -286,7 +294,7 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 					</button>
 					<button
 						className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
-						style={{ backgroundColor: '#EF0037' }}
+						style={{ backgroundColor: '#4C1FA6' }}
 						type="submit"
 						onClick={handleNextButtonClick}
 					>
@@ -328,11 +336,17 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 												<td className="">{acitivity.activityType}</td>
 												<td className="">{acitivity.activityGuestName}</td>
 												<td>
-													<button className="mt-2 mb-2 w-8/12 middle none center flex items-center justify-center rounded-2xl p-3 font-sans font-bold text-cyan-600 border-cyan-600 border transition-all disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
-														
-															<Image src={EditLogo} alt='' height={18}/>
-														<p className='ml-2'>Editar</p>
+													<div className='flex flex-row gap-2 justify-center'>
+													<button className="middle none center mb-2 mt-2 flex w-1/3 items-center justify-center rounded-2xl border-2 border-indigo-600 p-2 font-sans font-bold text-indigo-600 transition-all disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+														<Image src={EditLogo} alt="" height={20} />
+														<p className="ml-2">Editar</p>
 													</button>
+													<button className="middle none center mb-2 mt-2 flex w-1/3 items-center justify-center rounded-2xl border-2 border-rose-700 p-2 font-sans font-bold text-rose-700 transition-all disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+													onClick={() => itemToRemove(index)}>
+														<Image src={RemoveLogo} alt="" height={20} />
+														<p className="ml-2">Excluir</p>
+													</button>
+													</div>
 												</td>
 											</tr>
 										);
