@@ -5,23 +5,27 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FaTimes } from 'react-icons/fa';
 import { FiUpload } from 'react-icons/fi';
+import TagsInput from 'react-tagsinput';
+import 'react-tagsinput/react-tagsinput.css';
 
+import DataLocal from '@/components/Forms-DataLocal/cadastrar';
+import InputImg from '@/components/InputImg';
 import { Area } from '@/lib/repository/area/index.repository';
 import { Comissao } from '@/lib/repository/comission/index.repository';
 import { Event } from '@/lib/repository/event/index.repository';
-import InputImg from '@/components/InputImg';
 
 type CriarEventoProps = {
 	handleNextClick: () => void;
 };
 
 export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
-	const [image, setImage] = useState<any | null>(null);
 	const [nome, setNome] = useState('');
+	const [nomeEditor, setNomeEditor] = useState('');
 	const [email, setEmail] = useState('');
 	const [descricao, setDescricao] = useState('');
 	const [tipo, setTipo] = useState('');
 	const [assuntoPrincipal, setAssuntoPrincipal] = useState('');
+	const [ShowDataLocal, setShowDataLocal] = useState(false);
 	// const [adm, setAdm] = useState('ec2b4562-3234-4df9-ba5b-4b9a8226e39b');
 
 	// no proximo form terá:
@@ -32,6 +36,10 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 	const handleNextButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
 		handleNextClick();
+	};
+
+	const handleDataLocal = () => {
+		setShowDataLocal(true);
 	};
 	const [admins, setAdmins] = useState<Comissao[]>([
 		{
@@ -52,35 +60,46 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 
 	const checkboxEvento = ['Público', 'Privado'];
 	const [checkboxes, setCheckboxes] = useState(checkboxEvento.map(() => false));
-	const checkboxGerar = ['Anais', 'Certificados'];
+	const checkboxGerar = ['Proceedings', 'Certificados'];
 	const [checkboxesGerar, setCheckboxesGerar] = useState(
 		checkboxGerar.map(() => false)
 	);
-	const [areas, setAreas] = useState(['']);
-	const [ass, setAss] = useState(['']);
-	const handleAddArea = (
-		setArea: React.Dispatch<React.SetStateAction<string[]>>
-	) => {
-		const lastArea =
-			setArea === setAreas ? areas[areas.length - 1] : ass[ass.length - 1];
-		if (lastArea.trim() !== '') {
-			setArea((prevAreas) => [...prevAreas, '']);
-		}
+
+	const [corpo, setCorpo] = useState([]);
+	const [apoiador, setApoiador] = useState([]);
+
+	const handleChangeCorpo = (tags: any) => {
+		setCorpo(tags);
 	};
-	const handleRemoveArea = (
-		index: number,
-		setArea: React.Dispatch<React.SetStateAction<string[]>>
-	) => {
-		setArea((prevAreas) => prevAreas.filter((_, i) => i !== index));
+
+	const handleChangeApoiador = (tags: any) => {
+		setApoiador(tags);
 	};
-	const handleAreaChange = (
-		index: number,
-		value: string,
-		setArea: React.Dispatch<React.SetStateAction<string[]>>
-	) => {
-		const newAreas = [...(setArea === setAreas ? areas : ass)];
-		newAreas[index] = value;
-		setArea(newAreas);
+
+	const handleRenderTag = (props: any) => {
+		const {
+			tag,
+			key,
+			disabled,
+			onRemove,
+			classNameRemove,
+			getTagDisplayValue,
+			...other
+		} = props;
+
+		return (
+			<span key={key} {...other}>
+				{getTagDisplayValue(tag)}
+				{!disabled && (
+					<a
+						className="ml-2 cursor-pointer text-center font-mono text-xs font-bold text-[#4B00E0]"
+						onClick={() => onRemove(key)}
+					>
+						x
+					</a>
+				)}
+			</span>
+		);
 	};
 
 	const handleCheckboxChangeEvento = (index: any) => {
@@ -99,39 +118,33 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 	};
 
 	const [file, setFile] = useState<File | null>(null);
+	const [previewURL, setPreviewURL] = useState<string | null>(null);
+	const [showModal, setShowModal] = useState(false);
 
 	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const selectedFile = e.target.files && e.target.files[0];
-
+		setFile(selectedFile || null);
 		if (selectedFile) {
-			setFile(selectedFile);
+			const reader = new FileReader();
+			reader.onloadend = () => {
+				setPreviewURL(reader.result as string);
+			};
+			reader.readAsDataURL(selectedFile);
 		}
 	};
 
 	const handleFileDelete = () => {
 		setFile(null);
+		setPreviewURL(null);
 	};
 
-	// useEffect(() => {
-	// 	const getInfos = async () => {
-	// 		try {
-	// 			const id = localStorage.getItem('eventId');
-	// 			const result = await axios.get(
-	// 				`http://localhost:5002/area-event/${id}`
-	// 			);
-	// 			const response = await axios.get(
-	// 				'http://localhost:5002/comissao?adm=true'
-	// 			);
-	// 			if (result.data.areas && response.data.comissao) {
-	// 				setAreas(result.data.areas);
-	// 				setAdmins(response.data.comissao);
-	// 			}
-	// 		} catch (error) {
-	// 			console.log(error);
-	// 		}
-	// 	};
-	// 	getInfos();
-	// }, []);
+	const openModal = () => {
+		setShowModal(true);
+	};
+
+	const closeModal = () => {
+		setShowModal(false);
+	};
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -150,7 +163,6 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 			tipo,
 			logo: file ? file.name : null,
 		};
-		localStorage.setItem('areas', JSON.stringify(areas));
 		localStorage.setItem('event', JSON.stringify(event));
 		handleNextClick();
 	};
@@ -186,6 +198,37 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 								</div>
 							</div>
 							<div className="mb-5 flex flex-col">
+								<label
+									className="mb-2 text-sm font-medium"
+									htmlFor="nomeEditor"
+								>
+									Nome do Editor Chefe
+								</label>
+
+								<div className="flex items-center gap-2">
+									<div className="w-11/12 rounded-md border border-gray-300 bg-white px-4 py-2">
+										<select
+											className="w-full rounded-md border-0 bg-white text-sm outline-none"
+											name="nomeEditor"
+											id="nomeEditor"
+											value={nomeEditor}
+											onChange={(e) => setNomeEditor(e.target.value)}
+											required
+										>
+											<option value="Eduardo">Eduardo Lima</option>
+										</select>
+									</div>
+									<div className="w-10 rounded-xl bg-[#EF0037]">
+										<a
+											href="#"
+											className="flex cursor-pointer items-center justify-center text-3xl font-semibold text-white"
+										>
+											+
+										</a>
+									</div>
+								</div>
+							</div>
+							<div className="mb-5 flex flex-col">
 								<label className="mb-2 text-sm font-medium" htmlFor="descricao">
 									Descrição do Evento
 								</label>
@@ -204,19 +247,25 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 								</div>
 							</div>
 							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="select">
-									Selecione
+								<label
+									className="mb-2 text-sm font-medium"
+									htmlFor="modalidade"
+								>
+									Modalidade
 								</label>
 
 								<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
 									<select
 										className="w-full rounded-md border-0 bg-white text-sm outline-none"
-										name="select"
-										id="select"
+										name="modalidade"
+										id="modalidade"
 										value={tipo}
 										onChange={(e) => setTipo(e.target.value)}
 										required
 									>
+										<option selected value="">
+											Selecione uma modalidade
+										</option>
 										<option value="Presencial">Presencial</option>
 										<option value="Hibrido">Híbrido</option>
 										<option value="Remoto">Remoto</option>
@@ -385,64 +434,78 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 							</div>
 
 							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="areas">
-									Áreas de Conhecimento
+								<label className="mb-2 text-sm font-medium" htmlFor="corpo">
+									Corpo Editorial
 								</label>
 								<div>
-									<div className="mb-3 flex items-center">
-										<div className="w-full rounded-md border border-gray-300 bg-white px-4 py-2">
-											<input
-												className="w-full rounded-md border-0 bg-white text-sm outline-none"
-												type="text"
-												name="areas"
-												value={areas[areas.length - 1]}
-												onChange={(e) =>
-													handleAreaChange(
-														areas.length - 1,
-														e.target.value,
-														setAreas
-													)
-												}
-												placeholder="Áreas de Conhecimento da Comissão"
-												required
+									<div className="flex items-center">
+										<div className="w-full rounded-md border border-gray-300 bg-white">
+											<TagsInput
+												className="w-full rounded-md border-0 bg-white px-4 py-1 text-sm outline-none"
+												addOnBlur={true}
+												addOnPaste={true}
+												value={corpo}
+												onChange={handleChangeCorpo}
+												inputProps={{
+													className: 'w-full outline-none my-2',
+													placeholder: 'Corpo Editorial',
+												}}
+												tagProps={{
+													className:
+														'text-white rounded pl-2 pr-1 pb-1.5 pt-1 text-xs mr-2 bg-purple-500 text-center',
+												}}
+												removeKeys={[8, 46]}
+												renderTag={handleRenderTag}
 											/>
 										</div>
-										<div
-											className="ml-3 cursor-pointer rounded-full px-2"
-											onClick={() => handleAddArea(setAreas)}
-											style={{ backgroundColor: '#4B00E0' }}
-										>
-											<p className="text-xl font-bold text-white">+</p>
+									</div>
+								</div>
+							</div>
+							<div className="mb-5 flex flex-col">
+								<label className="mb-2 text-sm font-medium" htmlFor="apoiador">
+									Apoiador
+								</label>
+								<div>
+									<div className="flex items-center">
+										<div className="w-full rounded-md border border-gray-300 bg-white">
+											<TagsInput
+												className="w-full rounded-md border-0 bg-white px-4 py-1 text-sm outline-none"
+												addOnBlur={true}
+												addOnPaste={true}
+												value={apoiador}
+												onChange={handleChangeApoiador}
+												inputProps={{
+													className: 'w-full outline-none my-2',
+													placeholder: 'Apoiador',
+												}}
+												tagProps={{
+													className:
+														'text-white rounded pl-2 pr-1 pb-1.5 pt-1 text-xs mr-2 bg-purple-500 text-center',
+												}}
+												removeKeys={[8, 46]}
+												renderTag={handleRenderTag}
+											/>
 										</div>
 									</div>
-									<div className="flex gap-2.5">
-										{areas.map((area, index) => (
-											<div
-												key={index}
-												className="flex items-center rounded-full border border-gray-300 bg-white px-2 py-0.5"
-											>
-												<div className="w-full">
-													<input
-														className="w-full rounded-md border-0 bg-white text-sm outline-none"
-														type="text"
-														name="areas"
-														value={area}
-														onChange={(e) =>
-															handleAreaChange(index, e.target.value, setAreas)
-														}
-														readOnly
-														required
-													/>
-												</div>
-												<div
-													className="ml-2 cursor-pointer rounded-full px-1"
-													style={{ backgroundColor: '#ef0037' }}
-													onClick={() => handleRemoveArea(index, setAreas)}
-												>
-													<FaTimes className="w-2 text-white" />
-												</div>
-											</div>
-										))}
+								</div>
+							</div>
+							<div className="mb-5 flex flex-col">
+								<div className="mt-5 flex items-center gap-2">
+									<div className="w-11/12 rounded-md border border-gray-300 bg-white px-4 py-2">
+										<input
+											className="w-full rounded-md border-0 bg-white text-sm outline-none"
+											value="Cadastrar áreas de conhecimento do evento "
+											onChange={(e) => setNome(e.target.value)}
+											readOnly
+										/>
+									</div>
+									<div className="w-10 rounded-xl bg-[#EF0037]">
+										<a
+											href="#"
+											className="flex cursor-pointer items-center justify-center text-3xl font-semibold text-white"
+										>
+											+
+										</a>
 									</div>
 								</div>
 							</div>
@@ -450,57 +513,96 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 					</div>
 					<div className="flex justify-center">
 						<div className="mb-6 flex flex-col">
-							<label className="mb-2 text-sm font-medium" htmlFor="file">
+							<label
+								className="mb-2 text-center text-sm font-medium"
+								htmlFor="file"
+							>
 								Anexar Logo
 							</label>
 
-							<div className="flex  w-full items-center justify-center rounded-md border-0 bg-gray-200 px-4 py-5">
-								<label htmlFor="fileInput" className="cursor-pointer">
-									<FiUpload className="mx-2 h-5 w-5 text-black" />{' '}
-								</label>
-								{/* <InputImg
-                                setImage={setImage}
-                                className='container-img-profile-preview'
-                                imgPreviewClassName='
-								radius-[50%]
-								h-[5rem]
-								w-[5rem]
-								cursor-pointer 
-								object-cover
-								'
-                                imgPreview={image?.preview}
-                            	/> */}
-
-								<input
-									type="file"
-									id="fileInput"
-									name="file"
-									style={{ display: 'none' }}
-									onChange={(e) => handleFileChange(e)}
-									required
-								/>
-								<span className="text-sm">{file ? file.name : ''}</span>
-								{file && (
-									<button
-										className="ml-2 mr-1 cursor-pointer rounded-full bg-red-500 px-1"
-										onClick={handleFileDelete}
-									>
-										<FaTimes className="w-2 text-white" />
-									</button>
+							<div
+								className={`flex w-full justify-center rounded-md border-0 ${
+									previewURL ? 'bg-transparent py-3' : 'bg-gray-200 px-4 py-5'
+								}`}
+							>
+								{!previewURL && ( // Renderiza o ícone de upload somente se não houver previewURL
+									<label htmlFor="fileInput" className="cursor-pointer">
+										<FiUpload className="mx-2 h-5 w-5 text-black" />{' '}
+									</label>
 								)}
+
+								<div className="flex flex-col items-end">
+									<input
+										type="file"
+										id="fileInput"
+										name="file"
+										style={{ display: 'none' }}
+										onChange={(e) => handleFileChange(e)}
+										required
+									/>
+									{file && (
+										<button
+											className="-mr-1 -mt-3 cursor-pointer rounded-full bg-red-500 p-0.5"
+											onClick={handleFileDelete}
+										>
+											<FaTimes className="text-[9px] text-white" />
+										</button>
+									)}
+									{previewURL ? (
+										<>
+											<img
+												src={previewURL}
+												alt="Preview"
+												className="mr-2 max-h-20 max-w-full cursor-pointer"
+												onClick={openModal}
+											/>
+											{showModal && (
+												<div
+													className="fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center bg-black bg-opacity-80 py-20"
+													onClick={closeModal} // Fecha o modal quando o fundo escuro é clicado
+												>
+													<img
+														src={previewURL}
+														alt="Preview"
+														className="max-h-full max-w-full"
+														onClick={closeModal} // fecha o modal quando a imagem é clicada
+													/>
+												</div>
+											)}
+										</>
+									) : (
+										<span className="text-sm">{file ? file.name : ''}</span>
+									)}
+								</div>
 							</div>
 						</div>
 					</div>
-					<div className="flex items-center justify-center gap-5">
+					<div className="flex items-center justify-center">
 						<button
 							className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
-							style={{ backgroundColor: '#EF0037' }}
-							type="submit"
-							// onClick={handleNextButtonClick}
+							style={{ backgroundColor: '#4B00E0' }}
+							type="button"
+							onClick={handleDataLocal}
 						>
-							Avançar
+							Criar
 						</button>
 					</div>
+					{ShowDataLocal && (
+						<>
+							<DataLocal handleNextClick={handleNextClick} tipo={tipo} />
+
+							<div className="flex items-center justify-center">
+								<button
+									className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
+									style={{ backgroundColor: '#ef0037' }}
+									type="submit"
+									onClick={handleNextButtonClick}
+								>
+									Avançar
+								</button>
+							</div>
+						</>
+					)}
 				</form>
 			</div>
 		</div>
