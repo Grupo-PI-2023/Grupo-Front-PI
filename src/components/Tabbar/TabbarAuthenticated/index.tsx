@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 
-import Arquivos from '@/components/Forms-Arquivos';
 import CriarAtividade from '@/components/Form-Atividades';
+import Arquivos from '@/components/Forms-Arquivos';
 import DataLocal from '@/components/Forms-DataLocal/cadastrar';
 import CriarEvento from '@/components/Forms-Evento/cadastrar';
 import VisualizarSala from '@/components/Forms-Salas/cadastrar';
@@ -30,18 +30,21 @@ export default function Tabbar({
 						handleNextClick={() => handleOptionClick('data-local')}
 					/>
 				);
-			case 'data-local':
+			/*case 'data-local':
 				return (
 					<DataLocal handleNextClick={() => handleOptionClick('usuarios')} />
 				);
+				*/
 			case 'arquivos':
 				return (
 					<Arquivos handleNextClick={() => handleOptionClick('atividades')} />
 				);
 			case 'atividades':
-				return(
-					<CriarAtividade handleNextClick={() => handleOptionClick('usuarios')} />
-				)
+				return (
+					<CriarAtividade
+						handleNextClick={() => handleOptionClick('usuarios')}
+					/>
+				);
 			case 'usuarios':
 				return (
 					<CadastrarUsuario
@@ -74,7 +77,7 @@ export default function Tabbar({
 						</S.OptionMenu>
 						<S.IconEvent selected={currentOption === 'criar-evento'} />
 					</div>
-					<div className="flex items-center gap-2">
+					{/*<div className="flex items-center gap-2">
 						<S.OptionMenu
 							onClick={() => handleOptionClick('data-local')}
 							className="flex-shrink-0 cursor-pointer text-sm"
@@ -83,7 +86,7 @@ export default function Tabbar({
 							Data e Local
 						</S.OptionMenu>
 						<S.IconDate selected={currentOption === 'data-local'} />
-					</div>
+	</div>*/}
 					<div className="flex items-center gap-2">
 						<S.OptionMenu
 							onClick={() => handleOptionClick('arquivos')}
