@@ -4,20 +4,21 @@ import { useEffect, useState } from 'react';
 
 import axios from 'axios';
 
+import AlertCard from '@/components/AlertCard';
 import { Area } from '@/lib/repository/area/index.repository';
 import { Event } from '@/lib/repository/event/index.repository';
-import AlertCard from '@/components/AlertCard';
 
-type CriarEventoProps = {
+type DataLocalProps = {
 	handleNextClick: () => void;
+	tipo: string;
 };
 
-export default function DataLocal({ handleNextClick }: CriarEventoProps) {
-	// no proximo form terá:
+export default function DataLocal({ handleNextClick, tipo }: DataLocalProps) {
 	const [cep, setCep] = useState('');
 	const [estado, setEstado] = useState('');
 	const [local, setLocal] = useState('');
 	const [cidade, setCidade] = useState('');
+	const [link, setLink] = useState('');
 
 	const [dataInicio, setDataInicio] = useState('');
 	const [dataFinal, setDataFinal] = useState('');
@@ -49,7 +50,7 @@ export default function DataLocal({ handleNextClick }: CriarEventoProps) {
 		// cadastrando evento:
 		const data: Event = JSON.parse(localStorage.getItem('event') || '{}');
 		if (data) {
-			const periodo = checkboxes.findIndex(item => item===true);
+			const periodo = checkboxes.findIndex((item) => item === true);
 			data.local = `${local}, ${cep}, ${estado}, ${cidade}`;
 			data.cep = cep;
 			data.dataInicio = dataInicio;
@@ -59,7 +60,7 @@ export default function DataLocal({ handleNextClick }: CriarEventoProps) {
 			data.periodo = checkboxPeriodo[periodo];
 			try {
 				const result = await axios.post('http://localhost:5002/event', data);
-				if(result.data.userCreated){
+				if (result.data.userCreated) {
 					localStorage.setItem('eventId', result.data.userCreated.id);
 					setShowCard(true);
 					setTimeout(() => {
@@ -73,15 +74,18 @@ export default function DataLocal({ handleNextClick }: CriarEventoProps) {
 		}
 		// cadastrando as areas:
 		const parsedAreas = JSON.parse(localStorage.getItem('areas') || '[]');
-		if(parsedAreas){
+		if (parsedAreas) {
 			const eventId = localStorage.getItem('eventId');
 			parsedAreas.forEach(async (areaName: string) => {
-				const areaObjt : Area = {
+				const areaObjt: Area = {
 					eventoId: eventId,
-					nome: areaName
-				}
+					nome: areaName,
+				};
 				try {
-					const result = await axios.post('http://localhost:5002/area', areaObjt);
+					const result = await axios.post(
+						'http://localhost:5002/area',
+						areaObjt
+					);
 					console.log(result);
 				} catch (error) {
 					console.log(error);
@@ -91,88 +95,59 @@ export default function DataLocal({ handleNextClick }: CriarEventoProps) {
 	};
 
 	return (
-		<div className="container mb-6 mt-52 flex justify-center">
-			<div className="w-1/2">
+		<div className="container mb-6 mt-14 flex justify-center">
+			<div className="w-[40vw]">
 				<h1
 					className="text-center text-2xl font-bold text-black"
 					style={{ color: '#ef0037' }}
 				>
 					Data e Local
 				</h1>
-				<AlertCard message='Evento cadastrado com sucesso' show={showCard}/>
+				<AlertCard message="Evento cadastrado com sucesso" show={showCard} />
 				<form className="mt-8 w-full" onSubmit={handleSubmit}>
 					<div className="flex justify-center gap-5">
 						<div className="w-full">
-							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="cep">
-									CEP
-								</label>
-								<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
-									<input
-										className="w-full rounded-md border-0 bg-white text-sm outline-none"
-										type="text"
-										name="cep"
-										id="cep"
-										placeholder="CEP do Evento"
-										value={cep}
-										onChange={(e) => setCep(e.target.value)}
-										required
-									/>
-								</div>
-							</div>
-							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="estado">
-									Estado
-								</label>
-								<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
-									<input
-										className="w-full rounded-md border-0 bg-white text-sm outline-none"
-										type="text"
-										name="estado"
-										id="estado"
-										placeholder="Estado do Evento"
-										value={estado}
-										onChange={(e) => setEstado(e.target.value)}
-										required
-									/>
-								</div>
-							</div>
-							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="cidade">
-									Cidade
-								</label>
-								<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
-									<input
-										className="w-full rounded-md border-0 bg-white text-sm outline-none"
-										type="text"
-										name="cidade"
-										id="cidade"
-										placeholder="Cidade do Evento"
-										value={cidade}
-										onChange={(e) => setCidade(e.target.value)}
-										required
-									/>
-								</div>
-							</div>
-							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="local">
-									Local
-								</label>
-								<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
-									<input
-										className="w-full rounded-md border-0 bg-white text-sm outline-none"
-										type="text"
-										name="local"
-										id="local"
-										placeholder="Local do Evento"
-										value={local}
-										onChange={(e) => setLocal(e.target.value)}
-										required
-									/>
-								</div>
-							</div>
-						</div>
-						<div className="w-full">
+							{(tipo === 'Hibrido' || tipo == 'Presencial') && (
+								<>
+									<div className="mb-5 flex flex-col">
+										<label className="mb-2 text-sm font-medium" htmlFor="cep">
+											CEP
+										</label>
+										<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
+											<input
+												className="w-full rounded-md border-0 bg-white text-sm outline-none"
+												type="text"
+												name="cep"
+												id="cep"
+												placeholder="CEP do Evento"
+												value={cep}
+												onChange={(e) => setCep(e.target.value)}
+												required
+											/>
+										</div>
+									</div>
+									<div className="mb-5 flex flex-col">
+										<label
+											className="mb-2 text-sm font-medium"
+											htmlFor="estado"
+										>
+											Estado
+										</label>
+										<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
+											<input
+												className="w-full rounded-md border-0 bg-white text-sm outline-none"
+												type="text"
+												name="estado"
+												id="estado"
+												placeholder="Estado do Evento"
+												value={estado}
+												onChange={(e) => setEstado(e.target.value)}
+												required
+											/>
+										</div>
+									</div>
+								</>
+							)}
 							<div className="mb-5 flex flex-col">
 								<label
 									className="mb-2 text-sm font-medium"
@@ -188,22 +163,6 @@ export default function DataLocal({ handleNextClick }: CriarEventoProps) {
 										id="dateInicio"
 										value={dataInicio}
 										onChange={(e) => setDataInicio(e.target.value)}
-										required
-									/>
-								</div>
-							</div>
-							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="dateFinal">
-									Data de Finalização
-								</label>
-								<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
-									<input
-										className="w-full rounded-md border-0 bg-white text-sm outline-none"
-										type="Date"
-										name="dateFinal"
-										id="dateFinal"
-										value={dataFinal}
-										onChange={(e) => setDataFinal(e.target.value)}
 										required
 									/>
 								</div>
@@ -227,6 +186,129 @@ export default function DataLocal({ handleNextClick }: CriarEventoProps) {
 									/>
 								</div>
 							</div>
+							<div className="mb-4">
+								<div className="flex flex-col items-center justify-center gap-1 text-center">
+									<label
+										className="text-center text-base font-medium"
+										htmlFor="evento"
+									>
+										Período
+									</label>
+									<div className="flex items-center gap-3 py-1">
+										{checkboxPeriodo.map((name, index) => (
+											<div key={index}>
+												<div className="flex items-center">
+													<input
+														className="hidden"
+														type="checkbox"
+														name={`checkbox-${index}`}
+														id={`checkbox-${index}`}
+														checked={checkboxes[index]}
+														onChange={() => handleCheckboxChangeEvento(index)}
+													/>
+													<label
+														className="flex cursor-pointer items-center"
+														style={
+															checkboxes[index]
+																? {
+																		color: '#4B00E0',
+																  }
+																: {
+																		color: '#000',
+																  }
+														}
+														htmlFor={`checkbox-${index}`}
+													>
+														<div
+															className="mr-2 flex h-4 w-4 items-center justify-center"
+															style={
+																checkboxes[index]
+																	? {
+																			backgroundColor: '#4B00E0',
+																			border: '1px solid #4B00E0',
+																	  }
+																	: {
+																			backgroundColor: '#fff',
+																			border: '1px solid #4B00E0',
+																	  }
+															}
+														>
+															{checkboxes[index] && (
+																<svg
+																	className="pointer-events-none h-2 w-3 fill-current text-white"
+																	viewBox="0 0 20 20"
+																>
+																	<path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
+																</svg>
+															)}
+														</div>
+														<span className="text-sm font-medium">{name}</span>
+													</label>
+												</div>
+											</div>
+										))}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div className="w-full">
+							{(tipo === 'Hibrido' || tipo == 'Presencial') && (
+								<>
+									<div className="mb-5 flex flex-col">
+										<label className="mb-2 text-sm font-medium" htmlFor="local">
+											Local
+										</label>
+										<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
+											<input
+												className="w-full rounded-md border-0 bg-white text-sm outline-none"
+												type="text"
+												name="local"
+												id="local"
+												placeholder="Local do Evento"
+												value={local}
+												onChange={(e) => setLocal(e.target.value)}
+												required
+											/>
+										</div>
+									</div>
+									<div className="mb-5 flex flex-col">
+										<label
+											className="mb-2 text-sm font-medium"
+											htmlFor="cidade"
+										>
+											Cidade
+										</label>
+										<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
+											<input
+												className="w-full rounded-md border-0 bg-white text-sm outline-none"
+												type="text"
+												name="cidade"
+												id="cidade"
+												placeholder="Cidade do Evento"
+												value={cidade}
+												onChange={(e) => setCidade(e.target.value)}
+												required
+											/>
+										</div>
+									</div>
+								</>
+							)}
+							<div className="mb-5 flex flex-col">
+								<label className="mb-2 text-sm font-medium" htmlFor="dateFinal">
+									Data de Finalização
+								</label>
+								<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
+									<input
+										className="w-full rounded-md border-0 bg-white text-sm outline-none"
+										type="Date"
+										name="dateFinal"
+										id="dateFinal"
+										value={dataFinal}
+										onChange={(e) => setDataFinal(e.target.value)}
+										required
+									/>
+								</div>
+							</div>
 							<div className="mb-5 flex flex-col">
 								<label className="mb-2 text-sm font-medium" htmlFor="horaFinal">
 									Horário de Finalização
@@ -243,73 +325,27 @@ export default function DataLocal({ handleNextClick }: CriarEventoProps) {
 									/>
 								</div>
 							</div>
-						</div>
-					</div>
-					<div className="flex justify-start mb-8">
-						<div className="flex items-center gap-5">
-							<label
-								className="text-center font-medium text-base mr-5"
-								htmlFor="evento"
-							>
-								Período
-							</label>
-							<div className="flex items-center gap-3 py-1">
-								{checkboxPeriodo.map((name, index) => (
-									<div key={index}>
-										<div className="flex items-center">
-											<input
-												className="hidden"
-												type="checkbox"
-												name={`checkbox-${index}`}
-												id={`checkbox-${index}`}
-												checked={checkboxes[index]}
-												onChange={() => handleCheckboxChangeEvento(index)}
-											/>
-											<label
-												className="flex cursor-pointer items-center"
-												style={
-													checkboxes[index]
-														? {
-																color: '#4B00E0',
-														  }
-														: {
-																color: '#000',
-														  }
-												}
-												htmlFor={`checkbox-${index}`}
-											>
-												<div
-													className="mr-2 flex h-4 w-4 items-center justify-center"
-													style={
-														checkboxes[index]
-															? {
-																	backgroundColor: '#4B00E0',
-																	border: '1px solid #4B00E0',
-															  }
-															: {
-																	backgroundColor: '#fff',
-																	border: '1px solid #4B00E0',
-															  }
-													}
-												>
-													{checkboxes[index] && (
-														<svg
-															className="pointer-events-none h-2 w-3 fill-current text-white"
-															viewBox="0 0 20 20"
-														>
-															<path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
-														</svg>
-													)}
-												</div>
-												<span className="text-sm font-medium">{name}</span>
-											</label>
-										</div>
+							{(tipo === 'Hibrido' || tipo == 'Remoto') && (
+								<div className="mb-4 flex flex-col">
+									<label className="mb-2 text-sm font-medium" htmlFor="link">
+										Link para transmissão online
+									</label>
+									<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
+										<input
+											className="w-full rounded-md border-0 bg-white text-sm outline-none"
+											type="link"
+											name="link"
+											id="link"
+											value={link}
+											onChange={(e) => setLink(e.target.value)}
+											required
+										/>
 									</div>
-								))}
-							</div>
+								</div>
+							)}
 						</div>
 					</div>
-					<div className="flex items-center justify-center gap-5">
+					{/*<div className="flex items-center justify-center gap-5">
 						<button
 							className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
 							style={{ backgroundColor: '#8A8A8A' }}
@@ -326,6 +362,7 @@ export default function DataLocal({ handleNextClick }: CriarEventoProps) {
 							Avançar
 						</button>
 					</div>
+						*/}
 				</form>
 			</div>
 		</div>
