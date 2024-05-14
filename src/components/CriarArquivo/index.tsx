@@ -8,81 +8,28 @@ import search from './search.png';
 
 import axios from 'axios';
 
-import { Knowledge } from '@/lib/repository/knowledge-area/index.repository';
+import { createFile } from '@/lib/repository/createFile/index.repository';
 
 type CriarEventoProps = {
 	handleNextClick: () => void;
 };
 
-export default function CriarAreaConhecimento({ handleNextClick }: CriarEventoProps) {
+export default function CadastrarArquivo({ handleNextClick }: CriarEventoProps) {
 	const [name, setName] = useState('');
 	const [descricao, setDescricao] = useState('');
-	const [knowledge, setKnowledge] = useState<Knowledge[]>([]);
+	const [createFile, setCreateFile] = useState<createFile[]>([]);
 
 	const handleNextButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
 		handleNextClick();
 	};
 
-	// useEffect(() => {
-	// 	const getInfos = async () => {
-	// 		try {
-	// 			const id = localStorage.getItem('eventId');
-	// 			const result = await axios.get(
-	// 				`http://localhost:5002/area-event/${id}`
-	// 			);
-	// 			const response = await axios.get(
-	// 				'http://localhost:5002/comissao?adm=true'
-	// 			);
-	// 			if (result.data.areas && response.data.comissao) {
-	// 				setAreas(result.data.areas);
-	// 				setAdmins(response.data.comissao);
-	// 			}
-	// 		} catch (error) {
-	// 			console.log(error);
-	// 		}
-	// 	};
-	// 	getInfos();
-	// }, []);
-
-	// const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-	// 	e.preventDefault();
-	// 	localStorage.clear();
-	// 	const eventId = localStorage.getItem('eventId');
-	// 	if (eventId) {
-	// 		let activityCreated: Activity[] = [];
-	// 		try {
-	// 			activities.forEach(async (activity) => {
-	// 				const activityObjt: Activity = {
-	// 					activityTitle: activity.activityTitle,
-	// 					activityDescription: activity.activityDescription,
-	// 					activityDate: activity.activityDate,
-	// 					activityType: activity.activityType,
-	// 					activityGuestName: activity.activityGuestName,
-	// 					activityGuestEmail: activity.activityGuestEmail,
-	// 					activityTime: activity.activityTime,
-	// 					eventId,
-	// 				};
-	// 				// const result = await axios.post(
-	// 				// 	'http://localhost:5002/sala',
-	// 				// 	salaObjt
-	// 				// );
-	// 				// console.log(result);
-	// 			});
-	// 		} catch (error) {
-	// 			console.log(error);
-	// 		}
-	// 	}
-	//     // handleAddOnTable(e)
-	// 	handleNextClick();
-	// };
-
 	const handleAddOnTable = () => {
-		setKnowledge((prev) => [
+		setCreateFile((prev) => [
 			...prev,
 			{
-				activityName: name,
-				activityDescription: descricao,
+				FileName: name,
+				FileDescription: descricao,
 			},
 		]);
 		setDescricao('');
@@ -90,8 +37,8 @@ export default function CriarAreaConhecimento({ handleNextClick }: CriarEventoPr
 	};
 
 	const itemToRemove = (i: any) => {
-		setKnowledge((prevKnowledge: any) => {
-		  const updatedArray = [...prevKnowledge];
+		setCreateFile((prevCreateFile: any) => {
+		  const updatedArray = [...prevCreateFile];
 		  updatedArray.splice(i, 1); 
 		  return updatedArray;
 		});
@@ -104,10 +51,10 @@ export default function CriarAreaConhecimento({ handleNextClick }: CriarEventoPr
 					className="text-center text-2xl font-bold text-black"
 					style={{ color: '#ef0037' }}
 				>
-					Criar Áreas de Conhecimento 
+					Criar Arquivo
 				</h1>
 				<h2 className="text-center" style={{ color: '#000000' }}>
-                Crie as áreas de conhecimento que vão ser utilizadas
+                Crie os tipos de arquivos que serão submetidos durante o evente
                 				</h2>
 				<form className="mt-8 w-full" onSubmit={handleAddOnTable}>
 					<div className="flex justify-center gap-5">
@@ -121,9 +68,9 @@ export default function CriarAreaConhecimento({ handleNextClick }: CriarEventoPr
 									<input
 										className="w-full border-0 bg-white text-sm outline-none"
 										type="text"
-										name="activityName"
-										id="activityName"
-										placeholder="Area de Conhecimento"
+										name="FileName"
+										id="FileName"
+										placeholder="Nome do Arquivo"
 										value={name}
 										onChange={(e) => setName(e.target.value)}
 										required
@@ -183,9 +130,9 @@ export default function CriarAreaConhecimento({ handleNextClick }: CriarEventoPr
 							</tr>
 						</thead>
 						<tbody>
-							{knowledge && (
+							{createFile && (
 								<>
-									{knowledge.map((knowledge, index) => {
+									{createFile.map((createFile, index) => {
 										return (
 											<tr
 												key={index}
@@ -206,12 +153,12 @@ export default function CriarAreaConhecimento({ handleNextClick }: CriarEventoPr
 												</td>
 												<td className="">
                                                 <label className="rounded-2xl border border-black mb-2 text-sm font-medium p-2" htmlFor="eventName">
-                                                {knowledge.activityName}
+                                                {createFile.FileName}
 								                 </label>  
                                                 </td>
 												<td className="rounded-br-lg">
                                                 <label className="rounded-2xl border border-black mb-2 text-sm font-medium p-2" htmlFor="eventName">
-                                                    {knowledge.activityDescription}
+                                                    {createFile.FileDescription}
 								                 </label>
                                                 </td>
 											</tr>
