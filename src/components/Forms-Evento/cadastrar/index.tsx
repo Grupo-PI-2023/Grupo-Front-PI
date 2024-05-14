@@ -8,6 +8,7 @@ import { FiUpload } from 'react-icons/fi';
 import TagsInput from 'react-tagsinput';
 import 'react-tagsinput/react-tagsinput.css';
 
+import DataLocal from '@/components/Forms-DataLocal/cadastrar';
 import InputImg from '@/components/InputImg';
 import { Area } from '@/lib/repository/area/index.repository';
 import { Comissao } from '@/lib/repository/comission/index.repository';
@@ -24,6 +25,7 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 	const [descricao, setDescricao] = useState('');
 	const [tipo, setTipo] = useState('');
 	const [assuntoPrincipal, setAssuntoPrincipal] = useState('');
+	const [ShowDataLocal, setShowDataLocal] = useState(false);
 	// const [adm, setAdm] = useState('ec2b4562-3234-4df9-ba5b-4b9a8226e39b');
 
 	// no proximo form terá:
@@ -34,6 +36,10 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 	const handleNextButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
 		handleNextClick();
+	};
+
+	const handleDataLocal = () => {
+		setShowDataLocal(true);
 	};
 	const [admins, setAdmins] = useState<Comissao[]>([
 		{
@@ -206,7 +212,7 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 											name="nomeEditor"
 											id="nomeEditor"
 											value={nomeEditor}
-											onChange={(e) => setNome(e.target.value)}
+											onChange={(e) => setNomeEditor(e.target.value)}
 											required
 										>
 											<option value="Eduardo">Eduardo Lima</option>
@@ -257,6 +263,9 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 										onChange={(e) => setTipo(e.target.value)}
 										required
 									>
+										<option selected value="">
+											Selecione uma modalidade
+										</option>
 										<option value="Presencial">Presencial</option>
 										<option value="Hibrido">Híbrido</option>
 										<option value="Remoto">Remoto</option>
@@ -568,16 +577,32 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 							</div>
 						</div>
 					</div>
-					<div className="flex items-center justify-center gap-5">
+					<div className="flex items-center justify-center">
 						<button
 							className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
 							style={{ backgroundColor: '#4B00E0' }}
-							type="submit"
-							onClick={handleNextButtonClick}
+							type="button"
+							onClick={handleDataLocal}
 						>
-							Avançar
+							Criar
 						</button>
 					</div>
+					{ShowDataLocal && (
+						<>
+							<DataLocal handleNextClick={handleNextClick} tipo={tipo} />
+
+							<div className="flex items-center justify-center">
+								<button
+									className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
+									style={{ backgroundColor: '#ef0037' }}
+									type="submit"
+									onClick={handleNextButtonClick}
+								>
+									Avançar
+								</button>
+							</div>
+						</>
+					)}
 				</form>
 			</div>
 		</div>
