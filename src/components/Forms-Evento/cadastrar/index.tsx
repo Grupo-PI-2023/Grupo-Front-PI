@@ -501,7 +501,7 @@ export default function CriarEvento({ handleNextClick }: CriarEventoProps) {
 									</div>
 									<div className="w-10 rounded-xl bg-[#EF0037]">
 										<a
-											href="#"
+											href="/dashboard/evento/criar-area"
 											className="flex cursor-pointer items-center justify-center text-3xl font-semibold text-white"
 										>
 											+

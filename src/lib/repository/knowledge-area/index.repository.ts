@@ -3,6 +3,7 @@ export type Knowledge = {
     id?: string 
     activityDescription: string 
     activityName: string 
+    bigArea: string
     eventId?: string 
 }
 
