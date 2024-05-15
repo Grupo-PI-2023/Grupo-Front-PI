@@ -1,12 +1,12 @@
-import Footer from '@/components/Footer';
-import Navbar from '@/components/Navbar/NavbarAuthenticated';
+import Footer from '@/components/COMPONENTES/Footer';
+import Navbar from '@/components/COMPONENTES/Navbar/NavbarAuthenticated';
 
-export default async function Support() {
+export default async function EditarArtigosPage() {
 	return (
 		<div className='h-screen flex flex-col justify-items-center '>
 			<Navbar />
 			<div className='h-full flex justify-center items-center'>
-                <h1>Artigos Page</h1>
+                <h1>Editar Artigos Page</h1>
             </div>
 			<Footer />
 		</div>

@@ -1,5 +1,5 @@
-import Footer from '@/components/Footer';
-import Navbar from '@/components/Navbar';
+import Footer from '@/components/COMPONENTES/Footer';
+import Navbar from '@/components/COMPONENTES/Navbar';
 
 export default async function Support() {
 	return (

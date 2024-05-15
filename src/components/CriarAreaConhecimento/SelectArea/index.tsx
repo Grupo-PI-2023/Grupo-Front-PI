@@ -5,7 +5,7 @@ import { useState } from 'react';
 import * as S from './styles';
 import Image from 'next/image';
 import search from './../search.png';
-import CriarAreaConhecimento from '..';
+import CriarAreaConhecimento from '../index';
 import CriarEspecialide from '../CriarEspecialidade';
 import CriarGrandeAreaConhecimento from '../CriarGrandeArea';
 import CriarSubAreaConhecimento from '../CriarSubArea';

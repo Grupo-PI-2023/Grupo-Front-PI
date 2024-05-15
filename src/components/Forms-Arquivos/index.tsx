@@ -11,7 +11,7 @@ import { FiUpload } from 'react-icons/fi';
 
 import { Arquivo } from '@/lib/repository/arquivo/index.repository';
 
-import AlertCard from '../AlertCard';
+import AlertCard from '../COMPONENTES/AlertCard';
 import EditLogo from './editLogo.png';
 import RemoveLogo from './trashLogo.png';
 import { ArquivoConfig } from '@/lib/repository/arquivo/index.repositoryFiles';
@@ -423,7 +423,7 @@ export default function Arquivos({ handleNextClick }: CriarEventoProps) {
 									)}
 
 									<div
-										className="flex flex w-10/12 items-center justify-center rounded-xl border-0 px-4 py-2 text-white"
+										className="flex w-10/12 items-center justify-center rounded-xl border-0 px-4 py-2 text-white"
 										style={{ backgroundColor: '#0391C9' }}
 									>
 										<label
@@ -517,7 +517,7 @@ export default function Arquivos({ handleNextClick }: CriarEventoProps) {
 									)}
 
 									<div
-										className="flex flex w-full items-center justify-center rounded-xl border-0 px-4 py-2 text-white"
+										className="flex w-full items-center justify-center rounded-xl border-0 px-4 py-2 text-white"
 										style={{ backgroundColor: '#0391C9' }}
 									>
 										<label

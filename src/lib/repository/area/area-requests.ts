@@ -1,4 +1,4 @@
-import { publicApi } from "@/services";
+import publicApi  from "@/services";
 import { Area, IAreaRepository } from "./index.repository";
 
 export class AreaRequest implements IAreaRepository {

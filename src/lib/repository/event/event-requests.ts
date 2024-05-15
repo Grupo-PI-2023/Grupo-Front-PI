@@ -1,4 +1,4 @@
-import { publicApi } from "@/services";
+import publicApi from "@/services";
 import { Event, IEventRepository } from "./index.repository";
 
 export class EventRequest implements IEventRepository {

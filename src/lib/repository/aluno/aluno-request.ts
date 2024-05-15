@@ -1,4 +1,4 @@
-import { publicApi } from "@/services";
+import publicApi  from "@/services";
 import { Aluno, IAlunoRepository } from "./index.repository";
 
 export class AlunoRequest implements IAlunoRepository {

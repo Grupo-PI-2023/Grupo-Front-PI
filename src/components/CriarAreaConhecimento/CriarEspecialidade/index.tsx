@@ -1,12 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import Image from 'next/image';
 import RemoveLogo from "./../remove-x.png"
-import search from './../search.png';
-
-import axios from 'axios';
 import { KnowledgeSpecialtyArea } from '@/lib/repository/knowledge-specialty-area/index.repository';
 
 type CriarEventoProps = {

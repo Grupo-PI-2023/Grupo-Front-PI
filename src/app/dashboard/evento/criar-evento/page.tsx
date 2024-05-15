@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 
-import Footer from '@/components/Footer';
-import NavbarAuthenticated from '@/components/Navbar/NavbarAuthenticated';
+import Footer from '@/components/COMPONENTES/Footer';
+import NavbarAuthenticated from '@/components/COMPONENTES/Navbar/NavbarAuthenticated';
 import TabbarAuthenticated from '@/components/Tabbar/TabbarAuthenticated';
 
 export default function Evento() {

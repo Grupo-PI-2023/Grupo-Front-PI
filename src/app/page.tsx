@@ -1,8 +1,8 @@
 'use client'
 
-import Footer from '@/components/Footer';
-import Navbar from '@/components/Navbar';
-import NavbarAuthenticated from '@/components/Navbar/NavbarAuthenticated';
+import Footer from '@/components/COMPONENTES/Footer';
+import Navbar from '@/components/COMPONENTES/Navbar';
+import NavbarAuthenticated from '@/components/COMPONENTES/Navbar/NavbarAuthenticated';
 import { useState } from 'react';
 
 export default async function Home() {

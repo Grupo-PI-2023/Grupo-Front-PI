@@ -2,14 +2,14 @@
 
 import { useState } from 'react';
 
-import CriarAtividade from '@/components/Form-Atividades';
+import CriarAtividade from '@/components/TabBarFormsAuthenticated/Form-Atividades';
 import Arquivos from '@/components/Forms-Arquivos';
-import DataLocal from '@/components/Forms-DataLocal/cadastrar';
-import CriarEvento from '@/components/Forms-Evento/cadastrar';
-import VisualizarSala from '@/components/Forms-Salas/cadastrar';
-import Sessao from '@/components/Forms-Sessao/cadastrar';
-import CadastrarUsuario from '@/components/Forms-UsuComissaoLink';
-import Menu from '@/components/Menu';
+import DataLocal from '@/components/TabBarFormsAuthenticated/Forms-DataLocal';
+import CriarEvento from '@/components/TabBarFormsAuthenticated/Forms-Evento';
+import VisualizarSala from '@/components/TabBarFormsAuthenticated/Forms-Salas';
+import Sessao from '@/components/TabBarFormsAuthenticated/Forms-Sessao';
+import CadastrarUsuario from '@/components/TabBarFormsAuthenticated/Forms-UsuComissaoLink';
+import Menu from '@/components/COMPONENTES/Menu';
 
 import * as S from './styles';
 

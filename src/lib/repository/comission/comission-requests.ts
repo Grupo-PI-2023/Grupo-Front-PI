@@ -1,4 +1,4 @@
-import { publicApi } from "@/services";
+import publicApi from "@/services";
 import { Comissao, IComissaoRepository } from "./index.repository";
 
 export class ComissaoRequest implements IComissaoRepository {

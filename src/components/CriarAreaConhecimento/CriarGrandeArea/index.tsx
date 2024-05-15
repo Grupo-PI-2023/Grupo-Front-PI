@@ -1,15 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import Image from 'next/image';
 import RemoveLogo from "./../remove-x.png"
-import search from './../search.png';
-
-import axios from 'axios';
-import CriarAreaConhecimento from '..';
-import CriarEspecialide from '../CriarEspecialidade';
-import CriarSubAreaConhecimento from '../CriarSubArea';
 import { KnowledgeBigArea } from '@/lib/repository/knowledge-big-area/index.repository';
 
 type CriarEventoProps = {

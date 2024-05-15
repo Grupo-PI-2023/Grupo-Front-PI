@@ -1,11 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import Image from 'next/image';
 import RemoveLogo from "./remove-x.png"
 
-import axios from 'axios';
 
 import { Knowledge } from '@/lib/repository/knowledge-area/index.repository';
 
@@ -18,7 +17,6 @@ export default function CriarAreaConhecimento({ handleOptionClick }: CriarEvento
 	const [descricao, setDescricao] = useState('');
 	const [bigArea, setBigArea] = useState('');
 	const [knowledge, setKnowledge] = useState<Knowledge[]>([]);
-
 
 	const handleAddOnTable = () => {
 		setKnowledge((prev) => [

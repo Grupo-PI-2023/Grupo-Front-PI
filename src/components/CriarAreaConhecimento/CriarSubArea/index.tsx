@@ -4,13 +4,6 @@ import { useEffect, useState } from 'react';
 
 import Image from 'next/image';
 import RemoveLogo from "./../remove-x.png"
-import search from './../search.png';
-
-import axios from 'axios';
-
-import CriarAreaConhecimento from '..';
-import CriarEspecialide from '../CriarEspecialidade';
-import CriarGrandeAreaConhecimento from '../CriarGrandeArea';
 import { KnowledgeSubArea } from '@/lib/repository/knowledge-sub-area/index.repository';
 
 type CriarEventoProps = {

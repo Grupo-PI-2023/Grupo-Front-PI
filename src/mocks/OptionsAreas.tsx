@@ -1,4 +1,3 @@
-
 const mockedOptionAreas = [
 	{ value: '1', label: 'Area 1' },
 	{ value: '2', label: 'Area 2' },
