@@ -1,47 +1,46 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Image from 'next/image';
-import RemoveLogo from "./remove-x.png"
-import search from './search.png';
-
-
-import { Knowledge } from '@/lib/repository/knowledge-area/index.repository';
+import RemoveLogo from "./../remove-x.png"
+import { KnowledgeSubArea } from '@/lib/repository/knowledge-sub-area/index.repository';
 
 type CriarEventoProps = {
-	handleNextClick: () => void;
+	handleOptionClick: (option: string) => void;
 };
 
-export default function CriarAreaConhecimento({ handleNextClick }: CriarEventoProps) {
+export default function CriarSubAreaConhecimento({ handleOptionClick }: CriarEventoProps) {
 	const [name, setName] = useState('');
 	const [descricao, setDescricao] = useState('');
-	const [knowledge, setKnowledge] = useState<Knowledge[]>([]);
-
-	const handleNextButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-		e.preventDefault();
-		handleNextClick();
-	};
+	const [bigArea, setBigArea] = useState('');
+	const [area, setArea] = useState('');
+	const [knowledgeSubArea, setKnowledgeSubArea] = useState<KnowledgeSubArea[]>([]);
 
 	const handleAddOnTable = () => {
-		setKnowledge((prev) => [
+		setKnowledgeSubArea((prev) => [
 			...prev,
 			{
 				activityName: name,
 				activityDescription: descricao,
+				bigArea: bigArea,
+    			area: area
 			},
 		]);
 		setDescricao('');
 		setName('');
+		setBigArea('');
+		setArea('')
 	};
 
 	const itemToRemove = (i: any) => {
-		setKnowledge((prevKnowledge: any) => {
-		  const updatedArray = [...prevKnowledge];
+		setKnowledgeSubArea((prevKnowledgeSubArea: any) => {
+		  const updatedArray = [...prevKnowledgeSubArea];
 		  updatedArray.splice(i, 1); 
 		  return updatedArray;
 		});
 	  };
+
 
 	return (
 		<div className="container mb-6 mt-52 flex justify-center">
@@ -50,17 +49,60 @@ export default function CriarAreaConhecimento({ handleNextClick }: CriarEventoPr
 					className="text-center text-2xl font-bold text-black"
 					style={{ color: '#ef0037' }}
 				>
-					Criar Áreas de Conhecimento 
+					Criar Sub-Áreas de Conhecimento 
 				</h1>
 				<h2 className="text-center" style={{ color: '#000000' }}>
-                Crie as áreas de conhecimento que vão ser utilizadas
+                Crie as sub-áreas de conhecimento de cada área
                 				</h2>
 				<form className="mt-8 w-full" onSubmit={handleAddOnTable}>
+
+				<div className="flex justify-center gap-5">
+						<div className="w-full flex flex-row place-content-between">
+							<div className="mb-5 flex flex-col w-5/12 rounded-md">
+								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
+									Grande Área
+								</label>
+
+								<div className="rounded-xl border border-gray-300 bg-white px-4 py-2">
+								<select
+											className="w-full rounded-md border-0 bg-white text-sm outline-none"
+											name="bigArea"
+											id="bigArea"
+											value={bigArea}
+											onChange={(e) => setBigArea(e.target.value)}
+											required
+										>
+											<option value="Option">Option</option>
+										</select>
+								</div>
+							</div>
+
+							<div className="mb-5 flex flex-col w-5/12">
+								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
+									Área
+								</label>
+
+								<div className="rounded-xl border border-gray-300 bg-white px-4 py-2">
+								<select
+											className="w-full rounded-md border-0 bg-white text-sm outline-none"
+											name="area"
+											id="area"
+											value={area}
+											onChange={(e) => setArea(e.target.value)}
+											required
+										>
+											<option value="Option">Option</option>
+										</select>
+								</div>
+							</div>
+						</div>
+				</div>
+
 					<div className="flex justify-center gap-5">
 						<div className="w-full flex flex-row place-content-between">
 							<div className="mb-5 flex flex-col w-5/12 rounded-md">
 								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
-									Name
+									Nome
 								</label>
 
 								<div className="rounded-xl border border-gray-300 bg-white px-4 py-2">
@@ -98,9 +140,9 @@ export default function CriarAreaConhecimento({ handleNextClick }: CriarEventoPr
 						</div>
 					</div>
 
-					<div className="flex items-center justify-center gap-5" style={{marginTop: '4rem'}}>
+					<div className="flex items-center justify-center gap-5" >
 						<button
-							className="mb-6 w-3/12 rounded-xl border-none p-2 text-center text-base font-medium text-white"
+							className="w-3/12 rounded-xl border-none p-2 text-center text-base font-medium text-white"
 							style={{ backgroundColor: '#501EB4' }}
 							type="button"
 							onClick={handleAddOnTable}
@@ -110,28 +152,26 @@ export default function CriarAreaConhecimento({ handleNextClick }: CriarEventoPr
 					</div>
 				</form>
 
-                <div className="flex cursor-pointer gap-3 w-full justify-end">
-					<p className="text-lg font-medium">Buscar</p>
-					<Image src={search} alt="" height={16} width={24} />
-				</div>
-
-				<div className="flex items-left justify-left">
-					<table className="mt-12 w-full table-auto">
+				<div className="flex items-left justify-left mt-36">
+					<table className="w-full table-auto">
 						<thead style={{ backgroundColor: '#DD4467' }}>
 							<tr className="h-14">
                             <th scope="col" className="rounded-tl-lg"></th>
 								<th scope="col" style={{ color: '#FFFFFF' }} className="text-left">
 									Nome
 								</th>
-								<th scope="col" style={{ color: '#FFFFFF' }} className="text-left rounded-tr-lg">
+								<th scope="col" style={{ color: '#FFFFFF' }} className="text-left">
 									Descrição
+								</th>
+								<th scope="col" style={{ color: '#FFFFFF' }} className="text-left rounded-tr-lg">
+									Área
 								</th>
 							</tr>
 						</thead>
 						<tbody>
-							{knowledge && (
+							{knowledgeSubArea && (
 								<>
-									{knowledge.map((knowledge, index) => {
+									{knowledgeSubArea.map((knowledgeSubArea, index) => {
 										return (
 											<tr
 												key={index}
@@ -152,12 +192,17 @@ export default function CriarAreaConhecimento({ handleNextClick }: CriarEventoPr
 												</td>
 												<td className="">
                                                 <label className="rounded-2xl border border-black mb-2 text-sm font-medium p-2" htmlFor="eventName">
-                                                {knowledge.activityName}
+                                                {knowledgeSubArea.activityName}
 								                 </label>  
+                                                </td>
+												<td className="">
+                                                <label className="rounded-2xl border border-black mb-2 text-sm font-medium p-2" htmlFor="eventName">
+                                                    {knowledgeSubArea.activityDescription}
+								                 </label>
                                                 </td>
 												<td className="rounded-br-lg">
                                                 <label className="rounded-2xl border border-black mb-2 text-sm font-medium p-2" htmlFor="eventName">
-                                                    {knowledge.activityDescription}
+                                                    {knowledgeSubArea.area}
 								                 </label>
                                                 </td>
 											</tr>
@@ -180,7 +225,6 @@ export default function CriarAreaConhecimento({ handleNextClick }: CriarEventoPr
 						className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
 						style={{ backgroundColor: '#4C1FA6' }}
 						type="submit"
-						onClick={handleNextButtonClick}
 					>
 						Finalizar
 					</button>

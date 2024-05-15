@@ -1,6 +1,6 @@
 import React from "react";
 
-export default async function Support() {
+export default async function Menu() {
     return (
         <div className='absolute top-28 left-1/2 w-3/4 bg-white z-50 p-4 shadow-md flex justify-center transform -translate-x-1/2'>
 				<nav className='w-full justify-between items-center flex flex-row'>

@@ -72,7 +72,7 @@ export default function CadastrarUsuario({
 			</div>
 
 			<div
-				className="mt-8 flex h-96 w-3/4 flex-col items-center justify-center rounded-lg border border-neutral-400"
+				className="mt-8 flex h-96 w-3/4 flex-col items-center justify-center rounded-lg border border-neutral-400 bg-neutral-50"
 				// style={{ backgroundColor: '#E4E4E4' }}
 			>
 				<form className="fle flex-col">
@@ -203,7 +203,7 @@ export default function CadastrarUsuario({
 
 			{pendentes ? (
 				<table className="mt-12 w-3/4 text-center">
-					<thead style={{ backgroundColor: '#DD4467' }} className="text-white">
+					<thead style={{ backgroundColor: '#E4E4E4' }}>
 						<tr className="h-14">
 							<th scope="col"></th>
 							<th scope="col">Função</th>
@@ -302,7 +302,7 @@ export default function CadastrarUsuario({
 			)}
 			{accepted ? (
 				<table className="mt-12 w-3/4 text-center">
-					<thead style={{ backgroundColor: '#DD4467' }} className="text-white">
+					<thead style={{ backgroundColor: '#E4E4E4' }}>
 						<tr className="h-14">
 							<th scope="col"></th>
 							<th scope="col">Função</th>
@@ -392,7 +392,7 @@ export default function CadastrarUsuario({
 
 			{declined ? (
 				<table className="mt-12 w-3/4 text-center">
-					<thead style={{ backgroundColor: '#DD4467' }} className="text-white">
+					<thead style={{ backgroundColor: '#E4E4E4' }}>
 						<tr className="h-14">
 							<th scope="col"></th>
 							<th scope="col">Função</th>

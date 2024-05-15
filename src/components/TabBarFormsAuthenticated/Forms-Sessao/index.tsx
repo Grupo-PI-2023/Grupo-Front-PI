@@ -1,8 +1,8 @@
 'use client';
 
-import { Event } from "@/repository/event/index.repository";
-import { Sala } from "@/repository/sala/index.repository";
-import { Sessao } from "@/repository/sessao/index.repository";
+import { Event } from "@/lib/repository/event/index.repository";
+import { Sala } from "@/lib/repository/sala/index.repository";
+import { Sessao } from "@/lib/repository/sessao/index.repository";
 import axios from "axios";
 import { toNumber } from "lodash";
 import { useRouter } from "next/navigation";

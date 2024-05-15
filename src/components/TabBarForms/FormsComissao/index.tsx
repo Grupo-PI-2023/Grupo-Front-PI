@@ -9,8 +9,8 @@ import { FiEye, FiEyeOff } from 'react-icons/fi';
 import Select from 'react-select';
 
 import AlertCard from '@/components/COMPONENTES/AlertCard';
-import { Area } from '@/repository/area/index.repository';
-import { Comissao } from '@/repository/comission/index.repository';
+import { Area } from '@/lib/repository/area/index.repository';
+import { Comissao } from '@/lib/repository/comission/index.repository';
 import mockedOptionAreas from '@/mocks/OptionsAreas';
 import mockedOptionTurnos from '@/mocks/OptionsTurnos';
 

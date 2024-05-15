@@ -9,7 +9,7 @@ import Table from '@/components/Artigos/ArtigosTables/Table';
 import { useState } from 'react';
 import Pagination from '@/components/Artigos/ArtigosPagination/pagination';
 
-export default function Support() {
+export default function Layout() {
 	const [precisaDeAvaliacao, setPrecisaDeAvaliacao] = useState(true);
 
 	const handleCheckboxChange = (isChecked: boolean | ((prevState: boolean) => boolean)) => {

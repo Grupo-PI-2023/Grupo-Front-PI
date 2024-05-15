@@ -10,8 +10,8 @@ import FixedSelect, {
 	FixedOptionsType,
 } from '@/components/COMPONENTES/FixedSelect';
 import useClipboard from '@/hooks/useClipboard';
-import { Area } from '@/repository/area/index.repository';
-import { Comissao } from '@/repository/comission/index.repository';
+import { Area } from '@/lib/repository/area/index.repository';
+import { Comissao } from '@/lib/repository/comission/index.repository';
 
 import Select from '../COMPONENTES/Select';
 

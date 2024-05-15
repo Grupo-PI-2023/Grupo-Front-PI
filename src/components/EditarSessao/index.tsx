@@ -6,7 +6,7 @@ import { toNumber } from 'lodash';
 import { CiClock2, CiFilter, CiSearch } from 'react-icons/ci';
 import { FaEye } from "react-icons/fa";
 
-import { Sessao } from '@/repository/sessao/index.repository';
+import { Sessao } from '@/lib/repository/sessao/index.repository';
 import { sessaoMocks } from '@/mocks/SessaoEditar';
 
 export default function EditarSessao() {

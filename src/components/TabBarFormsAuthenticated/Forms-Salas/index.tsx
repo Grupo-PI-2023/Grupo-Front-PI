@@ -6,7 +6,7 @@ import axios from 'axios';
 import { toNumber } from 'lodash';
 
 import AlertCard from '@/components/COMPONENTES/AlertCard';
-import { Sala } from '@/repository/sala/index.repository';
+import { Sala } from '@/lib/repository/sala/index.repository';
 
 type CriarEventoProps = {
 	handleNextClick: () => void;

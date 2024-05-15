@@ -5,8 +5,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import AlertCard from '@/components/COMPONENTES/AlertCard';
-import { Area } from '@/repository/area/index.repository';
-import { Event } from '@/repository/event/index.repository';
+import { Area } from '@/lib/repository/area/index.repository';
+import { Event } from '@/lib/repository/event/index.repository';
 
 type DataLocalProps = {
 	handleNextClick: () => void;

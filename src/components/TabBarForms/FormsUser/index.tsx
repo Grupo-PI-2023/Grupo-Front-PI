@@ -9,7 +9,7 @@ import Select from 'react-select';
 
 import AlertCard from '@/components/COMPONENTES/AlertCard';
 import mockedOptionTurnos from '@/mocks/OptionsTurnos';
-import { Aluno } from '@/repository/aluno/index.repository';
+import { Aluno } from '@/lib/repository/aluno/index.repository';
 
 export default function CadastroUser() {
 	const [passwordVisible, setPasswordVisible] = useState(false);

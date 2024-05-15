@@ -5,8 +5,8 @@ import { useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { FiUpload } from 'react-icons/fi';
 
-import { Comissao } from '@/repository/comission/index.repository';
-import { Event } from '@/repository/event/index.repository';
+import { Comissao } from '@/lib/repository/comission/index.repository';
+import { Event } from '@/lib/repository/event/index.repository';
 
 type CriarEventoProps = {
 	handleNextClick: () => void;

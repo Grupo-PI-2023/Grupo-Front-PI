@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 import axios from 'axios';
 
-import { Activity } from '@/repository/activity/index.repository';
+import { Activity } from '@/lib/repository/activity/index.repository';
 
 import EditLogo from './editLogo.png';
 import RemoveLogo from "./trashLogo.png"

@@ -11,7 +11,7 @@ import * as S from './styles';
 
 export default function Navbar() {
 	const router = useRouter();
-	const [currentOption, setCurrentOption] = useState('/cadastrar');
+	const [currentOption, setCurrentOption] = useState('/cadastrarUsuarios');
 	const [query, setQuery] = useState('');
 
 	useEffect(() => {
@@ -73,9 +73,9 @@ export default function Navbar() {
 						Login
 					</S.OptionMenu>
 					<S.OptionMenu
-						onClick={() => handleOptionClick('/cadastrar')}
+						onClick={() => handleOptionClick('/cadastrarUsuarios')}
 						className="cursor-pointer text-base"
-						selected={currentOption === '/cadastrar'}
+						selected={currentOption === '/cadastrarUsuarios'}
 					>
 						Cadastrar
 					</S.OptionMenu>
