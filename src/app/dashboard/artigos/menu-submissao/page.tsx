@@ -1,8 +1,8 @@
 'use client';
 
-import Footer from '@/components/Footer';
+import Footer from '@/components/COMPONENTES/Footer';
 import MenuSubmissao from '@/components/MenuSubmissao';
-import NavbarAuthenticated from '@/components/Navbar/NavbarAuthenticated';
+import NavbarAuthenticated from '@/components/COMPONENTES/Navbar/NavbarAuthenticated';
 
 export default function PageMenuSubmissao() {
 	return (
