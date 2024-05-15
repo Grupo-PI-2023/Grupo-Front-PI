@@ -1,137 +1,192 @@
 'use client';
 
-import React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-type CriarAtividadeProps = {
+import Image from 'next/image';
+import RemoveLogo from "./remove-x.png"
+import search from './search.png';
+
+
+import { Knowledge } from '@/lib/repository/knowledge-area/index.repository';
+
+type CriarEventoProps = {
 	handleNextClick: () => void;
 };
 
+export default function CriarAreaConhecimento({ handleNextClick }: CriarEventoProps) {
+	const [name, setName] = useState('');
+	const [descricao, setDescricao] = useState('');
+	const [knowledge, setKnowledge] = useState<Knowledge[]>([]);
 
-export default function CriarAtividade({ handleNextClick }: CriarAtividadeProps) {
 	const handleNextButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
 		handleNextClick();
 	};
 
-	const [tableData, setTableData] = useState<string[]>([]);
-
 	const handleAddOnTable = () => {
-	const newRow = ``;
-    setTableData([...tableData, newRow]);
-	}
-
-	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
-		const newData = [...tableData];
-		newData[index] = e.target.value;
-		setTableData(newData);
-	  };
-
-	  //Função nao funciona, falta implementar
-	const handleRemoveArea = (
-		index: number,
-		setTableData: React.Dispatch<React.SetStateAction<string[]>>
-	) => {
-		setTableData((prevAreas) => prevAreas.filter((_, i) => i !== index));
+		setKnowledge((prev) => [
+			...prev,
+			{
+				activityName: name,
+				activityDescription: descricao,
+			},
+		]);
+		setDescricao('');
+		setName('');
 	};
 
+	const itemToRemove = (i: any) => {
+		setKnowledge((prevKnowledge: any) => {
+		  const updatedArray = [...prevKnowledge];
+		  updatedArray.splice(i, 1); 
+		  return updatedArray;
+		});
+	  };
+
 	return (
-		<div className="container mb-12 mt-52 flex flex-col items-center">
-			<div className="w-1/2">
+		<div className="container mb-6 mt-52 flex justify-center">
+			<div className="w-8/12">
 				<h1
 					className="text-center text-2xl font-bold text-black"
-					style={{ color: '#ef0037' }}>
-					Criar Atividades
+					style={{ color: '#ef0037' }}
+				>
+					Criar Áreas de Conhecimento 
 				</h1>
-				<h2
-				className="text-center text-black">
-                    Crie os tipos de atividades que possuirão durante o evente				
-            </h2>
-			</div>
+				<h2 className="text-center" style={{ color: '#000000' }}>
+                Crie as áreas de conhecimento que vão ser utilizadas
+                				</h2>
+				<form className="mt-8 w-full" onSubmit={handleAddOnTable}>
+					<div className="flex justify-center gap-5">
+						<div className="w-full flex flex-row place-content-between">
+							<div className="mb-5 flex flex-col w-5/12 rounded-md">
+								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
+									Name
+								</label>
 
-			<table className="mt-12 w-3/5" id="table-areaConhecimento">
-				<thead style={{ backgroundColor: '#E4E4E4' }}>
-					<tr className="h-14">
-						<th className="text-start ps-16" scope="col">Tipo</th>
-					</tr>
-				</thead>
+								<div className="rounded-xl border border-gray-300 bg-white px-4 py-2">
+									<input
+										className="w-full border-0 bg-white text-sm outline-none"
+										type="text"
+										name="activityName"
+										id="activityName"
+										placeholder="Area de Conhecimento"
+										value={name}
+										onChange={(e) => setName(e.target.value)}
+										required
+									/>
+								</div>
+							</div>
 
-				<tbody>
-					<tr>
-						<td className='w-full h-16'>
-						<button className='fixed p-2' 
+							<div className="mb-5 flex flex-col w-5/12">
+								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
+									Descrição
+								</label>
+
+								<div className="rounded-xl border border-gray-300 bg-white px-4 py-2">
+									<input
+										className="w-full border-0 bg-white text-sm outline-none"
+										type="text"
+										name="descricao"
+										id="descricao"
+										placeholder="Descrição"
+										value={descricao}
+										onChange={(e) => setDescricao(e.target.value)}
+										required
+									/>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div className="flex items-center justify-center gap-5" style={{marginTop: '4rem'}}>
+						<button
+							className="mb-6 w-3/12 rounded-xl border-none p-2 text-center text-base font-medium text-white"
+							style={{ backgroundColor: '#501EB4' }}
+							type="button"
+							onClick={handleAddOnTable}
 						>
-							<img src="/remove-ellipse.svg" alt="remove" /></button>
-						<input
-							className=" w-11/12 h-8 rounded-lg	border-black border-2 bg-white text-sm outline-none ms-12 mr-20 ps-4"
-							type="text"
-							name="area"
-							placeholder="Digite a atividade"
-							/>
-
-						</td>
-					</tr>
-
-					{tableData.map((rowData, index) => (
-            		<tr key={index}
-					style={{
-						backgroundColor: !(index % 2 === 0) ? '#fff' : '#E4E4E4',
-					}}
-					className="h-14"
-					>
-              		<td className='w-full h-16'>
-					  <button className='fixed p-2' onChange={() => handleRemoveArea(index, setTableData)}><img src="/remove-ellipse.svg" alt="remove" /></button>
-                	<input
-					className=" w-11/12 h-8 rounded-lg	border-black border-2 text-sm outline-none ms-12 mr-20 ps-4"
-					style={{
-						backgroundColor: !(index % 2 === 0) ? '#fff' : '#E4E4E4',
-					}}
-					name="area"
-                  	type="text"
-					placeholder="Digite a área de conhecimento"
-                  	value={rowData}
-                  	onChange={(e) => handleInputChange(e, index)}
-                	/>
-              		</td>
-            		</tr>
-          			))}
-
-					<tr>
-						<td scope='row' 
-						className='w-full h-16'
-						style={{
-						backgroundColor: '#C6C6C6'}}>
-						<button type="button"
-						className='p-2 mr-6	'
-						onClick={handleAddOnTable}>
-							<img src="/add.svg" alt="add" />
+							Cadastrar
 						</button>
-						Adicionar mais atividades </td>
-					</tr>
+					</div>
+				</form>
 
-				</tbody>
-			</table>
+                <div className="flex cursor-pointer gap-3 w-full justify-end">
+					<p className="text-lg font-medium">Buscar</p>
+					<Image src={search} alt="" height={16} width={24} />
+				</div>
 
-			<div className="mt-20 flex items-center justify-center gap-6">
-				<button
-					className="w-56
-                    rounded-xl border-none p-2 text-center text-base font-medium text-white"
-					style={{ backgroundColor: '#8A8A8A' }}
-					type="submit"
-					onClick={handleNextButtonClick}
-				>
-					Voltar
-				</button>
-				<button
-					className="w-56
-                    rounded-xl border-none p-2 text-center text-base font-medium text-white"
-					style={{ backgroundColor: '#EF0037' }}
-					onClick={handleNextButtonClick}
-					type="button"
-				>
-					Salvar
-				</button>
+				<div className="flex items-left justify-left">
+					<table className="mt-12 w-full table-auto">
+						<thead style={{ backgroundColor: '#DD4467' }}>
+							<tr className="h-14">
+                            <th scope="col" className="rounded-tl-lg"></th>
+								<th scope="col" style={{ color: '#FFFFFF' }} className="text-left">
+									Nome
+								</th>
+								<th scope="col" style={{ color: '#FFFFFF' }} className="text-left rounded-tr-lg">
+									Descrição
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							{knowledge && (
+								<>
+									{knowledge.map((knowledge, index) => {
+										return (
+											<tr
+												key={index}
+												className="h-14"
+												style={{
+													backgroundColor: !(index % 2 === 0)
+														? '#E4E4E4'
+														: '#fff',
+												}}
+											>
+                                                <td className="rounded-bl-lg">
+													<div className='flex flex-row gap-2 justify-center'>
+													<button className="middle items-center justify-center"
+													onClick={() => itemToRemove(index)}>
+														<Image src={RemoveLogo} alt="" height={20} />
+													</button>
+													</div>
+												</td>
+												<td className="">
+                                                <label className="rounded-2xl border border-black mb-2 text-sm font-medium p-2" htmlFor="eventName">
+                                                {knowledge.activityName}
+								                 </label>  
+                                                </td>
+												<td className="rounded-br-lg">
+                                                <label className="rounded-2xl border border-black mb-2 text-sm font-medium p-2" htmlFor="eventName">
+                                                    {knowledge.activityDescription}
+								                 </label>
+                                                </td>
+											</tr>
+										);
+									})}
+								</>
+							)}
+						</tbody>
+					</table>
+				</div>
+                <div className="mt-12 flex items-center justify-center gap-5">
+					<button
+						className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
+						style={{ backgroundColor: '#8A8A8A' }}
+						type="submit"
+					>
+						Voltar
+					</button>
+					<button
+						className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
+						style={{ backgroundColor: '#4C1FA6' }}
+						type="submit"
+						onClick={handleNextButtonClick}
+					>
+						Finalizar
+					</button>
+				</div>
 			</div>
 		</div>
 	);
 }
+

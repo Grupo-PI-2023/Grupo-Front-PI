@@ -1,9 +1,9 @@
 'use client';
 
-import CadastroEditorChefe from '../Forms-EditorChefe/cadastrar/CadastroEditorChefe';
-import CadastroComissao from '../FormsComissao/cadastrar/CadastroComissao';
-import CadastroConvidado from '../FormsConvidado/cadastrar';
-import CadastroUser from '../FormsUser/cadastrar';
+import CadastroEditorChefe from '../TabBarForms/Forms-EditorChefe';
+import CadastroComissao from '../TabBarForms/FormsComissao';
+import CadastroConvidado from '../TabBarForms/FormsConvidado';
+import CadastroUser from '../TabBarForms/FormsUser';
 import * as S from './styles';
 
 type TabbarProps = {

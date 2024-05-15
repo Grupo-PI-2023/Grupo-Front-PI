@@ -1,6 +1,6 @@
-import Footer from '@/components/Footer';
+import Footer from '@/components/COMPONENTES/Footer';
 import LoginForm from '@/components/Forms-Login';
-import Navbar from '@/components/Navbar';
+import Navbar from '@/components/COMPONENTES/Navbar';
 
 export default async function LoginPage() {
 	return (

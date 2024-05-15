@@ -1,8 +1,8 @@
 'use client';
 
-import Footer from '@/components/Footer';
-import NavbarAuthenticated from '@/components/Navbar/NavbarAuthenticated';
-import EditarComissao from '@/components/FormsComissao/editar';
+import Footer from '@/components/COMPONENTES/Footer';
+import NavbarAuthenticated from '@/components/COMPONENTES/Navbar/NavbarAuthenticated';
+import EditarComissao from '@/components/EditarComissao';
 
 export default function EditarComissaoPage() {
 

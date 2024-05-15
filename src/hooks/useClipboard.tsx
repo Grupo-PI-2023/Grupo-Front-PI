@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import AlertCard from '@/components/AlertCard';
+import AlertCard from '@/components/COMPONENTES/AlertCard';
 
 function useClipboard() {
 

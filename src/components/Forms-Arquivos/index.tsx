@@ -8,7 +8,7 @@ import { FiUpload } from 'react-icons/fi';
 
 import { Arquivo } from '@/repository/arquivo/index.repository';
 
-import AlertCard from '../AlertCard';
+import AlertCard from '../COMPONENTES/AlertCard';
 
 type CriarEventoProps = {
 	handleNextClick: () => void;

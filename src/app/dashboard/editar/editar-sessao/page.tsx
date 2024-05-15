@@ -1,8 +1,8 @@
 'use client';
 
-import Footer from '@/components/Footer';
-import NavbarAuthenticated from '@/components/Navbar/NavbarAuthenticated';
-import EditarSessao from '@/components/Forms-Sessao/editar';
+import Footer from '@/components/COMPONENTES/Footer';
+import NavbarAuthenticated from '@/components/COMPONENTES/Navbar/NavbarAuthenticated';
+import EditarSessao from '@/components/EditarSessao';
 
 export default function EditarSessaoPage() {
 
