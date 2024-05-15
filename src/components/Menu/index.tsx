@@ -1,7 +1,8 @@
 'use client';
 
-import { useRouter } from 'next/navigation'
 import { useState } from 'react';
+
+import { useRouter } from 'next/navigation';
 
 import { AiOutlineFileSearch, AiOutlineStar } from 'react-icons/ai';
 import { BiBrain, BiSolidSchool } from 'react-icons/bi';
@@ -14,10 +15,10 @@ import { PiFiles } from 'react-icons/pi';
 import { TfiTimer } from 'react-icons/tfi';
 
 export default function Menu() {
-	const router = useRouter()
-	
+	const router = useRouter();
+
 	return (
-		<div className="container mb-6 mt-52 flex justify-center ">
+		<div className="container mt-40 flex justify-center ">
 			<div className="w-1/2 ">
 				<h1
 					className="text-center text-2xl font-bold text-black"
@@ -42,7 +43,7 @@ export default function Menu() {
 					<div className="flex flex-col gap-6">
 						<div
 							className="flex gap-4 rounded-xl p-5"
-							style={{ border: '1px solid #ef0037', cursor: 'pointer'}}
+							style={{ border: '1px solid #ef0037', cursor: 'pointer' }}
 							onClick={() => router.push('/dashboard/evento/editar-evento')}
 						>
 							<AiOutlineStar className="h-8 w-8" style={{ color: '#ef0037' }} />
