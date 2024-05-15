@@ -47,6 +47,15 @@ export default function NavbarAuthenticated() {
 						Menu do Evento
 					</S.OptionMenu>
 					<S.OptionMenu
+						onClick={() =>
+							handleOptionClick('/dashboard/artigos/menu-submissao')
+						}
+						className="cursor-pointer text-base"
+						selected={currentOption === '/dashboard/artigos/menu-submissao'}
+					>
+						Menu de Submissão
+					</S.OptionMenu>
+					<S.OptionMenu
 						onClick={() => handleOptionClick('/evento/eventos-criados')}
 						className="cursor-pointer text-base"
 						selected={currentOption === '/evento/eventos-criados'}
@@ -68,11 +77,22 @@ export default function NavbarAuthenticated() {
 						Artigos
 					</S.OptionMenu>
 					<S.OptionMenu
-						onClick={() => handleOptionClick('/dashboard/editar/editar-comissao')}
+						onClick={() =>
+							handleOptionClick('/dashboard/editar/editar-comissao')
+						}
 						className="cursor-pointer text-base"
 						selected={currentOption === '/dashboard/editar/editar-comissao'}
 					>
 						Editar Comissao
+					</S.OptionMenu>
+					<S.OptionMenu
+						onClick={() =>
+							handleOptionClick('/dashboard/editar/editar-artigos')
+						}
+						className="cursor-pointer text-base"
+						selected={currentOption === '/dashboard/editar/editar-artigos'}
+					>
+						Editar Artigos
 					</S.OptionMenu>
 					<S.OptionMenu
 						onClick={() => handleOptionClick('/dashboard/editar/editar-sessao')}

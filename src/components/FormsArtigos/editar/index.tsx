@@ -14,7 +14,7 @@ import { MdDateRange } from 'react-icons/md';
 import { PiFiles } from 'react-icons/pi';
 import { TfiTimer } from 'react-icons/tfi';
 
-export default function Menu() {
+export default function EditarArtigos() {
 	const router = useRouter();
 
 	return (
