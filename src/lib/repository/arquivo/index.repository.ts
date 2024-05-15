@@ -1,9 +1,10 @@
 export type Arquivo = {
 	id?: string;
-	tipo: string;
-	usuario: string;
-	areas: string;
-	eventId?: string;
+	category: string;
+	normasPub: string;
+	needAvaliation: boolean;
+	needApresentation: boolean;
+	eventId?: string
 };
 export interface ISalaRepository {
 	create(Arquivo: Arquivo): Promise<Arquivo>;
