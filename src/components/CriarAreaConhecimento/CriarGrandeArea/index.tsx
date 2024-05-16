@@ -37,7 +37,7 @@ export default function CriarGrandeAreaConhecimento({ handleOptionClick }: Criar
 
 
 	return (
-		<div className="container mb-6 mt-52 flex justify-center">
+		<div className="container mb-6 mt-40 flex justify-center">
 			<div className="w-8/12">
 				<h1
 					className="text-center text-2xl font-bold text-black"
@@ -70,7 +70,7 @@ export default function CriarGrandeAreaConhecimento({ handleOptionClick }: Criar
 								</div>
 							</div>
 
-							<div className="mb-5 flex flex-col w-5/12">
+							<div className="mb-5 flex flex-col w-5/12 place-content-between">
 								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
 									Descrição
 								</label>
@@ -103,12 +103,7 @@ export default function CriarGrandeAreaConhecimento({ handleOptionClick }: Criar
 					</div>
 				</form>
 
-                {/* <div className="flex cursor-pointer gap-3 w-full justify-end mt-8">
-					<p className="text-sm font-sm">Buscar</p>
-					<Image src={search} alt="" height={4} width={22} />
-				</div> */}
-
-				<div className="flex items-left justify-left mt-36">
+				<div className="flex items-left justify-left mt-40">
 					<table className="w-full table-auto">
 						<thead style={{ backgroundColor: '#DD4467' }}>
 							<tr className="h-14">
