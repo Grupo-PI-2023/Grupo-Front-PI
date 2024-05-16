@@ -43,7 +43,7 @@ export default function CriarSubAreaConhecimento({ handleOptionClick }: CriarEve
 
 
 	return (
-		<div className="container mb-6 mt-52 flex justify-center">
+		<div className="container mb-6 mt-40 flex justify-center">
 			<div className="w-8/12">
 				<h1
 					className="text-center text-2xl font-bold text-black"
@@ -142,7 +142,7 @@ export default function CriarSubAreaConhecimento({ handleOptionClick }: CriarEve
 
 					<div className="flex items-center justify-center gap-5" >
 						<button
-							className="w-3/12 rounded-xl border-none p-2 text-center text-base font-medium text-white"
+							className="w-3/12 mt-4 rounded-xl border-none p-2 text-center text-base font-medium text-white"
 							style={{ backgroundColor: '#501EB4' }}
 							type="button"
 							onClick={handleAddOnTable}

@@ -1,14 +1,11 @@
 'use client';
 
-import { useState } from 'react';
-
 import * as S from './styles';
-import Image from 'next/image';
-import search from './../search.png';
 import CriarAreaConhecimento from '../index';
 import CriarEspecialide from '../CriarEspecialidade';
 import CriarGrandeAreaConhecimento from '../CriarGrandeArea';
 import CriarSubAreaConhecimento from '../CriarSubArea';
+import SearchComponent from './ComponentePesquisar';
 
 type SelectAreaProps = {
 	currentOption: string;
@@ -51,8 +48,8 @@ export default function SelectArea({
 
 	return (
 		<div>
-                <div className="absolute z-40 mt-96 ml-96 rounded-xl flex-row w-1/4 h-18 bg-[#F4F4F4] pb-2 pt-4 shadow">
-                    <div className="flex flex-wrap items-center justify-center gap-3">
+                <div className="absolute ml-96 w-full flex-row">
+                    <div className="flex flex-wrap w-1/4 h-18 mt-96 items-center justify-center rounded-xl gap-3 bg-[#F4F4F4] pb-2 pt-4 z-10 shadow">
                         <div className="flex items-center gap-2">
                             <S.OptionMenu
                                 onClick={() => handleOptionClick('criar-grande-area')}
@@ -91,8 +88,11 @@ export default function SelectArea({
                             </S.OptionMenu>
                         </div> 
                     </div>
-                </div>
+                <SearchComponent />
+            </div>
 			{renderContent()}
-		</div>
+
+            
+		    </div>
 	);
 }
