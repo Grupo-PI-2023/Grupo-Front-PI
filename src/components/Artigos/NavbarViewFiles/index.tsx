@@ -11,6 +11,7 @@ import CadastrarUsuario from '@/components/TabBarFormsAuthenticated/Forms-UsuCom
 import Menu from '@/components/COMPONENTES/Menu';
 
 import * as S from './styles';
+import ArtigosConcluidos from '../ArtigosNoPrazo';
 
 type TabbarProps = {
 	currentOption: string;
@@ -25,8 +26,7 @@ export default function Tabfiles({
 		switch (currentOption) {
 			case 'dentro-do-prazo':
 				return (
-					<CriarEvento
-						handleNextClick={() => handleOptionClick('data-local')}
+					<ArtigosConcluidos
 					/>
 				);
 			/*case 'data-local':
