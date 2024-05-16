@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 
-import SelectArea from '@/components/CriarAreaConhecimento/SelectArea';
 import Footer from '@/components/COMPONENTES/Footer';
 import NavbarAuthenticated from '@/components/COMPONENTES/Navbar/NavbarAuthenticated';
-import TabbarAuthenticated from '@/components/Tabbar/TabbarAuthenticated';
+import SelecionarArea from '@/components/CriarAreaConhecimento/SelecionarArea';
+
 
 export default function AreaConhecimento() {
 	const [currentOption, setCurrentOption] = useState('criar-grande-area');
@@ -16,11 +16,7 @@ export default function AreaConhecimento() {
 	return (
 		<div>
 			<NavbarAuthenticated />
-			<TabbarAuthenticated
-				currentOption={currentOption}
-				handleOptionClick={handleOptionClick}
-			/>
-            <SelectArea currentOption={currentOption}
+            <SelecionarArea currentOption={currentOption}
 				handleOptionClick={handleOptionClick} />
 			<Footer />
 		</div>
