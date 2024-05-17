@@ -52,7 +52,7 @@ const Formulario: React.FC = () => {
                 </button>
                 </div>
                 <div className="col-span-1 grid grid-cols-1 gap-4">
-                    <div>
+                    <div className='mb-8'>
                         <label htmlFor="input1" className="block mb-2 font-normal">Título:</label>
                         <input type="text" id="input1" name="input1" className="w-full h-16 px-4 py-2 text-[18px] border border-[#828282] rounded-xl overflow-y-hidden" placeholder="Input 1" defaultValue={initialValues.input1} />
                     </div>
@@ -60,15 +60,15 @@ const Formulario: React.FC = () => {
                         <label htmlFor="input2" className="block mb-2 font-normal">Autores:</label>
                         <input type="text" id="input2" name="input2" className="w-full h-12 px-4 py-2 text-[18px] border border-[#828282] rounded-xl overflow-y-hidden" placeholder="Input 2" defaultValue={initialValues.input2} />
                     </div>
-                    <div>
+                    <div className='mb-8'>
                         <label htmlFor="input3" className="block mb-2 font-normal">Apresentador:</label>
                         <input type="text" id="input3" name="input3" className="w-full h-12 px-4 py-2 text-[18px] border border-[#828282] rounded-xl overflow-y-hidden" placeholder="Input 3" defaultValue={initialValues.input3} />
                     </div>
-                    <div>
+                    <div className='mb-8'>
                         <label htmlFor="input4" className="block mb-2 font-normal">Palavras-Chaves:</label>
                         <input type="text" id="input4" name="input4" className="w-full h-12 px-4 py-2 text-[18px] border border-[#828282] rounded-xl overflow-y-hidden" placeholder="Input 4" defaultValue={initialValues.input4} />
                     </div>
-                    <div>
+                    <div className='mb-8'>
                         <label htmlFor="input1" className="block mb-2 font-normal">Keyword:</label>
                         <input type="text" id="input1" name="input1" className="w-full h-16 px-4 py-2 text-[18px] border border-[#828282] rounded-xl overflow-y-hidden" placeholder="Input 1" defaultValue={initialValues.input5} />
                     </div>
@@ -76,11 +76,11 @@ const Formulario: React.FC = () => {
                         <label htmlFor="input2" className="block mb-2 font-normal">Áreas de conhecimento:</label>
                         <input type="text" id="input2" name="input2" className="w-full h-12 px-4 py-2 text-[18px] border border-[#828282] rounded-xl" placeholder="Input 2" defaultValue={initialValues.input6} />
                     </div>
-                    <div>
+                    <div className='mb-8'>
                         <label htmlFor="input3" className="block mb-2 font-normal">Subárea:</label>
                         <input type="text" id="input3" name="input3" className="w-full h-12 px-4 py-2 text-[18px] border border-[#828282] rounded-xl" placeholder="Input 3" defaultValue={initialValues.input7} />
                     </div>
-                    <div className='flex w-full justify-between gap-10'>
+                    <div className='flex w-full justify-between gap-10 mt-8'>
                         <div className='w-full'>
                             <label htmlFor="input4" className="block mb-2 font-normal">Horário da sessão:</label>
                             <input type="text" id="input4" name="input4" className="w-full h-12 px-4 py-2 text-[18px] border border-[#828282] rounded-xl" placeholder="Input 4" defaultValue={initialValues.input8} />
