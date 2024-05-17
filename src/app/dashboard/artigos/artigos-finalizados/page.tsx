@@ -29,8 +29,8 @@ export default function EditarArtigosPage() {
             <Navbar />
             <main>
                 <div className='flex flex-col mt-28 items-center justify-center'>
-                    <h1 className='-top-20 mt-20 text-[30px] text-red-500 font-bold justify-self-center text-center'>Arquivos</h1>
-                    <p className='text-center font-medium'>Visualizar Informações</p>
+                    <h1 className='mt-12 text-[30px] text-red-500 font-bold justify-self-center text-center'>Arquivos</h1>
+                    <p className='mb-14 text-center font-medium'>Visualizar Informações</p>
                     <ArtigosFormFinalizados />
                 </div>
             </main>
