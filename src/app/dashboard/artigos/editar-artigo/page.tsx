@@ -6,7 +6,7 @@ export default async function EditarArtigosPage() {
 	return (
 		<div>
 			<Navbar />
-			<EditarArtigo />
+			  <EditarArtigo />
 			<Footer />
 		</div>
 	);
