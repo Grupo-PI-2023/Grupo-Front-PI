@@ -1,12 +1,12 @@
 import Footer from '@/components/COMPONENTES/Footer';
+import MenuSubmissao from '@/components/COMPONENTES/MenuSubmissao';
 import Navbar from '@/components/COMPONENTES/Navbar/NavbarAuthenticated';
-import EditarArtigo from '@/components/FormsArtigos/editar';
 
-export default async function EditarArtigosPage() {
+export default async function MenuArtigos() {
 	return (
 		<div>
 			<Navbar />
-			  <EditarArtigo />
+			<MenuSubmissao />;
 			<Footer />
 		</div>
 	);
