@@ -5,11 +5,11 @@ export const cardsData = [
       type: 'Artigo',
       status: 'Aprovado',
       Autores: ' Clara Santos, Gustavo Oliveira, Marina Almeida',
+      sala: '01',
       schedule: {
         DatadeEnvio: '7 as 12h',
-        Apresentação: '13 as 18h'
+        Apresentacao: '13 as 18h'
       },
-      sala: '01'
     },
     {
       id: 2,
@@ -17,11 +17,11 @@ export const cardsData = [
       type: 'Artigo',
       status: 'Reprovado',
       Autores: 'Clara Santos, Gustavo Oliveira, Marina Almeida',
+      sala: '02',
       schedule: {
         DatadeEnvio: '10/12/2022',
-        Apresentação: '10/01/2023'
+        Apresentacao: '10/01/2023'
       },
-      sala: '01'
     },
   ];
 

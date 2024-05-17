@@ -2,7 +2,7 @@ import { cardsData, cardsData2 } from "@/mocks/ArtigosCards";
 import { useState } from "react";
 
 export default function Card() {
-  const [cards, setCards] = useState([...cardsData]);
+  const [cards, setCards] = useState([...cardsData2]);
 
   return (
     <>

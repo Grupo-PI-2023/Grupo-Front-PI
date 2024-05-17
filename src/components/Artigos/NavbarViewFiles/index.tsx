@@ -2,9 +2,9 @@
 import { useState } from 'react';
 
 import CriarAtividade from '@/components/TabBarFormsAuthenticated/Form-Atividades';
-import Arquivos from '@/components/Forms-Arquivos';
+import Arquivos from '@/components/Artigos/ArtigosCards/Cards';
 import DataLocal from '@/components/TabBarFormsAuthenticated/Forms-DataLocal';
-import CriarEvento from '@/components/TabBarFormsAuthenticated/Forms-Evento';
+import CriarEvento from '@/components/Artigos/ArtigosCards/Cards2';
 import VisualizarSala from '@/components/TabBarFormsAuthenticated/Forms-Salas';
 import Sessao from '@/components/TabBarFormsAuthenticated/Forms-Sessao';
 import CadastrarUsuario from '@/components/TabBarFormsAuthenticated/Forms-UsuComissaoLink';
@@ -25,9 +25,7 @@ export default function Tabfiles({
 		switch (currentOption) {
 			case 'dentro-do-prazo':
 				return (
-					<CriarEvento
-						handleNextClick={() => handleOptionClick('data-local')}
-					/>
+					<CriarEvento />
 				);
 			/*case 'data-local':
 				return (
@@ -36,7 +34,7 @@ export default function Tabfiles({
 				*/
 			case 'arquivos':
 				return (
-					<Arquivos handleNextClick={() => handleOptionClick('atividades')} />
+					<Arquivos />
 				);
 			default:
 				return null;
