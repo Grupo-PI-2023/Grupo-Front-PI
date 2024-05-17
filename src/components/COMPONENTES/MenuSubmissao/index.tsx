@@ -1,19 +1,9 @@
 'use client';
 
-import { useState } from 'react';
-
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-import { AiOutlineFileSearch, AiOutlineStar } from 'react-icons/ai';
-import { BiBrain, BiSolidSchool } from 'react-icons/bi';
-import { BsQrCode } from 'react-icons/bs';
-import { FiUsers } from 'react-icons/fi';
-import { ImFilesEmpty } from 'react-icons/im';
-import { LuFileSearch } from 'react-icons/lu';
-import { MdDateRange } from 'react-icons/md';
-import { PiFiles } from 'react-icons/pi';
-import { TfiEmail, TfiTimer } from 'react-icons/tfi';
+import { TfiEmail } from 'react-icons/tfi';
 
 export default function MenuSubmissao() {
 	const router = useRouter();
