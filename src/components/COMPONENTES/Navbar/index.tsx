@@ -5,14 +5,20 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-import { BiSearch } from 'react-icons/bi';
+import { FaRegUser } from 'react-icons/fa';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { GoHome, GoSearch } from 'react-icons/go';
 
+import logo from '@/imgs/logo.svg';
+
+import { navigationNotAuthenticatedRoutes } from './routes';
 import * as S from './styles';
 
 export default function Navbar() {
 	const router = useRouter();
 	const [currentOption, setCurrentOption] = useState('/cadastrarUsuarios');
 	const [query, setQuery] = useState('');
+	const [openMenu, setOpenMenu] = useState(false);
 
 	useEffect(() => {
 		const currentRoute = window.location.pathname;
@@ -30,62 +36,58 @@ export default function Navbar() {
 	};
 
 	return (
-		<div className="fixed left-0 right-0 top-0 z-50 bg-[#F4F4F4] px-16 py-5 shadow-md">
+		<div className="fixed left-0 right-0 top-0 z-50 bg-[#F4F4F4] px-16 py-6 text-2xl shadow-md">
 			<div className="flex items-center justify-between">
-				<div
-					className="flex items-center rounded-lg border-2 px-2 py-1.5"
-					style={{ borderColor: '#4B00E0' }}
-				>
-					<input
-						type="text"
-						value={query}
-						onChange={(e) => setQuery(e.target.value)}
-						placeholder="Digite sua pesquisa"
-						className="ml-2 w-60 text-base outline-none"
+				<div className="flex gap-5">
+					<GiHamburgerMenu
+						className="cursor-pointer"
+						onClick={() => setOpenMenu(!openMenu)}
 					/>
-					<button
-						className="mr-0.5 border-l pl-2 outline-none"
-						style={{ borderLeftColor: '#4B00E0', color: '#4B00E0' }}
-						type="submit"
-					>
-						<BiSearch />
-					</button>
+					<GoHome className="cursor-pointer" />
+					<GoSearch className="cursor-pointer" />
 				</div>
-				<Image
-					src="/assets/navbar/logo-engetec.svg"
-					alt="logo engetec"
-					width={180}
-					height={180}
-				/>
-				<div className="flex items-center gap-5">
-					<S.OptionMenu
-						onClick={() => handleOptionClick('/')}
-						className="cursor-pointer text-base"
-						selected={currentOption === '/'}
+				<a href="/">
+					<Image
+						src={logo}
+						alt="Logo Engetec"
+						height={50}
+						className="cursor-pointer"
+					/>
+				</a>
+				<FaRegUser className="cursor-pointer" />
+			</div>
+
+			<div
+				className={`
+            absolute
+            top-0 transition-all 
+            ${openMenu ? 'fixed left-0' : 'left-[-100vw]'}
+            bg-opacity-0s flex h-[100vh] w-[100vw]
+            flex-col items-center justify-start gap-5 overflow-auto bg-[#fcfcfc00]`}
+				onClick={() => setOpenMenu(!openMenu)}
+			>
+				<div
+					className="absolute left-0 flex h-full w-[25%] flex-col items-center justify-start gap-5 overflow-auto bg-[#fcfcfc] bg-opacity-100 shadow-2xl"
+					onClick={(e) => e.stopPropagation()}
+				>
+					<div
+						className="relative left-[40%] cursor-pointer py-5"
+						onClick={(e) => setOpenMenu(!openMenu)}
 					>
-						Página Inicial
-					</S.OptionMenu>
-					<S.OptionMenu
-						onClick={() => handleOptionClick('/login')}
-						className="cursor-pointer text-base"
-						selected={currentOption === '/login'}
-					>
-						Login
-					</S.OptionMenu>
-					<S.OptionMenu
-						onClick={() => handleOptionClick('/cadastrarUsuarios')}
-						className="cursor-pointer text-base"
-						selected={currentOption === '/cadastrarUsuarios'}
-					>
-						Cadastrar
-					</S.OptionMenu>
-					<S.OptionMenu
-						onClick={() => handleOptionClick('/suporte')}
-						className="cursor-pointer text-base"
-						selected={currentOption === '/suporte'}
-					>
-						Suporte
-					</S.OptionMenu>
+						X
+					</div>
+					{navigationNotAuthenticatedRoutes.map((item, i) => (
+						<S.OptionMenu
+							onClick={() => {
+								handleOptionClick(item.link);
+								setOpenMenu(false);
+							}}
+							className="cursor-pointer text-base"
+							selected={currentOption === item.link}
+						>
+							{item.title}
+						</S.OptionMenu>
+					))}
 				</div>
 			</div>
 		</div>

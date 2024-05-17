@@ -1,6 +1,6 @@
 'use client';
 
-import Navbar from '@/components/COMPONENTES/Navbar';
+import Navbar from '@/components/COMPONENTES/Navbar/NavbarAuthenticated';
 import Footer from '@/components/COMPONENTES/Footer';
 import AdicionarPalestrante from '@/components/EditarPalestrante';
 
