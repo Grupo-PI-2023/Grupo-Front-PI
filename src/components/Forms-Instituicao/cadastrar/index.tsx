@@ -2,8 +2,8 @@ import React from 'react';
 
 const FormularioCadastrarInstituicao = () => {
     return (
-        <div className='h-[130vh] flex flex-col justify-center items-center '>
-        <form className='border p-20 px-[130px] rounded-lg shadow-lg'>
+        <div className='container mt-40 flex justify-center'>
+        <form className='card py-20 px-36 rounded-lg shadow-lg'>
             <h1 className="text-3xl font-bold mb-4 text-[#4B00E0] text-center">Cadastrar Instituição</h1>
             <p className="text-sm text-gray-600 mb-4 text-center font-medium">Irá ter que passar por uma aprovação para ter a instituição cadastrada</p>
                 <div className="mb-4">

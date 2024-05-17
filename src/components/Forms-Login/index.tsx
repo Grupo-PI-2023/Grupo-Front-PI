@@ -67,7 +67,7 @@ export default function LoginForm() {
 					<div className="mb-6">
 						<p className="text-center text-xs font-normal text-slate-400">
 							Não possui cadastro？
-							<a className="font-bold underline text-[#4B00E0] cursor-pointer" href='/cadastrar'>
+							<a className="font-bold underline text-[#4B00E0] cursor-pointer" href='/cadastrarUsuarios'>
 								Cadastrar aqui
 							</a>
 						</p>

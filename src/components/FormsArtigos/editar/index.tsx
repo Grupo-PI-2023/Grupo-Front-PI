@@ -2,260 +2,257 @@
 
 import { useState } from 'react';
 
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-import { AiOutlineFileSearch, AiOutlineStar } from 'react-icons/ai';
-import { BiBrain, BiSolidSchool } from 'react-icons/bi';
-import { BsQrCode } from 'react-icons/bs';
-import { FiUsers } from 'react-icons/fi';
-import { ImFilesEmpty } from 'react-icons/im';
-import { LuFileSearch } from 'react-icons/lu';
-import { MdDateRange } from 'react-icons/md';
-import { PiFiles } from 'react-icons/pi';
-import { TfiTimer } from 'react-icons/tfi';
+import { FaRegTrashCan } from 'react-icons/fa6';
+import { IoMdDownload } from 'react-icons/io';
+import { MdFileUpload, MdOutlineSaveAs } from 'react-icons/md';
 
-export default function EditarArtigos() {
+export default function EditarArtigo() {
 	const router = useRouter();
 
+	const [resumo, setResumo] = useState('');
+	const [abstract, setAbstract] = useState('');
+	const [areas, setAreas] = useState('');
+	const [titulo, setTitulo] = useState('');
+	const [autores, setAutores] = useState('');
+	const [palavraChave, setPalavraChave] = useState('');
+	const [keyword, setKeyword] = useState('');
+	const [subAreas, setSubAreas] = useState('');
+
 	return (
-		<div className="container mb-6 mt-40 flex justify-center ">
-			<div className="w-1/2 ">
+		<div className="container mt-40 flex justify-center">
+			<div className="w-3/5">
 				<h1
 					className="text-center text-2xl font-bold text-black"
 					style={{ color: '#ef0037' }}
 				>
-					Menu do Evento
+					Artigo
 				</h1>
-				<p className="text-center text-sm text-black">
-					Andamento da criação do Evento, acesse a área que deseja modificar ou
-					incluir
-				</p>
-				<div className="mt-5 w-full">
-					<div className="flex justify-end">
-						<button
-							className="mb-6 w-1/3 rounded-lg border-none py-1.5 text-center text-sm font-medium text-white"
-							type="submit"
-							style={{ backgroundColor: '#00B7FF' }}
-						>
-							Visualizar como participante
-						</button>
-					</div>
-					<div className="flex flex-col gap-6">
-						<div
-							className="flex gap-4 rounded-xl p-5"
-							style={{ border: '1px solid #ef0037', cursor: 'pointer' }}
-							onClick={() => router.push('/dashboard/evento/editar-evento')}
-						>
-							<AiOutlineStar className="h-8 w-8" style={{ color: '#ef0037' }} />
-							<div className="flex flex-col gap-0.5">
-								<p
-									className="text-base font-semibold"
-									style={{ color: '#ef0037' }}
-								>
-									Editar Evento
-								</p>
-								<p className="text-sm font-medium">
-									Edite as informações do evento cadastrado
-								</p>
-							</div>
-						</div>
-						<div className="flex gap-4 rounded-xl bg-gray-200 p-5">
-							<MdDateRange className="h-8 w-8" />
-							<div className="flex flex-col gap-0.5">
-								<p className="text-base font-semibold">Data e Local</p>
-								<p className="text-sm font-medium">
-									Adicione as informações sobre a data, horário e localização do
-									evento
-								</p>
-							</div>
-						</div>
-						<div className="flex items-stretch gap-5">
-							<div
-								className="flex w-1/2 items-center rounded-xl p-5"
-								style={{ border: '1px solid #ef0037' }}
-							>
-								<div className="flex gap-4">
-									<ImFilesEmpty
-										className="block h-8 w-8"
-										style={{ color: '#ef0037' }}
-									/>
-									<div className="flex flex-col gap-0.5">
-										<p
-											className="text-base font-semibold"
-											style={{ color: '#ef0037' }}
-										>
-											Arquivos
-										</p>
-										<p className="text-sm font-medium">
-											Insira as informações sobre o artigo <br /> e insira quais
-											outros arquivos terão no <br /> evento (caso não possua
-											não preencha)
-										</p>
-									</div>
-								</div>
-							</div>
-							<div className="flex w-1/2 flex-col gap-5">
+				<h2 className="text-center" style={{ color: '#000000' }}>
+					Visualizar Informações
+				</h2>
+				<div
+					className="mt-6 w-full  rounded-xl p-5 shadow-md"
+					style={{ backgroundColor: '#FDFDFD' }}
+				>
+					<div className="flex gap-10">
+						<div className="w-1/2">
+							<div className="mb-8 flex flex-col">
+								<label className="mb-2 text-sm font-medium" htmlFor="resume">
+									Resumo:
+								</label>
+
 								<div
-									className="flex gap-4 rounded-xl p-5"
-									style={{ border: '1px solid #00B7FF' }}
+									className="rounded-xl border bg-white px-3 py-2"
+									style={{ borderColor: '#828282' }}
 								>
-									<LuFileSearch
-										className="h-8 w-8"
-										style={{ color: '#00B7FF' }}
+									<textarea
+										className="w-full rounded-xl border-0 bg-white text-sm outline-none"
+										name="resume"
+										id="resume"
+										placeholder="Resumo....."
+										value={resumo}
+										onChange={(e) => setResumo(e.target.value)}
+										rows={6}
 									/>
-									<div className="flex flex-col gap-0.5">
-										<p
-											className="text-base font-semibold"
-											style={{ color: '#00B7FF' }}
-										>
-											Visualizar Arquivos
-										</p>
-										<p className="text-sm font-medium">
-											Visualize os arquivos enviados para este evento
-										</p>
-									</div>
 								</div>
+							</div>
+							<div className="mb-8 flex flex-col">
+								<label className="mb-2 text-sm font-medium" htmlFor="abstract">
+									Abstract:
+								</label>
+
 								<div
-									className="flex gap-4 rounded-xl p-5"
-									style={{ border: '1px solid #00B7FF' }}
+									className="rounded-xl border bg-white px-3 py-2"
+									style={{ borderColor: '#828282' }}
 								>
-									<AiOutlineFileSearch
-										className="h-8 w-8"
-										style={{ color: '#00B7FF' }}
+									<textarea
+										className="w-full rounded-xl border-0 bg-white text-sm outline-none"
+										name="abstract"
+										id="abstract"
+										placeholder="Abstract....."
+										value={abstract}
+										onChange={(e) => setAbstract(e.target.value)}
+										rows={6}
 									/>
-									<div className="flex flex-col gap-0.5">
-										<p
-											className="text-base font-semibold"
-											style={{ color: '#00B7FF' }}
-										>
-											Visualizar Artigos
-										</p>
-										<p className="text-sm font-medium">
-											Visualize os artigos enviados para este evento
-										</p>
-									</div>
+								</div>
+							</div>
+							<div className="mb-8 flex flex-col">
+								<label className="mb-2 text-sm font-medium" htmlFor="areas">
+									Áreas de conhecimento:
+								</label>
+
+								<div
+									className="rounded-xl border bg-white px-4 py-2"
+									style={{ borderColor: '#828282' }}
+								>
+									<input
+										className="w-full rounded-xl border-0 bg-white text-sm outline-none"
+										type="text"
+										name="areas"
+										id="areas"
+										placeholder="Áreas de conhecimento..."
+										value={areas}
+										onChange={(e) => setAreas(e.target.value)}
+									/>
 								</div>
 							</div>
 						</div>
-						<div
-							className="flex gap-4 rounded-xl p-5"
-							style={{ border: '1px solid #ef0037' }}
-						>
-							<BiBrain className="h-8 w-8" style={{ color: '#ef0037' }} />
-							<div className="flex flex-col gap-0.5">
-								<p
-									className="text-base font-semibold"
-									style={{ color: '#ef0037' }}
+						<div className="w-1/2">
+							<div className="mb-5 flex flex-col">
+								<label className="mb-2 text-sm font-medium" htmlFor="titulo">
+									Título:
+								</label>
+
+								<div
+									className="rounded-xl border bg-white px-4 py-2"
+									style={{ borderColor: '#828282' }}
 								>
-									Atividades
-								</p>
-								<p className="text-sm font-medium">
-									Cadastre uma ou mais atividades (caso não possua não preencha)
-								</p>
-							</div>
-						</div>
-						<div
-							className="flex gap-4 rounded-xl p-5"
-							style={{ border: '1px solid #ef0037' }}
-						>
-							<FiUsers className="h-8 w-8" style={{ color: '#ef0037' }} />
-							<div className="flex flex-col gap-0.5">
-								<p
-									className="text-base font-semibold"
-									style={{ color: '#ef0037' }}
-								>
-									Usuários
-								</p>
-								<p className="text-sm font-medium">
-									Cadastre ou envie o link para os membros da equipe e
-									administre os já cadastrados
-								</p>
-							</div>
-						</div>
-						<div
-							className="flex gap-4 rounded-xl p-5"
-							style={{ border: '1px solid #ef0037' }}
-						>
-							<BiSolidSchool className="h-8 w-8" style={{ color: '#ef0037' }} />
-							<div className="flex flex-col gap-0.5">
-								<p
-									className="text-base font-semibold"
-									style={{ color: '#ef0037' }}
-								>
-									Salas
-								</p>
-								<p className="text-sm font-medium">
-									Cadastre as salas que serão utilizadas no evento (caso não
-									possua não preencha)
-								</p>
-							</div>
-						</div>
-						<div className="flex gap-4 rounded-xl bg-gray-200 p-5">
-							<TfiTimer className="h-8 w-8" />
-							<div className="flex flex-col gap-0.5">
-								<p className="text-base font-semibold">Sessões</p>
-								<p className="text-sm font-medium">
-									Cadastre e altere as sessões que vão ter no evento (caso não
-									possua não preencha)
-								</p>
-							</div>
-						</div>
-						<div className="flex w-full items-stretch gap-5">
-							<div
-								className="flex w-1/2 gap-4 rounded-xl p-5"
-								style={{ border: '1px solid #5000F0' }}
-							>
-								<PiFiles className="h-8 w-8" style={{ color: '#5000F0' }} />
-								<div className="flex flex-col gap-0.5">
-									<p
-										className="text-base font-semibold"
-										style={{ color: '#5000F0' }}
-									>
-										Gerar Anais
-									</p>
-									<p className="text-sm font-medium">
-										Gere os anais deste evento (Opção <br /> habilitada apenas
-										ao fim de todas <br /> as sessões previstas deste evento)
-									</p>
+									<input
+										className="w-full rounded-xl border-0 bg-white text-sm outline-none"
+										type="text"
+										name="titulo"
+										id="titulo"
+										placeholder="Título..."
+										value={titulo}
+										onChange={(e) => setTitulo(e.target.value)}
+									/>
 								</div>
 							</div>
-							<div
-								className="flex w-1/2 gap-4 rounded-xl p-5"
-								style={{ border: '1px solid #5000F0' }}
-							>
-								<BsQrCode className="h-8 w-8" style={{ color: '#5000F0' }} />
-								<div className="flex flex-col gap-0.5">
-									<p
-										className="text-base font-semibold"
-										style={{ color: '#5000F0' }}
-									>
-										Baixar QrCode
-									</p>
-									<p className="text-sm font-medium">
-										Baixe e imprima os QrCodes para que <br /> os participantes
-										do evento consigam <br /> o certificado como participante{' '}
-										<br /> do evento
-									</p>
+							<div className="mb-5 flex flex-col">
+								<label className="mb-2 text-sm font-medium" htmlFor="autores">
+									Autores:
+								</label>
+
+								<div
+									className="rounded-xl border bg-white px-4 py-2"
+									style={{ borderColor: '#828282' }}
+								>
+									<input
+										className="w-full rounded-xl border-0 bg-white text-sm outline-none"
+										type="text"
+										name="autores"
+										id="autores"
+										placeholder="Autores..."
+										value={autores}
+										onChange={(e) => setAutores(e.target.value)}
+									/>
+								</div>
+							</div>
+							<div className="mb-5 flex flex-col">
+								<label
+									className="mb-2 text-sm font-medium"
+									htmlFor="palavraChave"
+								>
+									Palavras-Chaves:
+								</label>
+
+								<div
+									className="rounded-xl border bg-white px-3 py-2"
+									style={{ borderColor: '#828282' }}
+								>
+									<textarea
+										className="w-full rounded-xl border-0 bg-white text-sm outline-none"
+										name="palavraChave"
+										id="palavraChave"
+										placeholder="Palavras Chaves....."
+										value={palavraChave}
+										onChange={(e) => setPalavraChave(e.target.value)}
+										rows={2}
+									/>
+								</div>
+							</div>
+							<div className="mb-5 flex flex-col">
+								<label className="mb-2 text-sm font-medium" htmlFor="keyword">
+									Keyword:
+								</label>
+
+								<div
+									className="rounded-xl border bg-white px-3 py-2"
+									style={{ borderColor: '#828282' }}
+								>
+									<textarea
+										className="w-full rounded-xl border-0 bg-white text-sm outline-none"
+										name="keyword"
+										id="keyword"
+										placeholder="Keyword....."
+										value={keyword}
+										onChange={(e) => setKeyword(e.target.value)}
+										rows={2}
+									/>
+								</div>
+							</div>
+							<div className="mb-8 flex flex-col">
+								<label className="mb-2 text-sm font-medium" htmlFor="subAreas">
+									Subáreas:
+								</label>
+
+								<div
+									className="rounded-xl border bg-white px-4 py-2"
+									style={{ borderColor: '#828282' }}
+								>
+									<input
+										className="w-full rounded-xl border-0 bg-white text-sm outline-none"
+										type="text"
+										name="subAreas"
+										id="subAreas"
+										placeholder="Subáreas....."
+										value={subAreas}
+										onChange={(e) => setSubAreas(e.target.value)}
+									/>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div className="mt-7 flex items-center justify-center gap-5">
-						<button
-							className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
-							type="submit"
-							style={{ backgroundColor: '#BF0000' }}
-						>
-							Excluir Evento
-						</button>
-						<button
-							className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
-							style={{ backgroundColor: '#FA023E' }}
-							type="submit"
-						>
-							Postar Evento
-						</button>
+					<div className="mb-5 flex justify-center gap-5">
+						<div className="flex flex-col gap-4">
+							<button
+								className="flex w-40 items-center justify-center gap-2 rounded-xl border p-2.5 text-center text-sm font-medium text-white"
+								type="submit"
+								style={{ backgroundColor: '#4B00E0' }}
+							>
+								Baixar Artigo
+								<IoMdDownload className="h-4 w-4" />
+							</button>
+							<button
+								className="w-40 rounded-xl border p-2.5 text-center text-sm font-medium text-white"
+								type="submit"
+								style={{ backgroundColor: '#8A8A8A' }}
+							>
+								Voltar
+							</button>
+						</div>
+						<div className="flex flex-col gap-4">
+							<button
+								className="flex w-40 items-center justify-center gap-2 rounded-xl border p-2.5 text-center text-sm font-medium text-white"
+								type="submit"
+								style={{ backgroundColor: '#0391C9' }}
+							>
+								Alterar Artigo
+								<MdFileUpload className="h-4 w-4" />
+							</button>
+							<button
+								className="flex w-40 items-center justify-center gap-2 rounded-xl border p-2.5 text-center text-sm font-medium text-white"
+								type="submit"
+								style={{ borderColor: '#126A10', color: '#126A10' }}
+							>
+								Salvar
+								<MdOutlineSaveAs className="h-4 w-4" />
+							</button>
+						</div>
 					</div>
+				</div>
+				<div className="mt-5 flex flex-col items-end">
+					<button
+						className="flex w-40 items-center justify-center gap-2 rounded-xl border p-2.5 text-center text-sm font-medium text-white"
+						type="submit"
+						style={{ borderColor: '#BF0000', color: '#BF0000' }}
+					>
+						Excluir
+						<FaRegTrashCan className="h-4 w-4" />
+					</button>
 				</div>
 			</div>
 		</div>

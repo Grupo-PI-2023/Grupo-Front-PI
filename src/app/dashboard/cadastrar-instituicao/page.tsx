@@ -5,7 +5,7 @@ import Menu from '@/components/Artigos/ArtigosMenu/Menu';
 
 export default async function Support() {
 	return (
-		<div className='w-full flex flex-col justify-items-center min-h-screen'>
+		<div>
 			<Navbar />
 				<FormularioCadastrarInstituicao />
 			<Footer />

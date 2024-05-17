@@ -45,7 +45,7 @@ export default function CriarEspecialide({ handleOptionClick }: CriarEventoProps
 	  };
 
 	return (
-		<div className="container mb-6 mt-52 flex justify-center">
+		<div className="container mb-6 mt-40 flex justify-center">
 			<div className="w-8/12">
 				<h1
 					className="text-center text-2xl font-bold text-black"
@@ -58,7 +58,7 @@ export default function CriarEspecialide({ handleOptionClick }: CriarEventoProps
                 				</h2>
 				<form className="mt-8 w-full" onSubmit={handleAddOnTable}>
 					
-				<div className="flex justify-center gap-5">
+					<div className="flex justify-center gap-5">
 						<div className="w-full flex flex-row place-content-between">
 							<div className="mb-5 flex flex-col w-5/12 rounded-md">
 								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
@@ -98,7 +98,7 @@ export default function CriarEspecialide({ handleOptionClick }: CriarEventoProps
 								</div>
 							</div>
 						</div>
-				</div>
+					</div>
 					
 					<div className="flex justify-center gap-5">
 						<div className="w-full flex flex-row place-content-between">
@@ -171,14 +171,11 @@ export default function CriarEspecialide({ handleOptionClick }: CriarEventoProps
 							>
 								Cadastrar
 						</button>
-
 						</div>
-
 					</div>
-					
 				</form>
 
-				<div className="flex items-left justify-left mt-24">
+				<div className="flex items-left justify-left mt-28">
 					<table className="w-full table-auto">
 						<thead style={{ backgroundColor: '#DD4467' }}>
 							<tr className="h-14">

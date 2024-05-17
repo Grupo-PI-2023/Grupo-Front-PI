@@ -88,12 +88,12 @@ export default function EditarComissao() {
 	let optionsArea: FixedOptionsType[] = [
 		{
 			value: 0,
-			label: 'boa sorte guilherme',
+			label: 'Física',
 			isFixed: true,
 		},
 		{
 			value: 1,
-			label: 'isso é mock time',
+			label: 'Química',
 			isFixed: true,
 		},
 	];
