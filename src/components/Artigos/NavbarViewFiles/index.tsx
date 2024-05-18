@@ -9,8 +9,10 @@ import VisualizarSala from '@/components/TabBarFormsAuthenticated/Forms-Salas';
 import Sessao from '@/components/TabBarFormsAuthenticated/Forms-Sessao';
 import CadastrarUsuario from '@/components/TabBarFormsAuthenticated/Forms-UsuComissaoLink';
 import Menu from '@/components/COMPONENTES/Menu';
+import Arquivos from '@/components/Forms-Arquivos';
 
 import * as S from './styles';
+import ArtigosConcluidos from '../ArtigosNoPrazo';
 
 type TabbarProps = {
 	currentOption: string;
@@ -26,12 +28,9 @@ export default function Tabfiles({
 			case 'dentro-do-prazo':
 				return (
 					<CriarEvento />
+					<ArtigosConcluidos
+					/>
 				);
-			/*case 'data-local':
-				return (
-					<DataLocal handleNextClick={() => handleOptionClick('usuarios')} />
-				);
-				*/
 			case 'arquivos':
 				return (
 					<Arquivos />
@@ -56,16 +55,6 @@ export default function Tabfiles({
 							Dentro do Prazo
 						</S.OptionMenu>
 					</div>
-					{/*<div className="flex items-center gap-2">
-						<S.OptionMenu
-							onClick={() => handleOptionClick('data-local')}
-							className="flex-shrink-0 cursor-pointer text-sm"
-							selected={currentOption === 'data-local'}
-						>
-							Data e Local
-						</S.OptionMenu>
-						<S.IconDate selected={currentOption === 'data-local'} />
-	</div>*/}
 					<div className="flex items-center gap-2">
 						<S.IconFiles selected={currentOption === 'arquivos'} />
 						<S.OptionMenu

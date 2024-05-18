@@ -11,6 +11,7 @@ type TabbarProps = {
 export const OptionMenu = styled.p<TabbarProps>`
 	color: ${(props) => (props.selected ? '#4B00E0' : '#000000')};
 	font-weight: ${(props) => (props.selected ? 'bold' : '500')};
+	font-size: ${(props) => (props.selected ? '16px' : '14px')} 
 `;
 
 

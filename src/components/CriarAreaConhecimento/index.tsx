@@ -41,7 +41,7 @@ export default function CriarAreaConhecimento({ handleOptionClick }: CriarEvento
 	  };
 
 	return (
-		<div className="container mb-6 mt-52 flex justify-center">
+		<div className="container mb-6 mt-40 flex justify-center">
 			<div className="w-8/12">
 				<h1
 					className="text-center text-2xl font-bold text-black"
@@ -129,12 +129,7 @@ export default function CriarAreaConhecimento({ handleOptionClick }: CriarEvento
 				</div>
 				</form>
 
-				{/* <div className="mb-5 w-5/12 gap-3 mt-36">
-					<p className="text-sm font-sm">Buscar</p>
-					<Image src={search} alt="" height={2} width={22} />
-				</div> */}
-
-				<div className="flex items-left justify-left mt-40">
+				<div className="flex items-left justify-left mt-44">
 					<table className="w-full table-auto">
 						<thead style={{ backgroundColor: '#DD4467' }}>
 							<tr className="h-14">
