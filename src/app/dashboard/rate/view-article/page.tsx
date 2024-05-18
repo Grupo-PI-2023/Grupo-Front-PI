@@ -1,7 +1,7 @@
 'use client';
 
 import Footer from '@/components/COMPONENTES/Footer';
-import ViewArticle from '@/components/ViewArticle';
+import ViewArticle from '@/components/Rate/ViewArticle';
 import NavbarAuthenticated from '@/components/COMPONENTES/Navbar/NavbarAuthenticated';
 
 export default function ViewArticlePage() {

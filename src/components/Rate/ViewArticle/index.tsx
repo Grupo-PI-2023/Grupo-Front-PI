@@ -15,10 +15,9 @@ export default function ViewArticle() {
 	const [abstract, setAbstract] = useState('');
 	const [areas, setAreas] = useState('');
 	const [titulo, setTitulo] = useState('');
-	const [autores, setAutores] = useState('');
+	const [areasConhecimento, setAreasConhecimento] = useState('');
 	const [palavraChave, setPalavraChave] = useState('');
 	const [keyword, setKeyword] = useState('');
-	const [subAreas, setSubAreas] = useState('');
 
 	return (
 		<div className="container mt-40 flex justify-center">
@@ -121,7 +120,7 @@ export default function ViewArticle() {
 								</div>
 							</div>
 							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="autores">
+								<label className="mb-2 text-sm font-medium" htmlFor="areasConhecimento">
 									Areas de Conhecimento:
 								</label>
 
@@ -135,8 +134,8 @@ export default function ViewArticle() {
 										name="areasConhecimento"
 										id="areasConhecimento"
 										placeholder="Áreas de Conhecimento..."
-										value={autores}
-										onChange={(e) => setAutores(e.target.value)}
+										value={areasConhecimento}
+										onChange={(e) => setAreasConhecimento(e.target.value)}
 									/>
 								</div>
 							</div>
