@@ -98,7 +98,7 @@ export default function SubmeterArquivoPage() {
 			<div className="container">
 				<div className="w-[60vw] ">
 					<Title
-						color="#4B00E0"
+						colorHex="#4B00E0"
 						title="Submeter Arquivos"
 						subtitle="Submeta o arquivo para participar do evento CultureFest"
 					/>

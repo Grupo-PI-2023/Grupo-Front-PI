@@ -59,19 +59,19 @@ export default function Navbar() {
 
 			<div
 				className={`
-            absolute top-0 
+            absolute top-0
 			transition-all duration-500 ease-in-out
             ${openMenu ? 'fixed left-0' : 'left-[-100vw]'}
             bg-opacity-0s flex h-[100vh] w-[100vw]
-            flex-col items-center justify-start gap-5 overflow-auto bg-[#fcfcfc00]`}
+            flex-col items-center justify-start gap-5 overflow-auto bg-[#fcfcfc00] pb-10`}
 				onClick={() => setOpenMenu(!openMenu)}
 			>
 				<div
-					className="absolute left-0 flex h-full w-[25%] flex-col items-center justify-start gap-5 overflow-auto bg-[#fcfcfc] bg-opacity-100 shadow-2xl"
+					className="absolute left-0 flex h-full w-[25%] flex-col items-center justify-start gap-5 overflow-auto bg-[#fcfcfc] bg-opacity-100 shadow-2xl pb-10"
 					onClick={(e) => e.stopPropagation()}
 				>
 					<div
-						className="relative left-[40%] cursor-pointer py-5"
+						className="relative left-[40%] cursor-pointer py-3"
 						onClick={(e) => setOpenMenu(!openMenu)}
 					>
 						X

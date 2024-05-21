@@ -36,7 +36,27 @@ export const navigationAuthenticatedRoutes: navItemType[] = [
 		title: 'Artigos',
 	},
 	{
+		link: '/dashboard/artigos/artigos-enviados',
+		title: 'Artigos Enviados',
+	},
+	{
+		link: '/dashboard/artigos/artigos-finalizados',
+		title: 'Artigos Finalizados',
+	},
+	{
+		link: '/dashboard/artigos/artigos-para-avaliar/principal',
+		title: 'Artigos para Avaliar',
+	},
+	{
+		link: '/dashboard/artigos/editar-artigo',
+		title: 'Editar Artigo',
+	},
+	{
 		link: '/dashboard/artigos/menu-artigos',
+		title: 'Menu de Artigos',
+	},
+	{
+		link: '/dashboard/artigos/menu-submissao',
 		title: 'Menu de Submissão',
 	},
 	{
@@ -44,13 +64,10 @@ export const navigationAuthenticatedRoutes: navItemType[] = [
 		title: 'Submeter Artigo',
 	},
 	{
-		link: '/dashboard/artigos/editar-artigo',
-		title: 'Editar Artigo',
-	},
-	{
 		link: '/dashboard/artigos/visualizar-artigo',
 		title: 'Visualizar Artigo',
 	},
+	
 	{
 		link: '/dashboard/editar/editar-comissao',
 		title: 'Editar Comissao',
@@ -64,8 +81,20 @@ export const navigationAuthenticatedRoutes: navItemType[] = [
 		title: 'Editar Sessao',
 	},
 	{
+		link: '/dashboard/editar/editar-artigos',
+		title: 'Editar Artigo',
+	},
+	{
 		link: '/dashboard/adicionar-palestrante',
 		title: 'Adicionar Palestrante',
+	},
+	{
+		link: '/dashboard/rate/rate-article',
+		title: 'Avaliar Artigo',
+	},
+	{
+		link: '/dashboard/rate/view-article',
+		title: 'Visualizar Artigo ',
 	},
 	{
 		link: '/dashboard/cadastrar-instituicao',
