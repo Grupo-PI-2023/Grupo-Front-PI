@@ -12,6 +12,10 @@ export const navigationAuthenticatedRoutes: navItemType[] = [
 		title: 'Página Inicial',
 	},
 	{
+		link: '/components-example',
+		title: 'Exemplo de uso dos componentes',
+	},
+	{
 		link: '/dashboard/evento/criar-evento',
 		title: 'Criar Evento',
 	},

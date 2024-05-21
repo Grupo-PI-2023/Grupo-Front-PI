@@ -3,6 +3,11 @@ export type OptionsType = {
 	value: number;
 };
 
+export type SimpleSelectType = {
+    label: string;
+	value: string | undefined;
+};
+
 type SelectType = {
 	options: OptionsType[];
 	preSelect: number;

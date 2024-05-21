@@ -2,292 +2,135 @@
 
 import { useState } from 'react';
 
-import { FiEye, FiEyeOff } from 'react-icons/fi';
+import NormalInput from '@/components/COMPONENTES/NormalInput';
+import Title from '@/components/COMPONENTES/Title';
+import CheckInput from '@/components/COMPONENTES/CheckInput';
+import DefaultButton from '@/components/COMPONENTES/DefaultButton';
+import Select from 'react-select';
+import mockedOptionTurnos from '@/mocks/OptionsTurnos';
+const customStyles = {
+	control: (provided: any) => ({
+		...provided,
+		width: '100%',
+		height: 'auto',
+		borderRadius: '0.375rem',
+		border: '1',
+		background: 'white',
+		fontSize: '0.875rem',
+	}),
+};
 
 export default function CadastroConvidado() {
-	const [passwordVisible, setPasswordVisible] = useState(false);
+	const checkboxNames = ['Organizador', 'Chair', 'Avaliador', 'Admin'];
+
+	const [name, setName] = useState('');
+	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const [confirmpasswordVisible, setConfirmpasswordVisible] = useState(false);
 	const [confirmpassword, setConfirmpassword] = useState('');
-
-	const checkboxCharge = ['Palestrante', 'Mentor', 'Outro'];
-	const [checkboxesCharge, setCheckboxesCharge] = useState(checkboxCharge.map(() => false));
-	const handleCheckboxCharge = (index: any) => {
-		setCheckboxesCharge((prev) => {
-			const newCheckboxes = [...prev];
-			newCheckboxes[index] = !newCheckboxes[index];
-			return newCheckboxes;
-		});
-	};
-
-	const checkboxPeriod = ['Manhã', 'Tarde', 'Noite'];
-	const [checkboxesPeriod, setCheckboxesPeriod] = useState(checkboxPeriod.map(() => false));
-	const handleCheckboxPeriod = (index: any) => {
-		setCheckboxesCharge((prev) => {
-			const newCheckboxes = [...prev];
-			newCheckboxes[index] = !newCheckboxes[index];
-			return newCheckboxes;
-		});
-	};
-
-	const handleTogglePasswordVisibility = () => {
-		setPasswordVisible(!passwordVisible);
-	};
-	const handleToggleConfirmPasswordVisibility = () => {
-		setConfirmpasswordVisible(!confirmpasswordVisible);
-	};
+	const [turno, setTurno] = useState<string | undefined>('');
 
 	return (
-		<div className="container mb-6 mt-52 flex justify-center">
+		<div className="container">
 			<div className="w-[60vw]">
-				<h1
-					className="text-center text-2xl font-bold text-black"
-					style={{ color: '#4B00E0' }}
-				>
-					Cadastrar Convidado
-				</h1>
-				<p className="text-center text-sm text-black">
-					Cadastrar como convidado
-				</p>
-				<form className="mt-8 w-full card">
-					<div className="flex justify-center gap-5">
-						<div className="w-full">
-							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="fullName">
-									Nome completo
-								</label>
+				<Title
+					title="Cadastrar Convidado"
+					subtitle="Cadastrar como convidado"
+					colorHex="#4B00E0"
+				/>
 
-								<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
-									<input
-										className="w-full rounded-md border-0 bg-white text-sm outline-none"
-										type="text"
-										name="fullName"
-										id="fullName"
-										placeholder="Nome do Convidado"
-										required
-									/>
-								</div>
-							</div>
-							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="periodoDePreferencia">
-									Período de preferência:
-								</label>
+				<form className="form bg-white shadow-md">
+					<NormalInput
+						id="fullName"
+						label="Nome completo"
+						placeholder="Nome do convidado"
+						required
+						value={name}
+						onChange={(e) => setName(e.target.value)}
+					/>
+					<NormalInput
+						id="email"
+						label="E-mail"
+						placeholder="emailuser@email.com"
+						value={email}
+						onChange={(e) => setEmail(e.target.value)}
+						type="email"
+						required
+					/>
+					<NormalInput
+						id="password"
+						label="Senha"
+						placeholder="Senha do convidado"
+						type="password"
+						value={password}
+						onChange={(e) => setPassword(e.target.value)}
+						required
+					/>
+					<NormalInput
+						id="confirmPassword"
+						label="Confirmar Senha"
+						placeholder="Senha do convidado"
+						type="password"
+						value={confirmpassword}
+						onChange={(e) => setConfirmpassword(e.target.value)}
+						required
+					/>
 
-								<div className="flex items-center gap-3 py-2.5">
-									{checkboxPeriod.map((name, index) => (
-										<div key={index}>
-											<div className="flex items-center">
-												<input
-													className="hidden"
-													type="checkbox"
-													name={`checkbox-${index}`}
-													id={`checkbox-${index}`}
-													checked={checkboxesPeriod[index]}
-													onChange={() => handleCheckboxPeriod(index)}
-												/>
-												<label
-													className="flex cursor-pointer items-center"
-													style={
-														checkboxesPeriod[index]
-															? {
-																	color: '#4B00E0',
-															  }
-															: {
-																	color: '#000',
-															  }
-													}
-													htmlFor={`checkbox-${index}`}
-												>
-													<div
-														className="mr-2 flex h-3.5 w-3.5 items-center justify-center"
-														style={
-															checkboxesPeriod[index]
-																? {
-																		backgroundColor: '#4B00E0',
-																		border: '1px solid #4B00E0',
-																  }
-																: {
-																		backgroundColor: '#fff',
-																		border: '1px solid #4B00E0',
-																  }
-														}
-													>
-														{checkboxesPeriod[index] && (
-															<svg
-																className="pointer-events-none h-2 w-3 fill-current text-white"
-																viewBox="0 0 20 20"
-															>
-																<path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
-															</svg>
-														)}
-													</div>
-													<span className="text-sm font-medium">{name}</span>
-												</label>
-											</div>
-										</div>
-									))}
-								</div>
-							</div>
-							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="email">
-									Email
-								</label>
-
-								<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
-									<input
-										className="w-full rounded-md border-0 bg-white text-sm outline-none"
-										type="email"
-										name="email"
-										id="email"
-										placeholder="emailconvidado@email.com"
-										required
-									/>
-								</div>
-							</div>
-						</div>
-						<div className="w-full">
-							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="password">
-									Senha
-								</label>
-								<div className="flex items-center justify-between rounded-md border border-gray-300 bg-white px-4 py-2.5">
-									<input
-										className="w-11/12 rounded-md border-0 bg-white text-sm outline-none"
-										type={passwordVisible ? 'text' : 'password'}
-										value={password}
-										onChange={(e) => setPassword(e.target.value)}
-										name="password"
-										id="password"
-										placeholder="Senha do Convidado"
-										required
-									/>
-									{passwordVisible ? (
-										<FiEye
-											className="h-4 w-4 text-black"
-											onClick={handleTogglePasswordVisibility}
-										/>
-									) : (
-										<FiEyeOff
-											className="h-4 w-4 text-black"
-											onClick={handleTogglePasswordVisibility}
-										/>
-									)}
-								</div>
-							</div>
-							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="password">
-									Confirmar Senha
-								</label>
-								<div className="flex items-center justify-between rounded-md border border-gray-300 bg-white px-4 py-2.5">
-									<input
-										className="w-11/12 rounded-md border-0 bg-white text-sm outline-none"
-										type={confirmpasswordVisible ? 'text' : 'password'}
-										value={confirmpassword}
-										onChange={(e) => setConfirmpassword(e.target.value)}
-										name="password"
-										id="password"
-										placeholder="Senha do Convidado"
-										required
-									/>
-									{confirmpasswordVisible ? (
-										<FiEye
-											className="h-4 w-4 text-black"
-											onClick={handleToggleConfirmPasswordVisibility}
-										/>
-									) : (
-										<FiEyeOff
-											className="h-4 w-4 text-black"
-											onClick={handleToggleConfirmPasswordVisibility}
-										/>
-									)}
-								</div>
-							</div>
-							<div className="mb-4">
-								<label className="mb-2 text-sm font-medium" htmlFor="funcao">
-									Função no Evento
-								</label>
-								<div className="flex items-center gap-3 py-2.5">
-									{checkboxCharge.map((name, index) => (
-										<div key={index}>
-											<div className="flex items-center">
-												<input
-													className="hidden"
-													type="checkbox"
-													name={`checkbox-${index}`}
-													id={`checkbox-${index}`}
-													checked={checkboxesCharge[index]}
-													onChange={() => handleCheckboxCharge(index)}
-												/>
-												<label
-													className="flex cursor-pointer items-center"
-													style={
-														checkboxesCharge[index]
-															? {
-																	color: '#4B00E0',
-															  }
-															: {
-																	color: '#000',
-															  }
-													}
-													htmlFor={`checkbox-${index}`}
-												>
-													<div
-														className="mr-2 flex h-3.5 w-3.5 items-center justify-center"
-														style={
-															checkboxesCharge[index]
-																? {
-																		backgroundColor: '#4B00E0',
-																		border: '1px solid #4B00E0',
-																  }
-																: {
-																		backgroundColor: '#fff',
-																		border: '1px solid #4B00E0',
-																  }
-														}
-													>
-														{checkboxesCharge[index] && (
-															<svg
-																className="pointer-events-none h-2 w-3 fill-current text-white"
-																viewBox="0 0 20 20"
-															>
-																<path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
-															</svg>
-														)}
-													</div>
-													<span className="text-sm font-medium">{name}</span>
-												</label>
-											</div>
-										</div>
-									))}
-								</div>
-							</div>
-
+					<div className="mb-5 w-[45%]">
+						<label className="mb-2 text-sm font-medium" htmlFor="funcao">
+							Função no Evento
+						</label>
+						<div className="flex items-center gap-3 py-2.5">
+							{checkboxNames.map((name, index) => (
+								<CheckInput
+									id={`${name}-${index}`}
+									key={index}
+									label={name}
+									disabled={false}
+									selected={false}
+								/>
+							))}
 						</div>
 					</div>
-					<div className="mb-6">
+					<div className="mb-5 flex w-[45%] flex-col">
+						<label className="mb-2 text-sm font-medium" htmlFor="turno">
+							Turno
+						</label>
+						<div className="w-full">
+							<Select
+								name="turnos"
+								options={mockedOptionTurnos}
+								className="basic-multi-select border-gray-300"
+								classNamePrefix="select"
+								styles={customStyles}
+								onChange={(choice) => setTurno(choice?.label)}
+							/>
+						</div>
+					</div>
+
+					<div className="mb-5 flex w-[45%] flex-col">
 						<p className="text-center text-xs font-normal text-slate-400">
 							Já tem uma conta？
-							<a className="font-bold underline text-[#4B00E0] cursor-pointer" href='/login'>
+							<a
+								className="cursor-pointer font-bold text-[#4B00E0] underline"
+								href="/login"
+							>
 								Log in
 							</a>
 						</p>
 					</div>
-					<div className="flex items-center justify-center gap-5">
-						<button
-							className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
+					<div className="flex w-full items-center justify-center gap-5">
+						<DefaultButton
+							label="Voltar"
+							backgroundColorHex="#8A8A8A"
 							type="submit"
-							style={{ backgroundColor: '#8A8A8A' }}
-						>
-							Voltar
-						</button>
-						<button
-							className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
-							style={{ backgroundColor: '#4B00E0' }}
+						/>
+						<DefaultButton
+							label="Cadastrar"
+							backgroundColorHex="#4B00E0"
 							type="submit"
-						>
-							Cadastrar
-						</button>
+						/>
 					</div>
+					
 				</form>
 			</div>
 		</div>

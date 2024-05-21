@@ -24,15 +24,17 @@ function useClipboard() {
 		}
 	};
 
-  const copyToClipboard = useCallback(async (text: string) => {
+  const copyToClipboard = useCallback(async (text: string | undefined) => {
     try {
-			await navigator.clipboard.writeText(text);
-			console.log('Texto copiado para a área de transferência');
-			setShowCardClip(true);
-			renderClipCard(true);
-			setTimeout(() => {
-				setShowCardClip(false);
-			}, 3000);
+			if(text){
+				await navigator.clipboard.writeText(text ? text : '');
+				console.log('Texto copiado para a área de transferência');
+				setShowCardClip(true);
+				renderClipCard(true);
+				setTimeout(() => {
+					setShowCardClip(false);
+				}, 3000);
+			}
 		} catch (err) {
 			console.log('Falha ao copiar o texto', err);
 			setShowCardClip(true);
