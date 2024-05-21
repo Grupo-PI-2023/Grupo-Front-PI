@@ -4,6 +4,7 @@ import filesData from './arquivosConcluidos.json';
 import Image from 'next/image';
 import filter from './filter.png';
 import search from './search.png';
+import { useState } from 'react';
 
 export default function ArtigosConcluidos() {
 	return (

@@ -1,8 +1,9 @@
-'use client';
+'use client'
 import Tabfiles from '@/components/Artigos/NavbarViewFiles';
 import Footer from '@/components/COMPONENTES/Footer';
 import Navbar from '@/components/COMPONENTES/Navbar/NavbarAuthenticated';
 import { useState } from 'react';
+import React from 'react';
 
 export default function VisualizarArtigoPage() {
 

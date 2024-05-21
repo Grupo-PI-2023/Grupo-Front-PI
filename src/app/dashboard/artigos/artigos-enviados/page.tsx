@@ -6,6 +6,8 @@ import ArtigosCards from '@/components/Artigos/ArtigosCards/Cards'
 import ArtigosCards2 from '@/components/Artigos/ArtigosCards/Cards2'
 import Tabfiles from '@/components/Artigos/NavbarViewFilesEnviados/index'
 import Pagination from '@/components/Artigos/ArtigosPagination/pagination';
+import React from 'react';
+
 export default function EditarArtigosPage() {
 	const [currentOption, setCurrentOption] = useState<string>('dentro-do-prazo');
 
