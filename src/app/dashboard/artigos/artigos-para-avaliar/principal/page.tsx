@@ -1,13 +1,13 @@
 import Footer from '@/components/COMPONENTES/Footer';
-import MenuSubmissao from '@/components/COMPONENTES/MenuSubmissao';
 import Navbar from '@/components/COMPONENTES/Navbar/NavbarAuthenticated';
+import ArtigosParaAvaliarPrincipais from '@/components/Artigos/ArtigosParaAvaliarPrincipal';
 import React from 'react';
 
-export default async function MenuArtigos() {
+export default async function ArtigosAvaliarPrincipal() {
 	return (
 		<div>
 			<Navbar />
-			<MenuSubmissao />;
+			<ArtigosParaAvaliarPrincipais />
 			<Footer />
 		</div>
 	);

@@ -1,7 +1,14 @@
 
 import { useState } from 'react';
 
-import Arquivos from '@/components/Forms-Arquivos';
+import CriarAtividade from '@/components/TabBarFormsAuthenticated/Form-Atividades';
+import Arquivos from '@/components/Artigos/ArtigosCards/Cards';
+import DataLocal from '@/components/TabBarFormsAuthenticated/Forms-DataLocal';
+import CriarEvento from '@/components/Artigos/ArtigosCards/Cards2';
+import VisualizarSala from '@/components/TabBarFormsAuthenticated/Forms-Salas';
+import Sessao from '@/components/TabBarFormsAuthenticated/Forms-Sessao';
+import CadastrarUsuario from '@/components/TabBarFormsAuthenticated/Forms-UsuComissaoLink';
+import Menu from '@/components/COMPONENTES/Menu';
 
 import * as S from './styles';
 import ArtigosConcluidos from '../ArtigosNoPrazo';
@@ -24,7 +31,7 @@ export default function Tabfiles({
 				);
 			case 'arquivos':
 				return (
-					<Arquivos handleNextClick={() => handleOptionClick('atividades')} />
+					<Arquivos />
 				);
 			default:
 				return null;
