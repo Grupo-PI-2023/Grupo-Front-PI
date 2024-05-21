@@ -1,176 +1,84 @@
 'use client';
 
 import { useState } from 'react';
-
-import { FiEye, FiEyeOff } from 'react-icons/fi';
+import DefaultButton from '@/components/COMPONENTES/DefaultButton';
+import NormalInput from '@/components/COMPONENTES/NormalInput';
+import Title from '@/components/COMPONENTES/Title';
 
 export default function CadastroEditorChefe() {
-	const [passwordVisible, setPasswordVisible] = useState(false);
 	const [password, setPassword] = useState('');
-	const [confirmpasswordVisible, setConfirmpasswordVisible] = useState(false);
 	const [confirmpassword, setConfirmpassword] = useState('');
-    const [instituicao, setInst] = useState('');
-    const [lattes, setLattes] = useState('');
-
-	const handleTogglePasswordVisibility = () => {
-		setPasswordVisible(!passwordVisible);
-	};
-	const handleToggleConfirmPasswordVisibility = () => {
-		setConfirmpasswordVisible(!confirmpasswordVisible);
-	};
+	const [name, setName] = useState('');
+	const [email, setEmail] = useState('');
+	const [instituicao, setInst] = useState('');
+	const [lattes, setLattes] = useState('');
 
 	return (
-		<div className="container mb-6 mt-52 flex justify-center">
+		<div className="container">
 			<div className="w-[60vw]">
-				<h1
-					className="text-center text-2xl font-bold text-black"
-					style={{ color: '#4B00E0' }}
-				>
-					Cadastrar Editor Chefe
-				</h1>
-				<p className="text-center text-sm text-black">
-					Cadastro como editor chefe, ele irá ter que passa por uma aprovação
-					para ter acesso como editor chefe
-				</p>
-				<form className="card mt-8 w-full">
-					<div className="flex justify-center gap-5">
-						<div className="w-full">
+				<Title
+					title="Cadastrar Editor Chefe"
+					colorHex="#4B00E0"
+					subtitle="Cadastro como editor chefe, ele irá ter que passa por uma aprovação
+						para ter acesso como editor chefe"
+				/>
 
-							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="fullName">
-									Nome completo
-								</label>
+				<form className="form bg-white shadow-md">
+					<NormalInput
+						id="fullName"
+						label="Nome completo"
+						placeholder="Nome do aluno"
+						required
+						value={name}
+						onChange={(e) => setName(e.target.value)}
+					/>
+					<NormalInput
+						id="email"
+						label="E-mail"
+						placeholder="emailuser@email.com"
+						value={email}
+						onChange={(e) => setEmail(e.target.value)}
+						type="email"
+						required
+					/>
+					<NormalInput
+						id="password"
+						label="Senha"
+						placeholder="Senha do Usuário"
+						type="password"
+						value={password}
+						onChange={(e) => setPassword(e.target.value)}
+						required
+					/>
+					<NormalInput
+						id="confirmPassword"
+						label="Confirmar Senha"
+						placeholder="Senha do Usuário"
+						type="password"
+						value={confirmpassword}
+						onChange={(e) => setConfirmpassword(e.target.value)}
+						required
+					/>
+					<NormalInput
+						id="institution"
+						label="Instituição Referente"
+						placeholder="Instituição do Usuário"
+						value={instituicao}
+						onChange={(e) => setInst(e.target.value)}
+						required
+						type="text"
+					/>
+					<NormalInput
+						id="link"
+						label="Link Lattes"
+						placeholder="https://link.lattes.da.comissão.com"
+						value={lattes}
+						onChange={(e) => setLattes(e.target.value)}
+						required
+						type="url"
+					/>
 
-								<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
-									<input
-										className="w-full rounded-md border-0 bg-white text-sm outline-none"
-										type="text"
-										name="fullName"
-										id="fullName"
-										placeholder="Nome do Convidado"
-										required
-									/>
-								</div>
-							</div>
-							<div className="mb-5 flex flex-col">
-								<label
-									className="mb-2 text-sm font-medium"
-									htmlFor="instituicao"
-								>
-									Instituição Referente
-								</label>
-
-								<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
-									<input
-										className="w-full rounded-md border-0 bg-white text-sm outline-none"
-										type="text"
-										name="instituicao"
-										id="instituicao"
-										placeholder="Instituição do Usuário"
-										value={instituicao}
-										onChange={(e) => setInst(e.target.value)}
-										required
-									/>
-								</div>
-							</div>
-							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="email">
-									Email
-								</label>
-
-								<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
-									<input
-										className="w-full rounded-md border-0 bg-white text-sm outline-none"
-										type="email"
-										name="email"
-										id="email"
-										placeholder="emailconvidado@email.com"
-										required
-									/>
-								</div>
-							</div>
-
-						</div>
-						<div className="w-full">
-							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="password">
-									Senha
-								</label>
-								<div className="flex items-center justify-between rounded-md border border-gray-300 bg-white px-4 py-2.5">
-									<input
-										className="w-11/12 rounded-md border-0 bg-white text-sm outline-none"
-										type={passwordVisible ? 'text' : 'password'}
-										value={password}
-										onChange={(e) => setPassword(e.target.value)}
-										name="password"
-										id="password"
-										placeholder="Senha do Convidado"
-										required
-									/>
-									{passwordVisible ? (
-										<FiEye
-											className="h-4 w-4 text-black"
-											onClick={handleTogglePasswordVisibility}
-										/>
-									) : (
-										<FiEyeOff
-											className="h-4 w-4 text-black"
-											onClick={handleTogglePasswordVisibility}
-										/>
-									)}
-								</div>
-							</div>
-							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="password">
-									Confirmar Senha
-								</label>
-								<div className="flex items-center justify-between rounded-md border border-gray-300 bg-white px-4 py-2.5">
-									<input
-										className="w-11/12 rounded-md border-0 bg-white text-sm outline-none"
-										type={confirmpasswordVisible ? 'text' : 'password'}
-										value={confirmpassword}
-										onChange={(e) => setConfirmpassword(e.target.value)}
-										name="password"
-										id="password"
-										placeholder="Senha do Convidado"
-										required
-									/>
-									{confirmpasswordVisible ? (
-										<FiEye
-											className="h-4 w-4 text-black"
-											onClick={handleToggleConfirmPasswordVisibility}
-										/>
-									) : (
-										<FiEyeOff
-											className="h-4 w-4 text-black"
-											onClick={handleToggleConfirmPasswordVisibility}
-										/>
-									)}
-								</div>
-							</div>
-
-							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="link">
-									Link Lattes
-								</label>
-
-								<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
-									<input
-										className="w-full rounded-md border-0 bg-white text-sm outline-none"
-										type="url"
-										name="link"
-										id="link"
-										placeholder="link Lattes da Comissão"
-										value={lattes}
-										onChange={(e) => setLattes(e.target.value)}
-										required
-									/>
-								</div>
-							</div>
-
-						</div>
-					</div>
-					<div className="mb-6">
+					<div className="mb-5 flex w-[45%] flex-col">
 						<p className="text-center text-xs font-normal text-slate-400">
 							Já tem uma conta？
 							<a
@@ -181,21 +89,17 @@ export default function CadastroEditorChefe() {
 							</a>
 						</p>
 					</div>
-					<div className="flex items-center justify-center gap-5">
-						<button
-							className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
+					<div className="flex w-full items-center justify-center gap-5">
+						<DefaultButton
+							label="Voltar"
+							backgroundColorHex="#8A8A8A"
 							type="submit"
-							style={{ backgroundColor: '#8A8A8A' }}
-						>
-							Voltar
-						</button>
-						<button
-							className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
-							style={{ backgroundColor: '#4B00E0' }}
+						/>
+						<DefaultButton
+							label="Cadastrar"
+							backgroundColorHex="#4B00E0"
 							type="submit"
-						>
-							Cadastrar
-						</button>
+						/>
 					</div>
 				</form>
 			</div>

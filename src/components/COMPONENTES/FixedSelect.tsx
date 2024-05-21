@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import Select, { ActionMeta, OnChangeValue, StylesConfig } from 'react-select';
 
 export type FixedOptionsType = {
@@ -30,7 +31,7 @@ const styles: StylesConfig<FixedOptionsType, true> = {
 	}),
 };
 
-const colourOptions : FixedOptionsType[] = [
+const colourOptions: FixedOptionsType[] = [
 	{
 		label: 'caixa',
 		value: 0,
@@ -66,10 +67,12 @@ const orderOptions = (values: readonly FixedOptionsType[]) => {
 
 type FixedSelectType = {
 	isDisabled: boolean;
-	options: FixedOptionsType[]
+	options: FixedOptionsType[];
+	label: string;
+	id: string;
 };
 
-export default function FixedSelect({ isDisabled, options }: FixedSelectType) {
+export default function FixedSelect({ isDisabled, options, id, label }: FixedSelectType) {
 	const [value, setValue] = useState<readonly FixedOptionsType[]>(
 		orderOptions(options)
 	);
@@ -94,17 +97,25 @@ export default function FixedSelect({ isDisabled, options }: FixedSelectType) {
 	};
 
 	return (
-		<Select
-			value={value}
-			isMulti
-			styles={styles}
-			isClearable={value.some((v) => !v.isFixed)}
-			name="colors"
-			className="basic-multi-select"
-			classNamePrefix="select"
-			onChange={onChange}
-			options={options}
-			isDisabled={isDisabled}
-		/>
+		<div className="mb-5 flex w-[45%] flex-col">
+			<label className="mb-2 text-sm font-medium" htmlFor="areas">
+				{label}
+			</label>
+			<div className="w-full">
+				<Select
+					id={id}
+					name={id}
+					value={value}
+					isMulti
+					styles={styles}
+					isClearable={value.some((v) => !v.isFixed)}
+					className="basic-multi-select"
+					classNamePrefix="select"
+					onChange={onChange}
+					options={options}
+					isDisabled={isDisabled}
+				/>
+			</div>
+		</div>
 	);
 }

@@ -5,12 +5,20 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
+import { FaRegUser } from 'react-icons/fa';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { GoHome, GoSearch } from 'react-icons/go';
+
+import logo from '@/imgs/logo.svg';
+
+import { navigationAuthenticatedRoutes } from '../routes';
 import * as S from './styles';
 
 export default function NavbarAuthenticated() {
 	const router = useRouter();
 	const [currentOption, setCurrentOption] = useState('/evento/criar-evento');
 	const [query, setQuery] = useState('');
+	const [openMenu, setOpenMenu] = useState(false);
 
 	useEffect(() => {
 		const currentRoute = window.location.pathname;
@@ -23,96 +31,58 @@ export default function NavbarAuthenticated() {
 	};
 
 	return (
-		<div className="fixed left-0 right-0 top-0 z-50 bg-[#F4F4F4] px-16 py-5 shadow-md">
+		<div className="fixed left-0 right-0 top-0 z-50 bg-[#F4F4F4] px-16 py-6 text-2xl shadow-md">
 			<div className="flex items-center justify-between">
-				<Image
-					src="/assets/navbar/logo-engetec.svg"
-					alt="logo engetec"
-					width={180}
-					height={180}
-				/>
-				<div className="flex items-center gap-4">
-					<S.OptionMenu
-						onClick={() => handleOptionClick('/')}
-						className="cursor-pointer text-base"
-						selected={currentOption === '/'}
+				<div className="flex gap-5">
+					<GiHamburgerMenu
+						className="cursor-pointer"
+						onClick={() => setOpenMenu(!openMenu)}
+					/>
+					<GoHome className="cursor-pointer" />
+					<GoSearch className="cursor-pointer" />
+				</div>
+				<a href="/">
+					<Image
+						src={logo}
+						alt="Logo Engetec"
+						height={50}
+						className="cursor-pointer"
+					/>
+				</a>
+				<FaRegUser className="cursor-pointer" />
+			</div>
+			<div
+				className={`
+            absolute top-0 
+			transition-all duration-500 ease-in-out
+            ${openMenu ? 'fixed left-0' : 'left-[-100vw]'}
+            bg-opacity-0s flex h-[100vh] w-[100vw]
+            flex-col items-center justify-start gap-5 overflow-auto bg-[#fcfcfc00]`}
+				onClick={() => setOpenMenu(!openMenu)}
+			>
+				<div
+					className="absolute left-0 flex h-full w-[25%] flex-col items-center justify-start gap-5 overflow-auto bg-[#fcfcfc] bg-opacity-100 shadow-2xl pb-10"
+					onClick={(e) => e.stopPropagation()}
+				>
+					<div
+						className="relative left-[40%] cursor-pointer py-3"
+						onClick={(e) => setOpenMenu(!openMenu)}
 					>
-						Página Inicial
-					</S.OptionMenu>
-					<S.OptionMenu
-						onClick={() => handleOptionClick('/dashboard/evento/meus-eventos')}
-						className="cursor-pointer text-base"
-						selected={currentOption === '/dashboard/evento/meus-eventos'}
-					>
-						Menu do Evento
-					</S.OptionMenu>
-					<S.OptionMenu
-						onClick={() => handleOptionClick('/evento/eventos-criados')}
-						className="cursor-pointer text-base"
-						selected={currentOption === '/evento/eventos-criados'}
-					>
-						Meus Eventos
-					</S.OptionMenu>
-					<S.OptionMenu
-						onClick={() => handleOptionClick('/dashboard/evento/criar-evento')}
-						className="cursor-pointer text-base"
-						selected={currentOption === '/dashboard/evento/criar-evento'}
-					>
-						Criar Evento
-					</S.OptionMenu>
-					<S.OptionMenu
-						onClick={() => handleOptionClick('/dashboard/artigos/menu-artigos')}
-						className="cursor-pointer text-base"
-						selected={currentOption === '/dashboard/artigos/menu-artigos'}
-					>
-						Menu de Submissão
-					</S.OptionMenu>
-					<S.OptionMenu
-						onClick={() => handleOptionClick('/dashboard/artigos')}
-						className="cursor-pointer text-base"
-						selected={currentOption === '/dashboard/artigos'}
-					>
-						Artigos
-					</S.OptionMenu>
-					<S.OptionMenu
-						onClick={() =>
-							handleOptionClick('/dashboard/artigos/editar-artigo')
-						}
-						className="cursor-pointer text-base"
-						selected={currentOption === '/dashboard/artigos/editar-artigo'}
-					>
-						Editar Artigo
-					</S.OptionMenu>
-					<S.OptionMenu
-						onClick={() =>
-							handleOptionClick('/dashboard/editar/editar-comissao')
-						}
-						className="cursor-pointer text-base"
-						selected={currentOption === '/dashboard/editar/editar-comissao'}
-					>
-						Editar Comissao
-					</S.OptionMenu>
-					<S.OptionMenu
-						onClick={() => handleOptionClick('/dashboard/editar/editar-sessao')}
-						className="cursor-pointer text-base"
-						selected={currentOption === '/dashboard/editar/editar-sessao'}
-					>
-						Editar Sessao
-					</S.OptionMenu>
-					<S.OptionMenu
-						onClick={() => handleOptionClick('/dashboard/certificados')}
-						className="cursor-pointer text-base"
-						selected={currentOption === '/dashboard/certificados'}
-					>
-						Certificados
-					</S.OptionMenu>
-					<S.OptionMenu
-						onClick={() => handleOptionClick('/suporte')}
-						className="cursor-pointer text-base"
-						selected={currentOption === '/suporte'}
-					>
-						Suporte
-					</S.OptionMenu>
+						X
+					</div>
+					{navigationAuthenticatedRoutes.map((item, i) => (
+						<S.OptionMenu
+							key={i}
+							onClick={() => {
+								handleOptionClick(item.link);
+								setOpenMenu(false);
+							}}
+							className="cursor-pointer text-base"
+							selected={currentOption === item.link}
+						>
+							{item.title}
+						</S.OptionMenu>
+					))}
 				</div>
 			</div>
 		</div>

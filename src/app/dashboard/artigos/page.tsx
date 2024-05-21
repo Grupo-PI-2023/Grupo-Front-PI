@@ -9,7 +9,6 @@ export default async function Artigos() {
 	return (
 		<div className=''>
 			<Navbar />
-				<Menu />
 				<Layout />
 			<Footer />
 		</div>

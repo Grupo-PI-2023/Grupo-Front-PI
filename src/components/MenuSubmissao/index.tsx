@@ -14,7 +14,7 @@ import { MdDateRange } from 'react-icons/md';
 import { PiFiles } from 'react-icons/pi';
 import { TfiTimer } from 'react-icons/tfi';
 
-export default function Menu() {
+export default function MenuSubmissao() {
 	const router = useRouter();
 
 	return (
@@ -44,7 +44,7 @@ export default function Menu() {
 						<div
 							className="flex gap-4 rounded-xl p-5"
 							style={{ border: '1px solid #ef0037', cursor: 'pointer' }}
-							onClick={() => router.push('/dashboard/editar/editar-evento')}
+							onClick={() => router.push('/dashboard/evento/editar-evento')}
 						>
 							<AiOutlineStar className="h-8 w-8" style={{ color: '#ef0037' }} />
 							<div className="flex flex-col gap-0.5">
