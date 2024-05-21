@@ -17,7 +17,7 @@ const Tabfiles: React.FC<TabfilesProps> = ({ currentOption, handleOptionClick })
     return (
         <div className=''>
             <div className="fixed left-0 right-0 top-24 z-40 px-28 pb-5 pt-2 flex justify-center align-center">
-                <div className="flex flex-wrap items-center justify-center gap-5 w-1/4 shadow-xl p-4 bg-[#F4F4F4]">
+                <div className="flex flex-wrap items-center justify-center gap-5 w-2/6 shadow-xl p-4 bg-[#F4F4F4]">
                     {tabs.map((tab) => (
                         <div key={tab.id} className="flex items-center gap-2">
                             {tab.id === 'dentro-do-prazo' && <S.IconEvent selected={currentOption === tab.id} />}

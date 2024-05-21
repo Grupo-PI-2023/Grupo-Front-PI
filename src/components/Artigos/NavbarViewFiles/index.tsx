@@ -9,7 +9,6 @@ import VisualizarSala from '@/components/TabBarFormsAuthenticated/Forms-Salas';
 import Sessao from '@/components/TabBarFormsAuthenticated/Forms-Sessao';
 import CadastrarUsuario from '@/components/TabBarFormsAuthenticated/Forms-UsuComissaoLink';
 import Menu from '@/components/COMPONENTES/Menu';
-import Arquivos from '@/components/Forms-Arquivos';
 
 import * as S from './styles';
 import ArtigosConcluidos from '../ArtigosNoPrazo';
@@ -27,7 +26,6 @@ export default function Tabfiles({
 		switch (currentOption) {
 			case 'dentro-do-prazo':
 				return (
-					<CriarEvento />
 					<ArtigosConcluidos
 					/>
 				);
