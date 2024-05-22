@@ -5,9 +5,9 @@ import { useState } from 'react';
 
 import Image from 'next/image';
 
-import { CiFilter } from 'react-icons/ci';
 import { GoXCircle } from 'react-icons/go';
 import { IoCheckmarkCircleOutline } from 'react-icons/io5';
+import { CiFilter } from 'react-icons/ci';
 import { IoSearchOutline } from 'react-icons/io5';
 import { PiEyeBold } from 'react-icons/pi';
 
@@ -15,7 +15,7 @@ import database from './events.json';
 
 export default function ArtigosParaAvaliarPrincipais() {
 	return (
-		<div className="container mb-6 mt-52 flex justify-center">
+		<div className="container mb-6 mt-40 flex justify-center">
 			<div className="flex w-4/5 flex-col items-center">
 				<h1
 					className="text-center text-2xl font-bold text-black"
@@ -161,7 +161,7 @@ export default function ArtigosParaAvaliarPrincipais() {
 											>
 												<div className="flex w-11/12 cursor-pointer flex-col gap-2 rounded-lg border border-[#EF0037] p-5 shadow-lg">
 													<div className='flex justify-between'>
-													<p className="text-lg text-[#EF0037]">
+													<p className="text-lg text-[#EF0037] w-10/12">
 														{files.file_title}
 													</p>
 													<div className='rounded-md border-2 border-[#595959] flex p-1 gap-1 flex-nowrap justify-center items-center'>
