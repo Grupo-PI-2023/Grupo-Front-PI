@@ -46,7 +46,7 @@ export default function NavbarAuthenticated() {
 						src={logo}
 						alt="Logo Engetec"
 						height={50}
-						className="cursor-pointer"
+						className="cursor-pointer mr-16"
 					/>
 				</a>
 				<FaRegUser className="cursor-pointer" />
