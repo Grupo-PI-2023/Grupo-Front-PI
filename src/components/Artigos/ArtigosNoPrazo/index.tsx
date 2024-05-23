@@ -6,6 +6,9 @@ import filter from './filter.png';
 import search from './search.png';
 import { useState } from 'react';
 
+import { CiFilter } from 'react-icons/ci';
+import { IoSearchOutline } from 'react-icons/io5';
+
 export default function ArtigosConcluidos() {
 	return (
 		<div className="container mb-6 mt-52 flex justify-center">
@@ -22,11 +25,11 @@ export default function ArtigosConcluidos() {
                 <div className="flex flex-col gap-2 items-end w-8/12 absolute">
 					<div className="flex cursor-pointer gap-3">
 						<p className="text-lg font-medium">Buscar</p>
-						<Image src={search} alt="" height={20} />
+						<IoSearchOutline size={30} />
 					</div>
 					<div className="flex cursor-pointer gap-5">
 						<p className="text-lg font-medium">Filtrar</p>
-						<Image src={filter} alt="" height={20} />
+						<CiFilter size={30} />
 					</div>
 				</div>
 
