@@ -22,7 +22,7 @@ export default function EditarArtigo() {
 	const [subAreas, setSubAreas] = useState('');
 
 	return (
-		<div className="container mt-40 flex justify-center">
+		<div className="container">
 			<div className="w-3/5">
 				<h1
 					className="text-center text-2xl font-bold text-black"

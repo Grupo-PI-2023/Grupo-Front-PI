@@ -9,12 +9,12 @@ import { BsPaperclip } from 'react-icons/bs';
 import { FaTimes } from 'react-icons/fa';
 import { FiUpload } from 'react-icons/fi';
 
+import EditLogo from '@/imgs/editLogo.png';
+import RemoveLogo from '@/imgs/trashLogo.png';
 import { Arquivo } from '@/lib/repository/arquivo/index.repository';
+import { ArquivoConfig } from '@/lib/repository/arquivo/index.repositoryFiles';
 
 import AlertCard from '../COMPONENTES/AlertCard';
-import EditLogo from './editLogo.png';
-import RemoveLogo from './trashLogo.png';
-import { ArquivoConfig } from '@/lib/repository/arquivo/index.repositoryFiles';
 
 type CriarEventoProps = {
 	handleNextClick: () => void;
@@ -147,14 +147,14 @@ export default function Arquivos({ handleNextClick }: CriarEventoProps) {
 
 		if (eventId) {
 			let ArquivoCreated: Arquivo[] = [];
-			let FileConfig: ArquivoConfig[] = []
+			let FileConfig: ArquivoConfig[] = [];
 			try {
 				arquivos.forEach(async (arquivo) => {
 					const arquivoObjt: Arquivo = {
 						category: arquivo.category,
 						normasPub: arquivo.normasPub,
 						needAvaliation: arquivo.needAvaliation,
-						needApresentation: arquivo.needApresentation
+						needApresentation: arquivo.needApresentation,
 					};
 					const result = await axios.post(
 						'http://localhost:5002/arquivos',
@@ -183,31 +183,31 @@ export default function Arquivos({ handleNextClick }: CriarEventoProps) {
 						dataFimAvaliacao: config.dataFimAvaliacao,
 						limiteArquivosPorAutor: config.limiteArquivosPorAutor,
 						modeloApresentacao: config.modeloApresentacao,
-						modeloArquivo: config.modeloArquivo
-					}
+						modeloArquivo: config.modeloArquivo,
+					};
 					const resultado = await axios.post(
 						'http://localhost:5002/arquivos',
 						arquivoConfigObj
-					)
-					console.log(resultado)
-					if(resultado.data.config){
-						FileConfig.push(resultado.data.config)
+					);
+					console.log(resultado);
+					if (resultado.data.config) {
+						FileConfig.push(resultado.data.config);
 						setShowCard(true);
 						setTimeout(() => {
 							setShowCard(false);
 							handleNextButtonClick();
 						}, 3000);
-						setDataInicioSubmissao('')
-						setDataFinalAvaliacao('')
-						setLimiteAutores('')
-						setLimiteAvaliadores('')
-						setDataInicioAvaliacao('')
-						setDataFinalAvaliacao('')
-						setLimiteArquivos('')
-						setFile(null)
-						setFileApresent(null)
+						setDataInicioSubmissao('');
+						setDataFinalAvaliacao('');
+						setLimiteAutores('');
+						setLimiteAvaliadores('');
+						setDataInicioAvaliacao('');
+						setDataFinalAvaliacao('');
+						setLimiteArquivos('');
+						setFile(null);
+						setFileApresent(null);
 					}
-				})
+				});
 			} catch (error) {
 				console.log(error);
 			}
@@ -241,7 +241,7 @@ export default function Arquivos({ handleNextClick }: CriarEventoProps) {
 	};
 
 	return (
-		<div className="container mb-6 mt-52">
+		<div className="container">
 			<div className="w-full">
 				<h1
 					className="text-center text-2xl font-bold text-black"

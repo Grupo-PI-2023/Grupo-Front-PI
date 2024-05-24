@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { toNumber } from 'lodash';
 import { CiClock2, CiFilter, CiSearch } from 'react-icons/ci';
-import { FaEye } from "react-icons/fa";
+import { FaEye } from 'react-icons/fa';
 
 import { Sessao } from '@/lib/repository/sessao/index.repository';
 import { sessaoMocks } from '@/mocks/SessaoEditar';
@@ -49,7 +49,7 @@ export default function EditarSessao() {
 	};
 
 	return (
-		<div className="container mb-6 mt-52 flex flex-col items-center justify-center">
+		<div className="container flex-col items-center">
 			<div className="w-1/2">
 				<h1
 					className="text-center text-2xl font-bold text-black"
@@ -106,9 +106,9 @@ export default function EditarSessao() {
 				</tbody>
 			</table>
 
-			<div className="mt-12 w-1/2 flex flex-col items-center gap-4">
+			<div className="mt-12 flex w-1/2 flex-col items-center gap-4">
 				<h2 className="text-center">Chair:</h2>
-				<select name="" id="" className="w-2/3 p-3 rounded-lg">
+				<select name="" id="" className="w-2/3 rounded-lg p-3">
 					<option value="eunaoaguentomais">é um select</option>
 				</select>
 			</div>
@@ -169,12 +169,14 @@ export default function EditarSessao() {
 								<td>{item.funcao}</td>
 								<td>{item.nome}</td>
 								<td>{item.email}</td>
-								<td className="flex gap-5 h-full w-max rounded-md 
-								px-5 mt-2
-								">
-									<button className="rounded-xl border-2 border-solid  border-stone-500 bg-transparent p-2 text-center text-sm text-black flex gap-5 items-center">
+								<td
+									className="mt-2 flex h-full w-max gap-5 
+								rounded-md px-5
+								"
+								>
+									<button className="flex items-center gap-5  rounded-xl border-2 border-solid border-stone-500 bg-transparent p-2 text-center text-sm text-black">
 										Ver mais
-										<FaEye/>
+										<FaEye />
 									</button>
 									<button className="rounded-xl border-2 border-solid  border-red-500 bg-transparent p-2 text-center text-sm text-black">
 										Mudar Função

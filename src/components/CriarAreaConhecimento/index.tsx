@@ -3,16 +3,17 @@
 import { useState } from 'react';
 
 import Image from 'next/image';
-import RemoveLogo from "./remove-x.png"
 
-
+import RemoveLogo from '@/imgs/remove-x.png';
 import { Knowledge } from '@/lib/repository/knowledge-area/index.repository';
 
 type CriarEventoProps = {
 	handleOptionClick: (option: string) => void;
 };
 
-export default function CriarAreaConhecimento({ handleOptionClick }: CriarEventoProps) {
+export default function CriarAreaConhecimento({
+	handleOptionClick,
+}: CriarEventoProps) {
 	const [name, setName] = useState('');
 	const [descricao, setDescricao] = useState('');
 	const [bigArea, setBigArea] = useState('');
@@ -24,7 +25,7 @@ export default function CriarAreaConhecimento({ handleOptionClick }: CriarEvento
 			{
 				activityName: name,
 				activityDescription: descricao,
-				bigArea: bigArea
+				bigArea: bigArea,
 			},
 		]);
 		setDescricao('');
@@ -34,48 +35,50 @@ export default function CriarAreaConhecimento({ handleOptionClick }: CriarEvento
 
 	const itemToRemove = (i: any) => {
 		setKnowledge((prevKnowledge: any) => {
-		  const updatedArray = [...prevKnowledge];
-		  updatedArray.splice(i, 1); 
-		  return updatedArray;
+			const updatedArray = [...prevKnowledge];
+			updatedArray.splice(i, 1);
+			return updatedArray;
 		});
-	  };
+	};
 
 	return (
-		<div className="container mb-6 mt-40 flex justify-center">
+		<div className="container">
 			<div className="w-8/12">
 				<h1
 					className="text-center text-2xl font-bold text-black"
 					style={{ color: '#ef0037' }}
 				>
-					Criar Áreas de Conhecimento 
+					Criar Áreas de Conhecimento
 				</h1>
 				<h2 className="text-center" style={{ color: '#000000' }}>
-                Crie as áreas de conhecimento de cada grande área
-                				</h2>
-								<form className="mt-8 w-full" onSubmit={handleAddOnTable}>
-					<div className="flex justify-center gap-5 flex-col">
-						<div className="w-full flex flex-row place-content-between">
-
-						<div className="mb-5 flex flex-col w-5/12 rounded-md">
-								<label className="mb-2 text-sm font-medium" htmlFor="grandeArea">
+					Crie as áreas de conhecimento de cada grande área
+				</h2>
+				<form className="mt-8 w-full" onSubmit={handleAddOnTable}>
+					<div className="flex flex-col justify-center gap-5">
+						<div className="flex w-full flex-row place-content-between">
+							<div className="mb-5 flex w-5/12 flex-col rounded-md">
+								<label
+									className="mb-2 text-sm font-medium"
+									htmlFor="grandeArea"
+								>
 									Grande Área
 								</label>
 
 								<div className="rounded-xl border border-gray-300 bg-white px-4 py-2">
 									<select
-											className="w-full rounded-md border-0 bg-white text-sm outline-none"
-											name="bigArea"
-											id="bigArea"
-											value={bigArea}
-											onChange={(e) => setBigArea(e.target.value)}
-											required
-										>
-											<option value="Option">Option</option>
-										</select>
+										className="w-full rounded-md border-0 bg-white text-sm outline-none"
+										name="bigArea"
+										id="bigArea"
+										value={bigArea}
+										onChange={(e) => setBigArea(e.target.value)}
+										required
+									>
+										<option value="Option">Option</option>
+									</select>
 								</div>
 							</div>
 
-							<div className="mb-5 flex flex-col w-5/12 rounded-md">
+							<div className="mb-5 flex w-5/12 flex-col rounded-md">
 								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
 									Nome
 								</label>
@@ -95,8 +98,8 @@ export default function CriarAreaConhecimento({ handleOptionClick }: CriarEvento
 							</div>
 						</div>
 
-						<div className="w-full flex flex-row place-content-between">
-							<div className="mb-5 flex flex-col w-5/12">
+						<div className="flex w-full flex-row place-content-between">
+							<div className="mb-5 flex w-5/12 flex-col">
 								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
 									Descrição
 								</label>
@@ -113,34 +116,44 @@ export default function CriarAreaConhecimento({ handleOptionClick }: CriarEvento
 										required
 									/>
 								</div>
-						</div>
+							</div>
 
 							<button
-								className="w-5/12 h-12 mt-6 rounded-xl border-none p-2 text-center text-base font-medium text-white"
+								className="mt-6 h-12 w-5/12 rounded-xl border-none p-2 text-center text-base font-medium text-white"
 								style={{ backgroundColor: '#501EB4' }}
 								type="button"
 								onClick={handleAddOnTable}
 							>
 								Cadastrar
 							</button>
+						</div>
 					</div>
-
-					
-				</div>
 				</form>
 
-				<div className="flex items-left justify-left mt-44">
+				<div className="items-left justify-left mt-44 flex">
 					<table className="w-full table-auto">
 						<thead style={{ backgroundColor: '#DD4467' }}>
 							<tr className="h-14">
-                            <th scope="col" className="rounded-tl-lg"></th>
-								<th scope="col" style={{ color: '#FFFFFF' }} className="text-left">
+								<th scope="col" className="rounded-tl-lg"></th>
+								<th
+									scope="col"
+									style={{ color: '#FFFFFF' }}
+									className="text-left"
+								>
 									Nome
 								</th>
-								<th scope="col" style={{ color: '#FFFFFF' }} className="text-left">
+								<th
+									scope="col"
+									style={{ color: '#FFFFFF' }}
+									className="text-left"
+								>
 									Descrição
 								</th>
-								<th scope="col" style={{ color: '#FFFFFF' }} className="text-left rounded-tr-lg">
+								<th
+									scope="col"
+									style={{ color: '#FFFFFF' }}
+									className="rounded-tr-lg text-left"
+								>
 									Grande Área
 								</th>
 							</tr>
@@ -159,29 +172,40 @@ export default function CriarAreaConhecimento({ handleOptionClick }: CriarEvento
 														: '#fff',
 												}}
 											>
-                                                <td className="rounded-bl-lg">
-													<div className='flex flex-row gap-2 justify-center'>
-													<button className="middle items-center justify-center"
-													onClick={() => itemToRemove(index)}>
-														<Image src={RemoveLogo} alt="" height={20} />
-													</button>
+												<td className="rounded-bl-lg">
+													<div className="flex flex-row justify-center gap-2">
+														<button
+															className="middle items-center justify-center"
+															onClick={() => itemToRemove(index)}
+														>
+															<Image src={RemoveLogo} alt="" height={20} />
+														</button>
 													</div>
 												</td>
 												<td className="">
-                                                <label className="rounded-2xl border border-black mb-2 text-sm font-medium p-2" htmlFor="eventName">
-                                                {knowledge.activityName}
-								                 </label>  
-                                                </td>
+													<label
+														className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
+														htmlFor="eventName"
+													>
+														{knowledge.activityName}
+													</label>
+												</td>
 												<td className="">
-                                                <label className="rounded-2xl border border-black mb-2 text-sm font-medium p-2" htmlFor="eventName">
-                                                    {knowledge.activityDescription}
-								                 </label>
-                                                </td>
+													<label
+														className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
+														htmlFor="eventName"
+													>
+														{knowledge.activityDescription}
+													</label>
+												</td>
 												<td className="rounded-br-lg">
-                                                <label className="rounded-2xl border border-black mb-2 text-sm font-medium p-2" htmlFor="eventName">
-                                                    {knowledge.bigArea}
-								                 </label>
-                                                </td>
+													<label
+														className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
+														htmlFor="eventName"
+													>
+														{knowledge.bigArea}
+													</label>
+												</td>
 											</tr>
 										);
 									})}
@@ -190,7 +214,7 @@ export default function CriarAreaConhecimento({ handleOptionClick }: CriarEvento
 						</tbody>
 					</table>
 				</div>
-                <div className="mt-12 flex items-center justify-center gap-5">
+				<div className="mt-12 flex items-center justify-center gap-5">
 					<button
 						className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
 						style={{ backgroundColor: '#8A8A8A' }}
@@ -210,4 +234,3 @@ export default function CriarAreaConhecimento({ handleOptionClick }: CriarEvento
 		</div>
 	);
 }
-
