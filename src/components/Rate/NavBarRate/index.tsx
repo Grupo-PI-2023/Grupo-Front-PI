@@ -35,8 +35,8 @@ export default function NavBarRate({
 	return (
 		<div>
 			<div className="flex justify-center w-full">
-				<div className="flex flex-row justify-center items-center w-52 h-16 mt-24
-				gap-6 bg-[#F4F4F4] px-16 py-5 shadow-md z-30">
+				<div className="absolute flex flex-row justify-center items-center w-60 h-16 mt-24
+				gap-10 bg-[#F4F4F4] px-16 py-5 shadow-md z-30">
 					<div className="flex flex-row items-center">
 						<S.OptionMenu
 						onClick={() => handleOptionClick('rate')}
