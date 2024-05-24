@@ -9,7 +9,7 @@ export default function MenuSubmissao() {
 	const router = useRouter();
 
 	return (
-		<div className="container mt-40 flex justify-center">
+		<div className="container">
 			<div className="w-11/12">
 				<div className="flex justify-between gap-16">
 					<div className="flex w-1/2 gap-8">

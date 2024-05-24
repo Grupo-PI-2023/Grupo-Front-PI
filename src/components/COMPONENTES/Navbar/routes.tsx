@@ -1,6 +1,5 @@
 import { ReactElement } from 'react';
 
-
 type navItemType = {
 	link: string;
 	title: string;
@@ -51,7 +50,7 @@ export const navigationAuthenticatedRoutes: navItemType[] = [
 
 	{
 		link: '/dashboard/artigos/artigos-para-avaliar/todos-arquivos',
-		title: 'Todos artigos - Avaliação'
+		title: 'Todos artigos - Avaliação',
 	},
 
 	{
@@ -75,7 +74,6 @@ export const navigationAuthenticatedRoutes: navItemType[] = [
 		title: 'Visualizar Artigo',
 	},
 
-	
 	{
 		link: '/dashboard/editar/editar-comissao',
 		title: 'Editar Comissao',

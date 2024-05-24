@@ -6,10 +6,10 @@ import axios from 'axios';
 import { FaTimes } from 'react-icons/fa';
 import { FiUpload } from 'react-icons/fi';
 
+import AlertCard from '@/components/COMPONENTES/AlertCard';
 import { Area } from '@/lib/repository/area/index.repository';
 import { Comissao } from '@/lib/repository/comission/index.repository';
 import { Event } from '@/lib/repository/event/index.repository';
-import AlertCard from '@/components/COMPONENTES/AlertCard';
 
 export default function EditarEvento() {
 	const [nome, setNome] = useState('');
@@ -31,7 +31,6 @@ export default function EditarEvento() {
 	const [privado, setPrivado] = useState(false);
 	const [anais, setAnais] = useState(false);
 	const [certificados, setCertificados] = useState(false);
-
 
 	const checkboxEvento = ['Público', 'Privado'];
 	const [checkboxes, setCheckboxes] = useState(checkboxEvento.map(() => false));
@@ -139,28 +138,27 @@ export default function EditarEvento() {
 					setHorarioInicio(event.horarioInicio ?? horarioInicio);
 					setHorarioFinal(event.horarioFim ?? horarioFinal);
 					setComissaoId(event.comissaoId);
-					if(event.privado){
-						handleCheckboxChangeEvento(1)
-
-					}else{
-						handleCheckboxChangeEvento(0)
+					if (event.privado) {
+						handleCheckboxChangeEvento(1);
+					} else {
+						handleCheckboxChangeEvento(0);
 					}
 
-					if(event.anais){
-						handleCheckboxChangeGerar(0)
+					if (event.anais) {
+						handleCheckboxChangeGerar(0);
 					}
-					if(event.certificados){
-						handleCheckboxChangeGerar(1)
+					if (event.certificados) {
+						handleCheckboxChangeGerar(1);
 					}
 					// const checkboxPeriodo = ['Matutino', 'Vespertino', 'Noturno'];
-					if(event.periodo === checkboxPeriodo[0]){
-						handleCheckboxChangePeriodo(0)
+					if (event.periodo === checkboxPeriodo[0]) {
+						handleCheckboxChangePeriodo(0);
 					}
-					if(event.periodo === checkboxPeriodo[1]){
-						handleCheckboxChangePeriodo(1)
+					if (event.periodo === checkboxPeriodo[1]) {
+						handleCheckboxChangePeriodo(1);
 					}
-					if(event.periodo === checkboxPeriodo[2]){
-						handleCheckboxChangePeriodo(2)
+					if (event.periodo === checkboxPeriodo[2]) {
+						handleCheckboxChangePeriodo(2);
 					}
 					const areasComming: Area[] = resultAreas.data.areas;
 					// const areasValueLabel = areasComming.map((area) => {
@@ -169,7 +167,6 @@ export default function EditarEvento() {
 					// });
 					// console.log(areasValueLabel);
 					setAreas(areasComming.map((area) => area.nome));
-
 				}
 			} catch (error) {
 				console.log(error);
@@ -208,7 +205,7 @@ export default function EditarEvento() {
 					`http://localhost:5002/event/${eventID}`,
 					data
 				);
-				if(result.data.eventUpdated){
+				if (result.data.eventUpdated) {
 					console.log(result);
 					setShowCard(true);
 					setTimeout(() => {
@@ -222,7 +219,7 @@ export default function EditarEvento() {
 	};
 
 	return (
-		<div className="container mb-6 mt-52 flex justify-center">
+		<div className="container">
 			<div className="w-[60vw]">
 				<h1
 					className="text-center text-2xl font-bold text-black"
@@ -230,7 +227,7 @@ export default function EditarEvento() {
 				>
 					Edite seu evento!
 				</h1>
-				<AlertCard message='Evento atualizado com sucesso' show={showCard} />
+				<AlertCard message="Evento atualizado com sucesso" show={showCard} />
 				<form className="mt-8 w-full" onSubmit={handleSubmit}>
 					<div className="flex justify-center gap-5">
 						<div className="w-full">

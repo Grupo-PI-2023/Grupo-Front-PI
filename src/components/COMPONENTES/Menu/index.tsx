@@ -18,7 +18,7 @@ export default function Menu() {
 	const router = useRouter();
 
 	return (
-		<div className="container mb-6 mt-40 flex justify-center ">
+		<div className="container">
 			<div className="w-1/2 ">
 				<h1
 					className="text-center text-2xl font-bold text-black"
@@ -242,14 +242,14 @@ export default function Menu() {
 					</div>
 					<div className="mt-7 flex items-center justify-center gap-5">
 						<button
-							className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
+							className="w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
 							type="submit"
 							style={{ backgroundColor: '#BF0000' }}
 						>
 							Excluir Evento
 						</button>
 						<button
-							className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
+							className="w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
 							style={{ backgroundColor: '#FA023E' }}
 							type="submit"
 						>
