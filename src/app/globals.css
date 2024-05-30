@@ -25,4 +25,10 @@
 		display: flex;
 		justify-content: center;
 	}
+	.container-submenu {
+		margin-bottom: 1.5rem;
+		margin-top: 12rem;
+		display: flex;
+		justify-content: center;
+	}
 }

@@ -5,15 +5,22 @@ import useClipboard from '@/hooks/useClipboard';
 interface CustomClipInputProps
 	extends React.InputHTMLAttributes<HTMLInputElement> {
 	label: string;
+	customWidth?: string;
 }
 
 const ClipInput: React.FC<CustomClipInputProps> = ({
 	label,
+	customWidth,
 	...inputProps
 }) => {
 	const { copyToClipboard, renderClipCard } = useClipboard();
 	return (
-		<div className="mb-5 flex w-[45%] flex-col">
+		<div
+			className="mb-5 flex w-[45%] flex-col"
+			style={{
+				width: customWidth,
+			}}
+		>
 			{renderClipCard()}
 			<label className="mb-2 text-sm font-medium" htmlFor="link">
 				{label}

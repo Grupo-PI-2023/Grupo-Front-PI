@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 import Footer from '@/components/COMPONENTES/Footer';
-import NavbarAuthenticated from '@/components/COMPONENTES/Navbar/NavbarAuthenticated';
+import NavbarAuthenticated from '@/components/COMPONENTES/NavbarAuthenticated';
 import EditarEvento from '@/components/EditarEvento';
 
 export default function Evento() {
@@ -16,9 +16,8 @@ export default function Evento() {
 		<div>
 			<NavbarAuthenticated />
 
-                <EditarEvento
-                />
-            
+			<EditarEvento />
+
 			<Footer />
 		</div>
 	);

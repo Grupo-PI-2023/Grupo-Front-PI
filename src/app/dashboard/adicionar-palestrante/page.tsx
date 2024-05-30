@@ -3,13 +3,13 @@
 import { FaRegUser } from 'react-icons/fa';
 
 import CheckInput from '@/components/COMPONENTES/CheckInput';
+import DefaultButton from '@/components/COMPONENTES/DefaultButton';
 import Footer from '@/components/COMPONENTES/Footer';
-import Navbar from '@/components/COMPONENTES/Navbar/NavbarAuthenticated';
+import Navbar from '@/components/COMPONENTES/NavbarAuthenticated';
 import NormalInput from '@/components/COMPONENTES/NormalInput';
 import SelectCom from '@/components/COMPONENTES/Select';
 import Title from '@/components/COMPONENTES/Title';
 import alunos from '@/mocks/Aluno';
-import DefaultButton from '@/components/COMPONENTES/DefaultButton';
 
 export default function AdicionarPalestrantePage() {
 	const checkboxPeriodo = ['Matutino', 'Vespertino', 'Noturno'];
@@ -90,7 +90,6 @@ export default function AdicionarPalestrantePage() {
 						<DefaultButton label="Voltar" backgroundColorHex="#8A8A8A" />
 						<DefaultButton label="Finalizar" backgroundColorHex="#4B00E0" />
 					</div>
-
 				</form>
 			</div>
 			<Footer />

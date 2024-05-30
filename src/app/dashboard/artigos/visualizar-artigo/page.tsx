@@ -1,17 +1,18 @@
-'use client'
-import Tabfiles from '@/components/Artigos/NavbarViewFiles';
-import Footer from '@/components/COMPONENTES/Footer';
-import Navbar from '@/components/COMPONENTES/Navbar/NavbarAuthenticated';
+'use client';
+
 import { useState } from 'react';
 import React from 'react';
 
-export default function VisualizarArtigoPage() {
+import Tabfiles from '@/components/Artigos/NavbarViewFiles';
+import Footer from '@/components/COMPONENTES/Footer';
+import Navbar from '@/components/COMPONENTES/NavbarAuthenticated';
 
-		const [currentOption, setCurrentOption] = useState('dentro-do-prazo')
-	
-		const handleOptionClick = (option: string) => {
-			setCurrentOption(option);
-		};
+export default function VisualizarArtigoPage() {
+	const [currentOption, setCurrentOption] = useState('dentro-do-prazo');
+
+	const handleOptionClick = (option: string) => {
+		setCurrentOption(option);
+	};
 
 	return (
 		<div>

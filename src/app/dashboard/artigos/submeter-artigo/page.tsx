@@ -5,14 +5,14 @@ import React, { ReactElement, useState } from 'react';
 import { FaRegUser } from 'react-icons/fa';
 import Select from 'react-select';
 
+import DefaultButton from '@/components/COMPONENTES/DefaultButton';
 import FileInput from '@/components/COMPONENTES/FileInput';
 import Footer from '@/components/COMPONENTES/Footer';
-import Navbar from '@/components/COMPONENTES/Navbar/NavbarAuthenticated';
+import Navbar from '@/components/COMPONENTES/NavbarAuthenticated';
 import NormalInput from '@/components/COMPONENTES/NormalInput';
 import SelectCom from '@/components/COMPONENTES/Select';
 import TextAreaInput from '@/components/COMPONENTES/TextAreaInput';
 import Title from '@/components/COMPONENTES/Title';
-import DefaultButton from '@/components/COMPONENTES/DefaultButton';
 import grandeAreasMock from '@/mocks/Areas';
 
 export default function SubmeterArquivoPage() {
@@ -170,8 +170,8 @@ export default function SubmeterArquivoPage() {
 
 						{/* submit button  */}
 						<div className="flex w-full items-center justify-center gap-5">
-							<DefaultButton label='Voltar' backgroundColorHex='#8A8A8A'/>
-							<DefaultButton label='Enviar' backgroundColorHex='#4B00E0'/>
+							<DefaultButton label="Voltar" backgroundColorHex="#8A8A8A" />
+							<DefaultButton label="Enviar" backgroundColorHex="#4B00E0" />
 						</div>
 					</form>
 				</div>
