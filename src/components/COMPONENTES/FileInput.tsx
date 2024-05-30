@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
+
 import { FaTimes } from 'react-icons/fa';
-import { FiUpload, FiPaperclip } from 'react-icons/fi';
+import { FiPaperclip, FiUpload } from 'react-icons/fi';
 
 type FileInputType = {
-    label: string,
-    id: string,
-    disabled?: boolean,
-}
+	label: string;
+	id: string;
+	disabled?: boolean;
+};
 
-const FileInput = ({
-    disabled,
-    id,
-    label,
-}:FileInputType) => {
+const FileInput = ({ disabled, id, label }: FileInputType) => {
 	const [file, setFile] = useState<File | null>(null);
 	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const selectedFile = e.target.files && e.target.files[0];
@@ -46,10 +43,10 @@ const FileInput = ({
 					style={{ display: 'none' }}
 					onChange={(e) => handleFileChange(e)}
 					required
-                    disabled={disabled}
+					disabled={disabled}
 				/>
 				{file && (
-					<div className="flex items-center gap-3 h-full w-full rounded-md bg-[#00B7FF] px-4 py-2">
+					<div className="flex h-full w-full items-center gap-3 rounded-md bg-[#00B7FF] px-4 py-2">
 						<FiPaperclip />
 						<span className="flex-1 text-center">{file ? file.name : ''}</span>
 						<button className="cursor-pointer" onClick={handleFileDelete}>

@@ -130,7 +130,7 @@ export default function CadastrarUsuario({
 			</div>
 
 			<div className="mt-4 flex w-3/4 justify-between">
-				<div className="flex items-start items-center justify-center gap-3 rounded-lg border-none p-3 shadow-xl">
+				<div className="flex items-center justify-center gap-3 rounded-lg border-none p-3 shadow-xl">
 					<div>
 						{pendentes ? (
 							<button className="flex flex-row items-center ">

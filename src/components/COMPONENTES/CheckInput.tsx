@@ -3,13 +3,13 @@ import React, { useState } from 'react';
 type CheckInputType = {
 	label: string;
 	key?: number | string;
-    id: string,
-    disabled: boolean,
-	selected: boolean,
+	id: string;
+	disabled: boolean;
+	selected: boolean;
 };
 
-const CheckInput = ({ label, key, disabled, id, selected}: CheckInputType) => {
-	const [checked, setChecked] = useState<boolean>(selected)
+const CheckInput = ({ label, key, disabled, id, selected }: CheckInputType) => {
+	const [checked, setChecked] = useState<boolean>(selected);
 	return (
 		<div key={key}>
 			<div className="flex items-center">

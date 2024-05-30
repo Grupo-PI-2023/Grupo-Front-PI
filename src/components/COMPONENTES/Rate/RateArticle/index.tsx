@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 
-import TextAreaInput from '@/components/COMPONENTES/TextAreaInput';
 import Title from '@/components/COMPONENTES/Title';
 
 type RateArticleProps = {

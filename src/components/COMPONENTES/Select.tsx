@@ -4,7 +4,7 @@ export type OptionsType = {
 };
 
 export type SimpleSelectType = {
-    label: string;
+	label: string;
 	value: string | undefined;
 };
 
@@ -13,7 +13,7 @@ type SelectType = {
 	preSelect: number;
 	disabled: boolean;
 	label: string;
-	id: string
+	id: string;
 };
 
 const Select = ({ preSelect, disabled, options, id, label }: SelectType) => {
