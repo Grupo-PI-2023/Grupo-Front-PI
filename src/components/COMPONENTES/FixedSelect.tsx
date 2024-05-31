@@ -72,7 +72,12 @@ type FixedSelectType = {
 	id: string;
 };
 
-export default function FixedSelect({ isDisabled, options, id, label }: FixedSelectType) {
+export default function FixedSelect({
+	isDisabled,
+	options,
+	id,
+	label,
+}: FixedSelectType) {
 	const [value, setValue] = useState<readonly FixedOptionsType[]>(
 		orderOptions(options)
 	);

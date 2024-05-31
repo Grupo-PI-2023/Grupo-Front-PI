@@ -4,9 +4,14 @@ import { FiEye, FiEyeOff } from 'react-icons/fi';
 
 interface CustomInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 	label: string;
+	customWidth?: string;
 }
 
-const NormalInput: React.FC<CustomInputProps> = ({ label, ...inputProps }) => {
+const NormalInput: React.FC<CustomInputProps> = ({
+	label,
+	customWidth,
+	...inputProps
+}) => {
 	const [passwordVisible, setPasswordVisible] = useState(false);
 	const [password, setPassword] = useState('');
 	const handleTogglePasswordVisibility = () => {
@@ -16,7 +21,10 @@ const NormalInput: React.FC<CustomInputProps> = ({ label, ...inputProps }) => {
 		!inputProps.hidden &&
 		(inputProps.type == 'password' ? (
 			<>
-				<div className="mb-5 flex w-[45%] flex-col">
+				<div
+					className="mb-5 flex w-[45%] flex-col"
+					style={{ width: customWidth }}
+				>
 					<label className="mb-2 text-sm font-medium" htmlFor="password">
 						{label}
 					</label>
@@ -45,7 +53,10 @@ const NormalInput: React.FC<CustomInputProps> = ({ label, ...inputProps }) => {
 			</>
 		) : (
 			<>
-				<div className="mb-5 flex w-[45%] flex-col">
+				<div
+					className="mb-5 flex w-[45%] flex-col"
+					style={{ width: customWidth }}
+				>
 					<label className="mb-2 text-sm font-medium" htmlFor={inputProps.id}>
 						{label}
 					</label>

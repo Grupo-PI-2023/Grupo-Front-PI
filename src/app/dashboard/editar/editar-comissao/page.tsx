@@ -7,17 +7,17 @@ import axios from 'axios';
 import AlertCard from '@/components/COMPONENTES/AlertCard';
 import CheckInput from '@/components/COMPONENTES/CheckInput';
 import ClipInput from '@/components/COMPONENTES/ClipInput';
+import DefaultButton from '@/components/COMPONENTES/DefaultButton';
 import FixedSelect, {
 	FixedOptionsType,
 } from '@/components/COMPONENTES/FixedSelect';
 import Footer from '@/components/COMPONENTES/Footer';
-import NavbarAuthenticated from '@/components/COMPONENTES/Navbar/NavbarAuthenticated';
+import NavbarAuthenticated from '@/components/COMPONENTES/NavbarAuthenticated';
 import NormalInput from '@/components/COMPONENTES/NormalInput';
 import Select from '@/components/COMPONENTES/Select';
 import Title from '@/components/COMPONENTES/Title';
 import { Area } from '@/lib/repository/area/index.repository';
 import { Comissao } from '@/lib/repository/comission/index.repository';
-import DefaultButton from '@/components/COMPONENTES/DefaultButton';
 
 export default function EditarComissaoPage() {
 	const [showCard, setShowCard] = useState(false);
@@ -261,13 +261,14 @@ export default function EditarComissaoPage() {
 										label={name}
 										disabled={false}
 										selected={false}
+										key={index}
 									/>
 								))}
 							</div>
 						</div>
 						<div className="flex w-full items-center justify-center gap-5">
-							<DefaultButton label='Voltar' backgroundColorHex='#8A8A8A'/>
-							<DefaultButton label='Salvar' backgroundColorHex='#4B00E0'/>
+							<DefaultButton label="Voltar" backgroundColorHex="#8A8A8A" />
+							<DefaultButton label="Salvar" backgroundColorHex="#4B00E0" />
 						</div>
 					</form>
 				</div>
