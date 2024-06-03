@@ -29,7 +29,7 @@ export default function Layout() {
 	const totalPages = 3;
 
 	return (
-		<div className="container relative mx-auto mt-32 flex h-[200vh] flex-col items-center justify-center">
+		<div className="container relative mx-auto mt-32 flex flex-col items-center justify-center">
 			<h1 className="mb-4 text-3xl font-bold text-[#EF0037]">Arquivos</h1>
 			<p className="text-font-dosis mb-4 text-[16px] font-normal leading-[18.7px] text-[#000000]">
 				Arquivos que serão submetidos pelos participantes

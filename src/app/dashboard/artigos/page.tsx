@@ -7,7 +7,7 @@ import Navbar from '@/components/COMPONENTES/NavbarAuthenticated';
 
 export default async function Artigos() {
 	return (
-		<div className="">
+		<div className="flex flex-col justify-items-center justify-center">
 			<Navbar />
 			<Layout />
 			<Footer />
