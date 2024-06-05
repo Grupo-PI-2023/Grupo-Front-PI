@@ -1,8 +1,8 @@
 import Footer from '@/components/COMPONENTES/Footer';
 import Navbar from '@/components/COMPONENTES/NavbarAuthenticated';
 import Layout from '@/components/Artigos/ArtigosLayout/Layout';
-import ArtigosNaoVisualizados from "@/components/Artigos/ArtigosNaoVisualizadosForms/ArtigosNaoVisualizados";
-import FromAvaliations from "@/components/Artigos/ArtigosNaoVisualizadosForms/Avaliacoes";
+import ArtigosNaoVisualizados from "@/components/Artigos/ArtigosNaoAvaliadosForms/ArtigosNaoAvaliados";
+import FromAvaliations from "@/components/Artigos/ArtigosNaoAvaliadosForms/Avaliacoes";
 import React from 'react';
 
 export default async function Artigos() {

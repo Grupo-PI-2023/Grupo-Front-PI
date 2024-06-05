@@ -30,38 +30,38 @@ const Formulario: React.FC = () => {
                 <div className="col-span-1 grid grid-cols-1 gap-4">
                     <div>
                         <label htmlFor="texto1" className="block mb-2 font-medium">Resumo:</label>
-                        <textarea id="texto1" name="texto1" className="bg-[#E9E9E9] text-black border-none  w-full h-44 px-4 py-2 text-[18px] border rounded-lg font-medium overflow-y-hidden" placeholder="Texto 1" defaultValue={initialValues.texto1}></textarea>
+                        <textarea id="texto1" name="texto1" className="bg-[#E9E9E9] text-black border-none  w-full h-44 px-4 py-2 text-[19px] border rounded-lg font-medium overflow-y-hidden" placeholder="Texto 1" defaultValue={initialValues.texto1}></textarea>
                     </div>
                     <div>
                         <label htmlFor="texto2" className="block mb-2 font-normal">Abstract:</label>
-                        <textarea id="texto2" name="texto2" className="bg-[#E9E9E9] text-black border-none w-full h-44 px-4 py-2 text-[18px] border rounded-lg font-medium overflow-y-hidden" placeholder="Texto 1" defaultValue={initialValues.texto2}></textarea>
+                        <textarea id="texto2" name="texto2" className="bg-[#E9E9E9] text-black border-none w-full h-44 px-4 py-2 text-[19px] border rounded-lg font-medium overflow-y-hidden" placeholder="Texto 1" defaultValue={initialValues.texto2}></textarea>
                     </div>
 
                     <div>
                         <label htmlFor="texto3" className="block mb-2 font-normal">Comentário do primeiro avaliador:</label>
-                        <input type="text" id="input1" name="input1" className="bg-[#E9E9E9] text-black w-full h-10 px-4 py-2 text-[16px] border border-[#828282] rounded-xl overflow-y-hidden" placeholder="Input 1" defaultValue={initialValues.input1} />
+                        <input type="text" id="input1" name="input1" className="bg-[#E9E9E9] text-black w-full h-10 px-4 py-2 text-[19px] border border-[#828282] rounded-xl overflow-y-hidden" placeholder="Input 1" defaultValue={initialValues.input1} />
                     </div>
                 </div>
                 <div className="col-span-1 grid grid-cols-1 gap-4">
-                    <div className='-mb-12'>
-                        <label htmlFor="input1" className="block mb-2 font-normal">Título:</label>
-                        <input type="text" id="input1" name="input1" className="bg-[#E9E9E9] text-black w-full h-12 px-4 py-1 text-[16px] border border-[#828282] rounded-xl overflow-y-hidden" placeholder="Input 1" defaultValue={initialValues.input1} />
-                    </div>
                     <div className='-mb-8'>
+                        <label htmlFor="input1" className="block mb-2 font-normal">Título:</label>
+                        <input type="text" id="input1" name="input1" className="bg-[#E9E9E9] text-black w-full h-12 px-4 py-1 text-[19px] border border-[#828282] rounded-xl overflow-y-hidden" placeholder="Input 1" defaultValue={initialValues.input1} />
+                    </div>
+                    <div className='-mb-4'>
                         <label htmlFor="input2" className="block mb-2 font-normal">Autores:</label>
-                        <input type="text" id="input2" name="input2" className="bg-[#E9E9E9] text-black w-full h-8 px-4 py-2 text-[16px] border border-[#828282] rounded-xl overflow-y-hidden" placeholder="Input 2" defaultValue={initialValues.input2} />
+                        <input type="text" id="input2" name="input2" className="bg-[#E9E9E9] text-black w-full h-8 px-4 py-4 text-[16px] border border-[#828282] rounded-xl overflow-y-hidden" placeholder="Input 2" defaultValue={initialValues.input2} />
                     </div>
                     <div className='-mb-4'>
                         <label htmlFor="input3" className="block mb-2 font-normal">Apresentador:</label>
-                        <input type="text" id="input3" name="input3" className="bg-[#E9E9E9] text-black w-full h-8 px-4 py-2 text-[16px] border border-[#828282] rounded-xl overflow-y-hidden" placeholder="Input 3" defaultValue={initialValues.input3} />
+                        <input type="text" id="input3" name="input3" className="bg-[#E9E9E9] text-black w-full h-8 px-4 py-4 text-[17px] border border-[#828282] rounded-xl overflow-y-hidden" placeholder="Input 3" defaultValue={initialValues.input3} />
                     </div>
-                    <div className='-mb-8'>
+                    <div className='-mb-4'>
                         <label htmlFor="input4" className="block mb-2 font-normal">Palavras-Chaves:</label>
-                        <input type="text" id="input4" name="input4" className="bg-[#E9E9E9] text-black w-full h-12 px-4 py-2 text-[16px] border border-[#828282] rounded-xl overflow-y-hidden" placeholder="Input 4" defaultValue={initialValues.input4} />
+                        <input type="text" id="input4" name="input4" className="bg-[#E9E9E9] text-black w-full h-12 px-4 py-2 text-[19px] border border-[#828282] rounded-xl overflow-y-hidden" placeholder="Input 4" defaultValue={initialValues.input4} />
                     </div>
                     <div className='mb-8'>
                         <label htmlFor="input1" className="block mb-2 font-normal">Keyword:</label>
-                        <input type="text" id="input1" name="input1" className="bg-[#E9E9E9] text-black w-full h-12 px-4 py-2 text-[16px] border border-[#828282] rounded-xl overflow-y-hidden" placeholder="Input 1" defaultValue={initialValues.input5} />
+                        <input type="text" id="input1" name="input1" className="bg-[#E9E9E9] text-black w-full h-12 px-4 py-2 text-[19px] border border-[#828282] rounded-xl overflow-y-hidden" placeholder="Input 1" defaultValue={initialValues.input5} />
                     </div>
                 </div>
             </div>
