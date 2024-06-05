@@ -13,6 +13,8 @@ import { LuFileSearch } from 'react-icons/lu';
 import { MdDateRange } from 'react-icons/md';
 import { PiFiles } from 'react-icons/pi';
 import { TfiTimer } from 'react-icons/tfi';
+import starLogo from '../../../imgs/star-icon.png'
+import Image from 'next/image';
 
 export default function Menu() {
 	const router = useRouter();
@@ -42,15 +44,17 @@ export default function Menu() {
 					</div>
 					<div className="flex flex-col gap-6">
 						<div
-							className="flex gap-4 rounded-xl p-5"
-							style={{ border: '1px solid #ef0037', cursor: 'pointer' }}
+							className="flex gap-4 rounded-md p-5 shadow-xl #F5F5F5 bg-[#F5F5F5] border-2 border-[#e3e3e3]"
+							style={{ cursor: 'pointer' }}
 							onClick={() => router.push('/dashboard/editar/editar-evento')}
 						>
-							<AiOutlineStar className="h-8 w-8" style={{ color: '#ef0037' }} />
+							{/* <Image src={starLogo} height={8} alt=''/> */}
+							<MdDateRange className="h-8 w-8" />
 							<div className="flex flex-col gap-0.5">
+								
 								<p
 									className="text-base font-semibold"
-									style={{ color: '#ef0037' }}
+									style={{ color: '#4B00E0' }}
 								>
 									Editar Evento
 								</p>
@@ -59,7 +63,7 @@ export default function Menu() {
 								</p>
 							</div>
 						</div>
-						<div className="flex gap-4 rounded-xl bg-gray-200 p-5">
+						<div className="flex gap-4 rounded-md p-5 shadow-xl #F5F5F5 bg-[#F5F5F5] border-2 border-[#e3e3e3]">
 							<MdDateRange className="h-8 w-8" />
 							<div className="flex flex-col gap-0.5">
 								<p className="text-base font-semibold">Data e Local</p>
