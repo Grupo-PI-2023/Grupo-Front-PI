@@ -14,11 +14,19 @@ type SelectType = {
 	disabled: boolean;
 	label: string;
 	id: string;
+	customWidth?: string;
 };
 
-const Select = ({ preSelect, disabled, options, id, label }: SelectType) => {
+const Select = ({
+	preSelect,
+	disabled,
+	options,
+	id,
+	label,
+	customWidth,
+}: SelectType) => {
 	return (
-		<div className="mb-5 flex w-[45%] flex-col">
+		<div className="mb-5 flex w-[45%] flex-col" style={{ width: customWidth }}>
 			<label className="mb-2 text-sm font-medium" htmlFor="turno">
 				{label}
 			</label>

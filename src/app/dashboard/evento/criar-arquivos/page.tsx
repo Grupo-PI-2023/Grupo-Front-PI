@@ -45,7 +45,7 @@ export default function CreateArquivePage() {
 						Criar Arquivo
 					</h1>
 					<h2 className="text-center" style={{ color: '#000000' }}>
-						Crie os tipos de arquivos que serão submetidos durante o evente
+						Crie os tipos de arquivos que serão submetidos durante o evento
 					</h2>
 					<form className="mt-8 w-full" onSubmit={handleAddOnTable}>
 						<div className="flex justify-center gap-5">

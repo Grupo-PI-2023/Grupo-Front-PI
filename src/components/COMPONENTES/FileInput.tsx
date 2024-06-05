@@ -7,9 +7,10 @@ type FileInputType = {
 	label: string;
 	id: string;
 	disabled?: boolean;
+	customWidth?: string;
 };
 
-const FileInput = ({ disabled, id, label }: FileInputType) => {
+const FileInput = ({ disabled, id, label, customWidth }: FileInputType) => {
 	const [file, setFile] = useState<File | null>(null);
 	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const selectedFile = e.target.files && e.target.files[0];
@@ -23,7 +24,7 @@ const FileInput = ({ disabled, id, label }: FileInputType) => {
 		setFile(null);
 	};
 	return (
-		<div className="mb-5 flex w-[40%] flex-col">
+		<div className="mb-5 flex w-[40%] flex-col" style={{ width: customWidth }}>
 			<label className="mb-2 text-sm font-medium" htmlFor="file">
 				{label}
 			</label>

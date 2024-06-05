@@ -4,75 +4,117 @@ import { useEffect, useState } from 'react';
 
 import Image from 'next/image';
 
-import axios from 'axios';
-
 import RemoveLogo from '@/imgs/remove-x.png';
-import search from '@/imgs/search.png';
-import { createFile } from '@/lib/repository/createFile/index.repository';
+import { KnowledgeSubArea } from '@/lib/repository/knowledge-sub-area/index.repository';
 
 type CriarEventoProps = {
-	handleNextClick: () => void;
+	handleOptionClick: (option: string) => void;
 };
 
-export default function CadastrarArquivo({
-	handleNextClick,
+export default function CriarSubAreaConhecimento({
+	handleOptionClick,
 }: CriarEventoProps) {
 	const [name, setName] = useState('');
 	const [descricao, setDescricao] = useState('');
-	const [createFile, setCreateFile] = useState<createFile[]>([]);
-
-	const handleNextButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-		e.preventDefault();
-		handleNextClick();
-	};
+	const [bigArea, setBigArea] = useState('');
+	const [area, setArea] = useState('');
+	const [knowledgeSubArea, setKnowledgeSubArea] = useState<KnowledgeSubArea[]>(
+		[]
+	);
 
 	const handleAddOnTable = () => {
-		setCreateFile((prev) => [
+		setKnowledgeSubArea((prev) => [
 			...prev,
 			{
-				FileName: name,
-				FileDescription: descricao,
+				activityName: name,
+				activityDescription: descricao,
+				bigArea: bigArea,
+				area: area,
 			},
 		]);
 		setDescricao('');
 		setName('');
+		setBigArea('');
+		setArea('');
 	};
 
 	const itemToRemove = (i: any) => {
-		setCreateFile((prevCreateFile: any) => {
-			const updatedArray = [...prevCreateFile];
+		setKnowledgeSubArea((prevKnowledgeSubArea: any) => {
+			const updatedArray = [...prevKnowledgeSubArea];
 			updatedArray.splice(i, 1);
 			return updatedArray;
 		});
 	};
 
 	return (
-		<div className="container mb-6 mt-52 flex justify-center">
-			<div className="w-8/12">
+		<div className="container">
+			<div className="w-[40vw]">
 				<h1
 					className="text-center text-2xl font-bold text-black"
 					style={{ color: '#ef0037' }}
 				>
-					Criar Arquivo
+					Criar Sub-Áreas de Conhecimento
 				</h1>
 				<h2 className="text-center" style={{ color: '#000000' }}>
-					Crie os tipos de arquivos que serão submetidos durante o evente
+					Crie as sub-áreas de conhecimento de cada área
 				</h2>
 				<form className="mt-8 w-full" onSubmit={handleAddOnTable}>
 					<div className="flex justify-center gap-5">
 						<div className="flex w-full flex-row place-content-between">
 							<div className="mb-5 flex w-5/12 flex-col rounded-md">
 								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
-									Name
+									Grande Área
+								</label>
+
+								<div className="rounded-xl border border-gray-300 bg-white px-4 py-2">
+									<select
+										className="w-full rounded-md border-0 bg-white text-sm outline-none"
+										name="bigArea"
+										id="bigArea"
+										value={bigArea}
+										onChange={(e) => setBigArea(e.target.value)}
+										required
+									>
+										<option value="Option">Option</option>
+									</select>
+								</div>
+							</div>
+
+							<div className="mb-5 flex w-5/12 flex-col">
+								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
+									Área
+								</label>
+
+								<div className="rounded-xl border border-gray-300 bg-white px-4 py-2">
+									<select
+										className="w-full rounded-md border-0 bg-white text-sm outline-none"
+										name="area"
+										id="area"
+										value={area}
+										onChange={(e) => setArea(e.target.value)}
+										required
+									>
+										<option value="Option">Option</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div className="flex justify-center gap-5">
+						<div className="flex w-full flex-row place-content-between">
+							<div className="mb-5 flex w-5/12 flex-col rounded-md">
+								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
+									Nome
 								</label>
 
 								<div className="rounded-xl border border-gray-300 bg-white px-4 py-2">
 									<input
 										className="w-full border-0 bg-white text-sm outline-none"
 										type="text"
-										name="FileName"
-										id="FileName"
-										placeholder="Nome do Arquivo"
+										name="activityName"
+										id="activityName"
+										placeholder="Area de Conhecimento"
 										value={name}
 										onChange={(e) => setName(e.target.value)}
 										required
@@ -101,12 +143,9 @@ export default function CadastrarArquivo({
 						</div>
 					</div>
 
-					<div
-						className="flex items-center justify-center gap-5"
-						style={{ marginTop: '4rem' }}
-					>
+					<div className="flex items-center justify-center gap-5">
 						<button
-							className="mb-6 w-3/12 rounded-xl border-none p-2 text-center text-base font-medium text-white"
+							className="mt-4 w-3/12 rounded-xl border-none p-2 text-center text-base font-medium text-white"
 							style={{ backgroundColor: '#501EB4' }}
 							type="button"
 							onClick={handleAddOnTable}
@@ -116,13 +155,8 @@ export default function CadastrarArquivo({
 					</div>
 				</form>
 
-				<div className="flex w-full cursor-pointer justify-end gap-3">
-					<p className="text-lg font-medium">Buscar</p>
-					<Image src={search} alt="" height={16} width={24} />
-				</div>
-
-				<div className="items-left justify-left flex">
-					<table className="mt-12 w-full table-auto">
+				<div className="items-left justify-left mt-36 flex">
+					<table className="w-full table-auto">
 						<thead style={{ backgroundColor: '#DD4467' }}>
 							<tr className="h-14">
 								<th scope="col" className="rounded-tl-lg"></th>
@@ -136,16 +170,23 @@ export default function CadastrarArquivo({
 								<th
 									scope="col"
 									style={{ color: '#FFFFFF' }}
-									className="rounded-tr-lg text-left"
+									className="text-left"
 								>
 									Descrição
+								</th>
+								<th
+									scope="col"
+									style={{ color: '#FFFFFF' }}
+									className="rounded-tr-lg text-left"
+								>
+									Área
 								</th>
 							</tr>
 						</thead>
 						<tbody>
-							{createFile && (
+							{knowledgeSubArea && (
 								<>
-									{createFile.map((createFile, index) => {
+									{knowledgeSubArea.map((knowledgeSubArea, index) => {
 										return (
 											<tr
 												key={index}
@@ -171,7 +212,15 @@ export default function CadastrarArquivo({
 														className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
 														htmlFor="eventName"
 													>
-														{createFile.FileName}
+														{knowledgeSubArea.activityName}
+													</label>
+												</td>
+												<td className="">
+													<label
+														className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
+														htmlFor="eventName"
+													>
+														{knowledgeSubArea.activityDescription}
 													</label>
 												</td>
 												<td className="rounded-br-lg">
@@ -179,7 +228,7 @@ export default function CadastrarArquivo({
 														className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
 														htmlFor="eventName"
 													>
-														{createFile.FileDescription}
+														{knowledgeSubArea.area}
 													</label>
 												</td>
 											</tr>
@@ -202,7 +251,6 @@ export default function CadastrarArquivo({
 						className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
 						style={{ backgroundColor: '#4C1FA6' }}
 						type="submit"
-						onClick={handleNextButtonClick}
 					>
 						Finalizar
 					</button>

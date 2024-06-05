@@ -1,46 +1,49 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import Image from 'next/image';
 
 import RemoveLogo from '@/imgs/remove-x.png';
-import { KnowledgeSubArea } from '@/lib/repository/knowledge-sub-area/index.repository';
+import { KnowledgeSpecialtyArea } from '@/lib/repository/knowledge-specialty-area/index.repository';
 
 type CriarEventoProps = {
 	handleOptionClick: (option: string) => void;
 };
 
-export default function CriarSubAreaConhecimento({
+export default function CriarEspecialide({
 	handleOptionClick,
 }: CriarEventoProps) {
 	const [name, setName] = useState('');
 	const [descricao, setDescricao] = useState('');
+	const [subArea, setSubArea] = useState('');
 	const [bigArea, setBigArea] = useState('');
 	const [area, setArea] = useState('');
-	const [knowledgeSubArea, setKnowledgeSubArea] = useState<KnowledgeSubArea[]>(
-		[]
-	);
+	const [knowledgeSpecialty, setKnowledgeSpecialty] = useState<
+		KnowledgeSpecialtyArea[]
+	>([]);
 
 	const handleAddOnTable = () => {
-		setKnowledgeSubArea((prev) => [
+		setKnowledgeSpecialty((prev) => [
 			...prev,
 			{
 				activityName: name,
 				activityDescription: descricao,
+				subArea: subArea,
 				bigArea: bigArea,
 				area: area,
 			},
 		]);
 		setDescricao('');
 		setName('');
-		setBigArea('');
+		setSubArea('');
 		setArea('');
+		setBigArea('');
 	};
 
 	const itemToRemove = (i: any) => {
-		setKnowledgeSubArea((prevKnowledgeSubArea: any) => {
-			const updatedArray = [...prevKnowledgeSubArea];
+		setKnowledgeSpecialty((prevKnowledge: any) => {
+			const updatedArray = [...prevKnowledge];
 			updatedArray.splice(i, 1);
 			return updatedArray;
 		});
@@ -48,15 +51,15 @@ export default function CriarSubAreaConhecimento({
 
 	return (
 		<div className="container">
-			<div className="w-8/12">
+			<div className="w-[40vw]">
 				<h1
 					className="text-center text-2xl font-bold text-black"
 					style={{ color: '#ef0037' }}
 				>
-					Criar Sub-Áreas de Conhecimento
+					Criar Especialidade de Conhecimento
 				</h1>
 				<h2 className="text-center" style={{ color: '#000000' }}>
-					Crie as sub-áreas de conhecimento de cada área
+					Crie as especialidade de conhecimento de cada sub-área
 				</h2>
 				<form className="mt-8 w-full" onSubmit={handleAddOnTable}>
 					<div className="flex justify-center gap-5">
@@ -105,6 +108,25 @@ export default function CriarSubAreaConhecimento({
 						<div className="flex w-full flex-row place-content-between">
 							<div className="mb-5 flex w-5/12 flex-col rounded-md">
 								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
+									Sub-Área
+								</label>
+
+								<div className="rounded-xl border border-gray-300 bg-white px-4 py-2">
+									<select
+										className="w-full rounded-md border-0 bg-white text-sm outline-none"
+										name="subArea"
+										id="subArea"
+										value={subArea}
+										onChange={(e) => setSubArea(e.target.value)}
+										required
+									>
+										<option value="Option">Option</option>
+									</select>
+								</div>
+							</div>
+
+							<div className="mb-5 flex w-5/12 flex-col">
+								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
 									Nome
 								</label>
 
@@ -112,16 +134,20 @@ export default function CriarSubAreaConhecimento({
 									<input
 										className="w-full border-0 bg-white text-sm outline-none"
 										type="text"
-										name="activityName"
-										id="activityName"
-										placeholder="Area de Conhecimento"
+										name="name"
+										id="name"
+										placeholder="Nome"
 										value={name}
 										onChange={(e) => setName(e.target.value)}
 										required
 									/>
 								</div>
 							</div>
+						</div>
+					</div>
 
+					<div className="flex justify-center gap-5">
+						<div className="flex w-full flex-row place-content-between">
 							<div className="mb-5 flex w-5/12 flex-col">
 								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
 									Descrição
@@ -140,22 +166,19 @@ export default function CriarSubAreaConhecimento({
 									/>
 								</div>
 							</div>
+							<button
+								className="mt-6 h-12 w-5/12 rounded-xl border-none p-2 text-center text-base font-medium text-white"
+								style={{ backgroundColor: '#501EB4' }}
+								type="button"
+								onClick={handleAddOnTable}
+							>
+								Cadastrar
+							</button>
 						</div>
-					</div>
-
-					<div className="flex items-center justify-center gap-5">
-						<button
-							className="mt-4 w-3/12 rounded-xl border-none p-2 text-center text-base font-medium text-white"
-							style={{ backgroundColor: '#501EB4' }}
-							type="button"
-							onClick={handleAddOnTable}
-						>
-							Cadastrar
-						</button>
 					</div>
 				</form>
 
-				<div className="items-left justify-left mt-36 flex">
+				<div className="items-left justify-left mt-28 flex">
 					<table className="w-full table-auto">
 						<thead style={{ backgroundColor: '#DD4467' }}>
 							<tr className="h-14">
@@ -179,14 +202,14 @@ export default function CriarSubAreaConhecimento({
 									style={{ color: '#FFFFFF' }}
 									className="rounded-tr-lg text-left"
 								>
-									Área
+									Sub-Área
 								</th>
 							</tr>
 						</thead>
 						<tbody>
-							{knowledgeSubArea && (
+							{knowledgeSpecialty && (
 								<>
-									{knowledgeSubArea.map((knowledgeSubArea, index) => {
+									{knowledgeSpecialty.map((knowledgeSpecialty, index) => {
 										return (
 											<tr
 												key={index}
@@ -212,7 +235,7 @@ export default function CriarSubAreaConhecimento({
 														className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
 														htmlFor="eventName"
 													>
-														{knowledgeSubArea.activityName}
+														{knowledgeSpecialty.activityName}
 													</label>
 												</td>
 												<td className="">
@@ -220,7 +243,7 @@ export default function CriarSubAreaConhecimento({
 														className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
 														htmlFor="eventName"
 													>
-														{knowledgeSubArea.activityDescription}
+														{knowledgeSpecialty.activityDescription}
 													</label>
 												</td>
 												<td className="rounded-br-lg">
@@ -228,7 +251,7 @@ export default function CriarSubAreaConhecimento({
 														className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
 														htmlFor="eventName"
 													>
-														{knowledgeSubArea.area}
+														{knowledgeSpecialty.subArea}
 													</label>
 												</td>
 											</tr>

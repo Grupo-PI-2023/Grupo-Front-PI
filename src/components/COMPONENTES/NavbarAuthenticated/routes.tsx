@@ -24,6 +24,10 @@ export const navigationAuthenticatedRoutes: navItemType[] = [
 		title: 'Criar Áreas',
 	},
 	{
+		link: '/dashboard/evento/criar-arquivos',
+		title: 'Criar Arquivos',
+	},
+	{
 		link: '/dashboard/evento/meus-eventos',
 		title: 'Menu do Evento',
 	},
@@ -47,15 +51,9 @@ export const navigationAuthenticatedRoutes: navItemType[] = [
 		link: '/dashboard/artigos/artigos-para-avaliar/principal',
 		title: 'Artigos para Avaliar',
 	},
-
 	{
 		link: '/dashboard/artigos/artigos-para-avaliar/todos-arquivos',
 		title: 'Todos artigos - Avaliação',
-	},
-
-	{
-		link: '/dashboard/artigos/editar-artigo',
-		title: 'Editar Artigo',
 	},
 	{
 		link: '/dashboard/artigos/menu-artigos',
@@ -73,7 +71,6 @@ export const navigationAuthenticatedRoutes: navItemType[] = [
 		link: '/dashboard/artigos/visualizar-artigo',
 		title: 'Visualizar Artigo',
 	},
-
 	{
 		link: '/dashboard/editar/editar-comissao',
 		title: 'Editar Comissao',

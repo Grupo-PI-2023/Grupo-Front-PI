@@ -43,7 +43,7 @@ export default function CriarAreaConhecimento({
 
 	return (
 		<div className="container">
-			<div className="w-8/12">
+			<div className="w-[40vw]">
 				<h1
 					className="text-center text-2xl font-bold text-black"
 					style={{ color: '#ef0037' }}
@@ -53,82 +53,90 @@ export default function CriarAreaConhecimento({
 				<h2 className="text-center" style={{ color: '#000000' }}>
 					Crie as áreas de conhecimento de cada grande área
 				</h2>
-				<form className="mt-8 w-full" onSubmit={handleAddOnTable}>
-					<div className="flex flex-col justify-center gap-5">
-						<div className="flex w-full flex-row place-content-between">
-							<div className="mb-5 flex w-5/12 flex-col rounded-md">
-								<label
-									className="mb-2 text-sm font-medium"
-									htmlFor="grandeArea"
-								>
-									Grande Área
-								</label>
-
-								<div className="rounded-xl border border-gray-300 bg-white px-4 py-2">
-									<select
-										className="w-full rounded-md border-0 bg-white text-sm outline-none"
-										name="bigArea"
-										id="bigArea"
-										value={bigArea}
-										onChange={(e) => setBigArea(e.target.value)}
-										required
+				<div className="flex justify-center">
+					<form className="mt-8 w-[30vw]" onSubmit={handleAddOnTable}>
+						<div className="flex flex-col justify-center gap-5">
+							<div className="flex w-full flex-row place-content-between gap-5">
+								<div className="mb-5 flex w-full flex-col rounded-md">
+									<label
+										className="mb-2 text-sm font-medium"
+										htmlFor="grandeArea"
 									>
-										<option value="Option">Option</option>
-									</select>
+										Grande Área
+									</label>
+
+									<div className="rounded-xl border border-gray-300 bg-white px-4 py-2">
+										<select
+											className="w-full rounded-md border-0 bg-white text-sm outline-none"
+											name="bigArea"
+											id="bigArea"
+											value={bigArea}
+											onChange={(e) => setBigArea(e.target.value)}
+											required
+										>
+											<option value="Option">Option</option>
+										</select>
+									</div>
+								</div>
+
+								<div className="mb-5 flex w-full flex-col rounded-md">
+									<label
+										className="mb-2 text-sm font-medium"
+										htmlFor="eventName"
+									>
+										Nome
+									</label>
+
+									<div className="rounded-xl border border-gray-300 bg-white px-4 py-2">
+										<input
+											className="w-full border-0 bg-white text-sm outline-none"
+											type="text"
+											name="activityName"
+											id="activityName"
+											placeholder="Area de Conhecimento"
+											value={name}
+											onChange={(e) => setName(e.target.value)}
+											required
+										/>
+									</div>
 								</div>
 							</div>
 
-							<div className="mb-5 flex w-5/12 flex-col rounded-md">
-								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
-									Nome
-								</label>
+							<div className="flex w-full flex-row place-content-between gap-5">
+								<div className="mb-5 flex w-full flex-col">
+									<label
+										className="mb-2 text-sm font-medium"
+										htmlFor="eventName"
+									>
+										Descrição
+									</label>
 
-								<div className="rounded-xl border border-gray-300 bg-white px-4 py-2">
-									<input
-										className="w-full border-0 bg-white text-sm outline-none"
-										type="text"
-										name="activityName"
-										id="activityName"
-										placeholder="Area de Conhecimento"
-										value={name}
-										onChange={(e) => setName(e.target.value)}
-										required
-									/>
+									<div className="rounded-xl border border-gray-300 bg-white px-4 py-2">
+										<input
+											className="w-full border-0 bg-white text-sm outline-none"
+											type="text"
+											name="descricao"
+											id="descricao"
+											placeholder="Descrição"
+											value={descricao}
+											onChange={(e) => setDescricao(e.target.value)}
+											required
+										/>
+									</div>
 								</div>
+
+								<button
+									className="mt-6 h-12 w-5/12 rounded-xl border-none p-2 text-center text-base font-medium text-white"
+									style={{ backgroundColor: '#501EB4' }}
+									type="button"
+									onClick={handleAddOnTable}
+								>
+									Cadastrar
+								</button>
 							</div>
 						</div>
-
-						<div className="flex w-full flex-row place-content-between">
-							<div className="mb-5 flex w-5/12 flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
-									Descrição
-								</label>
-
-								<div className="rounded-xl border border-gray-300 bg-white px-4 py-2">
-									<input
-										className="w-full border-0 bg-white text-sm outline-none"
-										type="text"
-										name="descricao"
-										id="descricao"
-										placeholder="Descrição"
-										value={descricao}
-										onChange={(e) => setDescricao(e.target.value)}
-										required
-									/>
-								</div>
-							</div>
-
-							<button
-								className="mt-6 h-12 w-5/12 rounded-xl border-none p-2 text-center text-base font-medium text-white"
-								style={{ backgroundColor: '#501EB4' }}
-								type="button"
-								onClick={handleAddOnTable}
-							>
-								Cadastrar
-							</button>
-						</div>
-					</div>
-				</form>
+					</form>
+				</div>
 
 				<div className="items-left justify-left mt-44 flex">
 					<table className="w-full table-auto">
