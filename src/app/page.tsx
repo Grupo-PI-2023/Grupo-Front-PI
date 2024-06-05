@@ -6,7 +6,7 @@ import Footer from '@/components/COMPONENTES/Footer';
 import Navbar from '@/components/COMPONENTES/Navbar';
 import NavbarAuthenticated from '@/components/COMPONENTES/NavbarAuthenticated';
 
-export default async function Home() {
+export default function Home() {
 	const [authenticated, setAuthenticated] = useState(true);
 	return (
 		<div className="flex h-screen flex-col justify-items-center ">
