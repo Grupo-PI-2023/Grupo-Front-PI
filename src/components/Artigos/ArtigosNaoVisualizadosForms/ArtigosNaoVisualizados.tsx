@@ -25,8 +25,8 @@ const Formulario: React.FC = () => {
     };
 
     return (
-        <form className="bg-white w-[70%] p-8 rounded-xl shadow-lg">
-            <div className="grid grid-cols-2 gap-8">
+        <form className="bg-white w-[75%] p-8 rounded-xl shadow-lg">
+            <div className="grid grid-cols-2 gap-12">
                 <div className="col-span-1 grid grid-cols-1 gap-4">
                     <div>
                         <label htmlFor="texto1" className="block mb-2 font-medium">Resumo:</label>
@@ -39,7 +39,7 @@ const Formulario: React.FC = () => {
 
                     <div>
                         <label htmlFor="texto3" className="block mb-2 font-normal">Comentário do primeiro avaliador:</label>
-                        <input type="text" id="input1" name="input1" className="bg-[#E9E9E9] text-black w-full h-8 px-4 py-2 text-[16px] border border-[#828282] rounded-xl overflow-y-hidden" placeholder="Input 1" defaultValue={initialValues.input1} />
+                        <input type="text" id="input1" name="input1" className="bg-[#E9E9E9] text-black w-full h-10 px-4 py-2 text-[16px] border border-[#828282] rounded-xl overflow-y-hidden" placeholder="Input 1" defaultValue={initialValues.input1} />
                     </div>
                 </div>
                 <div className="col-span-1 grid grid-cols-1 gap-4">
@@ -73,8 +73,8 @@ const Formulario: React.FC = () => {
 
                 <button className="bg-[#5000F0] hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-xl inline-flex items-center text-center justify-between">
                     <span></span>
-                    <span className="text-white font-normal">Baixar Artigo</span>
-                    <img src="/assets/Artigos/BaixarArtigo.png" className="w-4 h-4 mr-2" />
+                    <span className="text-white font-normal mr-4">Baixar Artigo</span>
+                    <img src="/assets/Artigos/BaixarArtigo.png" className="w-4 h-4" />
                 </button>
             </div>
         </form>
