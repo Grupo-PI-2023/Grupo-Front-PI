@@ -1,18 +1,21 @@
 'use client';
 
+import { useState } from 'react';
+
 import { FaRegUser } from 'react-icons/fa';
 
-import CheckInput from '@/components/COMPONENTES/CheckInput';
+import CheckboxInput from '@/components/COMPONENTES/CheckboxInput';
 import DefaultButton from '@/components/COMPONENTES/DefaultButton';
 import Footer from '@/components/COMPONENTES/Footer';
 import Navbar from '@/components/COMPONENTES/NavbarAuthenticated';
 import NormalInput from '@/components/COMPONENTES/NormalInput';
-import SelectCom from '@/components/COMPONENTES/Select';
+import Select from '@/components/COMPONENTES/Select';
 import Title from '@/components/COMPONENTES/Title';
 import alunos from '@/mocks/Aluno';
 
 export default function AdicionarPalestrantePage() {
 	const checkboxPeriodo = ['Matutino', 'Vespertino', 'Noturno'];
+	const [palestrante, setPalestrante] = useState(false);
 
 	return (
 		<div>
@@ -33,15 +36,16 @@ export default function AdicionarPalestrantePage() {
 							<div className="mb-5 flex w-[45%] items-center gap-5 text-[1.8rem]">
 								<FaRegUser />
 								<p>Autor</p>
-								<CheckInput
+								<CheckboxInput
 									label="Palestrante"
 									disabled={false}
 									id={`palestrante-${key}`}
-									selected={aluno.palestrante}
+									isChecked={aluno.palestrante}
+									onChange={() => setPalestrante(aluno.palestrante)}
 								/>
 							</div>
 
-							<SelectCom
+							<Select
 								options={checkboxPeriodo.map((tur, i) => ({
 									label: tur,
 									value: i,

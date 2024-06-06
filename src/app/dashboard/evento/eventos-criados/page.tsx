@@ -3,7 +3,7 @@
 import EventsCard from '@/components/COMPONENTES/EventsCard';
 import Footer from '@/components/COMPONENTES/Footer';
 import NavbarAuthenticated from '@/components/COMPONENTES/NavbarAuthenticated';
-import Pagination2 from '@/components/COMPONENTES/Pagination2';
+import Pagination2 from '@/components/COMPONENTES/Pagitation/Pagination2';
 import SearchFilter from '@/components/COMPONENTES/SearchFilter';
 import Title from '@/components/COMPONENTES/Title';
 

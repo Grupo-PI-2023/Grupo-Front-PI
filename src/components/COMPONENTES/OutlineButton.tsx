@@ -27,7 +27,8 @@ const OutlineButton: React.FC<CustomtButtonInterface> = ({
 			}}
 			className={`
             flex w-1/5 items-center
-            rounded-xl border-[1px] px-4 py-2
+            gap-3 rounded-xl border-[1.5px] px-4
+			py-2
             text-center text-base 
             font-medium
 			${!outlineColorHex && 'border-[#8A8A8A]'}

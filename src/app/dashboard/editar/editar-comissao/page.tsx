@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import AlertCard from '@/components/COMPONENTES/AlertCard';
-import CheckInput from '@/components/COMPONENTES/CheckInput';
+import CheckboxInput from '@/components/COMPONENTES/CheckboxInput';
 import ClipInput from '@/components/COMPONENTES/ClipInput';
 import DefaultButton from '@/components/COMPONENTES/DefaultButton';
 import FixedSelect, {
@@ -256,11 +256,12 @@ export default function EditarComissaoPage() {
 							</label>
 							<div className="flex flex-wrap items-center gap-3 py-2.5">
 								{checkboxNames.map((name, index) => (
-									<CheckInput
+									<CheckboxInput
 										id={`${name}-${index}`}
 										label={name}
 										disabled={false}
-										selected={false}
+										isChecked={false}
+										onChange={handleCheckboxChangeCharge}
 										key={index}
 									/>
 								))}
