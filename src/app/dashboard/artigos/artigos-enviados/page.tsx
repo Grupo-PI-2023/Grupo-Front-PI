@@ -3,12 +3,17 @@
 import { useState } from 'react';
 import React from 'react';
 
-import ArtigosCards from '@/components/Artigos/ArtigosCards/Cards';
-import ArtigosCards2 from '@/components/Artigos/ArtigosCards/Cards2';
-import Pagination from '@/components/Artigos/ArtigosPagination/pagination';
-import Tabfiles from '@/components/Artigos/NavbarViewFilesEnviados/index';
+import { CiFilter } from 'react-icons/ci';
+import { IoSearchOutline } from 'react-icons/io5';
+
+import ArtigosCards from '@/components/COMPONENTES/ArtigosCards/Cards';
+import ArtigosCards2 from '@/components/COMPONENTES/ArtigosCards/Cards2';
 import Footer from '@/components/COMPONENTES/Footer';
 import Navbar from '@/components/COMPONENTES/NavbarAuthenticated';
+import Pagination1 from '@/components/COMPONENTES/Pagitation/Pagination1';
+import Title from '@/components/COMPONENTES/Title';
+
+import Tabfiles from '../visualizar-artigo/artigos-concluidos/page';
 
 export default function EditarArtigosPage() {
 	const [currentOption, setCurrentOption] = useState<string>('dentro-do-prazo');
@@ -34,25 +39,26 @@ export default function EditarArtigosPage() {
 					currentOption={currentOption}
 					handleOptionClick={handleOptionClick}
 				/>
-				<h1 className="mt-20 justify-self-center text-center text-[30px] font-bold text-red-500">
-					Arquivos
-				</h1>
-				<p className="text-center font-medium">
-					Todos os arquivos enviadors e relacionados a você
-				</p>
 
+				<div className="mt-24">
+					<Title
+						title="Artigos"
+						subtitle="Todos os artigos enviados e relacionados à você"
+						colorHex="#ef0037"
+					/>
+				</div>
 				<div className="ml-[780px] flex flex-col gap-4">
 					<div className="flex flex-row gap-2">
 						<button className="leading-3xl font-medium text-[#000000]">
 							Buscar
 						</button>
-						<img src="/assets/icon.svg" alt="Icon" />
+						<IoSearchOutline size={30} />
 					</div>
 					<div className="flex flex-row gap-4">
 						<button className="leading-3xl font-medium text-[#000000]">
 							Filtrar
 						</button>
-						<img src="/assets/filter.svg" alt="Filter" />
+						<CiFilter size={30} />
 					</div>
 				</div>
 
@@ -93,7 +99,7 @@ export default function EditarArtigosPage() {
 				)}
 			</div>
 
-			<Pagination
+			<Pagination1
 				currentPage={currentPage}
 				totalPages={totalPages}
 				onPageChange={handlePageChange}

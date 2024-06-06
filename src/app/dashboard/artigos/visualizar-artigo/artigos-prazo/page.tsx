@@ -1,28 +1,22 @@
 'use client';
 
-import filesData from './arquivosConcluidos.json';
-import Image from 'next/image';
-import filter from './filter.png';
-import search from './search.png';
-import { useState } from 'react';
-
 import { CiFilter } from 'react-icons/ci';
 import { IoSearchOutline } from 'react-icons/io5';
+
+import Title from '@/components/COMPONENTES/Title';
+
+import filesData from './arquivosConcluidos.json';
 
 export default function ArtigosConcluidos() {
 	return (
 		<div className="container mb-6 mt-52 flex justify-center">
 			<div className="w-4/5">
-				<h1
-					className="text-center text-2xl font-bold text-black"
-					style={{ color: '#ef0037' }}
-				>
-					Atividades
-				</h1>
-				<h2 className="text-center" style={{ color: '#000000' }}>
-					Atividades presentes durante o evento
-				</h2>
-                <div className="flex flex-col gap-2 items-end w-8/12 absolute">
+				<Title
+					title="Atividades"
+					subtitle="Atividades presentes durante o evento"
+					colorHex="#ef0037"
+				/>
+				<div className="absolute flex w-8/12 flex-col items-end gap-2">
 					<div className="flex cursor-pointer gap-3">
 						<p className="text-lg font-medium">Buscar</p>
 						<IoSearchOutline size={30} />
@@ -32,7 +26,6 @@ export default function ArtigosConcluidos() {
 						<CiFilter size={30} />
 					</div>
 				</div>
-
 
 				{filesData && (
 					<>
@@ -47,9 +40,9 @@ export default function ArtigosConcluidos() {
 										return (
 											<div
 												key={index}
-												className="mb-5 flex w-full flex-col p-1 ml-[2rem]"
+												className="mb-5 ml-[2rem] flex w-full flex-col p-1"
 											>
-												<div className="flex w-10/12 flex-col gap-2 rounded-lg border border-[#EF0037] p-5 shadow-lg cursor-pointer">
+												<div className="flex w-10/12 cursor-pointer flex-col gap-2 rounded-lg border border-[#EF0037] p-5 shadow-lg">
 													<p className="text-lg text-[#EF0037]">
 														{files.arquivo}
 													</p>

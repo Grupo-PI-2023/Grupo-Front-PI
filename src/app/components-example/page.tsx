@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { BsHeart, BsStar } from 'react-icons/bs';
 
-import CheckInput from '@/components/COMPONENTES/CheckInput';
+import CheckboxInput from '@/components/COMPONENTES/CheckboxInput';
 import ClipInput from '@/components/COMPONENTES/ClipInput';
 import DefaultButton from '@/components/COMPONENTES/DefaultButton';
 import FileInput from '@/components/COMPONENTES/FileInput';
@@ -20,6 +20,7 @@ import Title from '@/components/COMPONENTES/Title';
 export default function UseComponentsPage() {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [check, setChecked] = useState(true);
 
 	return (
 		<div className="">
@@ -53,11 +54,12 @@ export default function UseComponentsPage() {
 						<TextAreaInput label="Text Area" id="textAreas" rows={7} />
 						<FileInput id="file" label="File Input" disabled={false} />
 						{}
-						<CheckInput
+						<CheckboxInput
 							disabled={false}
 							id="check"
 							label="Check INput"
-							selected={true}
+							isChecked={check}
+							onChange={() => setChecked(check)}
 						/>
 						<ClipInput label="Clip INput" id="clip" />
 						<FixedSelect

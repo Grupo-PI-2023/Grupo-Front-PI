@@ -7,7 +7,6 @@ import { FaTimes } from 'react-icons/fa';
 import { FiUpload } from 'react-icons/fi';
 
 import AlertCard from '@/components/COMPONENTES/AlertCard';
-import CheckInput from '@/components/COMPONENTES/CheckInput';
 import DefaultButton from '@/components/COMPONENTES/DefaultButton';
 import FileInput from '@/components/COMPONENTES/FileInput';
 import Footer from '@/components/COMPONENTES/Footer';

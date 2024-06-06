@@ -5,5 +5,5 @@ type NavBarRateProps = {
 };
 
 export const OptionMenu = styled.p<NavBarRateProps>`
-	color: ${(props) => (props.selected ? '#000000' : '#4B00E0')};
+	color: ${(props) => (props.selected ? '#4B00E0' : '#000000')};
 `;

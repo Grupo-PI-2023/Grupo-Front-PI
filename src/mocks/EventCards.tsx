@@ -1,6 +1,6 @@
-import event1 from '@/imgs/event1.png';
-import event2 from '@/imgs/event2.png';
-import event3 from '@/imgs/event3.png';
+import event1 from '@/assets/event1.png';
+import event2 from '@/assets/event2.png';
+import event3 from '@/assets/event3.png';
 
 export const cardsData = [
 	{

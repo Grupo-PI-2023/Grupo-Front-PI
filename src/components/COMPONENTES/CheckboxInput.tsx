@@ -5,11 +5,18 @@ type CheckInputType = {
 	key?: number | string;
 	id: string;
 	disabled: boolean;
-	selected: boolean;
+	isChecked: boolean;
+	onChange: (isChecked: boolean) => void;
 };
 
-const CheckInput = ({ label, key, disabled, id, selected }: CheckInputType) => {
-	const [checked, setChecked] = useState<boolean>(selected);
+const CheckInput = ({
+	label,
+	key,
+	disabled,
+	id,
+	isChecked,
+	onChange,
+}: CheckInputType) => {
 	return (
 		<div key={key}>
 			<div className="flex items-center">
@@ -18,24 +25,24 @@ const CheckInput = ({ label, key, disabled, id, selected }: CheckInputType) => {
 					type="checkbox"
 					name={id}
 					id={id}
-					checked={checked}
-					onChange={() => setChecked(!checked)}
+					checked={isChecked}
+					onChange={(e) => onChange(e.target.checked)}
 					disabled={disabled}
 				/>
 				<label
 					className={`flex cursor-pointer items-center ${
-						checked ? 'text-[#4B00E0]' : 'text-[#000]'
+						!isChecked ? 'text-[#4B00E0]' : 'text-[#000]'
 					} `}
 					htmlFor={id}
 				>
 					<div
 						className={`mr-2 flex h-3.5 w-3.5 items-center justify-center ${
-							checked
+							!isChecked
 								? 'border-[1px] border-[#4B00E0] bg-[#4B00E0]'
 								: 'border-[1px] border-[#4B00E0] text-[#fff]'
 						}`}
 					>
-						{checked && (
+						{!isChecked && (
 							<svg
 								className="pointer-events-none h-2 w-3 fill-current text-white"
 								viewBox="0 0 20 20"
