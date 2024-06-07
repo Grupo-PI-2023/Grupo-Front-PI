@@ -1,0 +1,25 @@
+[
+    {
+        "titulo": "Era da Internet das Coisas: Transformando a Sociedade e os Negócios",
+        "autores": "Clara Santos, Gustavo Oliveira, Marina Almeida",
+        "palavraChave": "Estratégias, Sucesso Empresarial, Era Digital, Transformação Organizacional, Inovação Tecnológica, Mudança Digital",
+        "tema": "Tecnologia, Análise Estratégicas",
+        "tabela": [
+            {
+                "avaliador": "Gabriel Oliveira",
+                "media": "4",
+                "status": "Aprovado"
+            },
+            {
+                "avaliador": "Isabela Silva",
+                "media": "2",
+                "status": "Reprovado"
+            },
+            {
+                "avaliador": "Pedro Fernandes",
+                "media": "5",
+                "status": "Aprovado"
+            }
+        ]
+    }
+]

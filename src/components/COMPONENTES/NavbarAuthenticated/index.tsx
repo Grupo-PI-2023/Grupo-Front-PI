@@ -10,7 +10,7 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { GoHome, GoSearch } from 'react-icons/go';
 import { IoIosClose } from 'react-icons/io';
 
-import logo from '@/imgs/logo.svg';
+import logo from '@/assets/logo.svg';
 
 import { navigationAuthenticatedRoutes } from './routes';
 import * as S from './styles';
