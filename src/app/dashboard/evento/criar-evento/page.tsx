@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 
-import Footer from '@/components/COMPONENTES/Footer';
-import NavbarAuthenticated from '@/components/COMPONENTES/NavbarAuthenticated';
-import TabbarAuthenticated from '@/components/COMPONENTES/TabbarAuthenticated';
+import Footer from '@/components/Footer';
+import NavbarAuthenticated from '@/components/NavbarAuthenticated';
+import TabbarAuthenticated from '@/components/TabbarAuthenticated';
 
 export default function Evento() {
 	const [currentOption, setCurrentOption] = useState('criar-evento');

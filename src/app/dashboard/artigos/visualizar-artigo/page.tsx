@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-import Card from '@/components/COMPONENTES/ArtigosCards/Cards';
-import Footer from '@/components/COMPONENTES/Footer';
-import Navbar from '@/components/COMPONENTES/NavbarAuthenticated';
+import Card from '@/components/ArtigosCards/Cards';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/NavbarAuthenticated';
 
 import ArtigosConcluidos from './artigos-prazo/page';
 import * as S from './styles';

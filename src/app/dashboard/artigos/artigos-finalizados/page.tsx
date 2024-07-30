@@ -1,8 +1,8 @@
 'use client';
 
-import Footer from '@/components/COMPONENTES/Footer';
-import Navbar from '@/components/COMPONENTES/NavbarAuthenticated';
-import Title from '@/components/COMPONENTES/Title';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/NavbarAuthenticated';
+import Title from '@/components/Title';
 
 export default function EditarArtigosPage() {
 	const initialValues = {

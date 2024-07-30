@@ -6,15 +6,15 @@ import axios from 'axios';
 import { FaTimes } from 'react-icons/fa';
 import { FiUpload } from 'react-icons/fi';
 
-import AlertCard from '@/components/COMPONENTES/AlertCard';
-import DefaultButton from '@/components/COMPONENTES/DefaultButton';
-import FileInput from '@/components/COMPONENTES/FileInput';
-import Footer from '@/components/COMPONENTES/Footer';
-import NavbarAuthenticated from '@/components/COMPONENTES/NavbarAuthenticated';
-import NormalInput from '@/components/COMPONENTES/NormalInput';
-import Select from '@/components/COMPONENTES/Select';
-import TextAreaInput from '@/components/COMPONENTES/TextAreaInput';
-import Title from '@/components/COMPONENTES/Title';
+import AlertCard from '@/components/AlertCard';
+import DefaultButton from '@/components/DefaultButton';
+import FileInput from '@/components/FileInput';
+import Footer from '@/components/Footer';
+import NavbarAuthenticated from '@/components/NavbarAuthenticated';
+import NormalInput from '@/components/NormalInput';
+import Select from '@/components/Select';
+import TextAreaInput from '@/components/TextAreaInput';
+import Title from '@/components/Title';
 import { Area } from '@/lib/repository/area/index.repository';
 import { Event } from '@/lib/repository/event/index.repository';
 

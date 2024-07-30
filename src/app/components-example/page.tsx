@@ -4,18 +4,18 @@ import { useState } from 'react';
 
 import { BsHeart, BsStar } from 'react-icons/bs';
 
-import CheckboxInput from '@/components/COMPONENTES/CheckboxInput';
-import ClipInput from '@/components/COMPONENTES/ClipInput';
-import DefaultButton from '@/components/COMPONENTES/DefaultButton';
-import FileInput from '@/components/COMPONENTES/FileInput';
-import FixedSelect from '@/components/COMPONENTES/FixedSelect';
-import Footer from '@/components/COMPONENTES/Footer';
-import Navbar from '@/components/COMPONENTES/Navbar';
-import NormalInput from '@/components/COMPONENTES/NormalInput';
-import OutlineButton from '@/components/COMPONENTES/OutlineButton';
-import Select from '@/components/COMPONENTES/Select';
-import TextAreaInput from '@/components/COMPONENTES/TextAreaInput';
-import Title from '@/components/COMPONENTES/Title';
+import CheckboxInput from '@/components/CheckboxInput';
+import ClipInput from '@/components/ClipInput';
+import DefaultButton from '@/components/DefaultButton';
+import FileInput from '@/components/FileInput';
+import FixedSelect from '@/components/FixedSelect';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/Navbar';
+import NormalInput from '@/components/NormalInput';
+import OutlineButton from '@/components/OutlineButton';
+import Select from '@/components/Select';
+import TextAreaInput from '@/components/TextAreaInput';
+import Title from '@/components/Title';
 
 export default function UseComponentsPage() {
 	const [email, setEmail] = useState('');

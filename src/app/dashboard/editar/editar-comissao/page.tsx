@@ -4,18 +4,16 @@ import { useEffect, useState } from 'react';
 
 import axios from 'axios';
 
-import AlertCard from '@/components/COMPONENTES/AlertCard';
-import CheckboxInput from '@/components/COMPONENTES/CheckboxInput';
-import ClipInput from '@/components/COMPONENTES/ClipInput';
-import DefaultButton from '@/components/COMPONENTES/DefaultButton';
-import FixedSelect, {
-	FixedOptionsType,
-} from '@/components/COMPONENTES/FixedSelect';
-import Footer from '@/components/COMPONENTES/Footer';
-import NavbarAuthenticated from '@/components/COMPONENTES/NavbarAuthenticated';
-import NormalInput from '@/components/COMPONENTES/NormalInput';
-import Select from '@/components/COMPONENTES/Select';
-import Title from '@/components/COMPONENTES/Title';
+import AlertCard from '@/components/AlertCard';
+import CheckboxInput from '@/components/CheckboxInput';
+import ClipInput from '@/components/ClipInput';
+import DefaultButton from '@/components/DefaultButton';
+import FixedSelect, { FixedOptionsType } from '@/components/FixedSelect';
+import Footer from '@/components/Footer';
+import NavbarAuthenticated from '@/components/NavbarAuthenticated';
+import NormalInput from '@/components/NormalInput';
+import Select from '@/components/Select';
+import Title from '@/components/Title';
 import { Area } from '@/lib/repository/area/index.repository';
 import { Comissao } from '@/lib/repository/comission/index.repository';
 

@@ -1,10 +1,10 @@
 'use client';
 
-import DefaultButton from '@/components/COMPONENTES/DefaultButton';
-import Footer from '@/components/COMPONENTES/Footer';
-import Navbar from '@/components/COMPONENTES/NavbarAuthenticated';
-import NormalInput from '@/components/COMPONENTES/NormalInput';
-import Title from '@/components/COMPONENTES/Title';
+import DefaultButton from '@/components/DefaultButton';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/NavbarAuthenticated';
+import NormalInput from '@/components/NormalInput';
+import Title from '@/components/Title';
 
 export default function RegisterInstitutionPage() {
 	return (

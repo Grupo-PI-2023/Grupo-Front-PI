@@ -3,17 +3,17 @@
 import React from 'react';
 import { useState } from 'react';
 
-import CheckboxInput from '@/components/COMPONENTES/CheckboxInput';
-import DefaultButton from '@/components/COMPONENTES/DefaultButton';
-import FileInput from '@/components/COMPONENTES/FileInput';
-import Footer from '@/components/COMPONENTES/Footer';
-import Navbar from '@/components/COMPONENTES/NavbarAuthenticated';
-import NormalInput from '@/components/COMPONENTES/NormalInput';
-import Pagination1 from '@/components/COMPONENTES/Pagitation/Pagination1';
-import Select from '@/components/COMPONENTES/Select';
-import Table from '@/components/COMPONENTES/Table';
-import TextAreaInput from '@/components/COMPONENTES/TextAreaInput';
-import Title from '@/components/COMPONENTES/Title';
+import CheckboxInput from '@/components/CheckboxInput';
+import DefaultButton from '@/components/DefaultButton';
+import FileInput from '@/components/FileInput';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/NavbarAuthenticated';
+import NormalInput from '@/components/NormalInput';
+import Pagination1 from '@/components/Pagitation/Pagination1';
+import Select from '@/components/Select';
+import Table from '@/components/Table';
+import TextAreaInput from '@/components/TextAreaInput';
+import Title from '@/components/Title';
 
 export default function ArtigosPage() {
 	const [precisaDeAvaliacao, setPrecisaDeAvaliacao] = useState(true);

@@ -6,11 +6,11 @@ import { toNumber } from 'lodash';
 import { CiClock2, CiFilter, CiSearch } from 'react-icons/ci';
 import { FaEye } from 'react-icons/fa';
 
-import Footer from '@/components/COMPONENTES/Footer';
-import NavbarAuthenticated from '@/components/COMPONENTES/NavbarAuthenticated';
-import OutlineButton from '@/components/COMPONENTES/OutlineButton';
-import Select from '@/components/COMPONENTES/Select';
-import Title from '@/components/COMPONENTES/Title';
+import Footer from '@/components/Footer';
+import NavbarAuthenticated from '@/components/NavbarAuthenticated';
+import OutlineButton from '@/components/OutlineButton';
+import Select from '@/components/Select';
+import Title from '@/components/Title';
 import { Sessao } from '@/lib/repository/sessao/index.repository';
 import { sessaoMocks } from '@/mocks/SessaoEditar';
 

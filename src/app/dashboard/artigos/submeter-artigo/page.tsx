@@ -5,14 +5,14 @@ import React, { ReactElement, useState } from 'react';
 import { FaRegUser } from 'react-icons/fa';
 import Select from 'react-select';
 
-import DefaultButton from '@/components/COMPONENTES/DefaultButton';
-import FileInput from '@/components/COMPONENTES/FileInput';
-import Footer from '@/components/COMPONENTES/Footer';
-import Navbar from '@/components/COMPONENTES/NavbarAuthenticated';
-import NormalInput from '@/components/COMPONENTES/NormalInput';
-import SelectCom from '@/components/COMPONENTES/Select';
-import TextAreaInput from '@/components/COMPONENTES/TextAreaInput';
-import Title from '@/components/COMPONENTES/Title';
+import DefaultButton from '@/components/DefaultButton';
+import FileInput from '@/components/FileInput';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/NavbarAuthenticated';
+import NormalInput from '@/components/NormalInput';
+import SelectCom from '@/components/Select';
+import TextAreaInput from '@/components/TextAreaInput';
+import Title from '@/components/Title';
 import grandeAreasMock from '@/mocks/Areas';
 
 export default function SubmeterArquivoPage() {

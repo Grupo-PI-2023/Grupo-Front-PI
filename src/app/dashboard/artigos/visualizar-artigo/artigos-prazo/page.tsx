@@ -3,7 +3,7 @@
 import { CiFilter } from 'react-icons/ci';
 import { IoSearchOutline } from 'react-icons/io5';
 
-import Title from '@/components/COMPONENTES/Title';
+import Title from '@/components/Title';
 
 import filesData from './arquivosConcluidos.json';
 

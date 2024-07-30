@@ -6,12 +6,12 @@ import React from 'react';
 import { CiFilter } from 'react-icons/ci';
 import { IoSearchOutline } from 'react-icons/io5';
 
-import ArtigosCards from '@/components/COMPONENTES/ArtigosCards/Cards';
-import ArtigosCards2 from '@/components/COMPONENTES/ArtigosCards/Cards2';
-import Footer from '@/components/COMPONENTES/Footer';
-import Navbar from '@/components/COMPONENTES/NavbarAuthenticated';
-import Pagination1 from '@/components/COMPONENTES/Pagitation/Pagination1';
-import Title from '@/components/COMPONENTES/Title';
+import ArtigosCards from '@/components/ArtigosCards/Cards';
+import ArtigosCards2 from '@/components/ArtigosCards/Cards2';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/NavbarAuthenticated';
+import Pagination1 from '@/components/Pagitation/Pagination1';
+import Title from '@/components/Title';
 
 import Tabfiles from '../visualizar-artigo/artigos-concluidos/page';
 

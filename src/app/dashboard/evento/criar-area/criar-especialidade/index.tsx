@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import Image from 'next/image';
 
-import RemoveLogo from '@/imgs/remove-x.png';
+import RemoveLogo from '@/assets/remove-x.png';
 import { KnowledgeSpecialtyArea } from '@/lib/repository/knowledge-specialty-area/index.repository';
 
 type CriarEventoProps = {

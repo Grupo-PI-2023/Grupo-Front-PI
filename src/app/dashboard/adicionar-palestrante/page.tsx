@@ -4,13 +4,13 @@ import { useState } from 'react';
 
 import { FaRegUser } from 'react-icons/fa';
 
-import CheckboxInput from '@/components/COMPONENTES/CheckboxInput';
-import DefaultButton from '@/components/COMPONENTES/DefaultButton';
-import Footer from '@/components/COMPONENTES/Footer';
-import Navbar from '@/components/COMPONENTES/NavbarAuthenticated';
-import NormalInput from '@/components/COMPONENTES/NormalInput';
-import Select from '@/components/COMPONENTES/Select';
-import Title from '@/components/COMPONENTES/Title';
+import CheckboxInput from '@/components/CheckboxInput';
+import DefaultButton from '@/components/DefaultButton';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/NavbarAuthenticated';
+import NormalInput from '@/components/NormalInput';
+import Select from '@/components/Select';
+import Title from '@/components/Title';
 import alunos from '@/mocks/Aluno';
 
 export default function AdicionarPalestrantePage() {

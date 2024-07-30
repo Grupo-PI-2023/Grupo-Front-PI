@@ -4,9 +4,9 @@ import { useState } from 'react';
 
 import { CiCircleRemove } from 'react-icons/ci';
 
-import Footer from '@/components/COMPONENTES/Footer';
-import NavbarAuthenticated from '@/components/COMPONENTES/NavbarAuthenticated';
-import SearchFilter from '@/components/COMPONENTES/SearchFilter';
+import Footer from '@/components/Footer';
+import NavbarAuthenticated from '@/components/NavbarAuthenticated';
+import SearchFilter from '@/components/SearchFilter';
 import { createActivity } from '@/lib/repository/createActivity/index.repository';
 
 export default function CreateActivityPage() {

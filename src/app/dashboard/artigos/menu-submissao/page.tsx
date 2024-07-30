@@ -4,8 +4,8 @@ import Image from 'next/image';
 
 import { TfiEmail } from 'react-icons/tfi';
 
-import Footer from '@/components/COMPONENTES/Footer';
-import NavbarAuthenticated from '@/components/COMPONENTES/NavbarAuthenticated';
+import Footer from '@/components/Footer';
+import NavbarAuthenticated from '@/components/NavbarAuthenticated';
 
 export default function PageMenuSubmissao() {
 	return (

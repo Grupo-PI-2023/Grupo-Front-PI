@@ -9,8 +9,8 @@ import { GoDownload } from 'react-icons/go';
 import { IoSearchOutline } from 'react-icons/io5';
 import { MdOutlineRemoveRedEye } from 'react-icons/md';
 
-import Footer from '@/components/COMPONENTES/Footer';
-import Navbar from '@/components/COMPONENTES/NavbarAuthenticated';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/NavbarAuthenticated';
 
 import filesData from './files.json';
 
