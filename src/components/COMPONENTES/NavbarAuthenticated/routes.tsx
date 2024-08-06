@@ -104,6 +104,10 @@ export const navigationAuthenticatedRoutes: navItemType[] = [
 		title: 'Cadastrar Instituição',
 	},
 	{
+		link: '/dashboard/cadastrar-editor-chefe',
+		title: 'Cadastrar Editor Chefe'
+	},
+	{
 		link: '/dashboard/certificados',
 		title: 'Certificados',
 	},

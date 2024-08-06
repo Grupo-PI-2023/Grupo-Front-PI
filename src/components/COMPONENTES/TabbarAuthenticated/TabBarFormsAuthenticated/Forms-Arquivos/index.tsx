@@ -9,8 +9,8 @@ import { BsPaperclip } from 'react-icons/bs';
 import { FaTimes } from 'react-icons/fa';
 import { FiUpload } from 'react-icons/fi';
 
-import EditLogo from '@/imgs/editLogo.png';
-import RemoveLogo from '@/imgs/trashLogo.png';
+import EditLogo from '@/assets/editLogo.png';
+import RemoveLogo from '@/assets/trashLogo.png';
 import { Arquivo } from '@/lib/repository/arquivo/index.repository';
 import { ArquivoConfig } from '@/lib/repository/arquivo/index.repositoryFiles';
 

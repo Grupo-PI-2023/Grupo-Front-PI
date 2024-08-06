@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 
-import search from '@/imgs/search.png';
+import search from '@/assets/search.png';
 
 export default function SearchComponent() {
 	return (
