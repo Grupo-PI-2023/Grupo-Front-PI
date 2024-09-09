@@ -2,14 +2,14 @@
 
 import { useState } from 'react';
 
+import { BiHeart } from 'react-icons/bi';
 import { BsStar } from 'react-icons/bs';
 
-import DefaultButton from '@/components/COMPONENTES/DefaultButton';
-import Footer from '@/components/COMPONENTES/Footer';
-import Navbar from '@/components/COMPONENTES/Navbar';
-import NormalInput from '@/components/COMPONENTES/NormalInput';
-import OutlineButton from '@/components/COMPONENTES/OutlineButton';
-import { BiHeart } from 'react-icons/bi';
+import DefaultButton from '@/components/DefaultButton';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/Navbar';
+import NormalInput from '@/components/NormalInput';
+import OutlineButton from '@/components/OutlineButton';
 
 export default function LoginPage() {
 	const [email, setEmail] = useState('');

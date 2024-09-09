@@ -4,8 +4,8 @@ import Image from 'next/image';
 
 import { TfiEmail } from 'react-icons/tfi';
 
-import Footer from '@/components/COMPONENTES/Footer';
-import NavbarAuthenticated from '@/components/COMPONENTES/NavbarAuthenticated';
+import Footer from '@/components/Footer';
+import NavbarAuthenticated from '@/components/NavbarAuthenticated';
 
 export default function PageMenuSubmissao() {
 	return (
@@ -24,10 +24,14 @@ export default function PageMenuSubmissao() {
 								/>
 							</div>
 							<div>
-								<h1 className="text-2xl font-medium">CultureFest</h1>
+								<h1 className="text-2xl font-medium">
+									CultureFest
+								</h1>
 								<div className="mt-2 flex items-center gap-2">
 									<TfiEmail className="h-4 w-4" />
-									<p className="text-base font-medium">cultureFest@gmail.com</p>
+									<p className="text-base font-medium">
+										cultureFest@gmail.com
+									</p>
 								</div>
 								<div className="mt-4 flex flex-col gap-4">
 									<button
@@ -57,7 +61,10 @@ export default function PageMenuSubmissao() {
 						<div className="flex w-2/5 gap-8">
 							<div
 								className="flex w-1/2 flex-col gap-3 rounded-xl p-4"
-								style={{ border: '1px solid #4B00E0', cursor: 'pointer' }}
+								style={{
+									border: '1px solid #4B00E0',
+									cursor: 'pointer',
+								}}
 							>
 								<div className="flex items-center gap-2">
 									<Image
@@ -93,7 +100,10 @@ export default function PageMenuSubmissao() {
 							</div>
 							<div
 								className="flex w-1/2 flex-col gap-3 rounded-xl p-4"
-								style={{ border: '1px solid #4B00E0', cursor: 'pointer' }}
+								style={{
+									border: '1px solid #4B00E0',
+									cursor: 'pointer',
+								}}
 							>
 								<div className="flex items-center gap-2">
 									<Image
@@ -170,78 +180,95 @@ export default function PageMenuSubmissao() {
 							</p>
 							<ol className="list-disc pl-10">
 								<li className="text-base">
-									Utilize um formato padrão, como o APA ou o MLA, conforme
-									indicado pela instituição ou revista acadêmica.
+									Utilize um formato padrão, como o APA ou o
+									MLA, conforme indicado pela instituição ou
+									revista acadêmica.
 								</li>
 								<li className="text-base">
-									Utilize uma fonte legível, como Arial ou Times New Roman, com
-									tamanho de fonte recomendado (geralmente 12 pontos).
+									Utilize uma fonte legível, como Arial ou
+									Times New Roman, com tamanho de fonte
+									recomendado (geralmente 12 pontos).
 								</li>
 								<li className="text-base">
 									Utilize espaçamento duplo entre linhas.
 								</li>
 								<li className="text-base">
-									Inclua margens adequadas nas páginas (geralmente 2,54 cm em
-									todos os lados).
+									Inclua margens adequadas nas páginas
+									(geralmente 2,54 cm em todos os lados).
 								</li>
 							</ol>
-							<p className="mt-2 pl-2 text-base font-medium">2. Título:</p>
+							<p className="mt-2 pl-2 text-base font-medium">
+								2. Título:
+							</p>
 							<ol className="list-disc pl-10">
 								<li className="text-base">
-									O título do artigo deve ser claro, conciso e representar com
-									precisão o conteúdo do trabalho.
+									O título do artigo deve ser claro, conciso e
+									representar com precisão o conteúdo do
+									trabalho.
 								</li>
 								<li className="text-base">
-									Evite títulos muito longos, mas garanta que transmitam a
-									essência do estudo.
+									Evite títulos muito longos, mas garanta que
+									transmitam a essência do estudo.
 								</li>
 							</ol>
-							<p className="mt-2 pl-2 text-base font-medium">3. Resumo:</p>
+							<p className="mt-2 pl-2 text-base font-medium">
+								3. Resumo:
+							</p>
 							<ol className="list-disc pl-10">
 								<li className="text-base">
-									Inclua um resumo conciso que descreva brevemente o objetivo do
-									estudo, a metodologia utilizada, os principais resultados e as
-									conclusões.
+									Inclua um resumo conciso que descreva
+									brevemente o objetivo do estudo, a
+									metodologia utilizada, os principais
+									resultados e as conclusões.
 								</li>
 								<li className="text-base">
 									O resumo deve ter entre 150 e 250 palavras.
 								</li>
 							</ol>
-							<p className="mt-2 pl-2 text-base font-medium">4. Introdução:</p>
+							<p className="mt-2 pl-2 text-base font-medium">
+								4. Introdução:
+							</p>
 							<ol className="list-disc pl-10">
 								<li className="text-base">
-									Apresente o contexto e a relevância do tema do artigo.
+									Apresente o contexto e a relevância do tema
+									do artigo.
 								</li>
 								<li className="text-base">
-									Estabeleça a pergunta de pesquisa, os objetivos do estudo e a
-									estrutura do artigo.
+									Estabeleça a pergunta de pesquisa, os
+									objetivos do estudo e a estrutura do artigo.
 								</li>
 								<li className="text-base">
-									Fornecer uma revisão breve, mas abrangente, da literatura
-									relevante.
+									Fornecer uma revisão breve, mas abrangente,
+									da literatura relevante.
 								</li>
 							</ol>
-							<p className="mt-2 pl-2 text-base font-medium">5. Metodologia:</p>
+							<p className="mt-2 pl-2 text-base font-medium">
+								5. Metodologia:
+							</p>
 							<ol className="list-disc pl-10">
 								<li className="text-base">
-									Descreva detalhadamente os procedimentos e métodos utilizados
-									na coleta de dados ou realização do estudo.
+									Descreva detalhadamente os procedimentos e
+									métodos utilizados na coleta de dados ou
+									realização do estudo.
 								</li>
 								<li className="text-base">
-									Inclua informações sobre a população/alvo, amostragem,
-									instrumentos de coleta de dados e análise estatística, quando
-									aplicável.
+									Inclua informações sobre a população/alvo,
+									amostragem, instrumentos de coleta de dados
+									e análise estatística, quando aplicável.
 								</li>
 							</ol>
-							<p className="mt-2 pl-2 text-base font-medium">6. Resultados:</p>
+							<p className="mt-2 pl-2 text-base font-medium">
+								6. Resultados:
+							</p>
 							<ol className="list-disc pl-10">
 								<li className="text-base">
-									Apresente de forma clara e concisa os principais resultados do
-									estudo.
+									Apresente de forma clara e concisa os
+									principais resultados do estudo.
 								</li>
 								<li className="text-base">
-									Utilize tabelas, gráficos ou figuras quando apropriado para
-									facilitar a compreensão dos dados.
+									Utilize tabelas, gráficos ou figuras quando
+									apropriado para facilitar a compreensão dos
+									dados.
 								</li>
 							</ol>
 						</div>

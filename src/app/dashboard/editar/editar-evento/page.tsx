@@ -6,15 +6,15 @@ import axios from 'axios';
 import { FaTimes } from 'react-icons/fa';
 import { FiUpload } from 'react-icons/fi';
 
-import AlertCard from '@/components/COMPONENTES/AlertCard';
-import DefaultButton from '@/components/COMPONENTES/DefaultButton';
-import FileInput from '@/components/COMPONENTES/FileInput';
-import Footer from '@/components/COMPONENTES/Footer';
-import NavbarAuthenticated from '@/components/COMPONENTES/NavbarAuthenticated';
-import NormalInput from '@/components/COMPONENTES/NormalInput';
-import Select from '@/components/COMPONENTES/Select';
-import TextAreaInput from '@/components/COMPONENTES/TextAreaInput';
-import Title from '@/components/COMPONENTES/Title';
+import AlertCard from '@/components/AlertCard';
+import DefaultButton from '@/components/DefaultButton';
+import FileInput from '@/components/FileInput';
+import Footer from '@/components/Footer';
+import NavbarAuthenticated from '@/components/NavbarAuthenticated';
+import NormalInput from '@/components/NormalInput';
+import Select from '@/components/Select';
+import TextAreaInput from '@/components/TextAreaInput';
+import Title from '@/components/Title';
 import { Area } from '@/lib/repository/area/index.repository';
 import { Event } from '@/lib/repository/event/index.repository';
 
@@ -39,7 +39,9 @@ export default function EditarEvento() {
 		setArea: React.Dispatch<React.SetStateAction<string[]>>
 	) => {
 		const lastArea =
-			setArea === setAreas ? areas[areas.length - 1] : ass[ass.length - 1];
+			setArea === setAreas
+				? areas[areas.length - 1]
+				: ass[ass.length - 1];
 		if (lastArea.trim() !== '') {
 			setArea((prevAreas) => [...prevAreas, '']);
 		}
@@ -139,7 +141,9 @@ export default function EditarEvento() {
 				setHorarioFinal('');
 				setComissaoId('');
 				const id = localStorage.getItem('eventId');
-				const result = await axios.get(`http://localhost:5002/event/${id}`);
+				const result = await axios.get(
+					`http://localhost:5002/event/${id}`
+				);
 				const resultAreas = await axios.get(
 					`http://localhost:5002/area-event/${id}`
 				);
@@ -224,7 +228,10 @@ export default function EditarEvento() {
 				dataFinal: dataFinal,
 				horarioInicio: horarioInicio,
 				horarioFim: horarioFinal,
-				periodo: checkboxPeriodo[0] || checkboxPeriodo[1] || checkboxPeriodo[2],
+				periodo:
+					checkboxPeriodo[0] ||
+					checkboxPeriodo[1] ||
+					checkboxPeriodo[2],
 				gerar: checkboxGerar[0] || checkboxGerar[1],
 				evento: checkboxEvento[0] || checkboxEvento[1],
 			};
@@ -253,8 +260,15 @@ export default function EditarEvento() {
 
 			<div className="container">
 				<div className="w-[50vw]">
-					<Title title="Edite seu evento!" subtitle="" colorHex="#ef0037" />
-					<AlertCard message="Evento atualizado com sucesso" show={showCard} />
+					<Title
+						title="Edite seu evento!"
+						subtitle=""
+						colorHex="#ef0037"
+					/>
+					<AlertCard
+						message="Evento atualizado com sucesso"
+						show={showCard}
+					/>
 					<form className="mt-8 w-full" onSubmit={handleSubmit}>
 						<div className="flex justify-center gap-5">
 							<div className="w-full">
@@ -275,14 +289,19 @@ export default function EditarEvento() {
 									placeholder="Descrição do Evento"
 									rows={3}
 									value={descricao}
-									onChange={(e) => setDescricao(e.target.value)}
+									onChange={(e) =>
+										setDescricao(e.target.value)
+									}
 									customWidth="100%"
 								/>
 								<Select
 									disabled={false}
 									id="select"
 									label="Selecione:"
-									options={tipo.map((tipo, i) => ({ label: tipo, value: i }))}
+									options={tipo.map((tipo, i) => ({
+										label: tipo,
+										value: i,
+									}))}
 									preSelect={0}
 									customWidth="100%"
 								/>
@@ -293,7 +312,9 @@ export default function EditarEvento() {
 									id="assunto"
 									placeholder="Assunto Principal do Evento"
 									value={assuntoPrincipal}
-									onChange={(e) => setAssuntoPrincipal(e.target.value)}
+									onChange={(e) =>
+										setAssuntoPrincipal(e.target.value)
+									}
 									customWidth="100%"
 								/>
 								<NormalInput
@@ -302,7 +323,9 @@ export default function EditarEvento() {
 									name="dateInicio"
 									id="dateInicio"
 									value={dataInicio}
-									onChange={(e) => setDataInicio(e.target.value)}
+									onChange={(e) =>
+										setDataInicio(e.target.value)
+									}
 									customWidth="100%"
 								/>
 								<NormalInput
@@ -311,7 +334,9 @@ export default function EditarEvento() {
 									name="dateFinal"
 									id="dateFinal"
 									value={dataFinal}
-									onChange={(e) => setDataFinal(e.target.value)}
+									onChange={(e) =>
+										setDataFinal(e.target.value)
+									}
 									customWidth="100%"
 								/>
 								<NormalInput
@@ -320,7 +345,9 @@ export default function EditarEvento() {
 									name="horaInicio"
 									id="horaInicio"
 									value={horarioInicio}
-									onChange={(e) => setHorarioInicio(e.target.value)}
+									onChange={(e) =>
+										setHorarioInicio(e.target.value)
+									}
 									customWidth="100%"
 								/>
 								<NormalInput
@@ -329,7 +356,9 @@ export default function EditarEvento() {
 									name="horaFinal"
 									id="horaFinal"
 									value={horarioFinal}
-									onChange={(e) => setHorarioFinal(e.target.value)}
+									onChange={(e) =>
+										setHorarioFinal(e.target.value)
+									}
 									customWidth="100%"
 								/>
 							</div>
@@ -399,7 +428,10 @@ export default function EditarEvento() {
 								/>
 
 								<div className="mb-5 flex flex-col">
-									<label className="mb-2 text-sm font-medium" htmlFor="areas">
+									<label
+										className="mb-2 text-sm font-medium"
+										htmlFor="areas"
+									>
 										Áreas de Conhecimento
 									</label>
 									<div>
@@ -409,7 +441,9 @@ export default function EditarEvento() {
 													className="w-full rounded-md border-0 bg-white text-sm outline-none"
 													type="text"
 													name="areas"
-													value={areas[areas.length - 1]}
+													value={
+														areas[areas.length - 1]
+													}
 													onChange={(e) =>
 														handleAreaChange(
 															areas.length - 1,
@@ -423,10 +457,16 @@ export default function EditarEvento() {
 											</div>
 											<div
 												className="ml-3 cursor-pointer rounded-full px-2"
-												onClick={() => handleAddArea(setAreas)}
-												style={{ backgroundColor: '#4B00E0' }}
+												onClick={() =>
+													handleAddArea(setAreas)
+												}
+												style={{
+													backgroundColor: '#4B00E0',
+												}}
 											>
-												<p className="text-xl font-bold text-white">+</p>
+												<p className="text-xl font-bold text-white">
+													+
+												</p>
 											</div>
 										</div>
 										<div className="flex gap-2.5">
@@ -444,7 +484,8 @@ export default function EditarEvento() {
 															onChange={(e) =>
 																handleAreaChange(
 																	index,
-																	e.target.value,
+																	e.target
+																		.value,
 																	setAreas
 																)
 															}
@@ -454,8 +495,16 @@ export default function EditarEvento() {
 													</div>
 													<div
 														className="ml-2 cursor-pointer rounded-full px-1"
-														style={{ backgroundColor: '#ef0037' }}
-														onClick={() => handleRemoveArea(index, setAreas)}
+														style={{
+															backgroundColor:
+																'#ef0037',
+														}}
+														onClick={() =>
+															handleRemoveArea(
+																index,
+																setAreas
+															)
+														}
 													>
 														<FaTimes className="w-2 text-white" />
 													</div>

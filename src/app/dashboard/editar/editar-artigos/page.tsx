@@ -8,13 +8,13 @@ import { FaRegTrashCan } from 'react-icons/fa6';
 import { IoMdDownload } from 'react-icons/io';
 import { MdFileUpload, MdOutlineSaveAs } from 'react-icons/md';
 
-import DefaultButton from '@/components/COMPONENTES/DefaultButton';
-import Footer from '@/components/COMPONENTES/Footer';
-import NavbarAuthenticated from '@/components/COMPONENTES/NavbarAuthenticated';
-import NormalInput from '@/components/COMPONENTES/NormalInput';
-import OutlineButton from '@/components/COMPONENTES/OutlineButton';
-import TextAreaInput from '@/components/COMPONENTES/TextAreaInput';
-import Title from '@/components/COMPONENTES/Title';
+import DefaultButton from '@/components/DefaultButton';
+import Footer from '@/components/Footer';
+import NavbarAuthenticated from '@/components/NavbarAuthenticated';
+import NormalInput from '@/components/NormalInput';
+import OutlineButton from '@/components/OutlineButton';
+import TextAreaInput from '@/components/TextAreaInput';
+import Title from '@/components/Title';
 
 export default function EditArquivePage() {
 	const router = useRouter();
@@ -103,7 +103,9 @@ export default function EditArquivePage() {
 								id="palavraChave"
 								placeholder="Palavras Chaves....."
 								value={palavraChave}
-								onChange={(e) => setPalavraChave(e.target.value)}
+								onChange={(e) =>
+									setPalavraChave(e.target.value)
+								}
 								rows={2}
 							/>
 							<TextAreaInput
@@ -124,7 +126,10 @@ export default function EditArquivePage() {
 									icon={<IoMdDownload />}
 									customWidth="100%"
 								/>
-								<DefaultButton label="Voltar" customWidth="100%" />
+								<DefaultButton
+									label="Voltar"
+									customWidth="100%"
+								/>
 							</div>
 							<div className="flex w-[20%] flex-col">
 								<DefaultButton

@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 
-import Footer from '@/components/COMPONENTES/Footer';
-import NavbarAuthenticated from '@/components/COMPONENTES/NavbarAuthenticated';
-import NavBarRate from '@/components/COMPONENTES/Rate/NavBarRate';
+import Footer from '@/components/Footer';
+import NavbarAuthenticated from '@/components/NavbarAuthenticated';
+import NavBarRate from '@/components/Rate/NavBarRate';
 
 export default function ViewRateArticlePage() {
 	const [currentOption, setCurrentOption] = useState('rate');

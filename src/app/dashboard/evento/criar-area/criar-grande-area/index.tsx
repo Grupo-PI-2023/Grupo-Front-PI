@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import Image from 'next/image';
 
-import RemoveLogo from '@/imgs/remove-x.png';
+import RemoveLogo from '@/assets/remove-x.png';
 import { KnowledgeBigArea } from '@/lib/repository/knowledge-big-area/index.repository';
 
 type CriarEventoProps = {
@@ -16,9 +16,9 @@ export default function CriarGrandeAreaConhecimento({
 }: CriarEventoProps) {
 	const [name, setName] = useState('');
 	const [descricao, setDescricao] = useState('');
-	const [knowledgeBigArea, setKnowledgeBigArea] = useState<KnowledgeBigArea[]>(
-		[]
-	);
+	const [knowledgeBigArea, setKnowledgeBigArea] = useState<
+		KnowledgeBigArea[]
+	>([]);
 
 	const handleAddOnTable = () => {
 		setKnowledgeBigArea((prev) => [
@@ -56,7 +56,10 @@ export default function CriarGrandeAreaConhecimento({
 					<div className="flex justify-center gap-5">
 						<div className="flex w-full flex-row place-content-between">
 							<div className="mb-5 flex w-5/12 flex-col rounded-md">
-								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
+								<label
+									className="mb-2 text-sm font-medium"
+									htmlFor="eventName"
+								>
 									Nome
 								</label>
 
@@ -68,14 +71,19 @@ export default function CriarGrandeAreaConhecimento({
 										id="activityName"
 										placeholder="Area de Conhecimento"
 										value={name}
-										onChange={(e) => setName(e.target.value)}
+										onChange={(e) =>
+											setName(e.target.value)
+										}
 										required
 									/>
 								</div>
 							</div>
 
 							<div className="mb-5 flex w-5/12 flex-col place-content-between">
-								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
+								<label
+									className="mb-2 text-sm font-medium"
+									htmlFor="eventName"
+								>
 									Descrição
 								</label>
 
@@ -87,7 +95,9 @@ export default function CriarGrandeAreaConhecimento({
 										id="descricao"
 										placeholder="Descrição"
 										value={descricao}
-										onChange={(e) => setDescricao(e.target.value)}
+										onChange={(e) =>
+											setDescricao(e.target.value)
+										}
 										required
 									/>
 								</div>
@@ -134,46 +144,65 @@ export default function CriarGrandeAreaConhecimento({
 						<tbody>
 							{knowledgeBigArea && (
 								<>
-									{knowledgeBigArea.map((knowledgeBigArea, index) => {
-										return (
-											<tr
-												key={index}
-												className="h-14"
-												style={{
-													backgroundColor: !(index % 2 === 0)
-														? '#E4E4E4'
-														: '#fff',
-												}}
-											>
-												<td className="rounded-bl-lg">
-													<div className="flex flex-row justify-center gap-2">
-														<button
-															className="middle items-center justify-center"
-															onClick={() => itemToRemove(index)}
+									{knowledgeBigArea.map(
+										(knowledgeBigArea, index) => {
+											return (
+												<tr
+													key={index}
+													className="h-14"
+													style={{
+														backgroundColor: !(
+															index % 2 ===
+															0
+														)
+															? '#E4E4E4'
+															: '#fff',
+													}}
+												>
+													<td className="rounded-bl-lg">
+														<div className="flex flex-row justify-center gap-2">
+															<button
+																className="middle items-center justify-center"
+																onClick={() =>
+																	itemToRemove(
+																		index
+																	)
+																}
+															>
+																<Image
+																	src={
+																		RemoveLogo
+																	}
+																	alt=""
+																	height={20}
+																/>
+															</button>
+														</div>
+													</td>
+													<td className="">
+														<label
+															className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
+															htmlFor="eventName"
 														>
-															<Image src={RemoveLogo} alt="" height={20} />
-														</button>
-													</div>
-												</td>
-												<td className="">
-													<label
-														className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
-														htmlFor="eventName"
-													>
-														{knowledgeBigArea.activityName}
-													</label>
-												</td>
-												<td className="rounded-br-lg">
-													<label
-														className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
-														htmlFor="eventName"
-													>
-														{knowledgeBigArea.activityDescription}
-													</label>
-												</td>
-											</tr>
-										);
-									})}
+															{
+																knowledgeBigArea.activityName
+															}
+														</label>
+													</td>
+													<td className="rounded-br-lg">
+														<label
+															className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
+															htmlFor="eventName"
+														>
+															{
+																knowledgeBigArea.activityDescription
+															}
+														</label>
+													</td>
+												</tr>
+											);
+										}
+									)}
 								</>
 							)}
 						</tbody>

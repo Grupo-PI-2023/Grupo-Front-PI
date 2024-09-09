@@ -8,8 +8,8 @@ import { PiBrain } from 'react-icons/pi';
 import { RiCompass2Line } from 'react-icons/ri';
 import { TfiMenuAlt } from 'react-icons/tfi';
 
-import Footer from '@/components/COMPONENTES/Footer';
-import Navbar from '@/components/COMPONENTES/NavbarAuthenticated';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/NavbarAuthenticated';
 
 export default async function MenuArtigos() {
 	return (

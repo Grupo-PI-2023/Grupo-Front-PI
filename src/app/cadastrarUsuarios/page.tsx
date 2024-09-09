@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 
-import Footer from '@/components/COMPONENTES/Footer';
-import Navbar from '@/components/COMPONENTES/Navbar';
-import Tabbar from '@/components/COMPONENTES/Tabbar';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/Navbar';
+import Tabbar from '@/components/Tabbar';
 
 export default function Cadastrar() {
 	const [currentOption, setCurrentOption] = useState('cadastrar-user');

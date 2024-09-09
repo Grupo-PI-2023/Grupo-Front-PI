@@ -3,7 +3,7 @@
 import { CiFilter } from 'react-icons/ci';
 import { IoSearchOutline } from 'react-icons/io5';
 
-import Title from '@/components/COMPONENTES/Title';
+import Title from '@/components/Title';
 
 import filesData from './arquivosConcluidos.json';
 
@@ -33,7 +33,9 @@ export default function ArtigosConcluidos() {
 							return (
 								<div key={index} className="ml-10 mt-16">
 									<div className="mb-5 flex gap-1 text-lg font-bold">
-										<h1 className="text-[#EF0037]">Evento:</h1>
+										<h1 className="text-[#EF0037]">
+											Evento:
+										</h1>
 										<h1>{file.titulo_evento}</h1>
 									</div>
 									{file.arquivos.map((files, index) => {
@@ -47,8 +49,14 @@ export default function ArtigosConcluidos() {
 														{files.arquivo}
 													</p>
 													<div className="flex gap-1">
-														<p className="font-bold">Prazo de entrega:</p>
-														<p>{files.prazo_de_entrega}</p>
+														<p className="font-bold">
+															Prazo de entrega:
+														</p>
+														<p>
+															{
+																files.prazo_de_entrega
+															}
+														</p>
 													</div>
 												</div>
 											</div>

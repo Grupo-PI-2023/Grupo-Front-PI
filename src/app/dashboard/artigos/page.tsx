@@ -3,17 +3,17 @@
 import React from 'react';
 import { useState } from 'react';
 
-import CheckboxInput from '@/components/COMPONENTES/CheckboxInput';
-import DefaultButton from '@/components/COMPONENTES/DefaultButton';
-import FileInput from '@/components/COMPONENTES/FileInput';
-import Footer from '@/components/COMPONENTES/Footer';
-import Navbar from '@/components/COMPONENTES/NavbarAuthenticated';
-import NormalInput from '@/components/COMPONENTES/NormalInput';
-import Pagination1 from '@/components/COMPONENTES/Pagitation/Pagination1';
-import Select from '@/components/COMPONENTES/Select';
-import Table from '@/components/COMPONENTES/Table';
-import TextAreaInput from '@/components/COMPONENTES/TextAreaInput';
-import Title from '@/components/COMPONENTES/Title';
+import CheckboxInput from '@/components/CheckboxInput';
+import DefaultButton from '@/components/DefaultButton';
+import FileInput from '@/components/FileInput';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/NavbarAuthenticated';
+import NormalInput from '@/components/NormalInput';
+import Pagination1 from '@/components/Pagitation/Pagination1';
+import Select from '@/components/Select';
+import Table from '@/components/Table';
+import TextAreaInput from '@/components/TextAreaInput';
+import Title from '@/components/Title';
 
 export default function ArtigosPage() {
 	const [precisaDeAvaliacao, setPrecisaDeAvaliacao] = useState(true);
@@ -75,7 +75,10 @@ export default function ArtigosPage() {
 								<Select
 									id="select"
 									label="Tipo de Artigo"
-									options={tipo.map((tipo, i) => ({ label: tipo, value: i }))}
+									options={tipo.map((tipo, i) => ({
+										label: tipo,
+										value: i,
+									}))}
 									preSelect={0}
 									customWidth="100%"
 									disabled={false}
@@ -110,7 +113,9 @@ export default function ArtigosPage() {
 										name="dateInicio"
 										id="dateInicio"
 										value={dataInicio}
-										onChange={(e) => setDataInicio(e.target.value)}
+										onChange={(e) =>
+											setDataInicio(e.target.value)
+										}
 										customWidth="100%"
 									/>
 									<NormalInput
@@ -119,7 +124,9 @@ export default function ArtigosPage() {
 										name="dateFinal"
 										id="dateFinal"
 										value={dataFinal}
-										onChange={(e) => setDataFinal(e.target.value)}
+										onChange={(e) =>
+											setDataFinal(e.target.value)
+										}
 										customWidth="100%"
 									/>
 								</div>

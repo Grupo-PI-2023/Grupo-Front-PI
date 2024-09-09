@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-import Card from '@/components/COMPONENTES/ArtigosCards/Cards';
-import Footer from '@/components/COMPONENTES/Footer';
-import Navbar from '@/components/COMPONENTES/NavbarAuthenticated';
+import Card from '@/components/ArtigosCards/Cards';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/NavbarAuthenticated';
 
 import ArtigosConcluidos from './artigos-prazo/page';
 import * as S from './styles';
@@ -36,9 +36,13 @@ export default function VisualizarArtigoPage({
 				<div className="align-center fixed left-0 right-0 top-24 z-40 flex justify-center px-28 pb-5 pt-2">
 					<div className="flex w-1/4 flex-wrap items-center justify-center gap-5 bg-[#F4F4F4] p-4 shadow-xl">
 						<div className="flex items-center gap-2">
-							<S.IconEvent selected={currentOption === 'dentro-do-prazo'} />
+							<S.IconEvent
+								selected={currentOption === 'dentro-do-prazo'}
+							/>
 							<S.OptionMenu
-								onClick={() => handleOptionClick('dentro-do-prazo')}
+								onClick={() =>
+									handleOptionClick('dentro-do-prazo')
+								}
 								className="flex-shrink-0 cursor-pointer text-base"
 								selected={currentOption === 'dentro-do-prazo'}
 							>
@@ -46,7 +50,9 @@ export default function VisualizarArtigoPage({
 							</S.OptionMenu>
 						</div>
 						<div className="flex items-center gap-2">
-							<S.IconFiles selected={currentOption === 'concluidos'} />
+							<S.IconFiles
+								selected={currentOption === 'concluidos'}
+							/>
 							<S.OptionMenu
 								onClick={() => handleOptionClick('concluidos')}
 								className="flex-shrink-0 cursor-pointer text-base"

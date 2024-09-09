@@ -1,9 +1,9 @@
 import { useCallback, useState } from 'react';
-import AlertCard from '@/components/COMPONENTES/AlertCard';
+
+import AlertCard from '@/components/AlertCard';
 
 function useClipboard() {
-
-  const [showCardClip, setShowCardClip] = useState(false);
+	const [showCardClip, setShowCardClip] = useState(false);
 	const renderClipCard = (clipRes?: boolean): React.ReactNode => {
 		if (!clipRes) {
 			return (
@@ -24,9 +24,9 @@ function useClipboard() {
 		}
 	};
 
-  const copyToClipboard = useCallback(async (text: string | undefined) => {
-    try {
-			if(text){
+	const copyToClipboard = useCallback(async (text: string | undefined) => {
+		try {
+			if (text) {
 				await navigator.clipboard.writeText(text ? text : '');
 				console.log('Texto copiado para a área de transferência');
 				setShowCardClip(true);
@@ -43,9 +43,9 @@ function useClipboard() {
 				setShowCardClip(false);
 			}, 3000);
 		}
-  }, []);
+	}, []);
 
-  return {copyToClipboard, renderClipCard};
+	return { copyToClipboard, renderClipCard };
 }
 
 export default useClipboard;

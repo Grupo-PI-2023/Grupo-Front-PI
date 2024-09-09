@@ -4,18 +4,16 @@ import { useEffect, useState } from 'react';
 
 import axios from 'axios';
 
-import AlertCard from '@/components/COMPONENTES/AlertCard';
-import CheckboxInput from '@/components/COMPONENTES/CheckboxInput';
-import ClipInput from '@/components/COMPONENTES/ClipInput';
-import DefaultButton from '@/components/COMPONENTES/DefaultButton';
-import FixedSelect, {
-	FixedOptionsType,
-} from '@/components/COMPONENTES/FixedSelect';
-import Footer from '@/components/COMPONENTES/Footer';
-import NavbarAuthenticated from '@/components/COMPONENTES/NavbarAuthenticated';
-import NormalInput from '@/components/COMPONENTES/NormalInput';
-import Select from '@/components/COMPONENTES/Select';
-import Title from '@/components/COMPONENTES/Title';
+import AlertCard from '@/components/AlertCard';
+import CheckboxInput from '@/components/CheckboxInput';
+import ClipInput from '@/components/ClipInput';
+import DefaultButton from '@/components/DefaultButton';
+import FixedSelect, { FixedOptionsType } from '@/components/FixedSelect';
+import Footer from '@/components/Footer';
+import NavbarAuthenticated from '@/components/NavbarAuthenticated';
+import NormalInput from '@/components/NormalInput';
+import Select from '@/components/Select';
+import Title from '@/components/Title';
 import { Area } from '@/lib/repository/area/index.repository';
 import { Comissao } from '@/lib/repository/comission/index.repository';
 
@@ -100,7 +98,9 @@ export default function EditarComissaoPage() {
 				// const id = localStorage.getItem('comissaoId');
 				const id = '2ef81a36-96ac-46d6-a254-0704903c9dcc';
 
-				const result = await axios.get(`http://localhost:5002/comissao/${id}`);
+				const result = await axios.get(
+					`http://localhost:5002/comissao/${id}`
+				);
 
 				if (result.data.comissao) {
 					const comissao: Comissao = result.data.comissao;
@@ -124,10 +124,13 @@ export default function EditarComissaoPage() {
 					if (comissao.turno === checkboxPeriodo[2])
 						handleCheckboxChangePeriodo(2);
 
-					const areasComming: Area[] = result.data.comissao.areaConhecimento;
+					const areasComming: Area[] =
+						result.data.comissao.areaConhecimento;
 					setAreas(areasComming.map((area) => area.nome));
 
-					console.log(getSelectedItem(checkboxesPeriodos, checkboxPeriodo)[0]);
+					console.log(
+						getSelectedItem(checkboxesPeriodos, checkboxPeriodo)[0]
+					);
 
 					optionsArea = areas.map((area, i) => ({
 						label: area,
@@ -168,7 +171,10 @@ export default function EditarComissaoPage() {
 				// certificado: '',
 				areaConhecimento: realAreas?.map((area) => area),
 			};
-			const result = await axios.put('http://localhost:5002/comissao', data);
+			const result = await axios.put(
+				'http://localhost:5002/comissao',
+				data
+			);
 			console.log(result);
 			if (result.data.comissaoUpdated) {
 				// habilitar card de 3seg indicando cadastro realizado
@@ -200,7 +206,10 @@ export default function EditarComissaoPage() {
 						subtitle="Visualize ou altere as informações de usuário"
 					/>
 
-					<form className="form bg-white shadow-md" onSubmit={handleSubmit}>
+					<form
+						className="form bg-white shadow-md"
+						onSubmit={handleSubmit}
+					>
 						<NormalInput
 							id="fullName"
 							label="Nome completo"
@@ -236,7 +245,10 @@ export default function EditarComissaoPage() {
 							options={optionsArea}
 						/>
 						<Select
-							options={turno.map((tur, i) => ({ label: tur, value: i }))}
+							options={turno.map((tur, i) => ({
+								label: tur,
+								value: i,
+							}))}
 							preSelect={0}
 							disabled={false}
 							label={'Turno'}
@@ -251,7 +263,10 @@ export default function EditarComissaoPage() {
 							disabled
 						/>
 						<div className="mb-5 flex w-[45%] flex-col">
-							<label className="mb-2 text-sm font-medium" htmlFor="funcao">
+							<label
+								className="mb-2 text-sm font-medium"
+								htmlFor="funcao"
+							>
 								Função no Evento
 							</label>
 							<div className="flex flex-wrap items-center gap-3 py-2.5">
@@ -268,8 +283,14 @@ export default function EditarComissaoPage() {
 							</div>
 						</div>
 						<div className="flex w-full items-center justify-center gap-5">
-							<DefaultButton label="Voltar" backgroundColorHex="#8A8A8A" />
-							<DefaultButton label="Salvar" backgroundColorHex="#4B00E0" />
+							<DefaultButton
+								label="Voltar"
+								backgroundColorHex="#8A8A8A"
+							/>
+							<DefaultButton
+								label="Salvar"
+								backgroundColorHex="#4B00E0"
+							/>
 						</div>
 					</form>
 				</div>

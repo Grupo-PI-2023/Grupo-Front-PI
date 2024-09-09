@@ -6,11 +6,11 @@ import { toNumber } from 'lodash';
 import { CiClock2, CiFilter, CiSearch } from 'react-icons/ci';
 import { FaEye } from 'react-icons/fa';
 
-import Footer from '@/components/COMPONENTES/Footer';
-import NavbarAuthenticated from '@/components/COMPONENTES/NavbarAuthenticated';
-import OutlineButton from '@/components/COMPONENTES/OutlineButton';
-import Select from '@/components/COMPONENTES/Select';
-import Title from '@/components/COMPONENTES/Title';
+import Footer from '@/components/Footer';
+import NavbarAuthenticated from '@/components/NavbarAuthenticated';
+import OutlineButton from '@/components/OutlineButton';
+import Select from '@/components/Select';
+import Title from '@/components/Title';
 import { Sessao } from '@/lib/repository/sessao/index.repository';
 import { sessaoMocks } from '@/mocks/SessaoEditar';
 
@@ -113,7 +113,10 @@ export default function EditarSessaoPage() {
 
 				<div className="mt-10 flex w-1/2 items-center justify-center text-center">
 					<Select
-						options={chair.map((chair, i) => ({ label: chair, value: i }))}
+						options={chair.map((chair, i) => ({
+							label: chair,
+							value: i,
+						}))}
 						preSelect={0}
 						disabled={false}
 						label={'Chair:'}
@@ -170,7 +173,9 @@ export default function EditarSessaoPage() {
 									key={index}
 									className="h-14"
 									style={{
-										backgroundColor: !(index % 2 === 0) ? '#E4E4E4' : '#fff',
+										backgroundColor: !(index % 2 === 0)
+											? '#E4E4E4'
+											: '#fff',
 									}}
 								>
 									<td>{item.funcao}</td>
