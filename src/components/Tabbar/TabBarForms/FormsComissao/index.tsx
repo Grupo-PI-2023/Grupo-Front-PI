@@ -1,40 +1,38 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-import axios from 'axios';
-import { FaTimes } from 'react-icons/fa';
-import Select from 'react-select';
+import axios from "axios";
+import { FaTimes } from "react-icons/fa";
+import Select from "react-select";
 
-import AlertCard from '@/components/AlertCard';
-import CheckInput from '@/components/CheckInput';
-import DefaultButton from '@/components/DefaultButton';
-import NormalInput from '@/components/NormalInput';
-import { SimpleSelectType } from '@/components/Select';
-import Title from '@/components/Title';
-import { Area } from '@/lib/repository/area/index.repository';
-import { Comissao } from '@/lib/repository/comission/index.repository';
-import mockedOptionAreas from '@/mocks/OptionsAreas';
-import mockedOptionTurnos from '@/mocks/OptionsTurnos';
+import AlertCard from "@/components/AlertCard";
+import CheckInput from "@/components/CheckInput";
+import DefaultButton from "@/components/DefaultButton";
+import NormalInput from "@/components/NormalInput";
+import { SimpleSelectType } from "@/components/Select";
+import Title from "@/components/Title";
+import { Area } from "@/lib/repository/area/index.repository";
+import { Comissao } from "@/lib/repository/comission/index.repository";
+import mockedOptionAreas from "@/mocks/OptionsAreas";
+import mockedOptionTurnos from "@/mocks/OptionsTurnos";
 
 export default function CadastroComissao() {
 	const [isAdmin, setIsAdmin] = useState(false);
 
 	const [passwordVisible, setPasswordVisible] = useState(false);
-	const [password, setPassword] = useState('');
-	const [name, setName] = useState('');
-	const [cpf, setCpf] = useState('');
-	const [email, setEmail] = useState('');
-	const [instituicao, setInst] = useState('');
-	const [turno, setTurno] = useState<string | undefined>('');
-	const [lattes, setLattes] = useState('');
+	const [password, setPassword] = useState("");
+	const [name, setName] = useState("");
+	const [cpf, setCpf] = useState("");
+	const [email, setEmail] = useState("");
+	const [instituicao, setInst] = useState("");
+	const [turno, setTurno] = useState<string | undefined>("");
+	const [lattes, setLattes] = useState("");
 	const [confirmpasswordVisible, setConfirmpasswordVisible] = useState(false);
-	const [confirmpassword, setConfirmpassword] = useState('');
+	const [confirmpassword, setConfirmpassword] = useState("");
 	// funcao no evento:
-	const checkboxNames = ['Organizador', 'Chair', 'Avaliador', 'Admin'];
-	const [checkboxes, setCheckboxes] = useState(
-		checkboxNames.map(() => false)
-	);
+	const checkboxNames = ["Organizador", "Avaliador"];
+	const [checkboxes, setCheckboxes] = useState(checkboxNames.map(() => false));
 	const [showCard, setShowCard] = useState(false);
 
 	const handleCheckboxChange = (index: any) => {
@@ -48,8 +46,8 @@ export default function CadastroComissao() {
 	const [areas, setAreas] = useState<SimpleSelectType[]>(mockedOptionAreas);
 	const [realAreas, setRealAreas] = useState<(string | undefined)[]>([]);
 
-	const [subareas, setSubAreas] = useState(['']);
-	const [ass, setAss] = useState(['']);
+	const [subareas, setSubAreas] = useState([""]);
+	const [ass, setAss] = useState([""]);
 	const handleAddSubArea = (
 		setSubArea: React.Dispatch<React.SetStateAction<string[]>>
 	) => {
@@ -57,8 +55,8 @@ export default function CadastroComissao() {
 			setSubArea === setSubAreas
 				? subareas[subareas.length - 1]
 				: ass[ass.length - 1];
-		if (lastArea.trim() !== '') {
-			setSubArea((prevAreas) => [...prevAreas, '']);
+		if (lastArea.trim() !== "") {
+			setSubArea((prevAreas) => [...prevAreas, ""]);
 		}
 	};
 	const handleRemoveSubArea = (
@@ -80,12 +78,12 @@ export default function CadastroComissao() {
 	const customStyles = {
 		control: (provided: any) => ({
 			...provided,
-			width: '100%',
-			height: 'auto',
-			borderRadius: '0.375rem',
-			border: '1',
-			background: 'white',
-			fontSize: '0.875rem',
+			width: "100%",
+			height: "auto",
+			borderRadius: "0.375rem",
+			border: "1",
+			background: "white",
+			fontSize: "0.875rem",
 		}),
 	};
 
@@ -93,7 +91,7 @@ export default function CadastroComissao() {
 		async function getAreas() {
 			setIsAdmin(false);
 			try {
-				const id = localStorage.getItem('eventId');
+				const id = localStorage.getItem("eventId");
 
 				const result = await axios.get(
 					`http://localhost:5002/area-event/${id}`
@@ -150,10 +148,7 @@ export default function CadastroComissao() {
 				// certificado: '',
 				areaConhecimento: realAreas?.map((area) => area),
 			};
-			const result = await axios.post(
-				'http://localhost:5002/comissao',
-				data
-			);
+			const result = await axios.post("http://localhost:5002/comissao", data);
 			console.log(result);
 			if (result.data.comissaoCreated) {
 				// habilitar card de 3seg indicando cadastro realizado
@@ -162,13 +157,13 @@ export default function CadastroComissao() {
 				setTimeout(() => {
 					setShowCard(false);
 				}, 3000);
-				setName('');
-				setCpf('');
-				setEmail('');
-				setInst('');
-				setPassword('');
-				setConfirmpassword('');
-				setLattes('');
+				setName("");
+				setCpf("");
+				setEmail("");
+				setInst("");
+				setPassword("");
+				setConfirmpassword("");
+				setLattes("");
 				setCheckboxes(checkboxNames.map(() => false));
 			}
 		} catch (error) {
@@ -179,20 +174,14 @@ export default function CadastroComissao() {
 	return (
 		<div className="container-submenu">
 			<div className="w-[60vw]">
-				<AlertCard
-					message="Comissao cadastrada com sucesso"
-					show={showCard}
-				/>
+				<AlertCard message="Comissao cadastrada com sucesso" show={showCard} />
 				<Title
 					title="Cadastrar Comissão"
 					subtitle="Cadastro como parte da comissão, possível mais de uma função"
 					colorHex="#4B00E0"
 				/>
 
-				<form
-					className="form bg-white shadow-md"
-					onSubmit={handleSubmit}
-				>
+				<form className="form bg-white shadow-md" onSubmit={handleSubmit}>
 					<div className="flex w-full flex-wrap justify-center gap-5">
 						<NormalInput
 							id="fullName"
@@ -219,9 +208,7 @@ export default function CadastroComissao() {
 									placeholder="Senha do Usuário"
 									type="password"
 									value={password}
-									onChange={(e) =>
-										setPassword(e.target.value)
-									}
+									onChange={(e) => setPassword(e.target.value)}
 									required
 								/>
 								<NormalInput
@@ -230,9 +217,16 @@ export default function CadastroComissao() {
 									placeholder="Senha do Usuário"
 									type="password"
 									value={confirmpassword}
-									onChange={(e) =>
-										setConfirmpassword(e.target.value)
-									}
+									onChange={(e) => setConfirmpassword(e.target.value)}
+									required
+								/>
+								<NormalInput
+									id="cpf"
+									label="CPF"
+									placeholder="CPF do Usuário"
+									type="text"
+									value={cpf}
+									onChange={(e) => setCpf(e.target.value)}
 									required
 								/>
 							</>
@@ -257,10 +251,7 @@ export default function CadastroComissao() {
 						/>
 
 						<div className="mb-5 w-[45%]">
-							<label
-								className="mb-2 text-sm font-medium"
-								htmlFor="funcao"
-							>
+							<label className="mb-2 text-sm font-medium" htmlFor="funcao">
 								Função no Evento
 							</label>
 							<div className="flex items-center gap-3 py-2.5">
@@ -277,10 +268,7 @@ export default function CadastroComissao() {
 						</div>
 
 						<div className="mb-5 flex w-[45%] flex-col">
-							<label
-								className="mb-2 text-sm font-medium"
-								htmlFor="areas"
-							>
+							<label className="mb-2 text-sm font-medium" htmlFor="areas">
 								Áreas de Conhecimento
 							</label>
 							<div className="w-full">
@@ -299,10 +287,7 @@ export default function CadastroComissao() {
 						</div>
 
 						<div className="mb-5 flex w-[45%] flex-col">
-							<label
-								className="mb-2 text-sm font-medium"
-								htmlFor="areas"
-							>
+							<label className="mb-2 text-sm font-medium" htmlFor="areas">
 								Sub Áreas de Conhecimento
 							</label>
 							<div>
@@ -312,9 +297,7 @@ export default function CadastroComissao() {
 											className="w-full bg-white text-sm outline-none"
 											type="text"
 											name="subareas"
-											value={
-												subareas[subareas.length - 1]
-											}
+											value={subareas[subareas.length - 1]}
 											onChange={(e) =>
 												handleSubAreaChange(
 													subareas.length - 1,
@@ -328,13 +311,9 @@ export default function CadastroComissao() {
 
 										<div
 											className="m-0 flex h-[2rem] w-[2.2rem] cursor-pointer items-center justify-center rounded-full border-[1px] border-slate-900 p-0"
-											onClick={() =>
-												handleAddSubArea(setSubAreas)
-											}
+											onClick={() => handleAddSubArea(setSubAreas)}
 										>
-											<p className="text-xl font-bold ">
-												+
-											</p>
+											<p className="text-xl font-bold ">+</p>
 										</div>
 									</div>
 								</div>
@@ -364,14 +343,9 @@ export default function CadastroComissao() {
 											<div
 												className="ml-2 cursor-pointer rounded-full px-1"
 												style={{
-													backgroundColor: '#ef0037',
+													backgroundColor: "#ef0037",
 												}}
-												onClick={() =>
-													handleRemoveSubArea(
-														index,
-														setSubAreas
-													)
-												}
+												onClick={() => handleRemoveSubArea(index, setSubAreas)}
 											>
 												<FaTimes className="w-2 text-white" />
 											</div>
@@ -382,10 +356,7 @@ export default function CadastroComissao() {
 						</div>
 
 						<div className="mb-5 flex w-[45%] flex-col">
-							<label
-								className="mb-2 text-sm font-medium"
-								htmlFor="turno"
-							>
+							<label className="mb-2 text-sm font-medium" htmlFor="turno">
 								Turno
 							</label>
 							<div className="w-full">
@@ -395,9 +366,7 @@ export default function CadastroComissao() {
 									className="basic-multi-select border-gray-300"
 									classNamePrefix="select"
 									styles={customStyles}
-									onChange={(choice) =>
-										setTurno(choice?.label)
-									}
+									onChange={(choice) => setTurno(choice?.label)}
 								/>
 							</div>
 						</div>

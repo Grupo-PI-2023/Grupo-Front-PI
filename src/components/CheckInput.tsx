@@ -5,18 +5,11 @@ type CheckInputType = {
 	key?: number | string;
 	id: string;
 	disabled: boolean;
-	isChecked: boolean;
-	onChange: (isChecked: boolean) => void;
+	selected: boolean;
 };
 
-const CheckInput = ({
-	label,
-	key,
-	disabled,
-	id,
-	isChecked,
-	onChange,
-}: CheckInputType) => {
+const CheckInput = ({ label, key, disabled, id, selected }: CheckInputType) => {
+	const [checked, setChecked] = useState<boolean>(selected);
 	return (
 		<div key={key}>
 			<div className="flex items-center">
@@ -25,24 +18,24 @@ const CheckInput = ({
 					type="checkbox"
 					name={id}
 					id={id}
-					checked={isChecked}
-					onChange={(e) => onChange(e.target.checked)}
+					checked={checked}
+					onChange={() => setChecked(!checked)}
 					disabled={disabled}
 				/>
 				<label
 					className={`flex cursor-pointer items-center ${
-						!isChecked ? "text-[#4B00E0]" : "text-[#000]"
+						checked ? "text-[#4B00E0]" : "text-[#000]"
 					} `}
 					htmlFor={id}
 				>
 					<div
 						className={`mr-2 flex h-3.5 w-3.5 items-center justify-center ${
-							!isChecked
+							checked
 								? "border-[1px] border-[#4B00E0] bg-[#4B00E0]"
 								: "border-[1px] border-[#4B00E0] text-[#fff]"
 						}`}
 					>
-						{!isChecked && (
+						{checked && (
 							<svg
 								className="pointer-events-none h-2 w-3 fill-current text-white"
 								viewBox="0 0 20 20"

@@ -1,21 +1,21 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
-import AlertCard from '@/components/AlertCard';
-import CheckInput from '@/components/CheckInput';
-import DefaultButton from '@/components/DefaultButton';
-import NormalInput from '@/components/NormalInput';
-import Title from '@/components/Title';
+import AlertCard from "@/components/AlertCard";
+import CheckInput from "@/components/CheckInput";
+import DefaultButton from "@/components/DefaultButton";
+import NormalInput from "@/components/NormalInput";
+import Title from "@/components/Title";
 
 export default function CadastroUser() {
-	const [name, setName] = useState('');
-	const [cpf, setCpf] = useState('');
-	const [email, setEmail] = useState('');
-	const [instituicao, setInst] = useState('');
-	const [curso, setCurso] = useState('');
+	const [name, setName] = useState("");
+	const [cpf, setCpf] = useState("");
+	const [email, setEmail] = useState("");
+	const [instituicao, setInst] = useState("");
+	const [curso, setCurso] = useState("");
 
-	const checkboxPeriodo = ['Matutino', 'Vespertino', 'Noturno'];
+	const checkboxPeriodo = ["Matutino", "Vespertino", "Noturno"];
 	const handleCheckboxChangeEvento = (index: any) => {
 		//criar setCheckboxes periodo
 		setCheckboxes((prev) => {
@@ -26,23 +26,21 @@ export default function CadastroUser() {
 	};
 
 	// funcao no evento:
-	const checkboxNames = ['Organizador', 'Chair', 'Avaliador', 'Admin'];
-	const [checkboxes, setCheckboxes] = useState(
-		checkboxNames.map(() => false)
-	);
-	const [areas, setAreas] = useState(['']);
-	const [ass, setAss] = useState(['']);
+	const checkboxNames = ["Organizador", "Chair", "Avaliador", "Admin"];
+	const [checkboxes, setCheckboxes] = useState(checkboxNames.map(() => false));
+	const [areas, setAreas] = useState([""]);
+	const [ass, setAss] = useState([""]);
 	const [showCard, setShowCard] = useState(false);
 
 	const customStyles = {
 		control: (provided: any) => ({
 			...provided,
-			width: '100%',
-			height: 'auto',
-			borderRadius: '0.375rem',
-			border: '1',
-			background: 'white',
-			fontSize: '0.875rem',
+			width: "100%",
+			height: "auto",
+			borderRadius: "0.375rem",
+			border: "1",
+			background: "white",
+			fontSize: "0.875rem",
 		}),
 	};
 
@@ -85,10 +83,7 @@ export default function CadastroUser() {
 	return (
 		<div className="container-submenu">
 			<div className="w-[60vw]">
-				<AlertCard
-					message="Aluno cadastrado com sucesso"
-					show={showCard}
-				/>
+				<AlertCard message="Aluno cadastrado com sucesso" show={showCard} />
 
 				<Title
 					title="Cadastro como usuário"
@@ -170,10 +165,7 @@ export default function CadastroUser() {
 						</div>
 
 						<div className="mb-5 flex w-[45%] flex-col">
-							<label
-								className="mb-2 text-sm font-medium"
-								htmlFor="periodo"
-							>
+							<label className="mb-2 text-sm font-medium" htmlFor="periodo">
 								Período de Estudo:
 							</label>
 							<div className="flex items-center gap-3 py-1">
@@ -201,10 +193,7 @@ export default function CadastroUser() {
 						</p>
 					</div>
 					<div className="flex items-center justify-center gap-5">
-						<DefaultButton
-							backgroundColorHex="#8A8A8A"
-							label="Voltar"
-						/>
+						<DefaultButton backgroundColorHex="#8A8A8A" label="Voltar" />
 						<DefaultButton
 							backgroundColorHex="#4B00E0"
 							label="Cadastrar"
