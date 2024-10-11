@@ -592,7 +592,7 @@ export default function Arquivos({ handleNextClick }: CriarEventoProps) {
 				</div>
 
 				<div className="flex w-full justify-center">
-					<div className="mt-12 w-3/4 overflow-hidden rounded-md border border-[#BCBCBC]">
+					<div className="mt-12 w-3/4 overflow-hidden rounded-md">
 						<table className="w-full table-auto items-center">
 							<thead
 								style={{ backgroundColor: '#E4E4E4' }}
