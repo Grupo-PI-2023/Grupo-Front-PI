@@ -18,9 +18,9 @@ export default function CriarSubAreaConhecimento({
 	const [descricao, setDescricao] = useState('');
 	const [bigArea, setBigArea] = useState('');
 	const [area, setArea] = useState('');
-	const [knowledgeSubArea, setKnowledgeSubArea] = useState<KnowledgeSubArea[]>(
-		[]
-	);
+	const [knowledgeSubArea, setKnowledgeSubArea] = useState<
+		KnowledgeSubArea[]
+	>([]);
 
 	const handleAddOnTable = () => {
 		setKnowledgeSubArea((prev) => [
@@ -62,7 +62,10 @@ export default function CriarSubAreaConhecimento({
 					<div className="flex justify-center gap-5">
 						<div className="flex w-full flex-row place-content-between">
 							<div className="mb-5 flex w-5/12 flex-col rounded-md">
-								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
+								<label
+									className="mb-2 text-sm font-medium"
+									htmlFor="eventName"
+								>
 									Grande Área
 								</label>
 
@@ -72,7 +75,9 @@ export default function CriarSubAreaConhecimento({
 										name="bigArea"
 										id="bigArea"
 										value={bigArea}
-										onChange={(e) => setBigArea(e.target.value)}
+										onChange={(e) =>
+											setBigArea(e.target.value)
+										}
 										required
 									>
 										<option value="Option">Option</option>
@@ -81,7 +86,10 @@ export default function CriarSubAreaConhecimento({
 							</div>
 
 							<div className="mb-5 flex w-5/12 flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
+								<label
+									className="mb-2 text-sm font-medium"
+									htmlFor="eventName"
+								>
 									Área
 								</label>
 
@@ -91,7 +99,9 @@ export default function CriarSubAreaConhecimento({
 										name="area"
 										id="area"
 										value={area}
-										onChange={(e) => setArea(e.target.value)}
+										onChange={(e) =>
+											setArea(e.target.value)
+										}
 										required
 									>
 										<option value="Option">Option</option>
@@ -104,7 +114,10 @@ export default function CriarSubAreaConhecimento({
 					<div className="flex justify-center gap-5">
 						<div className="flex w-full flex-row place-content-between">
 							<div className="mb-5 flex w-5/12 flex-col rounded-md">
-								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
+								<label
+									className="mb-2 text-sm font-medium"
+									htmlFor="eventName"
+								>
 									Nome
 								</label>
 
@@ -116,14 +129,19 @@ export default function CriarSubAreaConhecimento({
 										id="activityName"
 										placeholder="Area de Conhecimento"
 										value={name}
-										onChange={(e) => setName(e.target.value)}
+										onChange={(e) =>
+											setName(e.target.value)
+										}
 										required
 									/>
 								</div>
 							</div>
 
 							<div className="mb-5 flex w-5/12 flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
+								<label
+									className="mb-2 text-sm font-medium"
+									htmlFor="eventName"
+								>
 									Descrição
 								</label>
 
@@ -135,7 +153,9 @@ export default function CriarSubAreaConhecimento({
 										id="descricao"
 										placeholder="Descrição"
 										value={descricao}
-										onChange={(e) => setDescricao(e.target.value)}
+										onChange={(e) =>
+											setDescricao(e.target.value)
+										}
 										required
 									/>
 								</div>
@@ -186,54 +206,75 @@ export default function CriarSubAreaConhecimento({
 						<tbody>
 							{knowledgeSubArea && (
 								<>
-									{knowledgeSubArea.map((knowledgeSubArea, index) => {
-										return (
-											<tr
-												key={index}
-												className="h-14"
-												style={{
-													backgroundColor: !(index % 2 === 0)
-														? '#E4E4E4'
-														: '#fff',
-												}}
-											>
-												<td className="rounded-bl-lg">
-													<div className="flex flex-row justify-center gap-2">
-														<button
-															className="middle items-center justify-center"
-															onClick={() => itemToRemove(index)}
+									{knowledgeSubArea.map(
+										(knowledgeSubArea, index) => {
+											return (
+												<tr
+													key={index}
+													className="h-14"
+													style={{
+														backgroundColor: !(
+															index % 2 ===
+															0
+														)
+															? '#E4E4E4'
+															: '#fff',
+													}}
+												>
+													<td className="rounded-bl-lg">
+														<div className="flex flex-row justify-center gap-2">
+															<button
+																className="middle items-center justify-center"
+																onClick={() =>
+																	itemToRemove(
+																		index
+																	)
+																}
+															>
+																<Image
+																	src={
+																		RemoveLogo
+																	}
+																	alt=""
+																	height={20}
+																/>
+															</button>
+														</div>
+													</td>
+													<td className="">
+														<label
+															className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
+															htmlFor="eventName"
 														>
-															<Image src={RemoveLogo} alt="" height={20} />
-														</button>
-													</div>
-												</td>
-												<td className="">
-													<label
-														className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
-														htmlFor="eventName"
-													>
-														{knowledgeSubArea.activityName}
-													</label>
-												</td>
-												<td className="">
-													<label
-														className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
-														htmlFor="eventName"
-													>
-														{knowledgeSubArea.activityDescription}
-													</label>
-												</td>
-												<td className="rounded-br-lg">
-													<label
-														className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
-														htmlFor="eventName"
-													>
-														{knowledgeSubArea.area}
-													</label>
-												</td>
-											</tr>
-										);
-									})}
+															{
+																knowledgeSubArea.activityName
+															}
+														</label>
+													</td>
+													<td className="">
+														<label
+															className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
+															htmlFor="eventName"
+														>
+															{
+																knowledgeSubArea.activityDescription
+															}
+														</label>
+													</td>
+													<td className="rounded-br-lg">
+														<label
+															className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
+															htmlFor="eventName"
+														>
+															{
+																knowledgeSubArea.area
+															}
+														</label>
+													</td>
+												</tr>
+											);
+										}
+									)}
 								</>
 							)}
 						</tbody>

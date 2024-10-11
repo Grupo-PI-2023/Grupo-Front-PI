@@ -5,14 +5,14 @@ import React, { ReactElement, useState } from 'react';
 import { FaRegUser } from 'react-icons/fa';
 import Select from 'react-select';
 
-import DefaultButton from '@/components/COMPONENTES/DefaultButton';
-import FileInput from '@/components/COMPONENTES/FileInput';
-import Footer from '@/components/COMPONENTES/Footer';
-import Navbar from '@/components/COMPONENTES/NavbarAuthenticated';
-import NormalInput from '@/components/COMPONENTES/NormalInput';
-import SelectCom from '@/components/COMPONENTES/Select';
-import TextAreaInput from '@/components/COMPONENTES/TextAreaInput';
-import Title from '@/components/COMPONENTES/Title';
+import DefaultButton from '@/components/DefaultButton';
+import FileInput from '@/components/FileInput';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/NavbarAuthenticated';
+import NormalInput from '@/components/NormalInput';
+import SelectCom from '@/components/Select';
+import TextAreaInput from '@/components/TextAreaInput';
+import Title from '@/components/Title';
 import grandeAreasMock from '@/mocks/Areas';
 
 export default function SubmeterArquivoPage() {
@@ -152,8 +152,14 @@ export default function SubmeterArquivoPage() {
 
 						{/* uploads  */}
 						<div className="mb-8 flex flex-wrap justify-center gap-5">
-							<FileInput id="artigoCompleto" label="Artigo Completo" />
-							<FileInput id="artigoSemAutor" label="Artigo sem autoria" />
+							<FileInput
+								id="artigoCompleto"
+								label="Artigo Completo"
+							/>
+							<FileInput
+								id="artigoSemAutor"
+								label="Artigo sem autoria"
+							/>
 						</div>
 
 						{/* forms autores  */}
@@ -170,8 +176,14 @@ export default function SubmeterArquivoPage() {
 
 						{/* submit button  */}
 						<div className="flex w-full items-center justify-center gap-5">
-							<DefaultButton label="Voltar" backgroundColorHex="#8A8A8A" />
-							<DefaultButton label="Enviar" backgroundColorHex="#4B00E0" />
+							<DefaultButton
+								label="Voltar"
+								backgroundColorHex="#8A8A8A"
+							/>
+							<DefaultButton
+								label="Enviar"
+								backgroundColorHex="#4B00E0"
+							/>
 						</div>
 					</form>
 				</div>
@@ -217,7 +229,9 @@ const Areas: React.FC = () => {
 	const [selectedGrandeArea, setSelectedGrandeArea] =
 		useState<GrandeArea | null>(null);
 	const [selectedArea, setSelectedArea] = useState<Area | null>(null);
-	const [selectedSubArea, setSelectedSubArea] = useState<SubArea | null>(null);
+	const [selectedSubArea, setSelectedSubArea] = useState<SubArea | null>(
+		null
+	);
 	const [selectedEspecialidade, setSelectedEspecialidade] =
 		useState<Especialidade | null>(null);
 
@@ -251,7 +265,9 @@ const Areas: React.FC = () => {
 		: [];
 
 	const handleGrandeAreaChange = (selectedOption: any) => {
-		setSelectedGrandeArea(selectedOption ? selectedOption.grandeArea : null);
+		setSelectedGrandeArea(
+			selectedOption ? selectedOption.grandeArea : null
+		);
 		setSelectedArea(null);
 		setSelectedSubArea(null);
 		setSelectedEspecialidade(null);
@@ -275,7 +291,10 @@ const Areas: React.FC = () => {
 	return (
 		<>
 			<div className="mb-5 flex w-[45%] flex-col">
-				<label className="mb-2 text-sm font-medium" htmlFor="grandeArea">
+				<label
+					className="mb-2 text-sm font-medium"
+					htmlFor="grandeArea"
+				>
 					Grande Área
 				</label>
 				<Select
@@ -320,7 +339,10 @@ const Areas: React.FC = () => {
 			</div>
 
 			<div className="mb-5 flex w-[45%] flex-col">
-				<label className="mb-2 text-sm font-medium" htmlFor="especialidade">
+				<label
+					className="mb-2 text-sm font-medium"
+					htmlFor="especialidade"
+				>
 					Especialidade
 				</label>
 				<Select

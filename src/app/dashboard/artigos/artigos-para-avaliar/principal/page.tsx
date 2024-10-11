@@ -8,8 +8,8 @@ import { IoCheckmarkCircleOutline } from 'react-icons/io5';
 import { IoSearchOutline } from 'react-icons/io5';
 import { PiEyeBold } from 'react-icons/pi';
 
-import Footer from '@/components/COMPONENTES/Footer';
-import Navbar from '@/components/COMPONENTES/NavbarAuthenticated';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/NavbarAuthenticated';
 
 import database from './events.json';
 
@@ -41,7 +41,9 @@ export default function ArtigosAvaliarPrincipal() {
 					</div>
 
 					<div className="align-center mt-24 flex w-11/12 flex-col items-center justify-center rounded-md border-2 border-[#4B00E0] p-3 text-center shadow-lg">
-						<h1 className="mb-6 text-xl text-[#501EB4]">Eventos pendentes</h1>
+						<h1 className="mb-6 text-xl text-[#501EB4]">
+							Eventos pendentes
+						</h1>
 						<div className="flex w-full flex-col items-center justify-center gap-4">
 							{database.map((event, index) => {
 								return (
@@ -49,7 +51,10 @@ export default function ArtigosAvaliarPrincipal() {
 										className="mb-4 flex w-4/6 items-center gap-2 rounded-md border-2 border-[#595959] p-2"
 										key={index}
 									>
-										<PiEyeBold size={22} className="cursor-pointer" />
+										<PiEyeBold
+											size={22}
+											className="cursor-pointer"
+										/>
 										<IoCheckmarkCircleOutline
 											color={'#33880a'}
 											size={22}
@@ -60,7 +65,9 @@ export default function ArtigosAvaliarPrincipal() {
 											size={22}
 											className="cursor-pointer"
 										/>
-										<p className="ml-2 font-semibold">{event.title}</p>
+										<p className="ml-2 font-semibold">
+											{event.title}
+										</p>
 									</div>
 								);
 							})}
@@ -150,9 +157,14 @@ export default function ArtigosAvaliarPrincipal() {
 						<>
 							{database.map((file, index) => {
 								return (
-									<div key={index} className="ml-10 mt-16 w-full">
+									<div
+										key={index}
+										className="ml-10 mt-16 w-full"
+									>
 										<div className="mb-5 flex gap-1 text-lg font-bold">
-											<h1 className="text-[#EF0037]">Evento:</h1>
+											<h1 className="text-[#EF0037]">
+												Evento:
+											</h1>
 											<h1>{file.title}</h1>
 										</div>
 										{file.arquivos.map((files, index) => {
@@ -164,7 +176,9 @@ export default function ArtigosAvaliarPrincipal() {
 													<div className="flex w-11/12 cursor-pointer flex-col gap-2 rounded-lg border border-[#EF0037] p-5 shadow-lg">
 														<div className="flex justify-between">
 															<p className="w-10/12 text-lg text-[#EF0037]">
-																{files.file_title}
+																{
+																	files.file_title
+																}
 															</p>
 															<div className="flex flex-nowrap items-center justify-center gap-1 rounded-md border-2 border-[#595959] p-1">
 																<p className="flex flex-nowrap text-sm">
@@ -184,23 +198,34 @@ export default function ArtigosAvaliarPrincipal() {
 																		Palavras-Chave:
 																	</p>
 																</div>
-																<p>{files.palavras_chave}</p>
-															</div>
-
-															<div className="flex gap-1">
-																<div>
-																	<p className="text-nowrap font-bold">Tema:</p>
-																</div>
-																<p>{files.tema}</p>
+																<p>
+																	{
+																		files.palavras_chave
+																	}
+																</p>
 															</div>
 
 															<div className="flex gap-1">
 																<div>
 																	<p className="text-nowrap font-bold">
-																		Área do Arquivo:
+																		Tema:
 																	</p>
 																</div>
-																<p>{files.area}</p>
+																<p>
+																	{files.tema}
+																</p>
+															</div>
+
+															<div className="flex gap-1">
+																<div>
+																	<p className="text-nowrap font-bold">
+																		Área do
+																		Arquivo:
+																	</p>
+																</div>
+																<p>
+																	{files.area}
+																</p>
 															</div>
 														</div>
 													</div>

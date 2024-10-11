@@ -65,7 +65,10 @@ export default function CriarEspecialide({
 					<div className="flex justify-center gap-5">
 						<div className="flex w-full flex-row place-content-between">
 							<div className="mb-5 flex w-5/12 flex-col rounded-md">
-								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
+								<label
+									className="mb-2 text-sm font-medium"
+									htmlFor="eventName"
+								>
 									Grande Área
 								</label>
 
@@ -75,7 +78,9 @@ export default function CriarEspecialide({
 										name="bigArea"
 										id="bigArea"
 										value={bigArea}
-										onChange={(e) => setBigArea(e.target.value)}
+										onChange={(e) =>
+											setBigArea(e.target.value)
+										}
 										required
 									>
 										<option value="Option">Option</option>
@@ -84,7 +89,10 @@ export default function CriarEspecialide({
 							</div>
 
 							<div className="mb-5 flex w-5/12 flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
+								<label
+									className="mb-2 text-sm font-medium"
+									htmlFor="eventName"
+								>
 									Área
 								</label>
 
@@ -94,7 +102,9 @@ export default function CriarEspecialide({
 										name="area"
 										id="area"
 										value={area}
-										onChange={(e) => setArea(e.target.value)}
+										onChange={(e) =>
+											setArea(e.target.value)
+										}
 										required
 									>
 										<option value="Option">Option</option>
@@ -107,7 +117,10 @@ export default function CriarEspecialide({
 					<div className="flex justify-center gap-5">
 						<div className="flex w-full flex-row place-content-between">
 							<div className="mb-5 flex w-5/12 flex-col rounded-md">
-								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
+								<label
+									className="mb-2 text-sm font-medium"
+									htmlFor="eventName"
+								>
 									Sub-Área
 								</label>
 
@@ -117,7 +130,9 @@ export default function CriarEspecialide({
 										name="subArea"
 										id="subArea"
 										value={subArea}
-										onChange={(e) => setSubArea(e.target.value)}
+										onChange={(e) =>
+											setSubArea(e.target.value)
+										}
 										required
 									>
 										<option value="Option">Option</option>
@@ -126,7 +141,10 @@ export default function CriarEspecialide({
 							</div>
 
 							<div className="mb-5 flex w-5/12 flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
+								<label
+									className="mb-2 text-sm font-medium"
+									htmlFor="eventName"
+								>
 									Nome
 								</label>
 
@@ -138,7 +156,9 @@ export default function CriarEspecialide({
 										id="name"
 										placeholder="Nome"
 										value={name}
-										onChange={(e) => setName(e.target.value)}
+										onChange={(e) =>
+											setName(e.target.value)
+										}
 										required
 									/>
 								</div>
@@ -149,7 +169,10 @@ export default function CriarEspecialide({
 					<div className="flex justify-center gap-5">
 						<div className="flex w-full flex-row place-content-between">
 							<div className="mb-5 flex w-5/12 flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
+								<label
+									className="mb-2 text-sm font-medium"
+									htmlFor="eventName"
+								>
 									Descrição
 								</label>
 
@@ -161,7 +184,9 @@ export default function CriarEspecialide({
 										id="descricao"
 										placeholder="Descrição"
 										value={descricao}
-										onChange={(e) => setDescricao(e.target.value)}
+										onChange={(e) =>
+											setDescricao(e.target.value)
+										}
 										required
 									/>
 								</div>
@@ -209,54 +234,75 @@ export default function CriarEspecialide({
 						<tbody>
 							{knowledgeSpecialty && (
 								<>
-									{knowledgeSpecialty.map((knowledgeSpecialty, index) => {
-										return (
-											<tr
-												key={index}
-												className="h-14"
-												style={{
-													backgroundColor: !(index % 2 === 0)
-														? '#E4E4E4'
-														: '#fff',
-												}}
-											>
-												<td className="rounded-bl-lg">
-													<div className="flex flex-row justify-center gap-2">
-														<button
-															className="middle items-center justify-center"
-															onClick={() => itemToRemove(index)}
+									{knowledgeSpecialty.map(
+										(knowledgeSpecialty, index) => {
+											return (
+												<tr
+													key={index}
+													className="h-14"
+													style={{
+														backgroundColor: !(
+															index % 2 ===
+															0
+														)
+															? '#E4E4E4'
+															: '#fff',
+													}}
+												>
+													<td className="rounded-bl-lg">
+														<div className="flex flex-row justify-center gap-2">
+															<button
+																className="middle items-center justify-center"
+																onClick={() =>
+																	itemToRemove(
+																		index
+																	)
+																}
+															>
+																<Image
+																	src={
+																		RemoveLogo
+																	}
+																	alt=""
+																	height={20}
+																/>
+															</button>
+														</div>
+													</td>
+													<td className="">
+														<label
+															className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
+															htmlFor="eventName"
 														>
-															<Image src={RemoveLogo} alt="" height={20} />
-														</button>
-													</div>
-												</td>
-												<td className="">
-													<label
-														className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
-														htmlFor="eventName"
-													>
-														{knowledgeSpecialty.activityName}
-													</label>
-												</td>
-												<td className="">
-													<label
-														className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
-														htmlFor="eventName"
-													>
-														{knowledgeSpecialty.activityDescription}
-													</label>
-												</td>
-												<td className="rounded-br-lg">
-													<label
-														className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
-														htmlFor="eventName"
-													>
-														{knowledgeSpecialty.subArea}
-													</label>
-												</td>
-											</tr>
-										);
-									})}
+															{
+																knowledgeSpecialty.activityName
+															}
+														</label>
+													</td>
+													<td className="">
+														<label
+															className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
+															htmlFor="eventName"
+														>
+															{
+																knowledgeSpecialty.activityDescription
+															}
+														</label>
+													</td>
+													<td className="rounded-br-lg">
+														<label
+															className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
+															htmlFor="eventName"
+														>
+															{
+																knowledgeSpecialty.subArea
+															}
+														</label>
+													</td>
+												</tr>
+											);
+										}
+									)}
 								</>
 							)}
 						</tbody>

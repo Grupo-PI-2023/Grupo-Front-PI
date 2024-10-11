@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 
-import Footer from '@/components/COMPONENTES/Footer';
-import NavbarAuthenticated from '@/components/COMPONENTES/NavbarAuthenticated';
+import Footer from '@/components/Footer';
+import NavbarAuthenticated from '@/components/NavbarAuthenticated';
 
 import SelecionarArea from './selecionar-area';
 

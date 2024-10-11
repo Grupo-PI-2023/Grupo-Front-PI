@@ -1,8 +1,8 @@
 'use client';
 
-import Footer from '@/components/COMPONENTES/Footer';
-import Menu from '@/components/COMPONENTES/Menu';
-import NavbarAuthenticated from '@/components/COMPONENTES/NavbarAuthenticated';
+import Footer from '@/components/Footer';
+import Menu from '@/components/Menu';
+import NavbarAuthenticated from '@/components/NavbarAuthenticated';
 
 export default function Evento() {
 	return (

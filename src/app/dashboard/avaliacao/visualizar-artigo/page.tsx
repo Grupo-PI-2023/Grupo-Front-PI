@@ -5,12 +5,12 @@ import { useState } from 'react';
 import { IoMdDownload } from 'react-icons/io';
 import { MdStarBorder } from 'react-icons/md';
 
-import DefaultButton from '@/components/COMPONENTES/DefaultButton';
-import Footer from '@/components/COMPONENTES/Footer';
-import NavbarAuthenticated from '@/components/COMPONENTES/NavbarAuthenticated';
-import NormalInput from '@/components/COMPONENTES/NormalInput';
-import TextAreaInput from '@/components/COMPONENTES/TextAreaInput';
-import Title from '@/components/COMPONENTES/Title';
+import DefaultButton from '@/components/DefaultButton';
+import Footer from '@/components/Footer';
+import NavbarAuthenticated from '@/components/NavbarAuthenticated';
+import NormalInput from '@/components/NormalInput';
+import TextAreaInput from '@/components/TextAreaInput';
+import Title from '@/components/Title';
 
 export default function ViewArticlePage() {
 	const [resumo, setResumo] = useState('');
@@ -59,7 +59,9 @@ export default function ViewArticlePage() {
 								id="palavraChave"
 								placeholder="Palavras Chaves....."
 								value={palavraChave}
-								onChange={(e) => setPalavraChave(e.target.value)}
+								onChange={(e) =>
+									setPalavraChave(e.target.value)
+								}
 								rows={2}
 							/>
 							<TextAreaInput
@@ -96,7 +98,9 @@ export default function ViewArticlePage() {
 								id="areas"
 								placeholder="Áreas de conhecimento..."
 								value={knowlogyArea}
-								onChange={(e) => setKnowlogyArea(e.target.value)}
+								onChange={(e) =>
+									setKnowlogyArea(e.target.value)
+								}
 							/>
 						</div>
 
@@ -110,7 +114,10 @@ export default function ViewArticlePage() {
 						</div>
 
 						<div className="mb-5 flex justify-center gap-8">
-							<DefaultButton label="Recusar" backgroundColorHex="#840120" />
+							<DefaultButton
+								label="Recusar"
+								backgroundColorHex="#840120"
+							/>
 							<DefaultButton
 								label="Avaliar"
 								backgroundColorHex="#4B00E0"

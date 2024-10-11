@@ -9,8 +9,8 @@ import { GoDownload } from 'react-icons/go';
 import { IoSearchOutline } from 'react-icons/io5';
 import { MdOutlineRemoveRedEye } from 'react-icons/md';
 
-import Footer from '@/components/COMPONENTES/Footer';
-import Navbar from '@/components/COMPONENTES/NavbarAuthenticated';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/NavbarAuthenticated';
 
 import filesData from './files.json';
 
@@ -98,9 +98,14 @@ export default function ArtigosAvaliarTodos() {
 						<>
 							{filesData.map((event, index) => {
 								return (
-									<div key={index} className="ml-10 mt-16 w-full">
+									<div
+										key={index}
+										className="ml-10 mt-16 w-full"
+									>
 										<div className="mb-5 flex gap-1 text-lg font-bold">
-											<h1 className="text-[#EF0037]">Evento:</h1>
+											<h1 className="text-[#EF0037]">
+												Evento:
+											</h1>
 											<h1>{event.event_title}</h1>
 										</div>
 										{event.arquivos.map((files, index) => {
@@ -112,7 +117,9 @@ export default function ArtigosAvaliarTodos() {
 													<div className="flex w-11/12 justify-between rounded-lg border border-[#EF0037] p-5 shadow-lg">
 														<div className="flex flex-col gap-2">
 															<p className="mb-2 text-lg text-[#EF0037]">
-																{files.file_title}
+																{
+																	files.file_title
+																}
 															</p>
 
 															<div className="ml-4 flex w-full flex-col gap-4">
@@ -125,34 +132,51 @@ export default function ArtigosAvaliarTodos() {
 																	<p
 																		style={{
 																			color: files.status
-																				? changeColor(files.status)
+																				? changeColor(
+																						files.status
+																				  )
 																				: '#0000',
-																			fontWeight: '700',
+																			fontWeight:
+																				'700',
 																			borderBottom: `1px solid ${changeColor(
 																				files.status
 																			)}`,
 																		}}
 																	>
-																		{files.status}
+																		{
+																			files.status
+																		}
 																	</p>
 																</div>
 
 																<div className="flex gap-1">
 																	<div>
 																		<p className="text-nowrap font-bold">
-																			Tipo de Arquivo:
+																			Tipo
+																			de
+																			Arquivo:
 																		</p>
 																	</div>
-																	<p>{files.tipo_arquivo}</p>
+																	<p>
+																		{
+																			files.tipo_arquivo
+																		}
+																	</p>
 																</div>
 
 																<div className="flex gap-1">
 																	<div>
 																		<p className="text-nowrap font-bold">
-																			Área do Arquivo:
+																			Área
+																			do
+																			Arquivo:
 																		</p>
 																	</div>
-																	<p>{files.area_arquivo}</p>
+																	<p>
+																		{
+																			files.area_arquivo
+																		}
+																	</p>
 																</div>
 
 																<div className="flex gap-1">
@@ -161,7 +185,11 @@ export default function ArtigosAvaliarTodos() {
 																			Autores:
 																		</p>
 																	</div>
-																	<p>{files.autores}</p>
+																	<p>
+																		{
+																			files.autores
+																		}
+																	</p>
 																</div>
 
 																<div className="flex gap-1">
@@ -170,7 +198,11 @@ export default function ArtigosAvaliarTodos() {
 																			Avaliadores:
 																		</p>
 																	</div>
-																	<p>{files.avaliadores}</p>
+																	<p>
+																		{
+																			files.avaliadores
+																		}
+																	</p>
 																</div>
 															</div>
 														</div>
@@ -178,53 +210,94 @@ export default function ArtigosAvaliarTodos() {
 														<div className="flex w-3/12 flex-col gap-3 p-2">
 															<div className="flex justify-around gap-2 ">
 																<div className="flex w-1/5 cursor-pointer items-center justify-center rounded-full border-2 border-black">
-																	<MdOutlineRemoveRedEye size={23} />
+																	<MdOutlineRemoveRedEye
+																		size={
+																			23
+																		}
+																	/>
 																</div>
 																<div
 																	className="flex w-8/12 gap-1 rounded-xl border-2 border-[#C0002F] p-1 text-[#C0002F]"
 																	style={{
-																		opacity: files.status
-																			? verifyAvaliation(files.status)
-																			: '0.5',
+																		opacity:
+																			files.status
+																				? verifyAvaliation(
+																						files.status
+																				  )
+																				: '0.5',
 																		cursor: files.status
-																			? verifyAvaliationCursor(files.status)
+																			? verifyAvaliationCursor(
+																					files.status
+																			  )
 																			: 'default',
 																	}}
 																>
-																	<p>Mudar Avaliador</p>
-																	<FiEdit size={20} />
+																	<p>
+																		Mudar
+																		Avaliador
+																	</p>
+																	<FiEdit
+																		size={
+																			20
+																		}
+																	/>
 																</div>
 															</div>
 
 															<div>
 																<div className="flex justify-around gap-2 ">
 																	<div className="flex w-1/5 cursor-pointer items-center justify-center rounded-full border-2 border-[#4B00E0] text-[#4B00E0]">
-																		<GoDownload size={23} />
+																		<GoDownload
+																			size={
+																				23
+																			}
+																		/>
 																	</div>
 																	<div
 																		className="flex w-[65%] justify-around gap-1 rounded-xl border-2 border-[#00B7FF] p-1 text-black"
 																		style={{
-																			opacity: files.status
-																				? viewAvaliation(files.status)
-																				: '0.5',
+																			opacity:
+																				files.status
+																					? viewAvaliation(
+																							files.status
+																					  )
+																					: '0.5',
 																			cursor: files.status
-																				? viweAvaliationCursor(files.status)
+																				? viweAvaliationCursor(
+																						files.status
+																				  )
 																				: 'default',
 																		}}
 																	>
-																		<p>Ver Avaliação</p>
-																		<FaRegStar size={20} />
+																		<p>
+																			Ver
+																			Avaliação
+																		</p>
+																		<FaRegStar
+																			size={
+																				20
+																			}
+																		/>
 																	</div>
 																</div>
 															</div>
 
-															{files.status == 'Não Possui Avaliador' ? (
+															{files.status ==
+															'Não Possui Avaliador' ? (
 																<div className="flex w-full cursor-pointer items-center justify-center gap-4 rounded-xl bg-[#0391C9] p-2 text-white">
 																	<div className="align-center flex flex-col justify-center">
-																		<p className="">Encaminhar</p>
-																		<p className="text-center">Avaliador</p>
+																		<p className="">
+																			Encaminhar
+																		</p>
+																		<p className="text-center">
+																			Avaliador
+																		</p>
 																	</div>
-																	<FaRegStar size={27} />
+																	<FaRegStar
+																		size={
+																			27
+																		}
+																	/>
 																</div>
 															) : (
 																''
