@@ -11,6 +11,7 @@ import { FiUpload } from 'react-icons/fi';
 
 import EditLogo from '@/assets/editLogo.png';
 import RemoveLogo from '@/assets/trashLogo.png';
+import SearchFilter from '@/components/COMPONENTES/SearchFilter';
 import { Arquivo } from '@/lib/repository/arquivo/index.repository';
 import { ArquivoConfig } from '@/lib/repository/arquivo/index.repositoryFiles';
 
@@ -35,6 +36,7 @@ export default function Arquivos({ handleNextClick }: CriarEventoProps) {
 	const [arquivosConfig, setArquivosConfig] = useState<ArquivoConfig[]>([]);
 	const [checkAvaliation, setCheckAvaliation] = useState(false);
 	const [checkApresentation, setCheckApresentation] = useState(false);
+	const [checkResend, setCheckResend] = useState(false);
 	const [showCard, setShowCard] = useState(false);
 	const [showModeloApresentacao, setShowModeloApresentacao] = useState(false);
 	const [showModeloArquivo, setShowModeloArquivo] = useState(false);
@@ -83,6 +85,10 @@ export default function Arquivos({ handleNextClick }: CriarEventoProps) {
 
 	const handleCheckApresentation = () => {
 		setCheckApresentation(!checkApresentation);
+	};
+
+	const handleCheckResend = () => {
+		setCheckResend(!checkResend);
 	};
 
 	const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -489,134 +495,165 @@ export default function Arquivos({ handleNextClick }: CriarEventoProps) {
 									</div>
 								</div>
 
-								<div className="mt-8 flex w-full gap-5">
-									<div className="mb-5 flex flex-col">
-										<label
-											className="mb-2 flex flex-row gap-3 text-base"
-											htmlFor="needAvaliation"
-										>
-											<input
-												type="checkbox"
-												className="w-6"
-												id="needAvaliation"
-												name="needAvaliation"
-												checked={checkAvaliation}
-												onChange={handleCheckAvaliation}
-											/>
-											Precisa de Avaliação
-										</label>
+								<div className="mt-8 flex w-full flex-col gap-5">
+									<div className="flex w-full flex-row justify-between">
+										<div className="mb-5 flex w-1/2 flex-col justify-center">
+											<label
+												className="mb-2 flex flex-row gap-3 text-lg cursor-pointer"
+												htmlFor="needAvaliation"
+											>
+												<input
+													type="checkbox"
+													className="w-6 cursor-pointer"
+													id="needAvaliation"
+													name="needAvaliation"
+													checked={checkAvaliation}
+													onChange={handleCheckAvaliation}
+												/>
+												Precisa de Avaliação
+											</label>
+										</div>
+										<div className="mb-5 flex w-1/2 flex-col">
+											<label
+												className="mb-2 flex flex-row gap-3 text-lg cursor-pointer"
+												htmlFor="needApresentation"
+											>
+												<input
+													type="checkbox"
+													className="w-6 cursor-pointer"
+													id="needApresentation"
+													name="needApresentation"
+													checked={checkApresentation}
+													onChange={handleCheckApresentation}
+												/>
+												Precisa de Apresentação
+											</label>
+										</div>
 									</div>
-									<div className="mb-5 flex flex-col">
-										<label
-											className="mb-2 flex flex-row gap-3 text-base"
-											htmlFor="needApresentation"
-										>
-											<input
-												type="checkbox"
-												className="w-6"
-												id="needApresentation"
-												name="needApresentation"
-												checked={checkApresentation}
-												onChange={handleCheckApresentation}
-											/>
-											Precisa de Apresentação
-										</label>
+
+									<div className="flex w-full flex-row content-center justify-between">
+										<div className="mb-5 flex w-1/2 flex-col justify-center text-lg">
+											<label
+												className="mb-2 flex flex-row gap-3 text-lg cursor-pointer"
+												htmlFor="needResend"
+											>
+												<input
+													type="checkbox"
+													className="w-6 cursor-pointer"
+													id="needResend"
+													name="needResend"
+													checked={checkResend}
+													onChange={handleCheckResend}
+												/>
+												Permitir reenvio
+											</label>
+										</div>
+
+										<div className="w-1/2">
+											<button
+												className="w-full rounded-xl border-none p-2 text-center text-base font-medium text-white"
+												style={{ backgroundColor: '#0391C9' }}
+												type="button"
+												onClick={handleAddOnTable}
+											>
+												Cadastrar Arquivo
+											</button>
+										</div>
 									</div>
 								</div>
 
-								<div className="mt-14 flex items-center justify-center gap-5">
-									<button
-										className="w-56 rounded-xl border-none p-2 text-center text-base font-medium text-white"
-										style={{ backgroundColor: '#0391C9' }}
-										type="button"
-										onClick={handleAddOnTable}
-									>
-										Cadastrar Arquivo
-									</button>
-								</div>
 							</div>
 						</div>
 					</form>
 				</div>
-				<div className="mt-6 flex items-center justify-center gap-6">
-					<button
-						className="w-56
-                    rounded-xl border-none p-2 text-center text-base font-medium text-white"
-						style={{ backgroundColor: '#8A8A8A' }}
-						type="submit"
-					>
-						Voltar
-					</button>
-					<button
-						className="w-56
-                    rounded-xl border-none p-2 text-center text-base font-medium text-white"
-						style={{ backgroundColor: '#4B00E0' }}
-						type="button"
-						// onClick={handleNextButtonClick}
-					>
-						Avançar
-					</button>
+
+				<div className="mt-6 flex flex-col items-center justify-center gap-6">
+					<div className="flex w-full items-center justify-center gap-6">
+						<button
+							className="w-56 rounded-xl border-none p-2 text-center text-base font-medium text-white"
+							style={{ backgroundColor: '#8A8A8A' }}
+							type="submit"
+						>
+							Voltar
+						</button>
+						<button
+							className="w-56 rounded-xl border-none p-2 text-center text-base font-medium text-white"
+							style={{ backgroundColor: '#4B00E0' }}
+							type="button"
+						>
+							Avançar
+						</button>
+
+						<div className="ml-10 flex items-center justify-center">
+							<SearchFilter />
+						</div>
+					</div>
+
 				</div>
-				<table className="mt-14 w-full text-center">
-					<thead style={{ backgroundColor: '#E4E4E4' }}>
-						<tr className="h-14">
-							<th scope="col">Categoria</th>
-							<th scope="col" className="">
-								Avaliação
-							</th>
-							<th scope="col" className="">
-								Apresentação
-							</th>
-							<th scope="col" className="">
-								Ações
-							</th>
-						</tr>
-					</thead>
-					<tbody>
-						{files && (
-							<>
-								{files.map((arquivo, index) => {
-									return (
-										<tr
-											key={index}
-											className="h-14"
-											style={{
-												backgroundColor: !(index % 2 === 0)
-													? '#E4E4E4'
-													: '#fff',
-											}}
-										>
-											<td scope="row" className="">
-												{arquivo.category}
-											</td>
-											<td className="">
-												{arquivo.needAvaliation ? 'Sim' : 'Não'}
-											</td>
-											<td className="">
-												{arquivo.needApresentation ? 'Sim' : 'Não'}
-											</td>
-											<td className="">
-												<div className="flex flex-row justify-center gap-2">
-													<button className="middle none center mb-2 mt-2 flex w-1/3 items-center justify-center rounded-2xl border-2 border-indigo-600 p-2 font-sans font-bold text-indigo-600 transition-all disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
-														<Image src={EditLogo} alt="" height={20} />
-														<p className="ml-2">Editar</p>
-													</button>
-													<button
-														className="middle none center mb-2 mt-2 flex w-1/3 items-center justify-center rounded-2xl border-2 border-rose-700 p-2 font-sans font-bold text-rose-700 transition-all disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-														onClick={() => itemToRemove(index)}
-													>
-														<Image src={RemoveLogo} alt="" height={20} />
-														<p className="ml-2">Excluir</p>
-													</button>
-												</div>
-											</td>
-										</tr>
-									);
-								})}
-							</>
-						)}
-					</tbody>
-				</table>
+
+				<div className="flex w-full justify-center">
+					<div className="mt-12 w-3/4 overflow-hidden rounded-md border border-[#BCBCBC]">
+						<table className="w-full table-auto items-center">
+							<thead
+								style={{ backgroundColor: '#E4E4E4' }}
+								className="rounded-t-md"
+							>
+								<tr className="h-14">
+									<th scope="col" className="border px-4 text-center">
+										Categoria
+									</th>
+									<th scope="col" className="px-4 text-center">
+										Avaliação
+									</th>
+									<th scope="col" className="px-4 text-center">
+										Apresentação
+									</th>
+									<th scope="col" className="px-4 text-center">
+										Ações
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								{files && (
+									<>
+										{files.map((arquivo, index) => (
+											<tr
+												key={index}
+												className="h-14"
+												style={{
+													backgroundColor: index % 2 === 0 ? '#fff' : '#E4E4E4',
+												}}
+											>
+												<td className="px-4 text-center">{arquivo.category}</td>
+												<td className="px-4 text-center">
+													{arquivo.needAvaliation ? 'Sim' : 'Não'}
+												</td>
+												<td className="px-4 text-center">
+													{arquivo.needApresentation ? 'Sim' : 'Não'}
+												</td>
+												<td className="px-4 text-center">
+													<div className="flex flex-row justify-center gap-2">
+														<button className="middle none center mb-2 mt-2 flex w-1/3 items-center justify-center rounded-2xl border-2 border-indigo-600 p-2 font-sans font-bold text-indigo-600 transition-all disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+															<Image src={EditLogo} alt="" height={20} />
+															<p className="ml-2">Editar</p>
+														</button>
+														<button
+															className="middle none center mb-2 mt-2 flex w-1/3 items-center justify-center rounded-2xl border-2 border-rose-700 p-2 font-sans font-bold text-rose-700 transition-all disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+															onClick={() => itemToRemove(index)}
+														>
+															<Image src={RemoveLogo} alt="" height={20} />
+															<p className="ml-2">Excluir</p>
+														</button>
+													</div>
+												</td>
+											</tr>
+										))}
+									</>
+								)}
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 	);
