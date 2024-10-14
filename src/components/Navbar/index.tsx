@@ -1,27 +1,22 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-import { FaRegUser } from 'react-icons/fa';
-import { GiHamburgerMenu } from 'react-icons/gi';
-import { GoHome, GoSearch } from 'react-icons/go';
+import { FaRegUser } from "react-icons/fa";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { GoHome, GoSearch } from "react-icons/go";
 
-<<<<<<< HEAD
-import logo from '../../../assets/logo.svg';
-=======
-import logo from '@/assets/logo.svg';
-
->>>>>>> b4ffeac51ad7cd2b4945553f2a8cafc6e7a83689
-import { navigationNotAuthenticatedRoutes } from './routes';
-import * as S from './styles';
+import logo from "../../assets/logo.svg";
+import { navigationNotAuthenticatedRoutes } from "./routes";
+import * as S from "./styles";
 
 export default function Navbar() {
 	const router = useRouter();
-	const [currentOption, setCurrentOption] = useState('/cadastrarUsuarios');
-	const [query, setQuery] = useState('');
+	const [currentOption, setCurrentOption] = useState("/cadastrarUsuarios");
+	const [query, setQuery] = useState("");
 	const [openMenu, setOpenMenu] = useState(false);
 
 	useEffect(() => {
@@ -65,7 +60,7 @@ export default function Navbar() {
 				className={`
             absolute top-0
 			transition-all duration-500 ease-in-out
-            ${openMenu ? 'fixed left-0' : 'left-[-100vw]'}
+            ${openMenu ? "fixed left-0" : "left-[-100vw]"}
             bg-opacity-0s flex h-[100vh] w-[100vw]
             flex-col items-center justify-start gap-5 overflow-auto bg-[#fcfcfc00] pb-10`}
 				onClick={() => setOpenMenu(!openMenu)}
