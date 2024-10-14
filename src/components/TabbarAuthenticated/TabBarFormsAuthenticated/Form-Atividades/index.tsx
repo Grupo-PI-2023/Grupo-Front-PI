@@ -1,29 +1,25 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
-import { FaRegEdit } from 'react-icons/fa';
-import { FaRegTrashCan } from 'react-icons/fa6';
+import { FaRegEdit } from "react-icons/fa";
+import { FaRegTrashCan } from "react-icons/fa6";
 
-<<<<<<< HEAD
-import OutlineButton from '@/components/OutlineButton';
-=======
-import OutlineButton from '@/components//OutlineButton';
->>>>>>> b4ffeac51ad7cd2b4945553f2a8cafc6e7a83689
-import { Activity } from '@/lib/repository/activity/index.repository';
+import OutlineButton from "@/components/OutlineButton";
+import { Activity } from "@/lib/repository/activity/index.repository";
 
 type CriarEventoProps = {
 	handleNextClick: () => void;
 };
 
 export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
-	const [title, setTitle] = useState('');
-	const [descricao, setDescricao] = useState('');
-	const [dia, setDia] = useState('');
-	const [typeActivity, setTypeActivity] = useState('');
-	const [guestName, setGuestName] = useState('');
-	const [guestEmail, setGuestEmail] = useState('');
-	const [timeActivity, setTimeActivity] = useState('');
+	const [title, setTitle] = useState("");
+	const [descricao, setDescricao] = useState("");
+	const [dia, setDia] = useState("");
+	const [typeActivity, setTypeActivity] = useState("");
+	const [guestName, setGuestName] = useState("");
+	const [guestEmail, setGuestEmail] = useState("");
+	const [timeActivity, setTimeActivity] = useState("");
 	const [activities, setActivities] = useState<Activity[]>([]);
 
 	const handleNextButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -97,13 +93,13 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 				activityTitle: title,
 			},
 		]);
-		setTitle('');
-		setDescricao('');
-		setDia('');
-		setTypeActivity('');
-		setGuestName('');
-		setGuestEmail('');
-		setTimeActivity('');
+		setTitle("");
+		setDescricao("");
+		setDia("");
+		setTypeActivity("");
+		setGuestName("");
+		setGuestEmail("");
+		setTimeActivity("");
 	};
 
 	const itemToRemove = (i: any) => {
@@ -119,21 +115,18 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 			<div className="w-8/12">
 				<h1
 					className="text-center text-2xl font-bold text-black"
-					style={{ color: '#ef0037' }}
+					style={{ color: "#ef0037" }}
 				>
 					Atividades
 				</h1>
-				<h2 className="text-center" style={{ color: '#000000' }}>
+				<h2 className="text-center" style={{ color: "#000000" }}>
 					Atividades presentes durante o evento
 				</h2>
 				<form className="mt-8 w-full" onSubmit={handleAddOnTable}>
 					<div className="flex justify-center gap-5">
 						<div className="w-full">
 							<div className="mb-5 flex flex-col">
-								<label
-									className="mb-2 text-sm font-medium"
-									htmlFor="eventName"
-								>
+								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
 									Título
 								</label>
 
@@ -145,18 +138,13 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 										id="activityTitle"
 										placeholder="Titulo da atividade"
 										value={title}
-										onChange={(e) =>
-											setTitle(e.target.value)
-										}
+										onChange={(e) => setTitle(e.target.value)}
 										required
 									/>
 								</div>
 							</div>
 							<div className="mb-5 flex flex-col">
-								<label
-									className="mb-2 text-sm font-medium"
-									htmlFor="descricao"
-								>
+								<label className="mb-2 text-sm font-medium" htmlFor="descricao">
 									Descrição
 								</label>
 
@@ -167,9 +155,7 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 										id="activityDescription"
 										rows={6}
 										value={descricao}
-										onChange={(e) =>
-											setDescricao(e.target.value)
-										}
+										onChange={(e) => setDescricao(e.target.value)}
 										required
 									/>
 								</div>
@@ -196,10 +182,7 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 						</div>
 						<div className="w-full">
 							<div className="mb-5 flex flex-col">
-								<label
-									className="mb-2 text-sm font-medium"
-									htmlFor="select"
-								>
+								<label className="mb-2 text-sm font-medium" htmlFor="select">
 									Selecionar Tipo de Atividade
 								</label>
 
@@ -210,15 +193,11 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 											name="selectType"
 											id="selectType"
 											value={typeActivity}
-											onChange={(e) =>
-												setTypeActivity(e.target.value)
-											}
+											onChange={(e) => setTypeActivity(e.target.value)}
 											required
 										>
 											<option>Selecione</option>
-											<option value="Palestra">
-												Palestra
-											</option>
+											<option value="Palestra">Palestra</option>
 											<option value="Pitch">Pitch</option>
 										</select>
 									</div>
@@ -235,10 +214,7 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 							</div>
 
 							<div className="mb-5 flex flex-col">
-								<label
-									className="mb-2 text-sm font-medium"
-									htmlFor="eventName"
-								>
+								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
 									Nome do Convidado:
 								</label>
 
@@ -250,19 +226,14 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 										id="GuestName"
 										placeholder="Nome do convidado"
 										value={guestName}
-										onChange={(e) =>
-											setGuestName(e.target.value)
-										}
+										onChange={(e) => setGuestName(e.target.value)}
 										required
 									/>
 								</div>
 							</div>
 
 							<div className="mb-5 flex flex-col">
-								<label
-									className="mb-2 text-sm font-medium"
-									htmlFor="eventName"
-								>
+								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
 									Email do Convidado:
 								</label>
 
@@ -274,9 +245,7 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 										id="GuestEmail"
 										placeholder="Email do convidado"
 										value={guestEmail}
-										onChange={(e) =>
-											setGuestEmail(e.target.value)
-										}
+										onChange={(e) => setGuestEmail(e.target.value)}
 										required
 									/>
 								</div>
@@ -296,9 +265,7 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 										name="timeActivity"
 										id="timeActivity"
 										value={timeActivity}
-										onChange={(e) =>
-											setTimeActivity(e.target.value)
-										}
+										onChange={(e) => setTimeActivity(e.target.value)}
 										required
 									/>
 								</div>
@@ -308,11 +275,11 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 
 					<div
 						className="flex items-center justify-center gap-5"
-						style={{ marginTop: '4rem' }}
+						style={{ marginTop: "4rem" }}
 					>
 						<button
 							className="mb-6 w-3/12 rounded-xl border-none p-2 text-center text-base font-medium text-white"
-							style={{ backgroundColor: '#0391C9' }}
+							style={{ backgroundColor: "#0391C9" }}
 							type="button"
 							onClick={handleAddOnTable}
 						>
@@ -323,14 +290,14 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 				<div className="mt-8 flex items-center justify-center gap-5">
 					<button
 						className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
-						style={{ backgroundColor: '#8A8A8A' }}
+						style={{ backgroundColor: "#8A8A8A" }}
 						type="submit"
 					>
 						Voltar
 					</button>
 					<button
 						className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
-						style={{ backgroundColor: '#4C1FA6' }}
+						style={{ backgroundColor: "#4C1FA6" }}
 						type="submit"
 						onClick={handleNextButtonClick}
 					>
@@ -340,7 +307,7 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 
 				<div className="flex items-center justify-center gap-10">
 					<table className="mt-12 w-full table-auto text-center">
-						<thead style={{ backgroundColor: '#E4E4E4' }}>
+						<thead style={{ backgroundColor: "#E4E4E4" }}>
 							<tr className="h-14">
 								<th scope="col">Título</th>
 								<th scope="col" className="mr-10">
@@ -361,25 +328,16 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 												key={index}
 												className="h-14"
 												style={{
-													backgroundColor: !(
-														index % 2 ===
-														0
-													)
-														? '#E4E4E4'
-														: '#fff',
+													backgroundColor: !(index % 2 === 0)
+														? "#E4E4E4"
+														: "#fff",
 												}}
 											>
 												<td scope="row" className="">
 													{acitivity.activityTitle}
 												</td>
-												<td className="">
-													{acitivity.activityType}
-												</td>
-												<td className="">
-													{
-														acitivity.activityGuestName
-													}
-												</td>
+												<td className="">{acitivity.activityType}</td>
+												<td className="">{acitivity.activityGuestName}</td>
 												<td>
 													<div className="flex items-center justify-center gap-4">
 														<OutlineButton
@@ -393,15 +351,9 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 															label="Excluir"
 															outlineColorHex="#BF0000"
 															textColorHex="#BF0000"
-															icon={
-																<FaRegTrashCan />
-															}
+															icon={<FaRegTrashCan />}
 															customWidth="35%"
-															onClick={() =>
-																itemToRemove(
-																	index
-																)
-															}
+															onClick={() => itemToRemove(index)}
 														/>
 													</div>
 												</td>

@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import EventsCard from '@/components/EventsCard';
-import Footer from '@/components/Footer';
-import NavbarAuthenticated from '@/components/NavbarAuthenticated';
-import Pagination2 from '@/components/Pagitation/Pagination2';
-import SearchFilter from '@/components/SearchFilter';
-import Title from '@/components/Title';
+import EventsCard from "@/components/EventsCard";
+import Footer from "@/components/Footer";
+import NavbarAuthenticated from "@/components/NavbarAuthenticated";
+import Pagination2 from "@/components/Pagitation/Pagination2";
+import SearchFilter from "@/components/SearchFilter";
+import Title from "@/components/Title";
 
 export default function Evento() {
 	return (
@@ -19,7 +19,7 @@ export default function Evento() {
 					subtitle="Todos os eventos que você organiza ou administra."
 				/>
 
-				<div className="ml-[780px] flex flex-col gap-4">
+				<div className="flex w-[1000px] justify-end">
 					<SearchFilter />
 				</div>
 

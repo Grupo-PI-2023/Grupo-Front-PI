@@ -6,21 +6,13 @@ import React from "react";
 import { CiFilter } from "react-icons/ci";
 import { IoSearchOutline } from "react-icons/io5";
 
-<<<<<<< HEAD
-import ArtigosCards from '@/components/ArtigosCards/Cards';
-import ArtigosCards2 from '@/components/ArtigosCards/Cards2';
-import Footer from '@/components/Footer';
-import Navbar from '@/components/NavbarAuthenticated';
-import Pagination1 from '@/components/Pagitation/Pagination1';
-import Title from '@/components/Title';
-=======
 import ArtigosCards from "@/components/ArtigosCards/Cards";
 import ArtigosCards2 from "@/components/ArtigosCards/Cards2";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/NavbarAuthenticated";
 import Pagination1 from "@/components/Pagitation/Pagination1";
+import SearchFilter from "@/components/SearchFilter";
 import Title from "@/components/Title";
->>>>>>> b4ffeac51ad7cd2b4945553f2a8cafc6e7a83689
 
 import Tabfiles from "../visualizar-artigo/artigos-concluidos/page";
 
@@ -56,50 +48,39 @@ export default function EditarArtigosPage() {
 						colorHex="#ef0037"
 					/>
 				</div>
-				<div className="ml-[780px] flex flex-col gap-4">
-					<div className="flex flex-row gap-2">
-						<button className="leading-3xl font-medium text-[#000000]">
-							Buscar
-						</button>
-						<IoSearchOutline size={30} />
-					</div>
-					<div className="flex flex-row gap-4">
-						<button className="leading-3xl font-medium text-[#000000]">
-							Filtrar
-						</button>
-						<CiFilter size={30} />
-					</div>
+				<div className="flex w-[1000px] justify-end">
+					<SearchFilter />
 				</div>
 
 				{currentOption === "dentro-do-prazo" ? (
 					<>
-						<h1 className="-ml-[370px] mb-4 justify-self-center text-center text-[22px] font-bold text-red-500">
+						<h1 className="flex w-[1000px] text-center text-[22px] font-bold text-red-500">
 							Eventos:{" "}
-							<span className="text-black">
-								Tech Talks: Descobrindo as Fronteiras da Tecnologia
+							<span className="ml-2 text-black">
+								Tech Talks - Descobrindo as Fronteiras da Tecnologia
 							</span>
 						</h1>
 						<ArtigosCards />
-						<h1 className="-ml-[370px] mb-4 mt-16 justify-self-center text-center text-[22px] font-bold text-red-500">
+						<h1 className="mt-16 flex w-[1000px] text-center text-[22px] font-bold text-red-500">
 							Eventos:{" "}
-							<span className="text-black">
-								Tech Talks: Descobrindo as Fronteiras da Tecnologia
+							<span className="ml-2 text-black">
+								Tech Talks - Descobrindo as Fronteiras da Tecnologia
 							</span>
 						</h1>
 						<ArtigosCards2 />
 					</>
 				) : (
 					<>
-						<h1 className="-ml-[370px] mb-4 justify-self-center text-center text-[22px] font-bold text-red-500">
+						<h1 className="flex w-[1000px] text-center text-[22px] font-bold text-red-500">
 							Eventos:{" "}
-							<span className="text-black">
+							<span className="ml-2 text-black">
 								Tech Talks: Descobrindo as Fronteiras da Tecnologia
 							</span>
 						</h1>
 						<ArtigosCards2 />
-						<h1 className="-ml-[370px] mb-4 mt-16 justify-self-center text-center text-[22px] font-bold text-red-500">
+						<h1 className="mt-16 flex w-[1000px] text-center text-[22px] font-bold text-red-500">
 							Eventos:{" "}
-							<span className="text-black">
+							<span className="ml-2 text-black">
 								Tech Talks: Descobrindo as Fronteiras da Tecnologia
 							</span>
 						</h1>

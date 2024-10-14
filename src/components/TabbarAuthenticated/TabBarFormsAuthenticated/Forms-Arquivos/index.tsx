@@ -9,19 +9,12 @@ import { BsPaperclip } from "react-icons/bs";
 import { FaTimes } from "react-icons/fa";
 import { FiUpload } from "react-icons/fi";
 
-<<<<<<< HEAD
-import EditLogo from '@/assets/editLogo.png';
-import RemoveLogo from '@/assets/trashLogo.png';
-import { Arquivo } from '@/lib/repository/arquivo/index.repository';
-import { ArquivoConfig } from '@/lib/repository/arquivo/index.repositoryFiles';
-=======
 import EditLogo from "@/assets/editLogo.png";
 import RemoveLogo from "@/assets/trashLogo.png";
 import FileInput from "@/components/FileInput";
 import SearchFilter from "@/components/SearchFilter";
 import { Arquivo } from "@/lib/repository/arquivo/index.repository";
 import { ArquivoConfig } from "@/lib/repository/arquivo/index.repositoryFiles";
->>>>>>> b4ffeac51ad7cd2b4945553f2a8cafc6e7a83689
 
 import AlertCard from "../../../AlertCard";
 
