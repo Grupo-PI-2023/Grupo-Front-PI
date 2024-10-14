@@ -93,16 +93,23 @@ export default function VisualizarSala({ handleNextClick }: CriarEventoProps) {
 				>
 					Salas
 				</h1>
-				<AlertCard message="Salas cadastradas com sucesso" show={showCard} />
+				<AlertCard
+					message="Salas cadastradas com sucesso"
+					show={showCard}
+				/>
 				<h2 className="text-center" style={{ color: '#000000' }}>
-					Salas que irão ser utilizadas no evento, insira uma de cada vez
+					Salas que irão ser utilizadas no evento, insira uma de cada
+					vez
 				</h2>
 			</div>
 
 			<form className="mt-8 flex flex-col" onSubmit={handleAddOnTable}>
 				<div className="mb-5 flex flex-row gap-6">
 					<div className="mb-5 flex flex-col">
-						<label className="mb-2 text-sm font-medium " htmlFor="tipo">
+						<label
+							className="mb-2 text-sm font-medium "
+							htmlFor="tipo"
+						>
 							Tipo:
 						</label>
 						<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
@@ -119,7 +126,10 @@ export default function VisualizarSala({ handleNextClick }: CriarEventoProps) {
 						</div>
 					</div>
 					<div className="mb-5 flex flex-col">
-						<label className="mb-2 text-sm font-medium" htmlFor="limite">
+						<label
+							className="mb-2 text-sm font-medium"
+							htmlFor="limite"
+						>
 							Limite de Pessoas:
 						</label>
 						<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
@@ -139,7 +149,10 @@ export default function VisualizarSala({ handleNextClick }: CriarEventoProps) {
 
 				<div className="mb-5 flex flex-row gap-6">
 					<div className="mb flex flex-col">
-						<label className="mb-2 text-sm font-medium" htmlFor="andar">
+						<label
+							className="mb-2 text-sm font-medium"
+							htmlFor="andar"
+						>
 							Andar:
 						</label>
 						<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
@@ -157,7 +170,10 @@ export default function VisualizarSala({ handleNextClick }: CriarEventoProps) {
 					</div>
 
 					<div className="mb flex flex-col">
-						<label className="mb-2 text-sm font-medium" htmlFor="num">
+						<label
+							className="mb-2 text-sm font-medium"
+							htmlFor="num"
+						>
 							Número:
 						</label>
 						<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
@@ -234,7 +250,9 @@ export default function VisualizarSala({ handleNextClick }: CriarEventoProps) {
 										key={index}
 										className="h-14"
 										style={{
-											backgroundColor: !(index % 2 === 0) ? '#E4E4E4' : '#fff',
+											backgroundColor: !(index % 2 === 0)
+												? '#E4E4E4'
+												: '#fff',
 										}}
 									>
 										<td scope="row" className="">
@@ -242,7 +260,9 @@ export default function VisualizarSala({ handleNextClick }: CriarEventoProps) {
 										</td>
 										<td className="">{sala.andar}</td>
 										<td className="">{sala.numero}</td>
-										<td className="">{sala.limitePessoas}</td>
+										<td className="">
+											{sala.limitePessoas}
+										</td>
 										<td className="">{sala.temaSala}</td>
 									</tr>
 								);

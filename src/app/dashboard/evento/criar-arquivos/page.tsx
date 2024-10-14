@@ -45,7 +45,8 @@ export default function CreateArquivePage() {
 						Criar Arquivo
 					</h1>
 					<h2 className="text-center" style={{ color: '#000000' }}>
-						Crie os tipos de arquivos que serão submetidos durante o evento
+						Crie os tipos de arquivos que serão submetidos durante o
+						evento
 					</h2>
 					<form className="mt-8 w-full" onSubmit={handleAddOnTable}>
 						<div className="flex justify-center gap-5">
@@ -66,7 +67,9 @@ export default function CreateArquivePage() {
 											id="FileName"
 											placeholder="Nome do Arquivo"
 											value={name}
-											onChange={(e) => setName(e.target.value)}
+											onChange={(e) =>
+												setName(e.target.value)
+											}
 											required
 										/>
 									</div>
@@ -88,7 +91,9 @@ export default function CreateArquivePage() {
 											id="descricao"
 											placeholder="Descrição"
 											value={descricao}
-											onChange={(e) => setDescricao(e.target.value)}
+											onChange={(e) =>
+												setDescricao(e.target.value)
+											}
 											required
 										/>
 									</div>
@@ -119,7 +124,10 @@ export default function CreateArquivePage() {
 						<table className="mt-12 w-full table-auto">
 							<thead style={{ backgroundColor: '#DD4467' }}>
 								<tr className="h-14">
-									<th scope="col" className="rounded-tl-lg"></th>
+									<th
+										scope="col"
+										className="rounded-tl-lg"
+									></th>
 									<th
 										scope="col"
 										style={{ color: '#FFFFFF' }}
@@ -145,7 +153,10 @@ export default function CreateArquivePage() {
 													key={index}
 													className="h-14"
 													style={{
-														backgroundColor: !(index % 2 === 0)
+														backgroundColor: !(
+															index % 2 ===
+															0
+														)
 															? '#E4E4E4'
 															: '#fff',
 													}}
@@ -154,7 +165,11 @@ export default function CreateArquivePage() {
 														<div className="flex flex-row justify-center gap-2">
 															<button
 																className="middle items-center justify-center"
-																onClick={() => itemToRemove(index)}
+																onClick={() =>
+																	itemToRemove(
+																		index
+																	)
+																}
 															>
 																<CiCircleRemove className="text-[2rem] text-red-600" />
 															</button>
@@ -165,7 +180,9 @@ export default function CreateArquivePage() {
 															className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
 															htmlFor="eventName"
 														>
-															{createFile.FileName}
+															{
+																createFile.FileName
+															}
 														</label>
 													</td>
 													<td className="rounded-br-lg">
@@ -173,7 +190,9 @@ export default function CreateArquivePage() {
 															className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
 															htmlFor="eventName"
 														>
-															{createFile.FileDescription}
+															{
+																createFile.FileDescription
+															}
 														</label>
 													</td>
 												</tr>

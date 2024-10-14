@@ -49,7 +49,9 @@ export default function RateArticle({ handleOptionClick }: RateArticleProps) {
 							id="comentarioAutores"
 							placeholder="Comentário....."
 							value={comentarioAutores}
-							onChange={(e) => setComentarioAutores(e.target.value)}
+							onChange={(e) =>
+								setComentarioAutores(e.target.value)
+							}
 							rows={6}
 						/>
 					</div>

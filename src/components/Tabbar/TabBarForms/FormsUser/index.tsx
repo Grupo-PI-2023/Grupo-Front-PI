@@ -1,21 +1,29 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
+<<<<<<< HEAD
 import AlertCard from '@/components/AlertCard';
 import CheckInput from '@/components/CheckInput';
 import DefaultButton from '@/components/DefaultButton';
 import NormalInput from '@/components/NormalInput';
 import Title from '@/components/Title';
+=======
+import AlertCard from "@/components/AlertCard";
+import CheckInput from "@/components/CheckInput";
+import DefaultButton from "@/components/DefaultButton";
+import NormalInput from "@/components/NormalInput";
+import Title from "@/components/Title";
+>>>>>>> b4ffeac51ad7cd2b4945553f2a8cafc6e7a83689
 
 export default function CadastroUser() {
-	const [name, setName] = useState('');
-	const [cpf, setCpf] = useState('');
-	const [email, setEmail] = useState('');
-	const [instituicao, setInst] = useState('');
-	const [curso, setCurso] = useState('');
+	const [name, setName] = useState("");
+	const [cpf, setCpf] = useState("");
+	const [email, setEmail] = useState("");
+	const [instituicao, setInst] = useState("");
+	const [curso, setCurso] = useState("");
 
-	const checkboxPeriodo = ['Matutino', 'Vespertino', 'Noturno'];
+	const checkboxPeriodo = ["Matutino", "Vespertino", "Noturno"];
 	const handleCheckboxChangeEvento = (index: any) => {
 		//criar setCheckboxes periodo
 		setCheckboxes((prev) => {
@@ -26,21 +34,21 @@ export default function CadastroUser() {
 	};
 
 	// funcao no evento:
-	const checkboxNames = ['Organizador', 'Chair', 'Avaliador', 'Admin'];
+	const checkboxNames = ["Organizador", "Chair", "Avaliador", "Admin"];
 	const [checkboxes, setCheckboxes] = useState(checkboxNames.map(() => false));
-	const [areas, setAreas] = useState(['']);
-	const [ass, setAss] = useState(['']);
+	const [areas, setAreas] = useState([""]);
+	const [ass, setAss] = useState([""]);
 	const [showCard, setShowCard] = useState(false);
 
 	const customStyles = {
 		control: (provided: any) => ({
 			...provided,
-			width: '100%',
-			height: 'auto',
-			borderRadius: '0.375rem',
-			border: '1',
-			background: 'white',
-			fontSize: '0.875rem',
+			width: "100%",
+			height: "auto",
+			borderRadius: "0.375rem",
+			border: "1",
+			background: "white",
+			fontSize: "0.875rem",
 		}),
 	};
 

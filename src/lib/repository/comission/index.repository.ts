@@ -12,10 +12,10 @@ export type Comissao = {
     certificado?: string | null;
     turno: string | undefined;
     lattes: string;
-    adm: boolean | null ;
-    organizador: boolean | null ;
-    avaliador: boolean | null ;
-    chair: boolean | null ;
+    adm: boolean | null;
+    organizador: boolean | null;
+    avaliador: boolean | null;
+    chair: boolean | null;
     areaConhecimento?: (Area | string | undefined)[];
 }
 export interface IComissaoRepository {

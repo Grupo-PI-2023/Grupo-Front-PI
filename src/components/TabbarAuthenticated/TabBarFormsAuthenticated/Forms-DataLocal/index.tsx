@@ -59,7 +59,10 @@ export default function DataLocal({ handleNextClick, tipo }: DataLocalProps) {
 			data.horarioFim = horarioFinal;
 			data.periodo = checkboxPeriodo[periodo];
 			try {
-				const result = await axios.post('http://localhost:5002/event', data);
+				const result = await axios.post(
+					'http://localhost:5002/event',
+					data
+				);
 				if (result.data.userCreated) {
 					localStorage.setItem('eventId', result.data.userCreated.id);
 					setShowCard(true);
@@ -103,14 +106,20 @@ export default function DataLocal({ handleNextClick, tipo }: DataLocalProps) {
 				>
 					Data e Local
 				</h1>
-				<AlertCard message="Evento cadastrado com sucesso" show={showCard} />
+				<AlertCard
+					message="Evento cadastrado com sucesso"
+					show={showCard}
+				/>
 				<form className="mt-8 w-full" onSubmit={handleSubmit}>
 					<div className="flex justify-center gap-5">
 						<div className="w-full">
 							{(tipo === 'Hibrido' || tipo == 'Presencial') && (
 								<>
 									<div className="mb-5 flex flex-col">
-										<label className="mb-2 text-sm font-medium" htmlFor="cep">
+										<label
+											className="mb-2 text-sm font-medium"
+											htmlFor="cep"
+										>
 											CEP
 										</label>
 										<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
@@ -121,7 +130,9 @@ export default function DataLocal({ handleNextClick, tipo }: DataLocalProps) {
 												id="cep"
 												placeholder="CEP do Evento"
 												value={cep}
-												onChange={(e) => setCep(e.target.value)}
+												onChange={(e) =>
+													setCep(e.target.value)
+												}
 												required
 											/>
 										</div>
@@ -141,7 +152,9 @@ export default function DataLocal({ handleNextClick, tipo }: DataLocalProps) {
 												id="estado"
 												placeholder="Estado do Evento"
 												value={estado}
-												onChange={(e) => setEstado(e.target.value)}
+												onChange={(e) =>
+													setEstado(e.target.value)
+												}
 												required
 											/>
 										</div>
@@ -162,7 +175,9 @@ export default function DataLocal({ handleNextClick, tipo }: DataLocalProps) {
 										name="dateInicio"
 										id="dateInicio"
 										value={dataInicio}
-										onChange={(e) => setDataInicio(e.target.value)}
+										onChange={(e) =>
+											setDataInicio(e.target.value)
+										}
 										required
 									/>
 								</div>
@@ -181,7 +196,9 @@ export default function DataLocal({ handleNextClick, tipo }: DataLocalProps) {
 										name="horaInicio"
 										id="horaInicio"
 										value={horarioInicio}
-										onChange={(e) => setHorarioInicio(e.target.value)}
+										onChange={(e) =>
+											setHorarioInicio(e.target.value)
+										}
 										required
 									/>
 								</div>
@@ -203,8 +220,14 @@ export default function DataLocal({ handleNextClick, tipo }: DataLocalProps) {
 														type="checkbox"
 														name={`checkbox-${index}`}
 														id={`checkbox-${index}`}
-														checked={checkboxes[index]}
-														onChange={() => handleCheckboxChangeEvento(index)}
+														checked={
+															checkboxes[index]
+														}
+														onChange={() =>
+															handleCheckboxChangeEvento(
+																index
+															)
+														}
 													/>
 													<label
 														className="flex cursor-pointer items-center"
@@ -222,18 +245,24 @@ export default function DataLocal({ handleNextClick, tipo }: DataLocalProps) {
 														<div
 															className="mr-2 flex h-4 w-4 items-center justify-center"
 															style={
-																checkboxes[index]
+																checkboxes[
+																	index
+																]
 																	? {
-																			backgroundColor: '#4B00E0',
+																			backgroundColor:
+																				'#4B00E0',
 																			border: '1px solid #4B00E0',
 																	  }
 																	: {
-																			backgroundColor: '#fff',
+																			backgroundColor:
+																				'#fff',
 																			border: '1px solid #4B00E0',
 																	  }
 															}
 														>
-															{checkboxes[index] && (
+															{checkboxes[
+																index
+															] && (
 																<svg
 																	className="pointer-events-none h-2 w-3 fill-current text-white"
 																	viewBox="0 0 20 20"
@@ -242,7 +271,9 @@ export default function DataLocal({ handleNextClick, tipo }: DataLocalProps) {
 																</svg>
 															)}
 														</div>
-														<span className="text-sm font-medium">{name}</span>
+														<span className="text-sm font-medium">
+															{name}
+														</span>
 													</label>
 												</div>
 											</div>
@@ -255,7 +286,10 @@ export default function DataLocal({ handleNextClick, tipo }: DataLocalProps) {
 							{(tipo === 'Hibrido' || tipo == 'Presencial') && (
 								<>
 									<div className="mb-5 flex flex-col">
-										<label className="mb-2 text-sm font-medium" htmlFor="local">
+										<label
+											className="mb-2 text-sm font-medium"
+											htmlFor="local"
+										>
 											Local
 										</label>
 										<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
@@ -266,7 +300,9 @@ export default function DataLocal({ handleNextClick, tipo }: DataLocalProps) {
 												id="local"
 												placeholder="Local do Evento"
 												value={local}
-												onChange={(e) => setLocal(e.target.value)}
+												onChange={(e) =>
+													setLocal(e.target.value)
+												}
 												required
 											/>
 										</div>
@@ -286,7 +322,9 @@ export default function DataLocal({ handleNextClick, tipo }: DataLocalProps) {
 												id="cidade"
 												placeholder="Cidade do Evento"
 												value={cidade}
-												onChange={(e) => setCidade(e.target.value)}
+												onChange={(e) =>
+													setCidade(e.target.value)
+												}
 												required
 											/>
 										</div>
@@ -294,7 +332,10 @@ export default function DataLocal({ handleNextClick, tipo }: DataLocalProps) {
 								</>
 							)}
 							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="dateFinal">
+								<label
+									className="mb-2 text-sm font-medium"
+									htmlFor="dateFinal"
+								>
 									Data de Finalização
 								</label>
 								<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
@@ -304,13 +345,18 @@ export default function DataLocal({ handleNextClick, tipo }: DataLocalProps) {
 										name="dateFinal"
 										id="dateFinal"
 										value={dataFinal}
-										onChange={(e) => setDataFinal(e.target.value)}
+										onChange={(e) =>
+											setDataFinal(e.target.value)
+										}
 										required
 									/>
 								</div>
 							</div>
 							<div className="mb-5 flex flex-col">
-								<label className="mb-2 text-sm font-medium" htmlFor="horaFinal">
+								<label
+									className="mb-2 text-sm font-medium"
+									htmlFor="horaFinal"
+								>
 									Horário de Finalização
 								</label>
 								<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
@@ -320,14 +366,19 @@ export default function DataLocal({ handleNextClick, tipo }: DataLocalProps) {
 										name="horaFinal"
 										id="horaFinal"
 										value={horarioFinal}
-										onChange={(e) => setHorarioFinal(e.target.value)}
+										onChange={(e) =>
+											setHorarioFinal(e.target.value)
+										}
 										required
 									/>
 								</div>
 							</div>
 							{(tipo === 'Hibrido' || tipo == 'Remoto') && (
 								<div className="mb-4 flex flex-col">
-									<label className="mb-2 text-sm font-medium" htmlFor="link">
+									<label
+										className="mb-2 text-sm font-medium"
+										htmlFor="link"
+									>
 										Link para transmissão online
 									</label>
 									<div className="rounded-md border border-gray-300 bg-white px-4 py-2">
@@ -337,7 +388,9 @@ export default function DataLocal({ handleNextClick, tipo }: DataLocalProps) {
 											name="link"
 											id="link"
 											value={link}
-											onChange={(e) => setLink(e.target.value)}
+											onChange={(e) =>
+												setLink(e.target.value)
+											}
 											required
 										/>
 									</div>

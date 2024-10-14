@@ -1,17 +1,25 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
-import { BsHourglassSplit } from 'react-icons/bs';
-import { CiCircleRemove } from 'react-icons/ci';
-import { CiCircleCheck } from 'react-icons/ci';
-import { FaEye } from 'react-icons/fa';
+import { BsHourglassSplit } from "react-icons/bs";
+import { CiCircleRemove } from "react-icons/ci";
+import { CiCircleCheck } from "react-icons/ci";
+import { FaEye } from "react-icons/fa";
 
+<<<<<<< HEAD
 import ClipInput from '@/components/ClipInput';
 import SearchFilter from '@/components/SearchFilter';
 import Title from '@/components/Title';
 import useClipboard from '@/hooks/useClipboard';
 import { UsersFunction } from '@/mocks/UserFunctions';
+=======
+import ClipInput from "@/components/ClipInput";
+import SearchFilter from "@/components/SearchFilter";
+import Title from "@/components/Title";
+import useClipboard from "@/hooks/useClipboard";
+import { UsersFunction } from "@/mocks/UserFunctions";
+>>>>>>> b4ffeac51ad7cd2b4945553f2a8cafc6e7a83689
 
 type CriarEventoProps = {
 	handleNextClick: () => void;
@@ -67,7 +75,7 @@ export default function CadastrarUsuario({
 							Cadastrar Manualmente:
 						</label>
 						<button className="mb-10 rounded-xl border-2 border-solid  border-black bg-transparent p-4 text-center text-lg text-black">
-							Organizador, Avaliador e Chair{' '}
+							Organizador, Avaliador e Chair{" "}
 						</button>
 						<ClipInput
 							label="Enviar Link para Cadastro:"
@@ -104,7 +112,7 @@ export default function CadastrarUsuario({
 							<button
 								className="w-44
                     rounded-xl border-none p-2 text-center text-base font-medium text-white"
-								style={{ backgroundColor: '#8A8A8A' }}
+								style={{ backgroundColor: "#8A8A8A" }}
 								type="submit"
 							>
 								Voltar
@@ -112,7 +120,7 @@ export default function CadastrarUsuario({
 							<button
 								className="w-44
                     rounded-xl border-none p-2 text-center text-base font-medium text-white"
-								style={{ backgroundColor: '#4B00E0' }}
+								style={{ backgroundColor: "#4B00E0" }}
 								type="submit"
 								onClick={handleNextButtonClick}
 							>
@@ -141,7 +149,7 @@ export default function CadastrarUsuario({
 							<button
 								onClick={handlePendente}
 								className="flex items-center gap-2 rounded-xl border-0 border-none p-2 text-white"
-								style={{ backgroundColor: '#DD4467' }}
+								style={{ backgroundColor: "#DD4467" }}
 							>
 								<BsHourglassSplit className="text-[2rem] text-white" />
 
@@ -159,7 +167,7 @@ export default function CadastrarUsuario({
 							<button
 								onClick={handleAceitos}
 								className="flex items-center gap-2 rounded-xl border-0 border-none p-2 text-white"
-								style={{ backgroundColor: '#DD4467' }}
+								style={{ backgroundColor: "#DD4467" }}
 							>
 								<CiCircleCheck className="text-[1.8rem] text-white" />
 								<p className="">Aceitos</p>
@@ -176,7 +184,7 @@ export default function CadastrarUsuario({
 							<button
 								onClick={handleRecusados}
 								className="flex items-center gap-2 rounded-xl border-0 border-none p-2 text-white"
-								style={{ backgroundColor: '#DD4467' }}
+								style={{ backgroundColor: "#DD4467" }}
 							>
 								<CiCircleRemove className="text-[2rem] text-white" />
 								<p className="">Recusados</p>
@@ -191,7 +199,7 @@ export default function CadastrarUsuario({
 
 			{pendentes ? (
 				<table className="mt-12 w-3/4 text-center">
-					<thead style={{ backgroundColor: '#E4E4E4' }}>
+					<thead style={{ backgroundColor: "#E4E4E4" }}>
 						<tr className="h-14">
 							<th scope="col"></th>
 							<th scope="col">Função</th>
@@ -212,15 +220,15 @@ export default function CadastrarUsuario({
 								key={i}
 								className="h-20"
 								style={{
-									backgroundColor: i % 2 == 0 ? '' : '#E4E4E4',
+									backgroundColor: i % 2 == 0 ? "" : "#E4E4E4",
 								}}
 							>
 								<td>
 									<div
 										style={{
-											display: 'flex',
-											gap: '20px',
-											justifyContent: 'center',
+											display: "flex",
+											gap: "20px",
+											justifyContent: "center",
 										}}
 									>
 										<CiCircleCheck className="text-[2rem] text-green-600" />
@@ -247,11 +255,11 @@ export default function CadastrarUsuario({
 					</tbody>
 				</table>
 			) : (
-				''
+				""
 			)}
 			{accepted ? (
 				<table className="mt-12 w-3/4 text-center">
-					<thead style={{ backgroundColor: '#E4E4E4' }}>
+					<thead style={{ backgroundColor: "#E4E4E4" }}>
 						<tr className="h-14">
 							<th scope="col"></th>
 							<th scope="col">Função</th>
@@ -272,9 +280,9 @@ export default function CadastrarUsuario({
 								<div
 									className="ml-4"
 									style={{
-										display: 'flex',
-										gap: '20px',
-										justifyContent: 'center',
+										display: "flex",
+										gap: "20px",
+										justifyContent: "center",
 									}}
 								>
 									<CiCircleRemove className="text-[2rem] text-red-600" />
@@ -296,14 +304,14 @@ export default function CadastrarUsuario({
 								</div>
 							</td>
 						</tr>
-						<tr className="h-20" style={{ backgroundColor: '#E4E4E4' }}>
+						<tr className="h-20" style={{ backgroundColor: "#E4E4E4" }}>
 							<td className="">
 								<div
 									className="ml-4"
 									style={{
-										display: 'flex',
-										gap: '20px',
-										justifyContent: 'center',
+										display: "flex",
+										gap: "20px",
+										justifyContent: "center",
 									}}
 								>
 									<CiCircleRemove className="text-[2rem] text-red-600" />
@@ -328,12 +336,12 @@ export default function CadastrarUsuario({
 					</tbody>
 				</table>
 			) : (
-				''
+				""
 			)}
 
 			{declined ? (
 				<table className="mt-12 w-3/4 text-center">
-					<thead style={{ backgroundColor: '#E4E4E4' }}>
+					<thead style={{ backgroundColor: "#E4E4E4" }}>
 						<tr className="h-14">
 							<th scope="col"></th>
 							<th scope="col">Função</th>
@@ -354,12 +362,12 @@ export default function CadastrarUsuario({
 								<div
 									className="ml-4"
 									style={{
-										display: 'flex',
-										gap: '20px',
-										justifyContent: 'center',
+										display: "flex",
+										gap: "20px",
+										justifyContent: "center",
 									}}
 								>
-									<CiCircleCheck className="text-[1.8] text-green-600" />
+									<CiCircleCheck className="text-[2rem] text-green-600" />
 								</div>
 							</td>
 							<td className="">Chair, Avaliador</td>
@@ -378,17 +386,17 @@ export default function CadastrarUsuario({
 								</div>
 							</td>
 						</tr>
-						<tr className="h-20" style={{ backgroundColor: '#E4E4E4' }}>
+						<tr className="h-20 bg-[#E4E4E4]">
 							<td className="">
 								<div
 									className="ml-4"
 									style={{
-										display: 'flex',
-										gap: '20px',
-										justifyContent: 'center',
+										display: "flex",
+										gap: "20px",
+										justifyContent: "center",
 									}}
 								>
-									<CiCircleCheck className="text-[1.8] text-green-600" />
+									<CiCircleCheck className="text-[2rem] text-green-600" />
 								</div>
 							</td>
 							<td className="">Organizador</td>
@@ -410,7 +418,7 @@ export default function CadastrarUsuario({
 					</tbody>
 				</table>
 			) : (
-				''
+				""
 			)}
 		</div>
 	);

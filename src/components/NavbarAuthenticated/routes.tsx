@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { ReactElement } from 'react';
+=======
+import { ReactElement } from "react";
+>>>>>>> b4ffeac51ad7cd2b4945553f2a8cafc6e7a83689
 
 type navItemType = {
 	link: string;
@@ -8,6 +12,7 @@ type navItemType = {
 
 export const navigationAuthenticatedRoutes: navItemType[] = [
 	{
+<<<<<<< HEAD
 		link: '/',
 		title: 'Página Inicial',
 	},
@@ -114,5 +119,81 @@ export const navigationAuthenticatedRoutes: navItemType[] = [
 	{
 		link: '/suporte',
 		title: 'Suporte',
+=======
+		link: "/",
+		title: "Página Inicial",
+	},
+	{
+		link: "/components-example",
+		title: "Exemplo de uso dos componentes",
+	},
+	{
+		link: "/dashboard/evento/criar-evento",
+		title: "Criar Evento",
+	},
+	{
+		link: "/dashboard/evento/criar-area",
+		title: "Criar Áreas",
+	},
+	{
+		link: "/dashboard/evento/criar-arquivos",
+		title: "Criar Arquivos",
+	},
+	{
+		link: "/dashboard/evento/meus-eventos",
+		title: "Menu do Evento",
+	},
+	{
+		link: "/dashboard/evento/eventos-criados",
+		title: "Eventos Criados",
+	},
+	{
+		link: "/dashboard/artigos/artigos-enviados",
+		title: "Artigos Enviados",
+	},
+	{
+		link: "/dashboard/artigos/artigos-finalizados",
+		title: "Artigos Finalizados",
+	},
+	{
+		link: "/dashboard/artigos/artigos-para-avaliar/principal",
+		title: "Artigos para Avaliar",
+	},
+	{
+		link: "/dashboard/artigos/artigos-para-avaliar/todos-arquivos",
+		title: "Todos artigos - Avaliação",
+	},
+	{
+		link: "/dashboard/artigos/menu-submissao",
+		title: "Menu de Submissão",
+	},
+	{
+		link: "/dashboard/artigos/submeter-artigo",
+		title: "Submeter Artigo",
+	},
+	{
+		link: "/dashboard/editar/editar-artigos",
+		title: "Editar Artigo",
+	},
+	{
+		link: "/dashboard/adicionar-palestrante",
+		title: "Adicionar Palestrante",
+	},
+	{
+		link: "/dashboard/avaliacao/avaliar-artigo",
+		title: "Avaliar Artigo",
+	},
+	{
+		link: "/dashboard/avaliacao/visualizar-artigo",
+		title: "Visualizar Artigo ",
+	},
+	{
+		link: "/dashboard/cadastrar-instituicao",
+		title: "Cadastrar Instituição",
+	},
+	{
+		link: "/dashboard/certificados",
+		title: "Certificados",
+>>>>>>> b4ffeac51ad7cd2b4945553f2a8cafc6e7a83689
 	},
 ];

@@ -71,10 +71,14 @@ export default function CriarAreaConhecimento({
 											name="bigArea"
 											id="bigArea"
 											value={bigArea}
-											onChange={(e) => setBigArea(e.target.value)}
+											onChange={(e) =>
+												setBigArea(e.target.value)
+											}
 											required
 										>
-											<option value="Option">Option</option>
+											<option value="Option">
+												Option
+											</option>
 										</select>
 									</div>
 								</div>
@@ -95,7 +99,9 @@ export default function CriarAreaConhecimento({
 											id="activityName"
 											placeholder="Area de Conhecimento"
 											value={name}
-											onChange={(e) => setName(e.target.value)}
+											onChange={(e) =>
+												setName(e.target.value)
+											}
 											required
 										/>
 									</div>
@@ -119,7 +125,9 @@ export default function CriarAreaConhecimento({
 											id="descricao"
 											placeholder="Descrição"
 											value={descricao}
-											onChange={(e) => setDescricao(e.target.value)}
+											onChange={(e) =>
+												setDescricao(e.target.value)
+											}
 											required
 										/>
 									</div>
@@ -175,7 +183,10 @@ export default function CriarAreaConhecimento({
 												key={index}
 												className="h-14"
 												style={{
-													backgroundColor: !(index % 2 === 0)
+													backgroundColor: !(
+														index % 2 ===
+														0
+													)
 														? '#E4E4E4'
 														: '#fff',
 												}}
@@ -184,9 +195,17 @@ export default function CriarAreaConhecimento({
 													<div className="flex flex-row justify-center gap-2">
 														<button
 															className="middle items-center justify-center"
-															onClick={() => itemToRemove(index)}
+															onClick={() =>
+																itemToRemove(
+																	index
+																)
+															}
 														>
-															<Image src={RemoveLogo} alt="" height={20} />
+															<Image
+																src={RemoveLogo}
+																alt=""
+																height={20}
+															/>
 														</button>
 													</div>
 												</td>
@@ -203,7 +222,9 @@ export default function CriarAreaConhecimento({
 														className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
 														htmlFor="eventName"
 													>
-														{knowledge.activityDescription}
+														{
+															knowledge.activityDescription
+														}
 													</label>
 												</td>
 												<td className="rounded-br-lg">

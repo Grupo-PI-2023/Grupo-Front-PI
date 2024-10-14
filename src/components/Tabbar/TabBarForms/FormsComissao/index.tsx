@@ -1,11 +1,12 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-import axios from 'axios';
-import { FaTimes } from 'react-icons/fa';
-import Select from 'react-select';
+import axios from "axios";
+import { FaTimes } from "react-icons/fa";
+import Select from "react-select";
 
+<<<<<<< HEAD
 import AlertCard from '@/components/AlertCard';
 import CheckInput from '@/components/CheckInput';
 import DefaultButton from '@/components/DefaultButton';
@@ -16,22 +17,34 @@ import { Area } from '@/lib/repository/area/index.repository';
 import { Comissao } from '@/lib/repository/comission/index.repository';
 import mockedOptionAreas from '@/mocks/OptionsAreas';
 import mockedOptionTurnos from '@/mocks/OptionsTurnos';
+=======
+import AlertCard from "@/components/AlertCard";
+import CheckInput from "@/components/CheckInput";
+import DefaultButton from "@/components/DefaultButton";
+import NormalInput from "@/components/NormalInput";
+import { SimpleSelectType } from "@/components/Select";
+import Title from "@/components/Title";
+import { Area } from "@/lib/repository/area/index.repository";
+import { Comissao } from "@/lib/repository/comission/index.repository";
+import mockedOptionAreas from "@/mocks/OptionsAreas";
+import mockedOptionTurnos from "@/mocks/OptionsTurnos";
+>>>>>>> b4ffeac51ad7cd2b4945553f2a8cafc6e7a83689
 
 export default function CadastroComissao() {
 	const [isAdmin, setIsAdmin] = useState(false);
 
 	const [passwordVisible, setPasswordVisible] = useState(false);
-	const [password, setPassword] = useState('');
-	const [name, setName] = useState('');
-	const [cpf, setCpf] = useState('');
-	const [email, setEmail] = useState('');
-	const [instituicao, setInst] = useState('');
-	const [turno, setTurno] = useState<string | undefined>('');
-	const [lattes, setLattes] = useState('');
+	const [password, setPassword] = useState("");
+	const [name, setName] = useState("");
+	const [cpf, setCpf] = useState("");
+	const [email, setEmail] = useState("");
+	const [instituicao, setInst] = useState("");
+	const [turno, setTurno] = useState<string | undefined>("");
+	const [lattes, setLattes] = useState("");
 	const [confirmpasswordVisible, setConfirmpasswordVisible] = useState(false);
-	const [confirmpassword, setConfirmpassword] = useState('');
+	const [confirmpassword, setConfirmpassword] = useState("");
 	// funcao no evento:
-	const checkboxNames = ['Organizador', 'Chair', 'Avaliador', 'Admin'];
+	const checkboxNames = ["Organizador", "Avaliador"];
 	const [checkboxes, setCheckboxes] = useState(checkboxNames.map(() => false));
 	const [showCard, setShowCard] = useState(false);
 
@@ -46,8 +59,8 @@ export default function CadastroComissao() {
 	const [areas, setAreas] = useState<SimpleSelectType[]>(mockedOptionAreas);
 	const [realAreas, setRealAreas] = useState<(string | undefined)[]>([]);
 
-	const [subareas, setSubAreas] = useState(['']);
-	const [ass, setAss] = useState(['']);
+	const [subareas, setSubAreas] = useState([""]);
+	const [ass, setAss] = useState([""]);
 	const handleAddSubArea = (
 		setSubArea: React.Dispatch<React.SetStateAction<string[]>>
 	) => {
@@ -55,8 +68,8 @@ export default function CadastroComissao() {
 			setSubArea === setSubAreas
 				? subareas[subareas.length - 1]
 				: ass[ass.length - 1];
-		if (lastArea.trim() !== '') {
-			setSubArea((prevAreas) => [...prevAreas, '']);
+		if (lastArea.trim() !== "") {
+			setSubArea((prevAreas) => [...prevAreas, ""]);
 		}
 	};
 	const handleRemoveSubArea = (
@@ -78,12 +91,12 @@ export default function CadastroComissao() {
 	const customStyles = {
 		control: (provided: any) => ({
 			...provided,
-			width: '100%',
-			height: 'auto',
-			borderRadius: '0.375rem',
-			border: '1',
-			background: 'white',
-			fontSize: '0.875rem',
+			width: "100%",
+			height: "auto",
+			borderRadius: "0.375rem",
+			border: "1",
+			background: "white",
+			fontSize: "0.875rem",
 		}),
 	};
 
@@ -91,7 +104,7 @@ export default function CadastroComissao() {
 		async function getAreas() {
 			setIsAdmin(false);
 			try {
-				const id = localStorage.getItem('eventId');
+				const id = localStorage.getItem("eventId");
 
 				const result = await axios.get(
 					`http://localhost:5002/area-event/${id}`
@@ -148,7 +161,7 @@ export default function CadastroComissao() {
 				// certificado: '',
 				areaConhecimento: realAreas?.map((area) => area),
 			};
-			const result = await axios.post('http://localhost:5002/comissao', data);
+			const result = await axios.post("http://localhost:5002/comissao", data);
 			console.log(result);
 			if (result.data.comissaoCreated) {
 				// habilitar card de 3seg indicando cadastro realizado
@@ -157,13 +170,13 @@ export default function CadastroComissao() {
 				setTimeout(() => {
 					setShowCard(false);
 				}, 3000);
-				setName('');
-				setCpf('');
-				setEmail('');
-				setInst('');
-				setPassword('');
-				setConfirmpassword('');
-				setLattes('');
+				setName("");
+				setCpf("");
+				setEmail("");
+				setInst("");
+				setPassword("");
+				setConfirmpassword("");
+				setLattes("");
 				setCheckboxes(checkboxNames.map(() => false));
 			}
 		} catch (error) {
@@ -218,6 +231,15 @@ export default function CadastroComissao() {
 									type="password"
 									value={confirmpassword}
 									onChange={(e) => setConfirmpassword(e.target.value)}
+									required
+								/>
+								<NormalInput
+									id="cpf"
+									label="CPF"
+									placeholder="CPF do Usuário"
+									type="text"
+									value={cpf}
+									onChange={(e) => setCpf(e.target.value)}
 									required
 								/>
 							</>
@@ -333,7 +355,9 @@ export default function CadastroComissao() {
 											</div>
 											<div
 												className="ml-2 cursor-pointer rounded-full px-1"
-												style={{ backgroundColor: '#ef0037' }}
+												style={{
+													backgroundColor: "#ef0037",
+												}}
 												onClick={() => handleRemoveSubArea(index, setSubAreas)}
 											>
 												<FaTimes className="w-2 text-white" />

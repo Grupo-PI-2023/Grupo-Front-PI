@@ -103,7 +103,9 @@ export default function EditArquivePage() {
 								id="palavraChave"
 								placeholder="Palavras Chaves....."
 								value={palavraChave}
-								onChange={(e) => setPalavraChave(e.target.value)}
+								onChange={(e) =>
+									setPalavraChave(e.target.value)
+								}
 								rows={2}
 							/>
 							<TextAreaInput
@@ -124,7 +126,10 @@ export default function EditArquivePage() {
 									icon={<IoMdDownload />}
 									customWidth="100%"
 								/>
-								<DefaultButton label="Voltar" customWidth="100%" />
+								<DefaultButton
+									label="Voltar"
+									customWidth="100%"
+								/>
 							</div>
 							<div className="flex w-[20%] flex-col">
 								<DefaultButton

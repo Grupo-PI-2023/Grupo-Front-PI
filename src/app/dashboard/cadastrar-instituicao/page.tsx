@@ -33,7 +33,10 @@ export default function RegisterInstitutionPage() {
 							name="cpf"
 							customWidth="100%"
 						/>
-						<DefaultButton label="Cadastrar" backgroundColorHex="#4B00E0" />
+						<DefaultButton
+							label="Cadastrar"
+							backgroundColorHex="#4B00E0"
+						/>
 					</div>
 				</form>
 			</div>

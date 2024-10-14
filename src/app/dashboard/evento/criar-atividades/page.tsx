@@ -45,7 +45,8 @@ export default function CreateActivityPage() {
 						Criar Atividades
 					</h1>
 					<h2 className="text-center" style={{ color: '#000000' }}>
-						Crie os tipos de atividades que possuirão durante o evente
+						Crie os tipos de atividades que possuirão durante o
+						evente
 					</h2>
 					<form className="mt-8 w-full" onSubmit={handleAddOnTable}>
 						<div className="flex justify-center gap-5">
@@ -66,7 +67,9 @@ export default function CreateActivityPage() {
 											id="activityName"
 											placeholder="Nome da Atividade"
 											value={name}
-											onChange={(e) => setName(e.target.value)}
+											onChange={(e) =>
+												setName(e.target.value)
+											}
 											required
 										/>
 									</div>
@@ -88,7 +91,9 @@ export default function CreateActivityPage() {
 											id="descricao"
 											placeholder="Descrição"
 											value={descricao}
-											onChange={(e) => setDescricao(e.target.value)}
+											onChange={(e) =>
+												setDescricao(e.target.value)
+											}
 											required
 										/>
 									</div>
@@ -119,7 +124,10 @@ export default function CreateActivityPage() {
 						<table className="mt-12 w-full table-auto">
 							<thead style={{ backgroundColor: '#DD4467' }}>
 								<tr className="h-14">
-									<th scope="col" className="rounded-tl-lg"></th>
+									<th
+										scope="col"
+										className="rounded-tl-lg"
+									></th>
 									<th
 										scope="col"
 										style={{ color: '#FFFFFF' }}
@@ -139,46 +147,59 @@ export default function CreateActivityPage() {
 							<tbody>
 								{createActivity && (
 									<>
-										{createActivity.map((knowledge, index) => {
-											return (
-												<tr
-													key={index}
-													className="h-14"
-													style={{
-														backgroundColor: !(index % 2 === 0)
-															? '#E4E4E4'
-															: '#fff',
-													}}
-												>
-													<td className="rounded-bl-lg">
-														<div className="flex flex-row justify-center gap-2">
-															<button
-																className="middle items-center justify-center"
-																onClick={() => itemToRemove(index)}
+										{createActivity.map(
+											(knowledge, index) => {
+												return (
+													<tr
+														key={index}
+														className="h-14"
+														style={{
+															backgroundColor: !(
+																index % 2 ===
+																0
+															)
+																? '#E4E4E4'
+																: '#fff',
+														}}
+													>
+														<td className="rounded-bl-lg">
+															<div className="flex flex-row justify-center gap-2">
+																<button
+																	className="middle items-center justify-center"
+																	onClick={() =>
+																		itemToRemove(
+																			index
+																		)
+																	}
+																>
+																	<CiCircleRemove className="text-[2rem] text-red-600" />
+																</button>
+															</div>
+														</td>
+														<td className="">
+															<label
+																className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
+																htmlFor="eventName"
 															>
-																<CiCircleRemove className="text-[2rem] text-red-600" />
-															</button>
-														</div>
-													</td>
-													<td className="">
-														<label
-															className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
-															htmlFor="eventName"
-														>
-															{knowledge.activityName}
-														</label>
-													</td>
-													<td className="rounded-br-lg">
-														<label
-															className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
-															htmlFor="eventName"
-														>
-															{knowledge.activityDescription}
-														</label>
-													</td>
-												</tr>
-											);
-										})}
+																{
+																	knowledge.activityName
+																}
+															</label>
+														</td>
+														<td className="rounded-br-lg">
+															<label
+																className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
+																htmlFor="eventName"
+															>
+																{
+																	knowledge.activityDescription
+																}
+															</label>
+														</td>
+													</tr>
+												);
+											}
+										)}
 									</>
 								)}
 							</tbody>

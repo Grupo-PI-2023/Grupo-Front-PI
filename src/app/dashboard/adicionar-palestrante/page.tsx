@@ -41,7 +41,9 @@ export default function AdicionarPalestrantePage() {
 									disabled={false}
 									id={`palestrante-${key}`}
 									isChecked={aluno.palestrante}
-									onChange={() => setPalestrante(aluno.palestrante)}
+									onChange={() =>
+										setPalestrante(aluno.palestrante)
+									}
 								/>
 							</div>
 
@@ -91,8 +93,14 @@ export default function AdicionarPalestrantePage() {
 					))}
 
 					<div className="flex w-full items-center justify-center gap-5">
-						<DefaultButton label="Voltar" backgroundColorHex="#8A8A8A" />
-						<DefaultButton label="Finalizar" backgroundColorHex="#4B00E0" />
+						<DefaultButton
+							label="Voltar"
+							backgroundColorHex="#8A8A8A"
+						/>
+						<DefaultButton
+							label="Finalizar"
+							backgroundColorHex="#4B00E0"
+						/>
 					</div>
 				</form>
 			</div>

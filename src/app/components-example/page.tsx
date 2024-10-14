@@ -1,25 +1,25 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
-import { BsHeart, BsStar } from 'react-icons/bs';
+import { BsHeart, BsStar } from "react-icons/bs";
 
-import CheckboxInput from '@/components/CheckboxInput';
-import ClipInput from '@/components/ClipInput';
-import DefaultButton from '@/components/DefaultButton';
-import FileInput from '@/components/FileInput';
-import FixedSelect from '@/components/FixedSelect';
-import Footer from '@/components/Footer';
-import Navbar from '@/components/Navbar';
-import NormalInput from '@/components/NormalInput';
-import OutlineButton from '@/components/OutlineButton';
-import Select from '@/components/Select';
-import TextAreaInput from '@/components/TextAreaInput';
-import Title from '@/components/Title';
+import CheckboxInput from "@/components/CheckboxInput";
+import ClipInput from "@/components/ClipInput";
+import DefaultButton from "@/components/DefaultButton";
+import FileInput from "@/components/FileInput";
+import FixedSelect from "@/components/FixedSelect";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import NormalInput from "@/components/NormalInput";
+import OutlineButton from "@/components/OutlineButton";
+import Select from "@/components/Select";
+import TextAreaInput from "@/components/TextAreaInput";
+import Title from "@/components/Title";
 
 export default function UseComponentsPage() {
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 	const [check, setChecked] = useState(true);
 
 	return (

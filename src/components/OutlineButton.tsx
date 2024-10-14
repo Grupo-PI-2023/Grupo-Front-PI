@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement } from "react";
 
 interface CustomtButtonInterface
 	extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -7,6 +7,7 @@ interface CustomtButtonInterface
 	textColorHex?: string;
 	icon?: ReactElement;
 	customWidth?: string;
+	customHeight?: string;
 }
 
 const OutlineButton: React.FC<CustomtButtonInterface> = ({
@@ -15,6 +16,7 @@ const OutlineButton: React.FC<CustomtButtonInterface> = ({
 	textColorHex,
 	icon,
 	customWidth,
+	customHeight,
 	...buttonProps
 }) => {
 	return (
@@ -24,6 +26,7 @@ const OutlineButton: React.FC<CustomtButtonInterface> = ({
 				borderColor: outlineColorHex,
 				color: textColorHex,
 				width: customWidth,
+				height: customHeight,
 			}}
 			className={`
             flex w-1/5 items-center
@@ -31,8 +34,8 @@ const OutlineButton: React.FC<CustomtButtonInterface> = ({
 			py-2
             text-center text-base 
             font-medium
-			${!outlineColorHex && 'border-[#8A8A8A]'}
-            ${!textColorHex && 'text-[#8A8A8A]'}
+			${!outlineColorHex && "border-[#8A8A8A]"}
+            ${!textColorHex && "text-[#8A8A8A]"}
             `}
 		>
 			<p className="flex-1">{label}</p>

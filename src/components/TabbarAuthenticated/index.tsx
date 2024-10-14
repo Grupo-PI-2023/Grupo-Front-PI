@@ -33,7 +33,9 @@ export default function Tabbar({
 				*/
 			case 'arquivos':
 				return (
-					<Arquivos handleNextClick={() => handleOptionClick('atividades')} />
+					<Arquivos
+						handleNextClick={() => handleOptionClick('atividades')}
+					/>
 				);
 			case 'atividades':
 				return (
@@ -71,7 +73,9 @@ export default function Tabbar({
 						>
 							Criar Evento
 						</S.OptionMenu>
-						<S.IconEvent selected={currentOption === 'criar-evento'} />
+						<S.IconEvent
+							selected={currentOption === 'criar-evento'}
+						/>
 					</div>
 					{/*<div className="flex items-center gap-2">
 						<S.OptionMenu
@@ -101,7 +105,9 @@ export default function Tabbar({
 						>
 							Atividades
 						</S.OptionMenu>
-						<S.IconActivities selected={currentOption === 'atividades'} />
+						<S.IconActivities
+							selected={currentOption === 'atividades'}
+						/>
 					</div>
 					<div className="flex items-center gap-2">
 						<S.OptionMenu

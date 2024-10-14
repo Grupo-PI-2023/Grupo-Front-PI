@@ -152,8 +152,14 @@ export default function SubmeterArquivoPage() {
 
 						{/* uploads  */}
 						<div className="mb-8 flex flex-wrap justify-center gap-5">
-							<FileInput id="artigoCompleto" label="Artigo Completo" />
-							<FileInput id="artigoSemAutor" label="Artigo sem autoria" />
+							<FileInput
+								id="artigoCompleto"
+								label="Artigo Completo"
+							/>
+							<FileInput
+								id="artigoSemAutor"
+								label="Artigo sem autoria"
+							/>
 						</div>
 
 						{/* forms autores  */}
@@ -170,8 +176,14 @@ export default function SubmeterArquivoPage() {
 
 						{/* submit button  */}
 						<div className="flex w-full items-center justify-center gap-5">
-							<DefaultButton label="Voltar" backgroundColorHex="#8A8A8A" />
-							<DefaultButton label="Enviar" backgroundColorHex="#4B00E0" />
+							<DefaultButton
+								label="Voltar"
+								backgroundColorHex="#8A8A8A"
+							/>
+							<DefaultButton
+								label="Enviar"
+								backgroundColorHex="#4B00E0"
+							/>
 						</div>
 					</form>
 				</div>
@@ -217,7 +229,9 @@ const Areas: React.FC = () => {
 	const [selectedGrandeArea, setSelectedGrandeArea] =
 		useState<GrandeArea | null>(null);
 	const [selectedArea, setSelectedArea] = useState<Area | null>(null);
-	const [selectedSubArea, setSelectedSubArea] = useState<SubArea | null>(null);
+	const [selectedSubArea, setSelectedSubArea] = useState<SubArea | null>(
+		null
+	);
 	const [selectedEspecialidade, setSelectedEspecialidade] =
 		useState<Especialidade | null>(null);
 
@@ -251,7 +265,9 @@ const Areas: React.FC = () => {
 		: [];
 
 	const handleGrandeAreaChange = (selectedOption: any) => {
-		setSelectedGrandeArea(selectedOption ? selectedOption.grandeArea : null);
+		setSelectedGrandeArea(
+			selectedOption ? selectedOption.grandeArea : null
+		);
 		setSelectedArea(null);
 		setSelectedSubArea(null);
 		setSelectedEspecialidade(null);
@@ -275,7 +291,10 @@ const Areas: React.FC = () => {
 	return (
 		<>
 			<div className="mb-5 flex w-[45%] flex-col">
-				<label className="mb-2 text-sm font-medium" htmlFor="grandeArea">
+				<label
+					className="mb-2 text-sm font-medium"
+					htmlFor="grandeArea"
+				>
 					Grande Área
 				</label>
 				<Select
@@ -320,7 +339,10 @@ const Areas: React.FC = () => {
 			</div>
 
 			<div className="mb-5 flex w-[45%] flex-col">
-				<label className="mb-2 text-sm font-medium" htmlFor="especialidade">
+				<label
+					className="mb-2 text-sm font-medium"
+					htmlFor="especialidade"
+				>
 					Especialidade
 				</label>
 				<Select
