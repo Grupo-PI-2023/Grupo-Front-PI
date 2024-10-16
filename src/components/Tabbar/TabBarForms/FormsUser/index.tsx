@@ -2,11 +2,19 @@
 
 import { useState } from "react";
 
+<<<<<<< HEAD
+import AlertCard from '@/components/AlertCard';
+import CheckInput from '@/components/CheckInput';
+import DefaultButton from '@/components/DefaultButton';
+import NormalInput from '@/components/NormalInput';
+import Title from '@/components/Title';
+=======
 import AlertCard from "@/components/AlertCard";
 import CheckInput from "@/components/CheckInput";
 import DefaultButton from "@/components/DefaultButton";
 import NormalInput from "@/components/NormalInput";
 import Title from "@/components/Title";
+>>>>>>> b4ffeac51ad7cd2b4945553f2a8cafc6e7a83689
 
 export default function CadastroUser() {
 	const [name, setName] = useState("");

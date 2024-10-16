@@ -6,12 +6,21 @@ import React from "react";
 import { CiFilter } from "react-icons/ci";
 import { IoSearchOutline } from "react-icons/io5";
 
+<<<<<<< HEAD
+import ArtigosCards from '@/components/ArtigosCards/Cards';
+import ArtigosCards2 from '@/components/ArtigosCards/Cards2';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/NavbarAuthenticated';
+import Pagination1 from '@/components/Pagitation/Pagination1';
+import Title from '@/components/Title';
+=======
 import ArtigosCards from "@/components/ArtigosCards/Cards";
 import ArtigosCards2 from "@/components/ArtigosCards/Cards2";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/NavbarAuthenticated";
 import Pagination1 from "@/components/Pagitation/Pagination1";
 import Title from "@/components/Title";
+>>>>>>> b4ffeac51ad7cd2b4945553f2a8cafc6e7a83689
 
 import Tabfiles from "../visualizar-artigo/artigos-concluidos/page";
 

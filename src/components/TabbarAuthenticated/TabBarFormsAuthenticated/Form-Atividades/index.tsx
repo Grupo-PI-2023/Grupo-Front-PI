@@ -5,7 +5,11 @@ import { useState } from 'react';
 import { FaRegEdit } from 'react-icons/fa';
 import { FaRegTrashCan } from 'react-icons/fa6';
 
+<<<<<<< HEAD
+import OutlineButton from '@/components/OutlineButton';
+=======
 import OutlineButton from '@/components//OutlineButton';
+>>>>>>> b4ffeac51ad7cd2b4945553f2a8cafc6e7a83689
 import { Activity } from '@/lib/repository/activity/index.repository';
 
 type CriarEventoProps = {

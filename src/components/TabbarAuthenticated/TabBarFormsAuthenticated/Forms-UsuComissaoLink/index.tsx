@@ -7,11 +7,12 @@ import { CiCircleRemove } from 'react-icons/ci';
 import { CiCircleCheck } from 'react-icons/ci';
 import { FaEye } from 'react-icons/fa';
 
-import ClipInput from '@/components/ClipInput';
-import SearchFilter from '@/components/SearchFilter';
-import Title from '@/components/Title';
-import useClipboard from '@/hooks/useClipboard';
-import { UsersFunction } from '@/mocks/UserFunctions';
+
+import ClipInput from "@/components/ClipInput";
+import SearchFilter from "@/components/SearchFilter";
+import Title from "@/components/Title";
+import useClipboard from "@/hooks/useClipboard";
+import { UsersFunction } from "@/mocks/UserFunctions";
 
 type CriarEventoProps = {
 	handleNextClick: () => void;

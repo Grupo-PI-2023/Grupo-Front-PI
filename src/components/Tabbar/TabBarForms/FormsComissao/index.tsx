@@ -6,6 +6,18 @@ import axios from "axios";
 import { FaTimes } from "react-icons/fa";
 import Select from "react-select";
 
+<<<<<<< HEAD
+import AlertCard from '@/components/AlertCard';
+import CheckInput from '@/components/CheckInput';
+import DefaultButton from '@/components/DefaultButton';
+import NormalInput from '@/components/NormalInput';
+import { SimpleSelectType } from '@/components/Select';
+import Title from '@/components/Title';
+import { Area } from '@/lib/repository/area/index.repository';
+import { Comissao } from '@/lib/repository/comission/index.repository';
+import mockedOptionAreas from '@/mocks/OptionsAreas';
+import mockedOptionTurnos from '@/mocks/OptionsTurnos';
+=======
 import AlertCard from "@/components/AlertCard";
 import CheckInput from "@/components/CheckInput";
 import DefaultButton from "@/components/DefaultButton";
@@ -16,6 +28,7 @@ import { Area } from "@/lib/repository/area/index.repository";
 import { Comissao } from "@/lib/repository/comission/index.repository";
 import mockedOptionAreas from "@/mocks/OptionsAreas";
 import mockedOptionTurnos from "@/mocks/OptionsTurnos";
+>>>>>>> b4ffeac51ad7cd2b4945553f2a8cafc6e7a83689
 
 export default function CadastroComissao() {
 	const [isAdmin, setIsAdmin] = useState(false);
