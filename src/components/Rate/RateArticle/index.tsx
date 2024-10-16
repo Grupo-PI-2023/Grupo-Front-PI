@@ -1,16 +1,18 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
-import Title from '@/components/Title';
+import Title from "@/components/Title";
 
 type RateArticleProps = {
 	handleOptionClick: (option: string) => void;
 };
 
 export default function RateArticle({ handleOptionClick }: RateArticleProps) {
-	const [comentarioAutores, setComentarioAutores] = useState('');
-	const [comentarioOrg, setcomentarioOrg] = useState('');
+	const [comentarioAutores, setComentarioAutores] = useState("");
+	const [comentarioOrg, setcomentarioOrg] = useState("");
+
+	const resendAvalible = true; // valor é capturado na entidade evento "reenvio permitido"
 
 	return (
 		<div className="container mt-52 flex flex-col justify-center">
@@ -41,7 +43,7 @@ export default function RateArticle({ handleOptionClick }: RateArticleProps) {
 
 					<div
 						className="rounded-xl border bg-white px-3 py-2"
-						style={{ borderColor: '#828282' }}
+						style={{ borderColor: "#828282" }}
 					>
 						<textarea
 							className="w-full rounded-xl border-0 bg-white text-sm outline-none"
@@ -49,9 +51,7 @@ export default function RateArticle({ handleOptionClick }: RateArticleProps) {
 							id="comentarioAutores"
 							placeholder="Comentário....."
 							value={comentarioAutores}
-							onChange={(e) =>
-								setComentarioAutores(e.target.value)
-							}
+							onChange={(e) => setComentarioAutores(e.target.value)}
 							rows={6}
 						/>
 					</div>
@@ -66,7 +66,7 @@ export default function RateArticle({ handleOptionClick }: RateArticleProps) {
 
 					<div
 						className="rounded-xl border bg-white px-3 py-2"
-						style={{ borderColor: '#828282' }}
+						style={{ borderColor: "#828282" }}
 					>
 						<textarea
 							className="w-full rounded-xl border-0 bg-white text-sm outline-none"
@@ -80,27 +80,31 @@ export default function RateArticle({ handleOptionClick }: RateArticleProps) {
 					</div>
 				</div>
 
-				<div className="mb-5 flex flex-col">
-					<label
-						className="mb-2 flex flex-row gap-3 text-base"
-						htmlFor="needAvaliation"
-					>
-						<input
-							type="checkbox"
-							className="w-6"
-							id="needAvaliation"
-							name="needAvaliation"
-						/>
-						Permitir Reenvio
-					</label>
-				</div>
+				{resendAvalible ? (
+					<div className="mb-5 flex flex-col">
+						<label
+							className="mb-2 flex flex-row gap-3 text-base"
+							htmlFor="needAvaliation"
+						>
+							<input
+								type="checkbox"
+								className="w-6"
+								id="needAvaliation"
+								name="needAvaliation"
+							/>
+							Permitir Reenvio
+						</label>
+					</div>
+				) : (
+					""
+				)}
 			</div>
 
 			<div className="mt-8 flex flex-row items-center justify-center gap-6">
 				<button
 					className="w-40 rounded-xl border p-2.5 text-center text-sm font-medium text-white"
 					type="submit"
-					style={{ backgroundColor: '#8A8A8A' }}
+					style={{ backgroundColor: "#8A8A8A" }}
 				>
 					Voltar
 				</button>
@@ -108,7 +112,7 @@ export default function RateArticle({ handleOptionClick }: RateArticleProps) {
 				<button
 					className="w-40 rounded-xl border p-2.5 text-center text-sm font-medium text-white"
 					type="submit"
-					style={{ backgroundColor: '#4B00E0' }}
+					style={{ backgroundColor: "#4B00E0" }}
 				>
 					Enviar
 				</button>
