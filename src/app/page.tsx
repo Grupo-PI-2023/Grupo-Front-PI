@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
-import Footer from '@/components/Footer';
-import Navbar from '@/components/Navbar';
-import NavbarAuthenticated from '@/components/NavbarAuthenticated';
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import NavbarAuthenticated from "@/components/NavbarAuthenticated";
 
 export default function Home() {
 	const [authenticated, setAuthenticated] = useState(true);
