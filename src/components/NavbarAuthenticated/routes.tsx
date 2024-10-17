@@ -36,6 +36,10 @@ export const navigationAuthenticatedRoutes: navItemType[] = [
 		title: 'Eventos Criados',
 	},
 	{
+		link: '/dashboard/artigos',
+		title: 'Artigos',
+	},
+	{
 		link: '/dashboard/artigos/artigos-enviados',
 		title: 'Artigos Enviados',
 	},
@@ -52,12 +56,36 @@ export const navigationAuthenticatedRoutes: navItemType[] = [
 		title: 'Todos artigos - Avaliação',
 	},
 	{
+		link: '/dashboard/artigos/menu-artigos',
+		title: 'Menu de Artigos',
+	},
+	{
 		link: '/dashboard/artigos/menu-submissao',
 		title: 'Menu de Submissão',
 	},
 	{
 		link: '/dashboard/artigos/submeter-artigo',
 		title: 'Submeter Artigo',
+	},
+	{
+		link: '/dashboard/artigos/visualizar-artigo',
+		title: 'Visualizar Artigo',
+	},
+	{
+		link: '/dashboard/vizualizar-comissao',
+		title: 'Vizualizar Comissao',
+	},
+	{
+		link: '/dashboard/editar/editar-comissao',
+		title: 'Editar Comissao',
+	},
+	{
+		link: '/dashboard/editar/editar-evento',
+		title: 'Editar Evento',
+	},
+	{
+		link: '/dashboard/editar/editar-sessao',
+		title: 'Editar Sessao',
 	},
 	{
 		link: '/dashboard/editar/editar-artigos',
@@ -80,15 +108,11 @@ export const navigationAuthenticatedRoutes: navItemType[] = [
 		title: 'Cadastrar Instituição',
 	},
 	{
-		link: '/dashboard/cadastrar-comissao-by-editor-chefe',
-		title: 'Cadastrar Comissão como Editor Chefe',
-	},
-	{
-		link: '/dashboard/cadastrar-comissao-by-admin',
-		title: 'Cadastrar Comissão como Admin',
-	},
-	{
 		link: '/dashboard/certificados',
 		title: 'Certificados',
+	},
+	{
+		link: '/suporte',
+		title: 'Suporte',
 	},
 ];

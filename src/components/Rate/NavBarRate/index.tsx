@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { CiBoxList } from "react-icons/ci";
-import { HiOutlineBookOpen } from "react-icons/hi";
+import { CiBoxList } from 'react-icons/ci';
+import { HiOutlineBookOpen } from 'react-icons/hi';
 
-import ArticlesToRate from "../ArticlesToRate";
-import RateArticle from "../RateArticle";
-import * as S from "./styles";
+import ArticlesToRate from '../ArticlesToRate';
+import RateArticle from '../RateArticle';
+import * as S from './styles';
 
 type NavBarRateProps = {
 	currentOption: string;
@@ -18,15 +18,15 @@ export default function NavBarRate({
 }: NavBarRateProps) {
 	const renderContent = () => {
 		switch (currentOption) {
-			case "rate":
+			case 'rate':
 				return (
 					<ArticlesToRate
-						handleOptionClick={() => handleOptionClick("articles-rate")}
+						handleOptionClick={() => handleOptionClick('articles-rate')}
 					/>
 				);
-			case "articles-rate":
+			case 'articles-rate':
 				return (
-					<RateArticle handleOptionClick={() => handleOptionClick("rate")} />
+					<RateArticle handleOptionClick={() => handleOptionClick('rate')} />
 				);
 			default:
 				return null;
@@ -42,9 +42,9 @@ export default function NavBarRate({
 				>
 					<div className="flex flex-row items-center">
 						<S.OptionMenu
-							onClick={() => handleOptionClick("rate")}
-							className="flex cursor-pointer gap-2 text-xs"
-							selected={currentOption === "rate"}
+							onClick={() => handleOptionClick('rate')}
+							className="flex cursor-pointer items-center gap-2 text-xs"
+							selected={currentOption === 'rate'}
 						>
 							<CiBoxList className="h-5 w-5" />
 							Artigos
@@ -53,9 +53,9 @@ export default function NavBarRate({
 
 					<div className="flex items-center">
 						<S.OptionMenu
-							onClick={() => handleOptionClick("articles-rate")}
-							className="flex cursor-pointer gap-2 text-xs"
-							selected={currentOption === "articles-rate"}
+							onClick={() => handleOptionClick('articles-rate')}
+							className="flex cursor-pointer items-center gap-2 text-xs"
+							selected={currentOption === 'articles-rate'}
 						>
 							<HiOutlineBookOpen className="h-5 w-5" />
 							Avaliação
