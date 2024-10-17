@@ -3,10 +3,9 @@
 import CriarAtividade from '@/components/TabbarAuthenticated/TabBarFormsAuthenticated/Form-Atividades';
 import Arquivos from '@/components/TabbarAuthenticated/TabBarFormsAuthenticated/Forms-Arquivos';
 import CriarEvento from '@/components/TabbarAuthenticated/TabBarFormsAuthenticated/Forms-Evento';
-import VisualizarSala from '@/components/TabbarAuthenticated/TabBarFormsAuthenticated/Forms-Salas';
-import Sessao from '@/components/TabbarAuthenticated/TabBarFormsAuthenticated/Forms-Sessao';
 import CadastrarUsuario from '@/components/TabbarAuthenticated/TabBarFormsAuthenticated/Forms-UsuComissaoLink';
 
+import DataLocal from './TabBarFormsAuthenticated/Forms-DataLocal';
 import * as S from './styles';
 
 type TabbarProps = {
@@ -26,37 +25,22 @@ export default function Tabbar({
 						handleNextClick={() => handleOptionClick('data-local')}
 					/>
 				);
-			/*case 'data-local':
+			case 'data-local':
 				return (
 					<DataLocal handleNextClick={() => handleOptionClick('usuarios')} />
 				);
-				*/
+
 			case 'arquivos':
 				return (
-					<Arquivos
-						handleNextClick={() => handleOptionClick('atividades')}
-					/>
+					<Arquivos handleNextClick={() => handleOptionClick('atividades')} />
 				);
-			case 'atividades':
-				return (
-					<CriarAtividade
-						handleNextClick={() => handleOptionClick('usuarios')}
-					/>
-				);
+
 			case 'usuarios':
 				return (
 					<CadastrarUsuario
 						handleNextClick={() => handleOptionClick('salas')}
 					/>
 				);
-			case 'salas':
-				return (
-					<VisualizarSala
-						handleNextClick={() => handleOptionClick('sessoes')}
-					/>
-				);
-			case 'sessoes':
-				return <Sessao />;
 			default:
 				return null;
 		}
@@ -73,11 +57,9 @@ export default function Tabbar({
 						>
 							Criar Evento
 						</S.OptionMenu>
-						<S.IconEvent
-							selected={currentOption === 'criar-evento'}
-						/>
+						<S.IconEvent selected={currentOption === 'criar-evento'} />
 					</div>
-					{/*<div className="flex items-center gap-2">
+					<div className="flex items-center gap-2">
 						<S.OptionMenu
 							onClick={() => handleOptionClick('data-local')}
 							className="flex-shrink-0 cursor-pointer text-sm"
@@ -86,7 +68,7 @@ export default function Tabbar({
 							Data e Local
 						</S.OptionMenu>
 						<S.IconDate selected={currentOption === 'data-local'} />
-	</div>*/}
+					</div>
 					<div className="flex items-center gap-2">
 						<S.OptionMenu
 							onClick={() => handleOptionClick('arquivos')}
@@ -97,18 +79,7 @@ export default function Tabbar({
 						</S.OptionMenu>
 						<S.IconFiles selected={currentOption === 'arquivos'} />
 					</div>
-					<div className="flex items-center gap-2">
-						<S.OptionMenu
-							onClick={() => handleOptionClick('atividades')}
-							className="flex-shrink-0 cursor-pointer text-sm"
-							selected={currentOption === 'atividades'}
-						>
-							Atividades
-						</S.OptionMenu>
-						<S.IconActivities
-							selected={currentOption === 'atividades'}
-						/>
-					</div>
+
 					<div className="flex items-center gap-2">
 						<S.OptionMenu
 							onClick={() => handleOptionClick('usuarios')}
@@ -119,29 +90,9 @@ export default function Tabbar({
 						</S.OptionMenu>
 						<S.IconUsers selected={currentOption === 'usuarios'} />
 					</div>
-					<div className="flex items-center gap-2">
-						<S.OptionMenu
-							onClick={() => handleOptionClick('salas')}
-							className="flex-shrink-0 cursor-pointer text-sm"
-							selected={currentOption === 'salas'}
-						>
-							Salas
-						</S.OptionMenu>
-						<S.IconClasses selected={currentOption === 'salas'} />
-					</div>
-					<div className="flex items-center gap-2">
-						<S.OptionMenu
-							onClick={() => handleOptionClick('sessoes')}
-							className="flex-shrink-0 cursor-pointer text-sm"
-							selected={currentOption === 'sessoes'}
-						>
-							Sessões
-						</S.OptionMenu>
-						<S.IconSection selected={currentOption === 'sessoes'} />
-					</div>
 				</div>
 			</div>
-			{renderContent()}
+			<div className="mt-64">{renderContent()}</div>
 		</div>
 	);
 }

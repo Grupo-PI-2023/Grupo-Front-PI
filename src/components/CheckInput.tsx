@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-type CheckInputType = {
+interface CustomCheckInputProps
+	extends React.InputHTMLAttributes<HTMLInputElement> {
 	label: string;
-	key?: number | string;
-	id: string;
-	disabled: boolean;
+	key: any;
 	selected: boolean;
-};
+	customWidth?: string;
+}
 
-const CheckInput = ({ label, key, disabled, id, selected }: CheckInputType) => {
+const CheckInput: React.FC<CustomCheckInputProps> = ({
+	label,
+	selected,
+	key,
+	customWidth,
+	...inputProps
+}) => {
 	const [checked, setChecked] = useState<boolean>(selected);
 	return (
 		<div key={key}>
@@ -16,23 +22,23 @@ const CheckInput = ({ label, key, disabled, id, selected }: CheckInputType) => {
 				<input
 					className="hidden"
 					type="checkbox"
-					name={id}
-					id={id}
+					name={inputProps.name}
+					id={inputProps.id}
 					checked={checked}
 					onChange={() => setChecked(!checked)}
-					disabled={disabled}
+					disabled={inputProps.disabled}
 				/>
 				<label
 					className={`flex cursor-pointer items-center ${
-						checked ? "text-[#4B00E0]" : "text-[#000]"
+						checked ? 'text-[#4B00E0]' : 'text-[#000]'
 					} `}
-					htmlFor={id}
+					htmlFor={inputProps.id}
 				>
 					<div
 						className={`mr-2 flex h-3.5 w-3.5 items-center justify-center ${
 							checked
-								? "border-[1px] border-[#4B00E0] bg-[#4B00E0]"
-								: "border-[1px] border-[#4B00E0] text-[#fff]"
+								? 'border-[1px] border-[#4B00E0] bg-[#4B00E0]'
+								: 'border-[1px] border-[#4B00E0] text-[#fff]'
 						}`}
 					>
 						{checked && (
