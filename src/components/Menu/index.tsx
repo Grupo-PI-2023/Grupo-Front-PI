@@ -18,6 +18,7 @@ import { MdDateRange } from 'react-icons/md';
 import { PiFiles } from 'react-icons/pi';
 import { TfiTimer } from 'react-icons/tfi';
 import { LuEye } from "react-icons/lu";
+import { FaCheck } from 'react-icons/fa';
 
 export default function Menu() {
 	const router = useRouter();
@@ -39,7 +40,7 @@ export default function Menu() {
 						className="text-center text-2xl font-bold text-black"
 						style={{ color: '#ef0037' }}
 					>
-						Menu do Evento
+						Nome do Evento
 					</h1>
 					<p className="text-center text-sm text-black">
 						Andamento da criação do Evento, acesse a área que deseja modificar
@@ -122,14 +123,14 @@ export default function Menu() {
 								</div>
 							</div>
 							<div className="flex gap-4 rounded-xl border-2 border-l-4 border-[#e3e3e3] border-l-[#4B00E0] bg-[#F5F5F5]  p-5 shadow-xl">
-								<BiBrain className="h-8 w-8" color="#4B00E0" />
+
+								<FaCheck className="h-8 w-8" color="#4B00E0" />
 								<div className="flex flex-col gap-0.5">
 									<p className="text-base font-semibold text-[#4B00E0]">
-										Atividades
+										Gerenciamento de Avaliações
 									</p>
 									<p className="text-sm font-medium">
-										Cadastre uma ou mais atividades (caso não possua não
-										preencha)
+										Gerencie todas as avaliações do evento
 									</p>
 								</div>
 							</div>
@@ -145,99 +146,48 @@ export default function Menu() {
 									</p>
 								</div>
 							</div>
-							<div className="flex gap-4 rounded-xl border-2 border-l-4 border-[#e3e3e3] border-l-[#4B00E0] bg-[#F5F5F5]  p-5 shadow-xl">
-								<BiSolidSchool className="h-8 w-8" color="#4B00E0" />
-								<div className="flex flex-col gap-0.5">
-									<p className="text-base font-semibold text-[#4B00E0]">
-										Salas
-									</p>
-									<p className="text-sm font-medium">
-										Cadastre as salas que serão utilizadas no evento (caso não
-										possua não preencha)
-									</p>
-								</div>
-							</div>
-							<div className="flex gap-4 rounded-xl border-2 border-l-4 border-[#e3e3e3] border-l-[#4B00E0] bg-[#F5F5F5]  p-5 shadow-xl">
-								<TfiTimer className="h-8 w-8" color="#4B00E0" />
-								<div className="flex flex-col gap-0.5">
-									<p className="text-base font-semibold text-[#4B00E0]">
-										Sessões
-									</p>
-									<p className="text-sm font-medium">
-										Cadastre e altere as sessões que vão ter no evento (caso não
-										possua não preencha)
-									</p>
-								</div>
-							</div>
 							<div className="flex items-stretch gap-5">
-								<div className="#F5F5F5 flex w-1/2 rounded-xl border-2 border-l-4 border-[#e3e3e3] border-l-[#4B00E0] bg-[#F5F5F5] p-5 shadow-xl">
-									<div className="flex gap-4">
-										<div>
-											<AiOutlineStar
-												className="block h-8 w-8"
-												color="#4B00E0"
-											/>
-										</div>
-										<div className="flex flex-col flex-wrap gap-0.5">
-											<p className="text-base font-semibold text-[#4B00E0]">
-												Nova Edição do Evento
-											</p>
-											<p className="text-sm font-medium">
-												Criar uma nova edição do evento
-											</p>
-										</div>
-									</div>
-								</div>
-								<div className="#F5F5F5 flex w-1/2 rounded-xl border-2 border-l-4 border-[#e3e3e3] border-l-[#4B00E0] bg-[#F5F5F5] p-5 shadow-xl">
-									<div className="flex gap-4">
-										<div>
-											<BsStars className="block h-8 w-8" color="#4B00E0" />
-										</div>
-										<div className="flex flex flex-wrap gap-0.5">
-											<p className="text-base font-semibold text-[#4B00E0]">
-												Ver edições desse evento
-											</p>
-											<p className="flex text-sm font-medium">
-												Ver todas as edições desse evento
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div className="flex items-stretch gap-5">
-								<div className="#F5F5F5 flex h-52 w-1/2 rounded-xl border-2 border-l-4 border-[#e3e3e3] border-l-[#4B00E0] bg-[#F5F5F5] p-5 shadow-xl">
+								<div className="#F5F5F5 flex h-52 w-1/2 rounded-xl border-2 border-l-4 border-[#e3e3e3] border-l-[#4B00E0] bg-[#F5F5F5] p-5 shadow-xl" style={{ height: '150px' }}>
 									<div className="flex gap-4">
 										<div>
 											<GrNotes className="block h-8 w-8" color="#4B00E0" />
 										</div>
 										<div className="flex flex-col flex-wrap gap-0.5">
 											<p className="text-base font-semibold text-[#4B00E0]">
-												Gerar Proceedings
+												Nova edição do evento
 											</p>
 											<p className="mt-5 text-sm font-medium">
-												Gere os proceedings deste evento (Opção habilitada
-												apenas ao fim de todas as sessões previstas deste
-												evento)
+												Crir uma nova versão do evento
 											</p>
 										</div>
 									</div>
 								</div>
 								<div className="#F5F5F5 flex h-52 w-1/2 rounded-xl border-2 border-l-4 border-[#e3e3e3] border-l-[#4B00E0] bg-[#F5F5F5] p-5 shadow-xl">
-									<div className="flex gap-4">
+									<div className="flex gap-4" style={{ height: '150px' }}>
 										<div>
 											<IoQrCode className="block h-8 w-8" color="#4B00E0" />
 										</div>
 										<div className="flex flex flex-wrap gap-0.5">
 											<p className="text-base font-semibold text-[#4B00E0]">
-												Baixar QrCode
+												Ver edições desse evento
 											</p>
 											<p className="mt-5 flex h-full text-sm font-medium">
-												Baixe e imprima os QrCodes para que os participantes do
-												evento consigam o certificado como participante do
-												evento
+												Ver todas as edições desse evento.
 											</p>
 										</div>
 									</div>
+								</div>
+							</div>
+
+							<div className="flex gap-4 rounded-xl border-2 border-l-4 border-[#e3e3e3] border-l-[#4B00E0] bg-[#F5F5F5]  p-8 shadow-xl">
+								<BiBrain className="h-8 w-8" color="#4B00E0" />
+								<div className="flex flex-col gap-0.5">
+									<p className="text-base font-semibold text-[#4B00E0]">
+										Gerar Proceedings
+									</p>
+									<p className="text-sm font-medium">
+										Gere os proceedings deste evento (Opção habilitada apenas ao fim de todas as sessões previstas deste evento)
+									</p>
 								</div>
 							</div>
 						</div>

@@ -5,6 +5,8 @@ import { useState } from 'react';
 import Footer from '@/components/Footer';
 import NavbarAuthenticated from '@/components/NavbarAuthenticated';
 import NavBarRate from '@/components/Rate/NavBarRate';
+import Rating from '@/components/Avaliations/Rating';
+import NavBarRateAvaliar from '../../../../components/Rate/NavBarRateAvaliar';
 
 export default function ViewRateArticlePage() {
 	const [currentOption, setCurrentOption] = useState('rate');
@@ -13,13 +15,15 @@ export default function ViewRateArticlePage() {
 		setCurrentOption(option);
 	};
 
+
 	return (
 		<div>
 			<NavbarAuthenticated />
-			<NavBarRate
+			<NavBarRateAvaliar
 				currentOption={currentOption}
 				handleOptionClick={handleOptionClick}
 			/>
+
 			<Footer />
 		</div>
 	);
