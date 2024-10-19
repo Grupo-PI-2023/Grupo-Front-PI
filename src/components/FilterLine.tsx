@@ -1,7 +1,7 @@
 'use client';
 
-import { CiFilter } from "react-icons/ci";
-import { IoSearchOutline } from "react-icons/io5";
+import { CiFilter } from 'react-icons/ci';
+import { IoSearchOutline } from 'react-icons/io5';
 
 export default function FilterSearchLine() {
 	return (
