@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement } from 'react';
 
 interface CustomtButtonInterface
 	extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -34,8 +34,8 @@ const OutlineButton: React.FC<CustomtButtonInterface> = ({
 			py-2
             text-center text-base 
             font-medium
-			${!outlineColorHex && "border-[#8A8A8A]"}
-            ${!textColorHex && "text-[#8A8A8A]"}
+			${!outlineColorHex && 'border-[#8A8A8A]'}
+            ${!textColorHex && 'text-[#8A8A8A]'}
             `}
 		>
 			<p className="flex-1">{label}</p>
