@@ -1,31 +1,22 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import React from "react";
+import { useState } from 'react';
+import React from 'react';
 
-import { CiFilter } from "react-icons/ci";
-import { IoSearchOutline } from "react-icons/io5";
+import { CiFilter } from 'react-icons/ci';
+import { IoSearchOutline } from 'react-icons/io5';
 
-<<<<<<< HEAD
 import ArtigosCards from '@/components/ArtigosCards/Cards';
 import ArtigosCards2 from '@/components/ArtigosCards/Cards2';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/NavbarAuthenticated';
 import Pagination1 from '@/components/Pagitation/Pagination1';
 import Title from '@/components/Title';
-=======
-import ArtigosCards from "@/components/ArtigosCards/Cards";
-import ArtigosCards2 from "@/components/ArtigosCards/Cards2";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/NavbarAuthenticated";
-import Pagination1 from "@/components/Pagitation/Pagination1";
-import Title from "@/components/Title";
->>>>>>> b4ffeac51ad7cd2b4945553f2a8cafc6e7a83689
 
-import Tabfiles from "../visualizar-artigo/artigos-concluidos/page";
+import Tabfiles from '../visualizar-artigo/artigos-concluidos/page';
 
 export default function EditarArtigosPage() {
-	const [currentOption, setCurrentOption] = useState<string>("dentro-do-prazo");
+	const [currentOption, setCurrentOption] = useState<string>('dentro-do-prazo');
 
 	const handleOptionClick = (option: string) => {
 		setCurrentOption(option);
@@ -71,17 +62,17 @@ export default function EditarArtigosPage() {
 					</div>
 				</div>
 
-				{currentOption === "dentro-do-prazo" ? (
+				{currentOption === 'dentro-do-prazo' ? (
 					<>
 						<h1 className="-ml-[370px] mb-4 justify-self-center text-center text-[22px] font-bold text-red-500">
-							Eventos:{" "}
+							Eventos:{' '}
 							<span className="text-black">
 								Tech Talks: Descobrindo as Fronteiras da Tecnologia
 							</span>
 						</h1>
 						<ArtigosCards />
 						<h1 className="-ml-[370px] mb-4 mt-16 justify-self-center text-center text-[22px] font-bold text-red-500">
-							Eventos:{" "}
+							Eventos:{' '}
 							<span className="text-black">
 								Tech Talks: Descobrindo as Fronteiras da Tecnologia
 							</span>
@@ -91,14 +82,14 @@ export default function EditarArtigosPage() {
 				) : (
 					<>
 						<h1 className="-ml-[370px] mb-4 justify-self-center text-center text-[22px] font-bold text-red-500">
-							Eventos:{" "}
+							Eventos:{' '}
 							<span className="text-black">
 								Tech Talks: Descobrindo as Fronteiras da Tecnologia
 							</span>
 						</h1>
 						<ArtigosCards2 />
 						<h1 className="-ml-[370px] mb-4 mt-16 justify-self-center text-center text-[22px] font-bold text-red-500">
-							Eventos:{" "}
+							Eventos:{' '}
 							<span className="text-black">
 								Tech Talks: Descobrindo as Fronteiras da Tecnologia
 							</span>

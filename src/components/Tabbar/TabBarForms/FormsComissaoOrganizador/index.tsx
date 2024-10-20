@@ -17,7 +17,7 @@ import Title from '@/components/Title';
 import { Area } from '@/lib/repository/area/index.repository';
 import { Comissao } from '@/lib/repository/comission/index.repository';
 
-export default function CadastroComissao() {
+export default function CadastroComissaoOrganizador() {
 	type Option = { label: string; value: string };
 
 	// Estrutura de dados: Grande Área -> Áreas -> Subáreas
@@ -92,29 +92,29 @@ export default function CadastroComissao() {
 		}),
 	};
 
-	// useEffect(() => {
-	// 	async function getAreas() {
-	// 		try {
-	// 			const id = localStorage.getItem('eventId');
+	useEffect(() => {
+		async function getAreas() {
+			try {
+				const id = localStorage.getItem('eventId');
 
-	// 			const result = await axios.get(
-	// 				`http://localhost:5002/area-event/${id}`
-	// 			);
-	// 			if (result.data.areas) {
-	// 				const areasComming: Area[] = result.data.areas;
-	// 				const areasValueLabel = areasComming.map((area) => {
-	// 					const labelvalue = { value: area.id, label: area.nome };
-	// 					return labelvalue;
-	// 				});
-	// 				console.log(areasValueLabel);
-	// 				// setSelectedGrandeArea(areasValueLabel)
-	// 			}
-	// 		} catch (error) {
-	// 			console.log(error);
-	// 		}
-	// 	}
-	// 	getAreas();
-	// }, []);
+				const result = await axios.get(
+					`http://localhost:5002/area-event/${id}`
+				);
+				if (result.data.areas) {
+					const areasComming: Area[] = result.data.areas;
+					const areasValueLabel = areasComming.map((area) => {
+						const labelvalue = { value: area.id, label: area.nome };
+						return labelvalue;
+					});
+					console.log(areasValueLabel);
+					// setSelectedGrandeArea(areasValueLabel)
+				}
+			} catch (error) {
+				console.log(error);
+			}
+		}
+		getAreas();
+	}, []);
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -180,8 +180,8 @@ export default function CadastroComissao() {
 			<div className="w-[60vw]">
 				<AlertCard message="Comissao cadastrada com sucesso" show={showCard} />
 				<Title
-					title="Cadastrar Comissão"
-					subtitle="Cadastro como parte da comissão, possível mais de uma função"
+					title="Cadastrar Comissão Organizador"
+					subtitle="Cadastro como parte da comissão"
 					colorHex="#4B00E0"
 				/>
 
@@ -240,23 +240,6 @@ export default function CadastroComissao() {
 							preSelect={0}
 							id="institution"
 						/>
-
-						<div className="mb-5 w-[45%]">
-							<label className="mb-2 text-sm font-medium">
-								Função no Evento
-							</label>
-							<div className="flex items-center gap-3 py-2.5">
-								{checkboxNames.map((name, index) => (
-									<CheckInput
-										id={`${name}-${index}`}
-										key={index}
-										label={name}
-										disabled={false}
-										selected={false}
-									/>
-								))}
-							</div>
-						</div>
 
 						<div className="mb-5 w-[45%]">
 							<label className="mb-2 text-sm font-medium">Período:</label>

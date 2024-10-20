@@ -9,12 +9,10 @@ import { FaTimes } from 'react-icons/fa';
 
 import EditLogo from '@/assets/editLogo.png';
 import RemoveLogo from '@/assets/trashLogo.png';
+import AlertCard from '@/components/AlertCard';
 import FileInput from '@/components/FileInput';
 import SearchFilter from '@/components/SearchFilter';
 import { Arquivo } from '@/lib/repository/arquivo/index.repository';
-import { ArquivoConfig } from '@/lib/repository/arquivo/index.repositoryFiles';
-
-import AlertCard from '../../../AlertCard';
 
 type CriarEventoProps = {
 	handleNextClick: () => void;
