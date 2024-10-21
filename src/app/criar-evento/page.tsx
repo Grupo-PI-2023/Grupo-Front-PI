@@ -56,7 +56,8 @@ export default function CriarEventoPage({
 	const router = useRouter();
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-		router.push('/cadastrar/12345/data?modalidade=Onlie');
+		e.preventDefault();
+		router.push(`/criar-evento/1234/data?modalidade=${tipo}`);
 		// router.push('/cadastrar/12345/data?modalidade=Presencial');
 		// router.push('/cadastrar/12345/data?modalidade=Hibrido');
 	};
@@ -119,7 +120,7 @@ export default function CriarEventoPage({
 										</div>
 										<div className="w-10 rounded-xl bg-[#EF0037]">
 											<a
-												href="#"
+												href="/criar-evento/1234/cadastrar-editor-chefe"
 												className="flex cursor-pointer items-center justify-center text-3xl font-semibold text-white"
 											>
 												+
@@ -168,6 +169,9 @@ export default function CriarEventoPage({
 											<option selected value="">
 												Selecione uma modalidade
 											</option>
+											<option value="Online">Online</option>
+											<option value="Presencial">Presencial</option>
+											<option value="Hibrido">Hibrido</option>
 										</select>
 									</div>
 								</div>
@@ -362,14 +366,14 @@ export default function CriarEventoPage({
 									<div className="w-11/12 rounded-md border border-gray-300 bg-white px-4 py-2">
 										<input
 											className="w-full rounded-md border-0 bg-white text-sm outline-none"
-											value="Cadastrar áreas de conhecimento do evento "
+											value="Cadastrar áreas de conhecimento do evento"
 											onChange={(e) => setNome(e.target.value)}
 											readOnly
 										/>
 									</div>
 									<div className="w-10 rounded-xl bg-[#EF0037]">
 										<a
-											href="/dashboard/evento/criar-area"
+											href="/criar-evento/1234/criar-area"
 											className="flex cursor-pointer items-center justify-center text-3xl font-semibold text-white"
 										>
 											+

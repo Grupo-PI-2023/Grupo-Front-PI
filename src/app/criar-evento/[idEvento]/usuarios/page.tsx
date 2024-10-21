@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 
+import { useRouter } from 'next/navigation';
+
 import { BsHourglassSplit } from 'react-icons/bs';
 import { CiCircleRemove } from 'react-icons/ci';
 import { CiCircleCheck } from 'react-icons/ci';
@@ -18,9 +20,11 @@ export default function CadastrarUsuario({
 }: {
 	params: { idEvento: string };
 }) {
+	const router = useRouter();
 	const handleNextButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
 		// handleNextClick();
+		router.push('/areal-dashboard/meus-eventos-criados');
 	};
 
 	const handlePendente = () => {

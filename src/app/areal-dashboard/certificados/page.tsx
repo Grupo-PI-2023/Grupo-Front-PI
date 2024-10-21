@@ -1,12 +1,20 @@
-import Footer from '@/components/Footer';
-import Navbar from '@/components/NavbarAuthenticated';
+import { useState } from 'react';
 
-export default async function CertificadosPage() {
+import { useRouter } from 'next/navigation';
+
+import Footer from '@/components/Footer';
+import Navbar from '@/components/Navbar';
+import NavbarAuthenticated from '@/components/NavbarAuthenticated';
+
+export default function CertificadosPage() {
+	const [authenticated, setAuthenticated] = useState(true);
+	const router = useRouter();
+
 	return (
 		<div className="flex h-screen flex-col justify-items-center ">
-			<Navbar />
+			{authenticated ? <NavbarAuthenticated /> : <Navbar />}
 			<div className="flex h-full items-center justify-center">
-				<h1>Certificados Page</h1>
+				<h1 className="text-7xl">NOT IMPLEMENTED - CREATED SCREEN BY BRUNO</h1>
 			</div>
 			<Footer />
 		</div>
