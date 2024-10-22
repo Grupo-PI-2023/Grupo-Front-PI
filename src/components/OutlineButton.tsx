@@ -30,7 +30,7 @@ const OutlineButton: React.FC<CustomtButtonInterface> = ({
 			}}
 			className={`
             flex w-1/5 items-center
-            gap-3 rounded-xl border-[1.5px] px-4
+            rounded-xl border-[1.5px] px-4
 			py-2
             text-center text-base 
             font-medium

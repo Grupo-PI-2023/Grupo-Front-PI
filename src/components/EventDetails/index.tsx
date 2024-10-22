@@ -13,7 +13,7 @@ import { TfiEmail } from 'react-icons/tfi';
 import ImgCultureFest from '../../assets/CultureFest.png';
 import DefaultButton from '../DefaultButton';
 
-function AlertCard() {
+function EventDetails() {
 	return (
 		<section className="flex items-baseline gap-12">
 			<div className="flex flex-col items-center gap-6">
@@ -96,4 +96,4 @@ function AlertCard() {
 	);
 }
 
-export default AlertCard;
+export default EventDetails;

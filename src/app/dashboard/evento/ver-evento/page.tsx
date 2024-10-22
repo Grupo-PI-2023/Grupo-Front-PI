@@ -1,20 +1,17 @@
 'use client';
 
-import EventDetails from '@/components/EventDetails';
+import EventInformations from '@/components/EventInformations';
 import Footer from '@/components/Footer';
 import NavbarAuthenticated from '@/components/NavbarAuthenticated';
 import OtherEvents from '@/components/OtherEvents';
 
-export default function InscricaoEvento() {
+export default function VerEvento() {
 	return (
 		<div>
 			<NavbarAuthenticated />
 
 			<div className="container mt-44 w-[1280px]">
-				<div className="flex flex-col gap-10">
-					<EventDetails />
-					<OtherEvents />
-				</div>
+				<EventInformations />
 			</div>
 
 			<Footer />
