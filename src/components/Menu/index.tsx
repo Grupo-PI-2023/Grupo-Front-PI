@@ -9,16 +9,16 @@ import { AiOutlineFileSearch, AiOutlineStar } from 'react-icons/ai';
 import { BiBrain, BiSolidSchool } from 'react-icons/bi';
 import { BsStars } from 'react-icons/bs';
 import { BsQrCode } from 'react-icons/bs';
+import { FaCheck } from 'react-icons/fa';
 import { FiUsers } from 'react-icons/fi';
 import { GrNotes } from 'react-icons/gr';
 import { ImFilesEmpty } from 'react-icons/im';
 import { IoQrCode } from 'react-icons/io5';
 import { LuFileSearch } from 'react-icons/lu';
+import { LuEye } from 'react-icons/lu';
 import { MdDateRange } from 'react-icons/md';
 import { PiFiles } from 'react-icons/pi';
 import { TfiTimer } from 'react-icons/tfi';
-import { LuEye } from "react-icons/lu";
-import { FaCheck } from 'react-icons/fa';
 
 export default function Menu() {
 	const router = useRouter();
@@ -50,8 +50,7 @@ export default function Menu() {
 				<div className="mt-12 flex w-full flex-col items-center justify-center">
 					<div className="w-1/2">
 						<div className="flex flex-col gap-6">
-
-							<div className="flex gap-4 rounded-md cursor-pointer border-2 border-l-4 border-[#e3e3e3] border-l-[#0391C9] bg-[#F5F5F5] p-3 shadow-xl items-center">
+							<div className="flex cursor-pointer items-center gap-4 rounded-md border-2 border-l-4 border-[#e3e3e3] border-l-[#0391C9] bg-[#F5F5F5] p-3 shadow-xl">
 								<LuEye className="h-10 w-10" color="#0391C9" />
 								<div className="flex flex-col gap-0.5">
 									<p className="text-base font-normal">
@@ -123,7 +122,6 @@ export default function Menu() {
 								</div>
 							</div>
 							<div className="flex gap-4 rounded-xl border-2 border-l-4 border-[#e3e3e3] border-l-[#4B00E0] bg-[#F5F5F5]  p-5 shadow-xl">
-
 								<FaCheck className="h-8 w-8" color="#4B00E0" />
 								<div className="flex flex-col gap-0.5">
 									<p className="text-base font-semibold text-[#4B00E0]">
@@ -147,7 +145,10 @@ export default function Menu() {
 								</div>
 							</div>
 							<div className="flex items-stretch gap-5">
-								<div className="#F5F5F5 flex h-52 w-1/2 rounded-xl border-2 border-l-4 border-[#e3e3e3] border-l-[#4B00E0] bg-[#F5F5F5] p-5 shadow-xl" style={{ height: '150px' }}>
+								<div
+									className="#F5F5F5 flex h-52 w-1/2 rounded-xl border-2 border-l-4 border-[#e3e3e3] border-l-[#4B00E0] bg-[#F5F5F5] p-5 shadow-xl"
+									style={{ height: '150px' }}
+								>
 									<div className="flex gap-4">
 										<div>
 											<GrNotes className="block h-8 w-8" color="#4B00E0" />
@@ -162,16 +163,19 @@ export default function Menu() {
 										</div>
 									</div>
 								</div>
-								<div className="#F5F5F5 flex h-52 w-1/2 rounded-xl border-2 border-l-4 border-[#e3e3e3] border-l-[#4B00E0] bg-[#F5F5F5] p-5 shadow-xl">
-									<div className="flex gap-4" style={{ height: '150px' }}>
+								<div
+									className="#F5F5F5 flex h-52 w-1/2 rounded-xl border-2 border-l-4 border-[#e3e3e3] border-l-[#4B00E0] bg-[#F5F5F5] p-5 shadow-xl"
+									style={{ height: '150px' }}
+								>
+									<div className="flex gap-4">
 										<div>
 											<IoQrCode className="block h-8 w-8" color="#4B00E0" />
 										</div>
-										<div className="flex flex flex-wrap gap-0.5">
+										<div className="flex flex-col flex-wrap gap-0.5">
 											<p className="text-base font-semibold text-[#4B00E0]">
 												Ver edições desse evento
 											</p>
-											<p className="mt-5 flex h-full text-sm font-medium">
+											<p className="mt-5 text-sm font-medium">
 												Ver todas as edições desse evento.
 											</p>
 										</div>
@@ -186,7 +190,8 @@ export default function Menu() {
 										Gerar Proceedings
 									</p>
 									<p className="text-sm font-medium">
-										Gere os proceedings deste evento (Opção habilitada apenas ao fim de todas as sessões previstas deste evento)
+										Gere os proceedings deste evento (Opção habilitada apenas ao
+										fim de todas as sessões previstas deste evento)
 									</p>
 								</div>
 							</div>
