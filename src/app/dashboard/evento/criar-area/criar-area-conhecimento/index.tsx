@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
-import Image from 'next/image';
+import Image from "next/image";
 
-import RemoveLogo from '@/assets/remove-x.png';
-import { Knowledge } from '@/lib/repository/knowledge-area/index.repository';
+import RemoveLogo from "@/assets/remove-x.png";
+import { Knowledge } from "@/lib/repository/knowledge-area/index.repository";
 
 type CriarEventoProps = {
 	handleOptionClick: (option: string) => void;
@@ -14,9 +14,9 @@ type CriarEventoProps = {
 export default function CriarAreaConhecimento({
 	handleOptionClick,
 }: CriarEventoProps) {
-	const [name, setName] = useState('');
-	const [descricao, setDescricao] = useState('');
-	const [bigArea, setBigArea] = useState('');
+	const [name, setName] = useState("");
+	const [descricao, setDescricao] = useState("");
+	const [bigArea, setBigArea] = useState("");
 	const [knowledge, setKnowledge] = useState<Knowledge[]>([]);
 
 	const handleAddOnTable = () => {
@@ -28,9 +28,9 @@ export default function CriarAreaConhecimento({
 				bigArea: bigArea,
 			},
 		]);
-		setDescricao('');
-		setName('');
-		setBigArea('');
+		setDescricao("");
+		setName("");
+		setBigArea("");
 	};
 
 	const itemToRemove = (i: any) => {
@@ -46,11 +46,11 @@ export default function CriarAreaConhecimento({
 			<div className="w-[40vw]">
 				<h1
 					className="text-center text-2xl font-bold text-black"
-					style={{ color: '#ef0037' }}
+					style={{ color: "#ef0037" }}
 				>
 					Criar Áreas de Conhecimento
 				</h1>
-				<h2 className="text-center" style={{ color: '#000000' }}>
+				<h2 className="text-center" style={{ color: "#000000" }}>
 					Crie as áreas de conhecimento de cada grande área
 				</h2>
 				<div className="flex justify-center">
@@ -71,14 +71,10 @@ export default function CriarAreaConhecimento({
 											name="bigArea"
 											id="bigArea"
 											value={bigArea}
-											onChange={(e) =>
-												setBigArea(e.target.value)
-											}
+											onChange={(e) => setBigArea(e.target.value)}
 											required
 										>
-											<option value="Option">
-												Option
-											</option>
+											<option value="Option">Option</option>
 										</select>
 									</div>
 								</div>
@@ -99,9 +95,7 @@ export default function CriarAreaConhecimento({
 											id="activityName"
 											placeholder="Area de Conhecimento"
 											value={name}
-											onChange={(e) =>
-												setName(e.target.value)
-											}
+											onChange={(e) => setName(e.target.value)}
 											required
 										/>
 									</div>
@@ -125,9 +119,7 @@ export default function CriarAreaConhecimento({
 											id="descricao"
 											placeholder="Descrição"
 											value={descricao}
-											onChange={(e) =>
-												setDescricao(e.target.value)
-											}
+											onChange={(e) => setDescricao(e.target.value)}
 											required
 										/>
 									</div>
@@ -135,7 +127,7 @@ export default function CriarAreaConhecimento({
 
 								<button
 									className="mt-6 h-12 w-5/12 rounded-xl border-none p-2 text-center text-base font-medium text-white"
-									style={{ backgroundColor: '#501EB4' }}
+									style={{ backgroundColor: "#501EB4" }}
 									type="button"
 									onClick={handleAddOnTable}
 								>
@@ -148,26 +140,26 @@ export default function CriarAreaConhecimento({
 
 				<div className="items-left justify-left mt-44 flex">
 					<table className="w-full table-auto">
-						<thead style={{ backgroundColor: '#DD4467' }}>
+						<thead style={{ backgroundColor: "#DD4467" }}>
 							<tr className="h-14">
 								<th scope="col" className="rounded-tl-lg"></th>
 								<th
 									scope="col"
-									style={{ color: '#FFFFFF' }}
+									style={{ color: "#FFFFFF" }}
 									className="text-left"
 								>
 									Nome
 								</th>
 								<th
 									scope="col"
-									style={{ color: '#FFFFFF' }}
+									style={{ color: "#FFFFFF" }}
 									className="text-left"
 								>
 									Descrição
 								</th>
 								<th
 									scope="col"
-									style={{ color: '#FFFFFF' }}
+									style={{ color: "#FFFFFF" }}
 									className="rounded-tr-lg text-left"
 								>
 									Grande Área
@@ -183,29 +175,18 @@ export default function CriarAreaConhecimento({
 												key={index}
 												className="h-14"
 												style={{
-													backgroundColor: !(
-														index % 2 ===
-														0
-													)
-														? '#E4E4E4'
-														: '#fff',
+													backgroundColor: !(index % 2 === 0)
+														? "#E4E4E4"
+														: "#fff",
 												}}
 											>
 												<td className="rounded-bl-lg">
 													<div className="flex flex-row justify-center gap-2">
 														<button
 															className="middle items-center justify-center"
-															onClick={() =>
-																itemToRemove(
-																	index
-																)
-															}
+															onClick={() => itemToRemove(index)}
 														>
-															<Image
-																src={RemoveLogo}
-																alt=""
-																height={20}
-															/>
+															<Image src={RemoveLogo} alt="" height={20} />
 														</button>
 													</div>
 												</td>
@@ -222,9 +203,7 @@ export default function CriarAreaConhecimento({
 														className="mb-2 rounded-2xl border border-black p-2 text-sm font-medium"
 														htmlFor="eventName"
 													>
-														{
-															knowledge.activityDescription
-														}
+														{knowledge.activityDescription}
 													</label>
 												</td>
 												<td className="rounded-br-lg">
@@ -246,14 +225,14 @@ export default function CriarAreaConhecimento({
 				<div className="mt-12 flex items-center justify-center gap-5">
 					<button
 						className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
-						style={{ backgroundColor: '#8A8A8A' }}
+						style={{ backgroundColor: "#8A8A8A" }}
 						type="submit"
 					>
 						Voltar
 					</button>
 					<button
 						className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
-						style={{ backgroundColor: '#4C1FA6' }}
+						style={{ backgroundColor: "#4C1FA6" }}
 						type="submit"
 					>
 						Finalizar

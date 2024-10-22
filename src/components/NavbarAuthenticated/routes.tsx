@@ -36,6 +36,14 @@ export const navigationAuthenticatedRoutes: navItemType[] = [
 		title: 'Eventos Criados',
 	},
 	{
+		link: '/dashboard/evento/inscricao-evento',
+		title: 'Inscrição no Evento',
+	},
+	{
+		link: '/dashboard/evento/ver-evento',
+		title: 'Vizualizar Evento',
+	},
+	{
 		link: '/dashboard/artigos/artigos-enviados',
 		title: 'Artigos Enviados',
 	},

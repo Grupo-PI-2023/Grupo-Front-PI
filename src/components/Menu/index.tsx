@@ -1,23 +1,18 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useRouter } from "next/navigation";
 
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-
-import { AiOutlineFileSearch, AiOutlineStar } from 'react-icons/ai';
-import { BiBrain, BiSolidSchool } from 'react-icons/bi';
-import { BsStars } from 'react-icons/bs';
-import { BsQrCode } from 'react-icons/bs';
-import { FiUsers } from 'react-icons/fi';
-import { GrNotes } from 'react-icons/gr';
-import { ImFilesEmpty } from 'react-icons/im';
-import { IoQrCode } from 'react-icons/io5';
-import { LuFileSearch } from 'react-icons/lu';
-import { MdDateRange } from 'react-icons/md';
-import { PiFiles } from 'react-icons/pi';
-import { TfiTimer } from 'react-icons/tfi';
+import { AiOutlineStar } from "react-icons/ai";
+import { BiBrain, BiSolidSchool } from "react-icons/bi";
+import { BsStars } from "react-icons/bs";
+import { FiUsers } from "react-icons/fi";
+import { GrNotes } from "react-icons/gr";
+import { ImFilesEmpty } from "react-icons/im";
+import { IoQrCode } from "react-icons/io5";
+import { LuFileSearch } from "react-icons/lu";
 import { LuEye } from "react-icons/lu";
+import { MdDateRange } from "react-icons/md";
+import { TfiTimer } from "react-icons/tfi";
 
 export default function Menu() {
 	const router = useRouter();
@@ -37,7 +32,7 @@ export default function Menu() {
 					</div> */}
 					<h1
 						className="text-center text-2xl font-bold text-black"
-						style={{ color: '#ef0037' }}
+						style={{ color: "#ef0037" }}
 					>
 						Menu do Evento
 					</h1>
@@ -49,8 +44,7 @@ export default function Menu() {
 				<div className="mt-12 flex w-full flex-col items-center justify-center">
 					<div className="w-1/2">
 						<div className="flex flex-col gap-6">
-
-							<div className="flex gap-4 rounded-md cursor-pointer border-2 border-l-4 border-[#e3e3e3] border-l-[#0391C9] bg-[#F5F5F5] p-3 shadow-xl items-center">
+							<div className="flex cursor-pointer items-center gap-4 rounded-md border-2 border-l-4 border-[#e3e3e3] border-l-[#0391C9] bg-[#F5F5F5] p-3 shadow-xl">
 								<LuEye className="h-10 w-10" color="#0391C9" />
 								<div className="flex flex-col gap-0.5">
 									<p className="text-base font-normal">
@@ -60,14 +54,14 @@ export default function Menu() {
 							</div>
 							<div
 								className="flex gap-4 rounded-md border-2 border-l-4 border-[#e3e3e3] border-l-[#4B00E0] bg-[#F5F5F5] p-5 shadow-xl"
-								style={{ cursor: 'pointer' }}
-								onClick={() => router.push('/dashboard/editar/editar-evento')}
+								style={{ cursor: "pointer" }}
+								onClick={() => router.push("/dashboard/editar/editar-evento")}
 							>
 								<AiOutlineStar color="#4B00E0" className="h-10 w-10" />
 								<div className="flex flex-col gap-0.5">
 									<p
 										className="text-base font-semibold"
-										style={{ color: '#4B00E0' }}
+										style={{ color: "#4B00E0" }}
 									>
 										Editar Evento
 									</p>
@@ -241,24 +235,24 @@ export default function Menu() {
 								</div>
 							</div>
 						</div>
-						<div className="mt-7 flex items-center justify-center gap-5">
+						<div className="mt-12 flex items-center justify-center gap-5">
 							<button
 								className="w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
 								type="submit"
-								style={{ backgroundColor: '#B9012D' }}
+								style={{ backgroundColor: "#B9012D" }}
 							>
 								Excluir Evento
 							</button>
 							<button
 								className="w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
-								style={{ backgroundColor: '#501EB4' }}
+								style={{ backgroundColor: "#501EB4" }}
 								type="submit"
 							>
 								Postar Evento
 							</button>
 						</div>
 					</div>
-				</div>{' '}
+				</div>{" "}
 				.
 			</div>
 		</div>
