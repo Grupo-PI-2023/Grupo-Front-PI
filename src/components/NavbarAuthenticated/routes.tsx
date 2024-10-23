@@ -1,8 +1,13 @@
 import { ReactElement } from 'react';
 
+type Item = {
+	name: string;
+	link: string;
+};
 type navItemType = {
 	link: string;
 	title: string;
+	subtitle?: Item[];
 	icon?: ReactElement;
 };
 
@@ -12,91 +17,140 @@ export const navigationAuthenticatedRoutes: navItemType[] = [
 		title: 'Página Inicial',
 	},
 	{
-		link: '/components-example',
-		title: 'Exemplo de uso dos componentes',
-	},
-	{
-		link: '/dashboard/evento/criar-evento',
+		link: '/criar-evento',
 		title: 'Criar Evento',
+		subtitle: [
+			{
+				name: 'Cadastrar Evento',
+				link: '',
+			},
+			{
+				name: 'Cadastrar mais Instituição',
+				link: '',
+			},
+			{
+				name: 'Cadastrar mais Arquivo',
+				link: '',
+			},
+			{
+				name: 'Cadastro de Organizador',
+				link: '',
+			},
+			{
+				name: 'Cadastro de Avaliador',
+				link: '',
+			},
+			{
+				name: 'Cadastro de Editor Chefe',
+				link: '',
+			},
+		],
 	},
 	{
-		link: '/dashboard/evento/criar-area',
-		title: 'Criar Áreas',
+		link: '/areal-dashboard/meus-arquivos',
+		title: 'Meus Arquivos',
+		subtitle: [
+			{
+				name: 'Arquivos Submetidos',
+				link: '/areal-dashboard/meus-arquivos',
+			},
+			{
+				name: 'Arquivos Finalizados',
+				link: '/areal-dashboard/meus-arquivos/arquivos-finalizados',
+			},
+		],
+	},
+
+	{
+		link: '/areal-dashboard/avaliar-artigo',
+		title: 'Avaliar Arquivo',
 	},
 	{
-		link: '/dashboard/evento/criar-arquivos',
-		title: 'Criar Arquivos',
+		link: '/areal-dashboard/meus-eventos-criados',
+		title: 'Meus Eventos Criados',
 	},
 	{
-		link: '/dashboard/evento/meus-eventos',
-		title: 'Menu do Evento',
+		link: '/areal-dashboard/gerenciamento-avaliacoes',
+		title: 'Gerenciamento de Avaliações',
+		subtitle: [],
 	},
 	{
-		link: '/dashboard/evento/eventos-criados',
-		title: 'Eventos Criados',
+		link: '/areal-dashboard/gerenciamento-site',
+		title: 'Gerenciamento de Site',
+		subtitle: [
+			{
+				name: 'Cadastrar Admin',
+				link: '',
+			},
+			{
+				name: 'Cadastrar Instituição',
+				link: '',
+			},
+			{
+				name: 'Cadastrar Comissão',
+				link: '',
+			},
+			{
+				name: 'Cadastrar Áreas',
+				link: '',
+			},
+		],
 	},
 	{
-		link: '/dashboard/evento/inscricao-evento',
-		title: 'Inscrição no Evento',
-	},
-	{
-		link: '/dashboard/evento/ver-evento',
-		title: 'Vizualizar Evento',
-	},
-	{
-		link: '/dashboard/artigos/artigos-enviados',
-		title: 'Artigos Enviados',
-	},
-	{
-		link: '/dashboard/artigos/artigos-finalizados',
-		title: 'Artigos Finalizados',
-	},
-	{
-		link: '/dashboard/artigos/artigos-para-avaliar/principal',
-		title: 'Artigos para Avaliar',
-	},
-	{
-		link: '/dashboard/artigos/artigos-para-avaliar/todos-arquivos',
-		title: 'Todos artigos - Avaliação',
-	},
-	{
-		link: '/dashboard/artigos/menu-submissao',
-		title: 'Menu de Submissão',
-	},
-	{
-		link: '/dashboard/artigos/submeter-artigo',
-		title: 'Submeter Artigo',
-	},
-	{
-		link: '/dashboard/editar/editar-artigos',
-		title: 'Editar Artigo',
-	},
-	{
-		link: '/dashboard/adicionar-palestrante',
-		title: 'Adicionar Palestrante',
-	},
-	{
-		link: '/dashboard/avaliacao/avaliar-artigo',
-		title: 'Avaliar Artigo',
-	},
-	{
-		link: '/dashboard/avaliacao/visualizar-artigo',
-		title: 'Visualizar Artigo ',
-	},
-	{
-		link: '/dashboard/cadastrar-instituicao',
-		title: 'Cadastrar Instituição',
-	},
-	{
-		link: '/dashboard/cadastrar-comissao-by-editor-chefe',
-		title: 'Cadastrar Comissão como Editor Chefe',
-	},
-	{
-		link: '/dashboard/cadastrar-comissao-by-admin',
-		title: 'Cadastrar Comissão como Admin',
-	},
-	{
-		link: '/dashboard/certificados',
+		link: '/areal-dashboard/certificados',
 		title: 'Certificados',
 	},
+
+	// {
+	// 	link: '/dashboard/artigos/artigos-finalizados',
+	// 	title: 'Artigos Finalizados',
+	// },
+	// {
+	// 	link: '/dashboard/artigos/artigos-para-avaliar/principal',
+	// 	title: 'Artigos para Avaliar',
+	// },
+	// {
+	// 	link: '/dashboard/artigos/artigos-para-avaliar/todos-arquivos',
+	// 	title: 'Todos artigos - Avaliação',
+	// },
+	// {
+	// 	link: '/dashboard/artigos/menu-submissao',
+	// 	title: 'Menu de Submissão',
+	// },
+	// {
+	// 	link: '/dashboard/artigos/submeter-artigo',
+	// 	title: 'Submeter Artigo',
+	// },
+	// {
+	// 	link: '/dashboard/editar/editar-artigos',
+	// 	title: 'Editar Artigo',
+	// },
+	// {
+	// 	link: '/dashboard/adicionar-palestrante',
+	// 	title: 'Adicionar Palestrante',
+	// },
+	// {
+	// 	link: '/dashboard/avaliacao/avaliar-artigo',
+	// 	title: 'Avaliar Artigo',
+	// },
+	// {
+	// 	link: '/dashboard/avaliacao/visualizar-artigo',
+	// 	title: 'Visualizar Artigo ',
+	// },
+	// {
+	// 	link: '/dashboard/cadastrar-instituicao',
+	// 	title: 'Cadastrar Instituição',
+	// },
+	// {
+	// 	link: '/dashboard/cadastrar-comissao-by-editor-chefe',
+	// 	title: 'Cadastrar Comissão como Editor Chefe',
+	// },
+	// {
+	// 	link: '/dashboard/cadastrar-comissao-by-admin',
+	// 	title: 'Cadastrar Comissão como Admin',
+	// },
+	// {
+	// 	link: '/dashboard/certificados',
+	// 	title: 'Certificados',
+	// },
 ];

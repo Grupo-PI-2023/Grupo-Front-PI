@@ -4,26 +4,21 @@ import { useState } from 'react';
 
 import Image from 'next/image';
 
-import axios from 'axios';
 import { BsPaperclip } from 'react-icons/bs';
 import { FaTimes } from 'react-icons/fa';
-import { FiUpload } from 'react-icons/fi';
 
-import EditLogo from "@/assets/editLogo.png";
-import RemoveLogo from "@/assets/trashLogo.png";
-import FileInput from "@/components/FileInput";
-import SearchFilter from "@/components/SearchFilter";
-import { Arquivo } from "@/lib/repository/arquivo/index.repository";
-import { ArquivoConfig } from "@/lib/repository/arquivo/index.repositoryFiles";
-
-import AlertCard from '../../../AlertCard';
+import EditLogo from '@/assets/editLogo.png';
+import RemoveLogo from '@/assets/trashLogo.png';
+import AlertCard from '@/components/AlertCard';
+import FileInput from '@/components/FileInput';
+import SearchFilter from '@/components/SearchFilter';
+import { Arquivo } from '@/lib/repository/arquivo/index.repository';
 
 type CriarEventoProps = {
 	handleNextClick: () => void;
 };
 
 export default function Arquivos({ handleNextClick }: CriarEventoProps) {
-	const [tipo, setTipo] = useState('');
 	const [dataInicioSubmissao, setDataInicioSubmissao] = useState('');
 	const [dataFinalSubmissao, setDataFinalSubmissao] = useState('');
 	const [limiteAutores, setLimiteAutores] = useState('');
@@ -33,8 +28,6 @@ export default function Arquivos({ handleNextClick }: CriarEventoProps) {
 	const [limiteArquivos, setLimiteArquivos] = useState('');
 	const [categoriaArquivo, setCategoriaArquivo] = useState('');
 	const [normas, setNormas] = useState('');
-	const [arquivos, setArquivos] = useState<Arquivo[]>([]);
-	const [arquivosConfig, setArquivosConfig] = useState<ArquivoConfig[]>([]);
 	const [checkAvaliation, setCheckAvaliation] = useState(false);
 	const [checkApresentation, setCheckApresentation] = useState(false);
 	const [checkResend, setCheckResend] = useState(false);
@@ -43,144 +36,24 @@ export default function Arquivos({ handleNextClick }: CriarEventoProps) {
 	const [showModeloArquivo, setShowModeloArquivo] = useState(false);
 	const [files, setFiles] = useState<Arquivo[]>([]);
 
-	const handleNextButtonClick = () => {
-		handleNextClick();
-	};
-
-	const [areas, setAreas] = useState(['']);
-	const [autores, setAutores] = useState(['']);
 	const [file, setFile] = useState<File | null>(null);
 	const [fileApresent, setFileApresent] = useState<File | null>(null);
 
-	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const selectedFile = e.target.files && e.target.files[0];
-
-		if (selectedFile) {
-			setFile(selectedFile);
-			setShowModeloApresentacao(true);
-		}
-	};
-
-	const handleFileDelete = () => {
-		setFile(null);
-		setShowModeloApresentacao(false);
-	};
-
-	const handleFileApresentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const selectedFile = e.target.files && e.target.files[0];
-
-		if (selectedFile) {
-			setShowModeloArquivo(true);
-			setFileApresent(selectedFile);
-		}
-	};
-
-	const handleFileApresentDelete = () => {
-		setShowModeloArquivo(false);
-		setFileApresent(null);
-	};
-
-	const handleCheckAvaliation = () => {
-		setCheckAvaliation(!checkAvaliation);
-	};
-
-	const handleCheckApresentation = () => {
-		setCheckApresentation(!checkApresentation);
-	};
-
-	const handleCheckResend = () => {
-		setCheckResend(!checkResend);
-	};
-
-	const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+	const handleSubmit = (e: React.MouseEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		localStorage.clear();
-		localStorage.setItem('areas', JSON.stringify(areas));
-		localStorage.setItem('autores', JSON.stringify(autores));
-
-		const eventId = localStorage.getItem('eventId');
-
-		if (eventId) {
-			let ArquivoCreated: Arquivo[] = [];
-			let FileConfig: ArquivoConfig[] = [];
-			try {
-				arquivos.forEach(async (arquivo) => {
-					const arquivoObjt: Arquivo = {
-						category: arquivo.category,
-						normasPub: arquivo.normasPub,
-						needAvaliation: arquivo.needAvaliation,
-						needApresentation: arquivo.needApresentation,
-					};
-					const result = await axios.post(
-						'http://localhost:5002/arquivos',
-						arquivoObjt
-					);
-					console.log(result);
-					if (result.data.arquivo) {
-						ArquivoCreated.push(result.data.arquivo);
-						// setShowCard(true);
-						// setTimeout(() => {
-						// 	setShowCard(false);
-						// 	handleNextButtonClick();
-						// }, 3000);
-						setTipo('');
-						setAutores(['']);
-						setAreas(['']);
-					}
-				});
-				arquivosConfig.forEach(async (config) => {
-					const arquivoConfigObj: ArquivoConfig = {
-						dataInicioSubmissao: config.dataInicioSubmissao,
-						dataFimSubmissao: config.dataFimSubmissao,
-						limiteAutoresPorArquivo: config.limiteAutoresPorArquivo,
-						limiteAvaliadoresPorArquivo: config.limiteAvaliadoresPorArquivo,
-						dataInicioAvaliacao: config.dataInicioAvaliacao,
-						dataFimAvaliacao: config.dataFimAvaliacao,
-						limiteArquivosPorAutor: config.limiteArquivosPorAutor,
-						modeloApresentacao: config.modeloApresentacao,
-						modeloArquivo: config.modeloArquivo,
-					};
-					const resultado = await axios.post(
-						'http://localhost:5002/arquivos',
-						arquivoConfigObj
-					);
-					console.log(resultado);
-					if (resultado.data.config) {
-						FileConfig.push(resultado.data.config);
-						setShowCard(true);
-						setTimeout(() => {
-							setShowCard(false);
-							handleNextButtonClick();
-						}, 3000);
-						setDataInicioSubmissao('');
-						setDataFinalAvaliacao('');
-						setLimiteAutores('');
-						setLimiteAvaliadores('');
-						setDataInicioAvaliacao('');
-						setDataFinalAvaliacao('');
-						setLimiteArquivos('');
-						setFile(null);
-						setFileApresent(null);
-					}
-				});
-			} catch (error) {
-				console.log(error);
-			}
-		}
-
-		//handleNextClick();
 	};
 
 	const handleAddOnTable = () => {
-		setFiles((prev) => [
-			...prev,
-			{
-				category: categoriaArquivo,
-				normasPub: normas,
-				needAvaliation: checkAvaliation,
-				needApresentation: checkApresentation,
-			},
-		]);
+		if (!(categoriaArquivo == ''))
+			setFiles((prev) => [
+				...prev,
+				{
+					category: categoriaArquivo,
+					normasPub: normas,
+					needAvaliation: checkAvaliation,
+					needApresentation: checkApresentation,
+				},
+			]);
 		setCategoriaArquivo('');
 		setNormas('');
 		setCheckAvaliation(false);
@@ -209,7 +82,7 @@ export default function Arquivos({ handleNextClick }: CriarEventoProps) {
 					Arquivos que serão submetidos pelos participantes
 				</h2>
 				<div className="flex justify-center">
-					<form className="mt-8 w-10/12" onSubmit={handleAddOnTable}>
+					<form className="mt-8 w-[60%]" onSubmit={handleSubmit}>
 						<div className="mt-8 flex justify-center gap-5 rounded-lg border bg-neutral-50 p-4 shadow-xl">
 							<div className="ml-20 w-full">
 								<div className="mb-5 flex flex-col">
@@ -370,33 +243,22 @@ export default function Arquivos({ handleNextClick }: CriarEventoProps) {
 											{file ? file.name : '.'}
 											<FaTimes
 												className="mt-1 w-4 text-black"
-												onClick={handleFileDelete}
+												onClick={() => {
+													setFile(null);
+													setShowModeloApresentacao(false);
+												}}
 											/>
 										</button>
 									) : (
 										''
 									)}
 
-									<div
-										className="flex w-10/12 items-center justify-center rounded-xl border-0 px-4 py-2 text-white"
-										style={{ backgroundColor: '#0391C9' }}
-									>
-										<label
-											htmlFor="fileInput"
-											className="flex cursor-pointer text-lg"
-										>
-											Submeter Modelo de Apresentação
-											<FiUpload className="mx-2 h-7 w-6 text-white" />{' '}
-										</label>
-										<input
-											type="file"
-											id="fileInput"
-											name="file"
-											style={{ display: 'none' }}
-											onChange={(e) => handleFileChange(e)}
-											required
-										/>
-									</div>
+									<FileInput
+										id="fileInput"
+										label="Submeter Modelo de Apresentação"
+										customWidth="100%"
+										placeHolder="Submeter Modelo de Apresentação"
+									/>
 								</div>
 							</div>
 						</div>
@@ -467,36 +329,26 @@ export default function Arquivos({ handleNextClick }: CriarEventoProps) {
 											{fileApresent ? fileApresent.name : '.'}
 											<FaTimes
 												className="mt-1 w-4 text-black"
-												onClick={handleFileApresentDelete}
+												onClick={() => {
+													setShowModeloArquivo(false);
+													setFileApresent(null);
+												}}
 											/>
 										</button>
 									) : (
 										''
 									)}
 
-									<div
-										className="flex w-full items-center justify-center rounded-xl border-0 px-4 py-2 text-white"
-										style={{ backgroundColor: '#0391C9' }}
-									>
-										<label
-											htmlFor="FileModel"
-											className="flex cursor-pointer text-lg"
-										>
-											Submeter Modelo de Arquivo
-											<FiUpload className="mx-2 h-7 w-6 text-white" />{' '}
-										</label>
-										<input
-											type="file"
-											id="FileModel"
-											name="FileModel"
-											style={{ display: 'none' }}
-											onChange={(e) => handleFileApresentChange(e)}
-											required
-										/>
-									</div>
+									<FileInput
+										label="Submeter Modelo de Arquivo"
+										id="FileModel"
+										customWidth="100%"
+										placeHolder="Submeter Modelo de Arquivo"
+										primaryColorHex="#0391C9"
+									/>
 								</div>
 
-								<div className="mt-8 flex w-full flex-col gap-5">
+								<div className="mt-8 flex w-full flex-wrap gap-5 ">
 									<div className="flex w-full flex-row justify-between">
 										<div className="mb-5 flex w-1/2 flex-col justify-center">
 											<label
@@ -509,7 +361,7 @@ export default function Arquivos({ handleNextClick }: CriarEventoProps) {
 													id="needAvaliation"
 													name="needAvaliation"
 													checked={checkAvaliation}
-													onChange={handleCheckAvaliation}
+													onChange={() => setCheckAvaliation(!checkAvaliation)}
 												/>
 												Precisa de Avaliação
 											</label>
@@ -525,7 +377,9 @@ export default function Arquivos({ handleNextClick }: CriarEventoProps) {
 													id="needApresentation"
 													name="needApresentation"
 													checked={checkApresentation}
-													onChange={handleCheckApresentation}
+													onChange={() =>
+														setCheckApresentation(!checkApresentation)
+													}
 												/>
 												Precisa de Apresentação
 											</label>
@@ -544,7 +398,7 @@ export default function Arquivos({ handleNextClick }: CriarEventoProps) {
 													id="needResend"
 													name="needResend"
 													checked={checkResend}
-													onChange={handleCheckResend}
+													onChange={() => setCheckResend(!checkResend)}
 												/>
 												Permitir reenvio
 											</label>
@@ -564,30 +418,28 @@ export default function Arquivos({ handleNextClick }: CriarEventoProps) {
 								</div>
 							</div>
 						</div>
-					</form>
-				</div>
 
-				<div className="mt-6 flex flex-col items-center justify-center gap-6">
-					<div className="flex w-full items-center justify-center gap-6">
-						<button
-							className="w-56 rounded-xl border-none p-2 text-center text-base font-medium text-white"
-							style={{ backgroundColor: '#8A8A8A' }}
-							type="submit"
-						>
-							Voltar
-						</button>
-						<button
-							className="w-56 rounded-xl border-none p-2 text-center text-base font-medium text-white"
-							style={{ backgroundColor: '#4B00E0' }}
-							type="button"
-						>
-							Avançar
-						</button>
+						<div className="mt-14  flex w-full items-center justify-center gap-6">
+							<button
+								className="w-56 rounded-xl border-none p-2 text-center text-base font-medium text-white"
+								style={{ backgroundColor: '#8A8A8A' }}
+								type="button"
+							>
+								Voltar
+							</button>
+							<button
+								className="w-56 rounded-xl border-none p-2 text-center text-base font-medium text-white"
+								style={{ backgroundColor: '#4B00E0' }}
+								type="submit"
+							>
+								Avançar
+							</button>
 
-						<div className="ml-10 flex items-center justify-center">
-							<SearchFilter />
+							<div className="ml-10 flex items-center justify-center">
+								<SearchFilter />
+							</div>
 						</div>
-					</div>
+					</form>
 				</div>
 
 				<div className="flex w-full justify-center">

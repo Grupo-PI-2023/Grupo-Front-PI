@@ -9,7 +9,8 @@ import { FaRegUser } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { GoHome, GoSearch } from 'react-icons/go';
 
-import logo from '../../assets/logo.svg';
+import logo from '@/assets/logo.svg';
+
 import { navigationNotAuthenticatedRoutes } from './routes';
 import * as S from './styles';
 

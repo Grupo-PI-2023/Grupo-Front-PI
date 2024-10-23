@@ -1,25 +1,25 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import { FaRegEdit } from "react-icons/fa";
-import { FaRegTrashCan } from "react-icons/fa6";
+import { FaRegEdit } from 'react-icons/fa';
+import { FaRegTrashCan } from 'react-icons/fa6';
 
-import OutlineButton from "@/components/OutlineButton";
-import { Activity } from "@/lib/repository/activity/index.repository";
+import OutlineButton from '@/components/OutlineButton';
+import { Activity } from '@/lib/repository/activity/index.repository';
 
 type CriarEventoProps = {
 	handleNextClick: () => void;
 };
 
 export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
-	const [title, setTitle] = useState("");
-	const [descricao, setDescricao] = useState("");
-	const [dia, setDia] = useState("");
-	const [typeActivity, setTypeActivity] = useState("");
-	const [guestName, setGuestName] = useState("");
-	const [guestEmail, setGuestEmail] = useState("");
-	const [timeActivity, setTimeActivity] = useState("");
+	const [title, setTitle] = useState('');
+	const [descricao, setDescricao] = useState('');
+	const [dia, setDia] = useState('');
+	const [typeActivity, setTypeActivity] = useState('');
+	const [guestName, setGuestName] = useState('');
+	const [guestEmail, setGuestEmail] = useState('');
+	const [timeActivity, setTimeActivity] = useState('');
 	const [activities, setActivities] = useState<Activity[]>([]);
 
 	const handleNextButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -93,13 +93,13 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 				activityTitle: title,
 			},
 		]);
-		setTitle("");
-		setDescricao("");
-		setDia("");
-		setTypeActivity("");
-		setGuestName("");
-		setGuestEmail("");
-		setTimeActivity("");
+		setTitle('');
+		setDescricao('');
+		setDia('');
+		setTypeActivity('');
+		setGuestName('');
+		setGuestEmail('');
+		setTimeActivity('');
 	};
 
 	const itemToRemove = (i: any) => {
@@ -115,11 +115,11 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 			<div className="w-8/12">
 				<h1
 					className="text-center text-2xl font-bold text-black"
-					style={{ color: "#ef0037" }}
+					style={{ color: '#ef0037' }}
 				>
 					Atividades
 				</h1>
-				<h2 className="text-center" style={{ color: "#000000" }}>
+				<h2 className="text-center" style={{ color: '#000000' }}>
 					Atividades presentes durante o evento
 				</h2>
 				<form className="mt-8 w-full" onSubmit={handleAddOnTable}>
@@ -275,11 +275,11 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 
 					<div
 						className="flex items-center justify-center gap-5"
-						style={{ marginTop: "4rem" }}
+						style={{ marginTop: '4rem' }}
 					>
 						<button
 							className="mb-6 w-3/12 rounded-xl border-none p-2 text-center text-base font-medium text-white"
-							style={{ backgroundColor: "#0391C9" }}
+							style={{ backgroundColor: '#0391C9' }}
 							type="button"
 							onClick={handleAddOnTable}
 						>
@@ -290,14 +290,14 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 				<div className="mt-8 flex items-center justify-center gap-5">
 					<button
 						className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
-						style={{ backgroundColor: "#8A8A8A" }}
+						style={{ backgroundColor: '#8A8A8A' }}
 						type="submit"
 					>
 						Voltar
 					</button>
 					<button
 						className="mb-6 w-1/5 rounded-xl border-none p-2 text-center text-base font-medium text-white"
-						style={{ backgroundColor: "#4C1FA6" }}
+						style={{ backgroundColor: '#4C1FA6' }}
 						type="submit"
 						onClick={handleNextButtonClick}
 					>
@@ -307,7 +307,7 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 
 				<div className="flex items-center justify-center gap-10">
 					<table className="mt-12 w-full table-auto text-center">
-						<thead style={{ backgroundColor: "#E4E4E4" }}>
+						<thead style={{ backgroundColor: '#E4E4E4' }}>
 							<tr className="h-14">
 								<th scope="col">Título</th>
 								<th scope="col" className="mr-10">
@@ -329,8 +329,8 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 												className="h-14"
 												style={{
 													backgroundColor: !(index % 2 === 0)
-														? "#E4E4E4"
-														: "#fff",
+														? '#E4E4E4'
+														: '#fff',
 												}}
 											>
 												<td scope="row" className="">

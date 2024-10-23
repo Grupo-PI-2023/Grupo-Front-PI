@@ -17,7 +17,7 @@ import Title from '@/components/Title';
 import { Area } from '@/lib/repository/area/index.repository';
 import { Comissao } from '@/lib/repository/comission/index.repository';
 
-export default function FormUsuario() {
+export default function CadastroComissao() {
 	type Option = { label: string; value: string };
 
 	// Estrutura de dados: Grande Área -> Áreas -> Subáreas
@@ -92,29 +92,29 @@ export default function FormUsuario() {
 		}),
 	};
 
-	useEffect(() => {
-		async function getAreas() {
-			try {
-				const id = localStorage.getItem('eventId');
+	// useEffect(() => {
+	// 	async function getAreas() {
+	// 		try {
+	// 			const id = localStorage.getItem('eventId');
 
-				const result = await axios.get(
-					`http://localhost:5002/area-event/${id}`
-				);
-				if (result.data.areas) {
-					const areasComming: Area[] = result.data.areas;
-					const areasValueLabel = areasComming.map((area) => {
-						const labelvalue = { value: area.id, label: area.nome };
-						return labelvalue;
-					});
-					console.log(areasValueLabel);
-					// setSelectedGrandeArea(areasValueLabel)
-				}
-			} catch (error) {
-				console.log(error);
-			}
-		}
-		getAreas();
-	}, []);
+	// 			const result = await axios.get(
+	// 				`http://localhost:5002/area-event/${id}`
+	// 			);
+	// 			if (result.data.areas) {
+	// 				const areasComming: Area[] = result.data.areas;
+	// 				const areasValueLabel = areasComming.map((area) => {
+	// 					const labelvalue = { value: area.id, label: area.nome };
+	// 					return labelvalue;
+	// 				});
+	// 				console.log(areasValueLabel);
+	// 				// setSelectedGrandeArea(areasValueLabel)
+	// 			}
+	// 		} catch (error) {
+	// 			console.log(error);
+	// 		}
+	// 	}
+	// 	getAreas();
+	// }, []);
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
