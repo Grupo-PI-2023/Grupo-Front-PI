@@ -1,129 +1,120 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import axios from "axios";
-import { FaTimes } from "react-icons/fa";
-import Select from "react-select";
+import axios from 'axios';
+import { TfiPlus } from 'react-icons/tfi';
+import Select from 'react-select';
 
-<<<<<<< HEAD
 import AlertCard from '@/components/AlertCard';
 import CheckInput from '@/components/CheckInput';
 import DefaultButton from '@/components/DefaultButton';
+import IncrementInput from '@/components/IncrementInput';
 import NormalInput from '@/components/NormalInput';
-import { SimpleSelectType } from '@/components/Select';
+import DefaultSelect from '@/components/Select';
+import { OptionsType } from '@/components/Select';
 import Title from '@/components/Title';
 import { Area } from '@/lib/repository/area/index.repository';
 import { Comissao } from '@/lib/repository/comission/index.repository';
-import mockedOptionAreas from '@/mocks/OptionsAreas';
-import mockedOptionTurnos from '@/mocks/OptionsTurnos';
-=======
-import AlertCard from "@/components/AlertCard";
-import CheckInput from "@/components/CheckInput";
-import DefaultButton from "@/components/DefaultButton";
-import NormalInput from "@/components/NormalInput";
-import { SimpleSelectType } from "@/components/Select";
-import Title from "@/components/Title";
-import { Area } from "@/lib/repository/area/index.repository";
-import { Comissao } from "@/lib/repository/comission/index.repository";
-import mockedOptionAreas from "@/mocks/OptionsAreas";
-import mockedOptionTurnos from "@/mocks/OptionsTurnos";
->>>>>>> b4ffeac51ad7cd2b4945553f2a8cafc6e7a83689
 
 export default function CadastroComissao() {
-	const [isAdmin, setIsAdmin] = useState(false);
+	type Option = { label: string; value: string };
 
-	const [passwordVisible, setPasswordVisible] = useState(false);
-	const [password, setPassword] = useState("");
-	const [name, setName] = useState("");
-	const [cpf, setCpf] = useState("");
-	const [email, setEmail] = useState("");
-	const [instituicao, setInst] = useState("");
-	const [turno, setTurno] = useState<string | undefined>("");
-	const [lattes, setLattes] = useState("");
-	const [confirmpasswordVisible, setConfirmpasswordVisible] = useState(false);
-	const [confirmpassword, setConfirmpassword] = useState("");
-	// funcao no evento:
-	const checkboxNames = ["Organizador", "Avaliador"];
+	// Estrutura de dados: Grande Área -> Áreas -> Subáreas
+	const data: Record<string, Record<string, string[]>> = {
+		'Ciências Exatas e da Terra': {
+			Matemática: ['Álgebra', 'Geometria', 'Cálculo'],
+			Física: ['Física Teórica', 'Física Aplicada'],
+		},
+		'Ciências Humanas': {
+			História: ['História Antiga', 'História Moderna'],
+			Filosofia: ['Filosofia Antiga', 'Filosofia Contemporânea'],
+		},
+	};
+	const [selectedGrandeArea, setSelectedGrandeArea] = useState<Option | null>(
+		null
+	);
+	const [selectedArea, setSelectedArea] = useState<Option | null>(null);
+
+	const grandeAreasOptions: Option[] = Object.keys(data).map((key) => ({
+		label: key,
+		value: key,
+	}));
+
+	const areasOptions: Option[] = selectedGrandeArea
+		? Object.keys(data[selectedGrandeArea.value]).map((key) => ({
+				label: key,
+				value: key,
+		  }))
+		: [];
+
+	const instituicoesMock: OptionsType[] = [
+		{
+			label: 'Fatec Zona Leste',
+			value: 0,
+		},
+		{
+			label: 'Fatec São Paulo',
+			value: 1,
+		},
+		{
+			label: 'Fatec Zona Oeste',
+			value: 2,
+		},
+	];
+
+	const [password, setPassword] = useState('');
+	const [name, setName] = useState('');
+	const [cpf, setCpf] = useState('');
+	const [email, setEmail] = useState('');
+	const [instituicao, setInst] = useState('');
+	const [turno, setTurno] = useState<string | undefined>('');
+	const [lattes, setLattes] = useState('');
+	const checkboxPeriodo = ['Matutino', 'Vespertino', 'Noturno'];
+	const [confirmpassword, setConfirmpassword] = useState('');
+	const checkboxNames = ['Organizador', 'Avaliador'];
 	const [checkboxes, setCheckboxes] = useState(checkboxNames.map(() => false));
 	const [showCard, setShowCard] = useState(false);
 
-	const handleCheckboxChange = (index: any) => {
-		setCheckboxes((prev) => {
-			const newCheckboxes = [...prev];
-			newCheckboxes[index] = !newCheckboxes[index];
-			return newCheckboxes;
-		});
-	};
-
-	const [areas, setAreas] = useState<SimpleSelectType[]>(mockedOptionAreas);
 	const [realAreas, setRealAreas] = useState<(string | undefined)[]>([]);
 
-	const [subareas, setSubAreas] = useState([""]);
-	const [ass, setAss] = useState([""]);
-	const handleAddSubArea = (
-		setSubArea: React.Dispatch<React.SetStateAction<string[]>>
-	) => {
-		const lastArea =
-			setSubArea === setSubAreas
-				? subareas[subareas.length - 1]
-				: ass[ass.length - 1];
-		if (lastArea.trim() !== "") {
-			setSubArea((prevAreas) => [...prevAreas, ""]);
-		}
-	};
-	const handleRemoveSubArea = (
-		index: number,
-		setSubArea: React.Dispatch<React.SetStateAction<string[]>>
-	) => {
-		setSubArea((prevAreas) => prevAreas.filter((_, i) => i !== index));
-	};
-	const handleSubAreaChange = (
-		index: number,
-		value: string,
-		setSubArea: React.Dispatch<React.SetStateAction<string[]>>
-	) => {
-		const newAreas = [...(setSubArea === setSubAreas ? subareas : ass)];
-		newAreas[index] = value;
-		setSubArea(newAreas);
-	};
+	const [subareas, setSubAreas] = useState(['']);
 
 	const customStyles = {
 		control: (provided: any) => ({
 			...provided,
-			width: "100%",
-			height: "auto",
-			borderRadius: "0.375rem",
-			border: "1",
-			background: "white",
-			fontSize: "0.875rem",
+			width: '100%',
+			height: 'auto',
+			borderRadius: '0.375rem',
+			border: '1',
+			background: 'white',
+			fontSize: '0.875rem',
 		}),
 	};
 
-	useEffect(() => {
-		async function getAreas() {
-			setIsAdmin(false);
-			try {
-				const id = localStorage.getItem("eventId");
+	// useEffect(() => {
+	// 	async function getAreas() {
+	// 		try {
+	// 			const id = localStorage.getItem('eventId');
 
-				const result = await axios.get(
-					`http://localhost:5002/area-event/${id}`
-				);
-				if (result.data.areas) {
-					const areasComming: Area[] = result.data.areas;
-					const areasValueLabel = areasComming.map((area) => {
-						const labelvalue = { value: area.id, label: area.nome };
-						return labelvalue;
-					});
-					console.log(areasValueLabel);
-					setAreas(areasValueLabel);
-				}
-			} catch (error) {
-				console.log(error);
-			}
-		}
-		getAreas();
-	}, []);
+	// 			const result = await axios.get(
+	// 				`http://localhost:5002/area-event/${id}`
+	// 			);
+	// 			if (result.data.areas) {
+	// 				const areasComming: Area[] = result.data.areas;
+	// 				const areasValueLabel = areasComming.map((area) => {
+	// 					const labelvalue = { value: area.id, label: area.nome };
+	// 					return labelvalue;
+	// 				});
+	// 				console.log(areasValueLabel);
+	// 				// setSelectedGrandeArea(areasValueLabel)
+	// 			}
+	// 		} catch (error) {
+	// 			console.log(error);
+	// 		}
+	// 	}
+	// 	getAreas();
+	// }, []);
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -161,7 +152,7 @@ export default function CadastroComissao() {
 				// certificado: '',
 				areaConhecimento: realAreas?.map((area) => area),
 			};
-			const result = await axios.post("http://localhost:5002/comissao", data);
+			const result = await axios.post('http://localhost:5002/comissao', data);
 			console.log(result);
 			if (result.data.comissaoCreated) {
 				// habilitar card de 3seg indicando cadastro realizado
@@ -170,13 +161,13 @@ export default function CadastroComissao() {
 				setTimeout(() => {
 					setShowCard(false);
 				}, 3000);
-				setName("");
-				setCpf("");
-				setEmail("");
-				setInst("");
-				setPassword("");
-				setConfirmpassword("");
-				setLattes("");
+				setName('');
+				setCpf('');
+				setEmail('');
+				setInst('');
+				setPassword('');
+				setConfirmpassword('');
+				setLattes('');
 				setCheckboxes(checkboxNames.map(() => false));
 			}
 		} catch (error) {
@@ -213,58 +204,45 @@ export default function CadastroComissao() {
 							type="email"
 							required
 						/>
-						{!isAdmin && (
-							<>
-								<NormalInput
-									id="password"
-									label="Senha"
-									placeholder="Senha do Usuário"
-									type="password"
-									value={password}
-									onChange={(e) => setPassword(e.target.value)}
-									required
-								/>
-								<NormalInput
-									id="confirmPassword"
-									label="Confirmar Senha"
-									placeholder="Senha do Usuário"
-									type="password"
-									value={confirmpassword}
-									onChange={(e) => setConfirmpassword(e.target.value)}
-									required
-								/>
-								<NormalInput
-									id="cpf"
-									label="CPF"
-									placeholder="CPF do Usuário"
-									type="text"
-									value={cpf}
-									onChange={(e) => setCpf(e.target.value)}
-									required
-								/>
-							</>
-						)}
+
 						<NormalInput
-							id="institution"
-							label="Instituição Referente"
-							placeholder="Instituição do Usuário"
-							value={instituicao}
-							onChange={(e) => setInst(e.target.value)}
+							id="password"
+							label="Senha"
+							placeholder="Senha do Usuário"
+							type="password"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
 							required
-							type="text"
 						/>
 						<NormalInput
-							id="link"
-							label="Link Lattes"
-							placeholder="https://link.lattes.da.comissão.com"
-							value={lattes}
-							onChange={(e) => setLattes(e.target.value)}
+							id="confirmPassword"
+							label="Confirmar Senha"
+							placeholder="Senha do Usuário"
+							type="password"
+							value={confirmpassword}
+							onChange={(e) => setConfirmpassword(e.target.value)}
 							required
-							type="url"
+						/>
+						<NormalInput
+							id="cpf"
+							label="CPF"
+							placeholder="CPF do Usuário"
+							type="text"
+							value={cpf}
+							onChange={(e) => setCpf(e.target.value)}
+							required
+						/>
+
+						<DefaultSelect
+							label="Instituição Referente"
+							options={instituicoesMock}
+							disabled={false}
+							preSelect={0}
+							id="institution"
 						/>
 
 						<div className="mb-5 w-[45%]">
-							<label className="mb-2 text-sm font-medium" htmlFor="funcao">
+							<label className="mb-2 text-sm font-medium">
 								Função no Evento
 							</label>
 							<div className="flex items-center gap-3 py-2.5">
@@ -280,122 +258,87 @@ export default function CadastroComissao() {
 							</div>
 						</div>
 
+						<div className="mb-5 w-[45%]">
+							<label className="mb-2 text-sm font-medium">Período:</label>
+							<div className="flex items-center gap-3 py-2.5">
+								{checkboxPeriodo.map((name, index) => (
+									<CheckInput
+										disabled={false}
+										id={name + index}
+										key={index}
+										label={name}
+										selected={false}
+										name={name}
+									/>
+								))}
+							</div>
+						</div>
+
+						<NormalInput
+							id="link"
+							label="Link Lattes"
+							placeholder="https://link.lattes.da.comissão.com"
+							value={lattes}
+							onChange={(e) => setLattes(e.target.value)}
+							required
+							type="url"
+						/>
+
+						<div className="mb-5 flex w-[45%] flex-col">
+							<label className="mb-2 text-sm font-medium" htmlFor="areas">
+								Grandes Áreas de Conhecimento
+							</label>
+							<div className="w-full">
+								<Select
+									options={grandeAreasOptions}
+									value={selectedGrandeArea}
+									onChange={(option) => {
+										setSelectedGrandeArea(option);
+										setSelectedArea(null);
+									}}
+									styles={customStyles}
+									placeholder="Selecione uma Grande Área"
+								/>
+							</div>
+						</div>
 						<div className="mb-5 flex w-[45%] flex-col">
 							<label className="mb-2 text-sm font-medium" htmlFor="areas">
 								Áreas de Conhecimento
 							</label>
 							<div className="w-full">
 								<Select
-									isMulti
-									name="areas"
-									options={areas}
-									className="basic-multi-select border-gray-300"
-									classNamePrefix="select"
+									options={areasOptions}
+									value={selectedArea}
+									onChange={(option) => {
+										setSelectedArea(option);
+									}}
+									isDisabled={!selectedGrandeArea}
+									placeholder="Selecione uma Área"
 									styles={customStyles}
-									onChange={(choice) =>
-										setRealAreas(choice.map((a) => a.value))
-									}
 								/>
 							</div>
 						</div>
 
-						<div className="mb-5 flex w-[45%] flex-col">
-							<label className="mb-2 text-sm font-medium" htmlFor="areas">
-								Sub Áreas de Conhecimento
-							</label>
-							<div>
-								<div className="mb-3 ">
-									<div className="flex w-full items-center justify-around rounded-md border border-gray-300 bg-white px-4 py-2">
-										<input
-											className="w-full bg-white text-sm outline-none"
-											type="text"
-											name="subareas"
-											value={subareas[subareas.length - 1]}
-											onChange={(e) =>
-												handleSubAreaChange(
-													subareas.length - 1,
-													e.target.value,
-													setSubAreas
-												)
-											}
-											placeholder="Áreas de Conhecimento da Comissão"
-											required
-										/>
+						<IncrementInput
+							label="Sub Áreas de Conhecimento"
+							arrayValue={subareas}
+							setArrayValue={setSubAreas}
+							customWidth="45%"
+							placeholder="SubAreas de Conhecimento da Comissão"
+						/>
+					</div>
 
-										<div
-											className="m-0 flex h-[2rem] w-[2.2rem] cursor-pointer items-center justify-center rounded-full border-[1px] border-slate-900 p-0"
-											onClick={() => handleAddSubArea(setSubAreas)}
-										>
-											<p className="text-xl font-bold ">+</p>
-										</div>
-									</div>
-								</div>
-								<div className="flex flex-wrap gap-2.5">
-									{subareas.map((area, index) => (
-										<div
-											key={index}
-											className="flex items-center rounded-full border border-gray-300 bg-white px-2 py-0.5"
-										>
-											<div className="w-full">
-												<input
-													className="w-full rounded-md border-0 bg-white text-sm outline-none"
-													type="text"
-													name="subareas"
-													value={area}
-													onChange={(e) =>
-														handleSubAreaChange(
-															index,
-															e.target.value,
-															setSubAreas
-														)
-													}
-													readOnly
-													required
-												/>
-											</div>
-											<div
-												className="ml-2 cursor-pointer rounded-full px-1"
-												style={{
-													backgroundColor: "#ef0037",
-												}}
-												onClick={() => handleRemoveSubArea(index, setSubAreas)}
-											>
-												<FaTimes className="w-2 text-white" />
-											</div>
-										</div>
-									))}
-								</div>
-							</div>
-						</div>
+					<div className="mb-5 flex w-full items-center justify-center gap-5 ">
+						<label className="text-sm font-medium">
+							Cadastrar mais Instituições
+						</label>
 
-						<div className="mb-5 flex w-[45%] flex-col">
-							<label className="mb-2 text-sm font-medium" htmlFor="turno">
-								Turno
-							</label>
-							<div className="w-full">
-								<Select
-									name="turnos"
-									options={mockedOptionTurnos}
-									className="basic-multi-select border-gray-300"
-									classNamePrefix="select"
-									styles={customStyles}
-									onChange={(choice) => setTurno(choice?.label)}
-								/>
-							</div>
-						</div>
-
-						<div className="mb-5 flex w-[45%] items-center justify-around ">
-							<label className="text-sm font-medium">
-								Cadastrar mais Instituições
-							</label>
-
-							<button
-								className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-red-500"
-								type="button"
-							>
-								<p className="text-3xl text-white">+</p>
-							</button>
-						</div>
+						<button
+							className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-red-500"
+							type="button"
+						>
+							<TfiPlus height="40px" color="white" />
+						</button>
 					</div>
 
 					<div className="mb-5 flex w-[45%] flex-col">

@@ -3,19 +3,17 @@
 import { CiBoxList } from 'react-icons/ci';
 import { HiOutlineBookOpen } from 'react-icons/hi';
 
-import * as S from './styles';
-import Rating from '@/components/Avaliations/Rating';
-import RateArticle from '@/components/Rate/RateArticle';
-import Avaliador from '../../../app/dashboard/avaliacao/avaliar-artigo/Avaliador';
-import Title from '@/components/Title';
 import Form from '@/components/Rate/NavBarRateAvaliar/Form';
+import RateArticle from '@/components/Rate/RateArticle';
+
+import * as S from './styles';
 
 type NavBarRateProps = {
 	currentOption: string;
 	handleOptionClick: (option: string) => void;
 };
 
-const handleRatingChange = (value) => {
+const handleRatingChange = (value: any) => {
 	console.log('Nota selecionada:', value);
 };
 

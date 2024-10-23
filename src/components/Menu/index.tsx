@@ -110,7 +110,7 @@ export default function Menu() {
 										<div>
 											<LuFileSearch className="block h-8 w-8" color="#4B00E0" />
 										</div>
-										<div className="flex flex flex-wrap gap-0.5">
+										<div className="flex flex-wrap gap-0.5">
 											<p className="text-base font-semibold text-[#4B00E0]">
 												Visualizar Arquivos
 											</p>

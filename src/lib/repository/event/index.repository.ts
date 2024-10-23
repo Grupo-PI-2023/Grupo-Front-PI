@@ -12,6 +12,7 @@ export type Event = {
 	horarioFim?: string;
 	logo?: string | null;
 	periodo: string;
+	privado: boolean;
 	evento: string;
 	gerar: string;
 	createdAt?: Date;

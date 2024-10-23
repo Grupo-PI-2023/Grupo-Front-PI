@@ -1,6 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+import { useRouter } from 'next/navigation';
 
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
@@ -8,6 +10,10 @@ import NavbarAuthenticated from '@/components/NavbarAuthenticated';
 
 export default function Home() {
 	const [authenticated, setAuthenticated] = useState(true);
+	const router = useRouter();
+	useEffect(() => {
+		router.push('/eventos');
+	}, []);
 	return (
 		<div className="flex h-screen flex-col justify-items-center ">
 			{authenticated ? <NavbarAuthenticated /> : <Navbar />}

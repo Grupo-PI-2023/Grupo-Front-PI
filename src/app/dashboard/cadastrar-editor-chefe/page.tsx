@@ -7,12 +7,11 @@ import { CiCircleRemove } from 'react-icons/ci';
 import { CiCircleCheck } from 'react-icons/ci';
 import { FaEye } from 'react-icons/fa';
 
-import ClipInput from '@/components/COMPONENTES/ClipInput';
-import Footer from '@/components/COMPONENTES/Footer';
-import Navbar from '@/components/COMPONENTES/NavbarAuthenticated';
-import SearchFilter from '@/components/COMPONENTES/SearchFilter';
-import Title from '@/components/COMPONENTES/Title';
-import useClipboard from '@/hooks/useClipboard';
+import ClipInput from '@/components/ClipInput';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/NavbarAuthenticated';
+import SearchFilter from '@/components/SearchFilter';
+import Title from '@/components/Title';
 import { UsersFunction } from '@/mocks/UserFunctions';
 
 type CriarEventoProps = {
@@ -62,9 +61,11 @@ export default function CadastrarUsuario({
 					/>
 				</div>
 
-				<div className="gap-6 flex rounded-2xl border-neutral-400 bg-neutral-50 p-3 shadow-xl font-semibold items-center justify-center">
-					<div className='cursor-pointer'>Editores Chefe</div>
-					<div className='bg-[#DD4467] text-white p-1.5 rounded-[10px] cursor-pointer'>Avaliadores</div>
+				<div className="flex items-center justify-center gap-6 rounded-2xl border-neutral-400 bg-neutral-50 p-3 font-semibold shadow-xl">
+					<div className="cursor-pointer">Editores Chefe</div>
+					<div className="cursor-pointer rounded-[10px] bg-[#DD4467] p-1.5 text-white">
+						Avaliadores
+					</div>
 				</div>
 
 				<div
