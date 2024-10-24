@@ -72,17 +72,32 @@ export default function NavbarAuthenticated() {
 						<IoIosClose />
 					</div>
 					{navigationAuthenticatedRoutes.map((item, index) => (
-						<S.OptionMenu
-							key={index}
-							onClick={() => {
-								handleOptionClick(item.link);
-								setOpenMenu(false);
-							}}
-							className="cursor-pointer text-base"
-							selected={currentOption === item.link}
-						>
-							{item.title}
-						</S.OptionMenu>
+						<div>
+							<S.OptionMenu
+								key={index}
+								onClick={() => {
+									handleOptionClick(item.link);
+									setOpenMenu(false);
+								}}
+								className="cursor-pointer text-base"
+								selected={currentOption === item.link}
+							>
+								{item.title}
+							</S.OptionMenu>
+							{item.subtitle?.map((subItem, ind) => (
+								<S.SubOptionMenu
+									key={ind}
+									onClick={() => {
+										handleOptionClick(subItem.link);
+										setOpenMenu(false);
+									}}
+									className="cursor-pointer text-base"
+									selected={currentOption === subItem.link}
+								>
+									{subItem.name}
+								</S.SubOptionMenu>
+							))}
+						</div>
 					))}
 				</div>
 			</div>

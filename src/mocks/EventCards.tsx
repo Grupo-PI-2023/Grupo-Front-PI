@@ -1,3 +1,6 @@
+import amorPerfeito from '@/assets/Amor Perfeito.png';
+import Caroline from '@/assets/Caroline.png';
+import CultFest from '@/assets/CultureFest.png';
 import event1 from '@/assets/event1.png';
 import event2 from '@/assets/event2.png';
 import event3 from '@/assets/event3.png';
@@ -8,7 +11,7 @@ export const cardsData = [
 		title: 'Tech Talks: Descobrindo as Fronteiras da Tecnologia',
 		description:
 			'Prepare-se para uma experiência musical única e emocionante! Estamos entusiasmados em anunciar o incrível Festival Melodias Vibrantes, um evento que celebrará a diversidade musical e encantará os amantes de todos os gêneros. Além das performances épicas, o CultureFest também contará com uma série de atividades emocionantes para enriquecer a experiência dos participantes. Teremos oficinas interativas com músicos experientes, onde você poderá aprender técnicas, explorar seu próprio talento musical e descobrir os segredos dos bastidores da indústria.',
-		imageUrl: event1,
+		imageUrl: amorPerfeito,
 		startDate: '10/07/2023',
 		endDate: '10/12/2023',
 		schedule: {
@@ -22,7 +25,7 @@ export const cardsData = [
 		title: 'Tech Talks: Descobrindo as Fronteiras da Tecnologia',
 		description:
 			'O amor Perfeito  tem como objetivo proporcionar um momento de reflexão, crescimento pessoal e inspiração, onde cada participante será convidado a explorar e fortalecer sua relação consigo mesmo. Estaremos juntos nessa jornada de autodescoberta, com atividades enriquecedoras, palestras inspiradoras e momentos de conexão com outras pessoas que também valorizam o amor-próprio.',
-		imageUrl: event2,
+		imageUrl: Caroline,
 		startDate: '15/08/2023',
 		endDate: '20/08/2023',
 		schedule: {
@@ -37,7 +40,7 @@ export const cardsData = [
 		title: 'Tech Talks: Descobrindo as Fronteiras da Tecnologia',
 		description:
 			'O amor Perfeito  tem como objetivo proporcionar um momento de reflexão, crescimento pessoal e inspiração, onde cada participante será convidado a explorar e fortalecer sua relação consigo mesmo. Estaremos juntos nessa jornada de autodescoberta, com atividades enriquecedoras, palestras inspiradoras e momentos de conexão com outras pessoas que também valorizam o amor-próprio.',
-		imageUrl: event3,
+		imageUrl: CultFest,
 		startDate: '15/08/2023',
 		endDate: '20/08/2023',
 		schedule: {

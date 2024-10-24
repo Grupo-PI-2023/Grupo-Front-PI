@@ -5,11 +5,7 @@ import { useState } from 'react';
 import { FaRegEdit } from 'react-icons/fa';
 import { FaRegTrashCan } from 'react-icons/fa6';
 
-<<<<<<< HEAD
 import OutlineButton from '@/components/OutlineButton';
-=======
-import OutlineButton from '@/components//OutlineButton';
->>>>>>> b4ffeac51ad7cd2b4945553f2a8cafc6e7a83689
 import { Activity } from '@/lib/repository/activity/index.repository';
 
 type CriarEventoProps = {
@@ -130,10 +126,7 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 					<div className="flex justify-center gap-5">
 						<div className="w-full">
 							<div className="mb-5 flex flex-col">
-								<label
-									className="mb-2 text-sm font-medium"
-									htmlFor="eventName"
-								>
+								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
 									Título
 								</label>
 
@@ -145,18 +138,13 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 										id="activityTitle"
 										placeholder="Titulo da atividade"
 										value={title}
-										onChange={(e) =>
-											setTitle(e.target.value)
-										}
+										onChange={(e) => setTitle(e.target.value)}
 										required
 									/>
 								</div>
 							</div>
 							<div className="mb-5 flex flex-col">
-								<label
-									className="mb-2 text-sm font-medium"
-									htmlFor="descricao"
-								>
+								<label className="mb-2 text-sm font-medium" htmlFor="descricao">
 									Descrição
 								</label>
 
@@ -167,9 +155,7 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 										id="activityDescription"
 										rows={6}
 										value={descricao}
-										onChange={(e) =>
-											setDescricao(e.target.value)
-										}
+										onChange={(e) => setDescricao(e.target.value)}
 										required
 									/>
 								</div>
@@ -196,10 +182,7 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 						</div>
 						<div className="w-full">
 							<div className="mb-5 flex flex-col">
-								<label
-									className="mb-2 text-sm font-medium"
-									htmlFor="select"
-								>
+								<label className="mb-2 text-sm font-medium" htmlFor="select">
 									Selecionar Tipo de Atividade
 								</label>
 
@@ -210,15 +193,11 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 											name="selectType"
 											id="selectType"
 											value={typeActivity}
-											onChange={(e) =>
-												setTypeActivity(e.target.value)
-											}
+											onChange={(e) => setTypeActivity(e.target.value)}
 											required
 										>
 											<option>Selecione</option>
-											<option value="Palestra">
-												Palestra
-											</option>
+											<option value="Palestra">Palestra</option>
 											<option value="Pitch">Pitch</option>
 										</select>
 									</div>
@@ -235,10 +214,7 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 							</div>
 
 							<div className="mb-5 flex flex-col">
-								<label
-									className="mb-2 text-sm font-medium"
-									htmlFor="eventName"
-								>
+								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
 									Nome do Convidado:
 								</label>
 
@@ -250,19 +226,14 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 										id="GuestName"
 										placeholder="Nome do convidado"
 										value={guestName}
-										onChange={(e) =>
-											setGuestName(e.target.value)
-										}
+										onChange={(e) => setGuestName(e.target.value)}
 										required
 									/>
 								</div>
 							</div>
 
 							<div className="mb-5 flex flex-col">
-								<label
-									className="mb-2 text-sm font-medium"
-									htmlFor="eventName"
-								>
+								<label className="mb-2 text-sm font-medium" htmlFor="eventName">
 									Email do Convidado:
 								</label>
 
@@ -274,9 +245,7 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 										id="GuestEmail"
 										placeholder="Email do convidado"
 										value={guestEmail}
-										onChange={(e) =>
-											setGuestEmail(e.target.value)
-										}
+										onChange={(e) => setGuestEmail(e.target.value)}
 										required
 									/>
 								</div>
@@ -296,9 +265,7 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 										name="timeActivity"
 										id="timeActivity"
 										value={timeActivity}
-										onChange={(e) =>
-											setTimeActivity(e.target.value)
-										}
+										onChange={(e) => setTimeActivity(e.target.value)}
 										required
 									/>
 								</div>
@@ -361,10 +328,7 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 												key={index}
 												className="h-14"
 												style={{
-													backgroundColor: !(
-														index % 2 ===
-														0
-													)
+													backgroundColor: !(index % 2 === 0)
 														? '#E4E4E4'
 														: '#fff',
 												}}
@@ -372,14 +336,8 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 												<td scope="row" className="">
 													{acitivity.activityTitle}
 												</td>
-												<td className="">
-													{acitivity.activityType}
-												</td>
-												<td className="">
-													{
-														acitivity.activityGuestName
-													}
-												</td>
+												<td className="">{acitivity.activityType}</td>
+												<td className="">{acitivity.activityGuestName}</td>
 												<td>
 													<div className="flex items-center justify-center gap-4">
 														<OutlineButton
@@ -393,15 +351,9 @@ export default function CriarAtividade({ handleNextClick }: CriarEventoProps) {
 															label="Excluir"
 															outlineColorHex="#BF0000"
 															textColorHex="#BF0000"
-															icon={
-																<FaRegTrashCan />
-															}
+															icon={<FaRegTrashCan />}
 															customWidth="35%"
-															onClick={() =>
-																itemToRemove(
-																	index
-																)
-															}
+															onClick={() => itemToRemove(index)}
 														/>
 													</div>
 												</td>

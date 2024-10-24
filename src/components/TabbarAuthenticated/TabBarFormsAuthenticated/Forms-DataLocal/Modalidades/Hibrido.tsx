@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
+import { useRouter } from 'next/navigation';
+
 import axios from 'axios';
 
 import AlertCard from '@/components/AlertCard';
 import CheckInput from '@/components/CheckInput';
 import DefaultButton from '@/components/DefaultButton';
-import { Area } from '@/lib/repository/area/index.repository';
-import { Event } from '@/lib/repository/event/index.repository';
 
 import { DataLocalProps } from '..';
 
@@ -21,59 +21,11 @@ const Hibrido = ({ handleNextClick }: DataLocalProps) => {
 	const [horarioInicio, setHorarioInicio] = useState('');
 	const [horarioFinal, setHorarioFinal] = useState('');
 	const [showCard, setShowCard] = useState(false);
-
 	const checkboxPeriodo = ['Matutino', 'Vespertino', 'Noturno'];
-	const [checkboxes, setCheckboxes] = useState(
-		checkboxPeriodo.map(() => false)
-	);
+	const router = useRouter();
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		// cadastrando evento:
-		const data: Event = JSON.parse(localStorage.getItem('event') || '{}');
-		if (data) {
-			const periodo = checkboxes.findIndex((item) => item === true);
-			data.local = `${local}, ${cep}, ${estado}, ${cidade}`;
-			data.cep = cep;
-			data.dataInicio = dataInicio;
-			data.dataFinal = dataFinal;
-			data.horarioInicio = horarioInicio;
-			data.horarioFim = horarioFinal;
-			data.periodo = checkboxPeriodo[periodo];
-			try {
-				const result = await axios.post('http://localhost:5002/event', data);
-				if (result.data.userCreated) {
-					localStorage.setItem('eventId', result.data.userCreated.id);
-					setShowCard(true);
-					setTimeout(() => {
-						setShowCard(false);
-						handleNextClick('arquivos');
-					}, 3000);
-				}
-			} catch (error) {
-				console.log(error);
-			}
-		}
-		// cadastrando as areas:
-		const parsedAreas = JSON.parse(localStorage.getItem('areas') || '[]');
-		if (parsedAreas) {
-			const eventId = localStorage.getItem('eventId');
-			parsedAreas.forEach(async (areaName: string) => {
-				const areaObjt: Area = {
-					eventoId: eventId,
-					nome: areaName,
-				};
-				try {
-					const result = await axios.post(
-						'http://localhost:5002/area',
-						areaObjt
-					);
-					console.log(result);
-				} catch (error) {
-					console.log(error);
-				}
-			});
-		}
 
 		handleNextClick('arquivos');
 	};
@@ -278,7 +230,7 @@ const Hibrido = ({ handleNextClick }: DataLocalProps) => {
 						<DefaultButton
 							label="Voltar"
 							type="button"
-							onClick={() => alert('funcao de voltar')}
+							onClick={() => router.push('/criar-evento')}
 						/>
 						<DefaultButton
 							label="Avançar"

@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 const Pagination2 = () => {
 	return (
-		<div className="relative bottom-5 left-1/2 z-30 mt-12 flex w-[340px] -translate-x-1/2 justify-center space-x-3 rtl:space-x-reverse">
+		<div className="relative bottom-5 left-1/2 z-30 mt-40 flex w-[340px] -translate-x-1/2 justify-center space-x-3 rtl:space-x-reverse">
 			<button
 				type="button"
 				className="group absolute start-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
