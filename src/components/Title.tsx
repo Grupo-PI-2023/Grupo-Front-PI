@@ -7,7 +7,7 @@ type TitleType = {
 };
 const Title = ({ title, subtitle, colorHex }: TitleType) => {
 	return (
-		<div className="mb-10">
+		<div className="mb-10 flex flex-col gap-2">
 			<h1
 				style={{ color: colorHex }}
 				className={`

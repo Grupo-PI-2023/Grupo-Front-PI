@@ -1,7 +1,7 @@
 'use client';
 
 import CadastroEditorChefe from './TabBarForms/Forms-EditorChefe';
-import FormUsuario from './TabBarForms/FormsComissao';
+import CadastroComissao from './TabBarForms/FormsComissao';
 import CadastroUser from './TabBarForms/FormsUser';
 import * as S from './styles';
 
@@ -19,7 +19,7 @@ export default function Tabbar({
 			case 'cadastrar-user':
 				return <CadastroUser />;
 			case 'cadastrar-comissao':
-				return <FormUsuario />;
+				return <CadastroComissao />;
 			case 'cadastrar-editorchefe':
 				return <CadastroEditorChefe />;
 			default:
