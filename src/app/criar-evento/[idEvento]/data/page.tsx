@@ -2,11 +2,9 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 
+import { Hibrido, Online, Presencial } from '@/components/EventModels';
 import Footer from '@/components/Footer';
 import NavbarAuthenticated from '@/components/NavbarAuthenticated';
-import Hibrido from '@/components/TabbarAuthenticated/TabBarFormsAuthenticated/Forms-DataLocal/Modalidades/Hibrido';
-import Online from '@/components/TabbarAuthenticated/TabBarFormsAuthenticated/Forms-DataLocal/Modalidades/Online';
-import Presencial from '@/components/TabbarAuthenticated/TabBarFormsAuthenticated/Forms-DataLocal/Modalidades/Presencial';
 
 export type DataLocalProps = {
 	handleNextClick: (option: string) => void;

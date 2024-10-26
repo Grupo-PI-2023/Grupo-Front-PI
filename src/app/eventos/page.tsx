@@ -98,6 +98,11 @@ export default function Eventos() {
 									src={cardsData[currentIndex].imageUrl}
 									alt={cardsData[currentIndex].title}
 									width={500}
+									onClick={(e) => {
+										e.stopPropagation();
+										router.push(`/eventos/${cardsData[currentIndex].id}`);
+									}}
+									className="cursor-pointer"
 								/>
 
 								<div className="ml-5 w-[50%] text-white">
@@ -129,7 +134,7 @@ export default function Eventos() {
 					<div className="flex justify-around">
 						{eventThemeMocks.map((theme) => (
 							<div className="relative w-[20vw] bg-white p-8">
-								<div className="absolute left-[-5px] top-[-5px] h-[21vw] w-[21vw] ">
+								<div className="absolute left-[-5px] top-[-5px] h-[21vw] w-[21vw]">
 									<Image
 										alt={`Image for ${theme.title}`}
 										src={theme.image}

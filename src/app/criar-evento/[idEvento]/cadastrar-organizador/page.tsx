@@ -71,6 +71,14 @@ export default function CadastrarOrganizadorEmEvento({
 	const [lattes, setLattes] = useState('');
 	const checkboxPeriodo = ['Matutino', 'Vespertino', 'Noturno'];
 	const [showCard, setShowCard] = useState(false);
+	const [selectedPeriods, setSelectedPeriods] = useState<string[]>([]);
+	const handleCheckboxChangePeriod = (periodId: string) => {
+		setSelectedPeriods((prevSelected) =>
+			prevSelected.includes(periodId)
+				? prevSelected.filter((id) => id !== periodId)
+				: [...prevSelected, periodId]
+		);
+	};
 
 	const [subareas, setSubAreas] = useState(['']);
 
@@ -148,12 +156,12 @@ export default function CadastrarOrganizadorEmEvento({
 								<div className="flex items-center gap-3 py-2.5">
 									{checkboxPeriodo.map((name, index) => (
 										<CheckInput
-											disabled={false}
-											id={name + index}
-											key={index}
 											label={name}
-											selected={false}
+											key={index}
 											name={name}
+											value={name}
+											checked={selectedPeriods.includes(name)}
+											onChange={() => handleCheckboxChangePeriod(name)}
 										/>
 									))}
 								</div>

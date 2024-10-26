@@ -1,37 +1,41 @@
-type Aluno = {
-	nome: string;
+export type AuthorType = {
+	id: number;
+	name: string;
 	email: string;
-	curso: string;
-	instituicao: string;
-	periodo: number;
-	palestrante: boolean;
+	curse: string;
+	institution: string;
+	period: string; // 0,1,2 => ['Matutino', 'Vespertino', 'Noturno'];
+	speaker?: boolean;
 };
 
-const alunos: Aluno[] = [
+const authors: AuthorType[] = [
 	{
-		nome: 'João Silva',
+		id: 0,
+		name: 'João Silva',
 		email: 'joao.silva@example.com',
-		curso: 'Engenharia de Software',
-		instituicao: 'Universidade XYZ',
-		periodo: 0,
-		palestrante: true,
+		curse: 'Engenharia de Software',
+		institution: 'Universidade XYZ',
+		period: 'Matutino',
+		speaker: true,
 	},
 	{
-		nome: 'Maria Santos',
+		id: 1,
+		name: 'Maria Santos',
 		email: 'maria.santos@example.com',
-		curso: 'Ciência da Computação',
-		instituicao: 'Instituto ABC',
-		periodo: 2,
-		palestrante: false,
+		curse: 'Ciência da Computação',
+		institution: 'Instituto ABC',
+		period: 'Noturno',
+		speaker: false,
 	},
 	{
-		nome: 'Pedro Oliveira',
+		id: 2,
+		name: 'Pedro Oliveira',
 		email: 'pedro.oliveira@example.com',
-		curso: 'Sistemas de Informação',
-		instituicao: 'Faculdade DEF',
-		periodo: 0,
-		palestrante: false,
+		curse: 'Sistemas de Informação',
+		institution: 'Faculdade DEF',
+		period: 'Matutino',
+		speaker: false,
 	},
 ];
 
-export default alunos;
+export default authors;

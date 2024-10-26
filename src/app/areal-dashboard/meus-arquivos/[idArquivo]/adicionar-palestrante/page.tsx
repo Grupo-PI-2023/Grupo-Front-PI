@@ -2,16 +2,18 @@
 
 import { useState } from 'react';
 
+import { useRouter } from 'next/navigation';
+
 import { FaRegUser } from 'react-icons/fa';
 
-import CheckboxInput from '@/components/CheckboxInput';
+import CheckInput from '@/components/CheckInput';
 import DefaultButton from '@/components/DefaultButton';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/NavbarAuthenticated';
 import NormalInput from '@/components/NormalInput';
 import Select from '@/components/Select';
 import Title from '@/components/Title';
-import alunos from '@/mocks/Aluno';
+import { cardsData2 } from '@/mocks/ArtigosCards';
 
 export default function AdicionarPalestrantePage({
 	params,
@@ -21,20 +23,41 @@ export default function AdicionarPalestrantePage({
 	};
 }) {
 	const checkboxPeriodo = ['Matutino', 'Vespertino', 'Noturno'];
-	const [palestrante, setPalestrante] = useState(false);
+	const router = useRouter();
+
+	const handleAddAuthor = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		console.log(
+			'idArquivo: ',
+			params.idArquivo,
+			'idPalestrantes: ',
+			selectedSpeakers
+		);
+		router.push('/areal-dashboard/meus-arquivos');
+		// backend tasks
+	};
+
+	const [selectedSpeakers, setSelectedSpeakers] = useState<number[]>([]);
+	const handleCheckboxChangeSpeaker = (studentId: number) => {
+		setSelectedSpeakers((prevSelected) =>
+			prevSelected.includes(studentId)
+				? prevSelected.filter((id) => id !== studentId)
+				: [...prevSelected, studentId]
+		);
+	};
 
 	return (
 		<div>
 			<Navbar />
 			<div className="container mb-6 mt-52 flex justify-center ">
-				<form className="w-[60vw] ">
+				<form className="w-[60vw]" onSubmit={handleAddAuthor}>
 					<Title
 						title="Adicionar Palestrante"
 						colorHex="#EF0037"
 						subtitle="Selecione o apresentador do artigo para apresenta-lo durante o evento"
 					/>
 
-					{alunos.map((aluno, key) => (
+					{cardsData2[0].authors?.map((aluno, key) => (
 						<div
 							className="card  my-10 flex flex-wrap justify-center gap-5 rounded-md"
 							key={key}
@@ -42,12 +65,13 @@ export default function AdicionarPalestrantePage({
 							<div className="mb-5 flex w-[45%] items-center gap-5 text-[1.8rem]">
 								<FaRegUser />
 								<p>Autor</p>
-								<CheckboxInput
+								<CheckInput
 									label="Palestrante"
-									disabled={false}
-									id={`palestrante-${key}`}
-									isChecked={aluno.palestrante}
-									onChange={() => setPalestrante(aluno.palestrante)}
+									key={aluno.id}
+									name={aluno.name}
+									value={aluno.name}
+									checked={selectedSpeakers.includes(aluno.id)}
+									onChange={() => handleCheckboxChangeSpeaker(aluno.id)}
 								/>
 							</div>
 
@@ -56,18 +80,17 @@ export default function AdicionarPalestrantePage({
 									label: tur,
 									value: i,
 								}))}
-								preSelect={aluno.periodo}
+								preSelect={0}
 								disabled={true}
 								label="Turno"
 								id="turno"
 							/>
-
 							<NormalInput
 								disabled={true}
 								id="fullName"
 								label="Nome completo"
 								placeholder="Nome de Autor"
-								value={aluno.nome}
+								value={aluno.name}
 							/>
 
 							<NormalInput
@@ -75,7 +98,7 @@ export default function AdicionarPalestrantePage({
 								id="curso"
 								label="Curso"
 								placeholder="Curso atual"
-								value={aluno.curso}
+								value={aluno.curse}
 							/>
 
 							<NormalInput
@@ -91,14 +114,18 @@ export default function AdicionarPalestrantePage({
 								id="instituicao"
 								label="Instituição Referente"
 								placeholder="Instituição do autor"
-								value={aluno.instituicao}
+								value={aluno.institution}
 							/>
 						</div>
 					))}
 
 					<div className="flex w-full items-center justify-center gap-5">
 						<DefaultButton label="Voltar" backgroundColorHex="#8A8A8A" />
-						<DefaultButton label="Finalizar" backgroundColorHex="#4B00E0" />
+						<DefaultButton
+							label="Finalizar"
+							backgroundColorHex="#4B00E0"
+							type="submit"
+						/>
 					</div>
 				</form>
 			</div>

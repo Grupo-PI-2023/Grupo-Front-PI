@@ -24,6 +24,7 @@ export default function EditArquivePage({
 	};
 }) {
 	const router = useRouter();
+	const idArquivo = params.idArquivo;
 
 	const [resumo, setResumo] = useState('');
 	const [abstract, setAbstract] = useState('');

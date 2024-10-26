@@ -1,11 +1,31 @@
+import { StaticImageData } from 'next/image';
+
 import amorPerfeito from '@/assets/Amor Perfeito.png';
 import Caroline from '@/assets/Caroline.png';
 import CultFest from '@/assets/CultureFest.png';
-import event1 from '@/assets/event1.png';
-import event2 from '@/assets/event2.png';
-import event3 from '@/assets/event3.png';
 
-export const cardsData = [
+export type EventType = {
+	id: number;
+	title: string;
+	description: string;
+	imageUrl: StaticImageData;
+	startDate: string;
+	endDate: string;
+	duration: string;
+	schedule: {
+		morning: string;
+		afternoon: string;
+	};
+
+	presentation?: boolean;
+	sendedArticle?: boolean;
+	ArticleToSendInfos?: {
+		refEvent: number;
+		dateToSend?: string;
+	};
+};
+
+export const cardsData: EventType[] = [
 	{
 		id: 1,
 		title: 'Tech Talks: Descobrindo as Fronteiras da Tecnologia',
@@ -49,5 +69,4 @@ export const cardsData = [
 		},
 		duration: '100h',
 	},
-	// Adicione mais objetos de card conforme necessário
 ];

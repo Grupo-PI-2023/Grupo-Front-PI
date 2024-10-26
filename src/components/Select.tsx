@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction, useRef } from 'react';
+
 export type OptionsType = {
 	label: string;
 	value: number;
@@ -8,35 +10,36 @@ export type SimpleSelectType = {
 	value: string | undefined;
 };
 
-type SelectType = {
-	options: OptionsType[];
-	preSelect: number;
-	disabled: boolean;
+interface CustomSelectInputProps
+	extends React.InputHTMLAttributes<HTMLSelectElement> {
 	label: string;
-	id: string;
 	customWidth?: string;
-};
+	options: OptionsType[];
+	selected?: string;
+	setSelected?: Dispatch<SetStateAction<string>>;
+	preSelect: number;
+}
 
-const Select = ({
-	preSelect,
-	disabled,
-	options,
-	id,
+const Select: React.FC<CustomSelectInputProps> = ({
 	label,
+	selected,
+	setSelected,
+	preSelect,
 	customWidth,
-}: SelectType) => {
+	options,
+	...inputProps
+}) => {
+	const inputRef = useRef<HTMLInputElement>(null);
 	return (
 		<div className="mb-5 flex w-[45%] flex-col" style={{ width: customWidth }}>
 			<label className="mb-2 text-sm font-medium" htmlFor="turno">
 				{label}
 			</label>
 			<select
-				name={id}
-				id={id}
+				{...inputProps}
 				className={`h-full w-full rounded-md border border-gray-300 bg-white px-4 py-2 ${
-					disabled ? 'bg-[#B7B7B7]' : 'bg-white'
+					inputProps.disabled ? 'bg-[#B7B7B7]' : 'bg-white'
 				}  text-sm outline-none`}
-				disabled={disabled}
 			>
 				{options.map((area, index) => {
 					return (
