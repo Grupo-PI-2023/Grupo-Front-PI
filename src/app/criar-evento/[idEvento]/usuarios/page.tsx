@@ -138,27 +138,6 @@ export default function CadastrarUsuario({
 								readOnly
 								customWidth="100%"
 							/>
-							{/* <label className="mr-64 mt-4 text-base" htmlFor="link">
-                                Enviar Link para Cadastro:
-                            </label>
-
-                            <div className="w-full cursor-pointer rounded-md border border-gray-300 bg-white px-4 py-2">
-                                <input
-                                    className="w-full cursor-pointer rounded-md border-0 bg-white text-sm outline-none"
-                                    type="text"
-                                    name="link"
-                                    id="link"
-                                    placeholder="https://link.com"
-                                    readOnly
-                                />
-                            </div>
-                            <button
-                                className="absolute ml-96 mt-44 w-28 rounded-xl bg-[#B7B7B7] py-2 text-center text-base"
-                                onClick={() => copyToClipboard(generatedLink)}
-                                type="button"
-                            >
-                                Copiar
-                            </button> */}
 
 							<div className="mt-3 flex items-center justify-center gap-6">
 								<button

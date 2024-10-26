@@ -15,6 +15,8 @@ import NormalInput from '@/components/NormalInput';
 import DefaultSelect from '@/components/Select';
 import { OptionsType } from '@/components/Select';
 import Title from '@/components/Title';
+import { instituicoesMock } from '@/mocks/Instituicoes';
+import { customStyles } from '@/utils/customStyle';
 
 export default function CadastrarAvaliadorEmEvento({
 	params,
@@ -52,40 +54,22 @@ export default function CadastrarAvaliadorEmEvento({
 		  }))
 		: [];
 
-	const instituicoesMock: OptionsType[] = [
-		{
-			label: 'Fatec Zona Leste',
-			value: 0,
-		},
-		{
-			label: 'Fatec São Paulo',
-			value: 1,
-		},
-		{
-			label: 'Fatec Zona Oeste',
-			value: 2,
-		},
-	];
-
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [lattes, setLattes] = useState('');
+	const [instituicao, setInst] = useState('');
 	const checkboxPeriodo = ['Matutino', 'Vespertino', 'Noturno'];
 	const [showCard, setShowCard] = useState(false);
+	const [selectedPeriods, setSelectedPeriods] = useState<string[]>([]);
+	const handleCheckboxChangePeriod = (periodId: string) => {
+		setSelectedPeriods((prevSelected) =>
+			prevSelected.includes(periodId)
+				? prevSelected.filter((id) => id !== periodId)
+				: [...prevSelected, periodId]
+		);
+	};
 
 	const [subareas, setSubAreas] = useState(['']);
-
-	const customStyles = {
-		control: (provided: any) => ({
-			...provided,
-			width: '100%',
-			height: 'auto',
-			borderRadius: '0.375rem',
-			border: '1',
-			background: 'white',
-			fontSize: '0.875rem',
-		}),
-	};
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -138,10 +122,12 @@ export default function CadastrarAvaliadorEmEvento({
 
 							<DefaultSelect
 								label="Instituição Referente"
-								options={instituicoesMock}
-								disabled={false}
-								preSelect={0}
 								id="institution"
+								name="institution"
+								options={instituicoesMock}
+								selected={instituicao}
+								onChange={(e) => setInst(e.target.value)}
+								preSelect={0}
 							/>
 
 							<div className="mb-5 w-[45%]">
@@ -149,12 +135,12 @@ export default function CadastrarAvaliadorEmEvento({
 								<div className="flex items-center gap-3 py-2.5">
 									{checkboxPeriodo.map((name, index) => (
 										<CheckInput
-											disabled={false}
-											id={name + index}
-											key={index}
 											label={name}
-											selected={false}
+											key={index}
 											name={name}
+											value={name}
+											checked={selectedPeriods.includes(name)}
+											onChange={() => handleCheckboxChangePeriod(name)}
 										/>
 									))}
 								</div>

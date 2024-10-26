@@ -19,32 +19,6 @@ export const navigationAuthenticatedRoutes: navItemType[] = [
 	{
 		link: '/criar-evento',
 		title: 'Criar Evento',
-		subtitle: [
-			{
-				name: 'Cadastrar Evento',
-				link: '',
-			},
-			{
-				name: 'Cadastrar mais Instituição',
-				link: '',
-			},
-			{
-				name: 'Cadastrar mais Arquivo',
-				link: '',
-			},
-			{
-				name: 'Cadastro de Organizador',
-				link: '',
-			},
-			{
-				name: 'Cadastro de Avaliador',
-				link: '',
-			},
-			{
-				name: 'Cadastro de Editor Chefe',
-				link: '',
-			},
-		],
 	},
 	{
 		link: '/areal-dashboard/meus-arquivos',

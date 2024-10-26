@@ -10,8 +10,8 @@ import Footer from '@/components/Footer';
 import NavbarAuthenticated from '@/components/NavbarAuthenticated';
 import NormalInput from '@/components/NormalInput';
 import DefaultSelect from '@/components/Select';
-import { OptionsType } from '@/components/Select';
 import Title from '@/components/Title';
+import { instituicoesMock } from '@/mocks/Instituicoes';
 
 export default function CadastrarEditorChefeEmEvento({
 	params,
@@ -25,21 +25,6 @@ export default function CadastrarEditorChefeEmEvento({
 	// 	// Do something here...
 	// }, [pathname, searchParams]);
 
-	const instituicoesMock: OptionsType[] = [
-		{
-			label: 'Fatec Zona Leste',
-			value: 0,
-		},
-		{
-			label: 'Fatec São Paulo',
-			value: 1,
-		},
-		{
-			label: 'Fatec Zona Oeste',
-			value: 2,
-		},
-	];
-
 	const [password, setPassword] = useState('');
 	const [name, setName] = useState('');
 	const [cpf, setCpf] = useState('');
@@ -47,6 +32,7 @@ export default function CadastrarEditorChefeEmEvento({
 	const [lattes, setLattes] = useState('');
 	const [confirmpassword, setConfirmpassword] = useState('');
 	const [showCard, setShowCard] = useState(false);
+	const [instituicao, setInst] = useState('');
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -116,10 +102,12 @@ export default function CadastrarEditorChefeEmEvento({
 
 							<DefaultSelect
 								label="Instituição Referente"
-								options={instituicoesMock}
-								disabled={false}
-								preSelect={0}
 								id="institution"
+								name="institution"
+								options={instituicoesMock}
+								selected={instituicao}
+								onChange={(e) => setInst(e.target.value)}
+								preSelect={0}
 							/>
 
 							<NormalInput
