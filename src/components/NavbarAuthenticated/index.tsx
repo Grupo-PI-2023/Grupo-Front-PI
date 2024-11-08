@@ -18,7 +18,6 @@ import * as S from './styles';
 export default function NavbarAuthenticated() {
 	const router = useRouter();
 	const [currentOption, setCurrentOption] = useState('/evento/criar-evento');
-	const [query, setQuery] = useState('');
 	const [openMenu, setOpenMenu] = useState(false);
 
 	useEffect(() => {

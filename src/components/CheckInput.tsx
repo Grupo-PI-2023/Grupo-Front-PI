@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useRef } from 'react';
 
 type CheckInputType = {
 	label: string;
@@ -16,11 +16,9 @@ const CheckInput = ({ label, key, disabled, id, selected }: CheckInputType) => {
 				<input
 					className="hidden"
 					type="checkbox"
-					name={id}
-					id={id}
+					{...inputProps}
 					checked={checked}
-					onChange={() => setChecked(!checked)}
-					disabled={disabled}
+					ref={inputRef}
 				/>
 				<label
 					className={`flex cursor-pointer items-center ${

@@ -1,3 +1,8 @@
+<<<<<<< Updated upstream
+=======
+import { Dispatch, SetStateAction } from 'react';
+
+>>>>>>> Stashed changes
 export type OptionsType = {
 	label: string;
 	value: number;
@@ -21,10 +26,15 @@ const Select = ({
 	preSelect,
 	disabled,
 	options,
+<<<<<<< Updated upstream
 	id,
 	label,
 	customWidth,
 }: SelectType) => {
+=======
+	...inputProps
+}) => {
+>>>>>>> Stashed changes
 	return (
 		<div className="mb-5 flex w-[45%] flex-col" style={{ width: customWidth }}>
 			<label className="mb-2 text-sm font-medium" htmlFor="turno">
@@ -41,7 +51,7 @@ const Select = ({
 				{options.map((area, index) => {
 					return (
 						<option
-							value={area.label}
+							value={area.value}
 							key={index}
 							selected={preSelect == index}
 						>
