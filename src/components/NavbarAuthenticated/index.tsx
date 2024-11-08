@@ -5,12 +5,15 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
+import axios from 'axios';
 import { FaRegUser } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { GoHome, GoSearch } from 'react-icons/go';
 import { IoIosClose } from 'react-icons/io';
 
+import { logout } from '@/_actions/sessions';
 import logo from '@/assets/logo.svg';
+import { showToast } from '@/contexts/ToastProvider';
 
 import { navigationAuthenticatedRoutes } from './routes';
 import * as S from './styles';
@@ -71,18 +74,53 @@ export default function NavbarAuthenticated() {
 						<IoIosClose />
 					</div>
 					{navigationAuthenticatedRoutes.map((item, index) => (
+						<div>
+							<S.OptionMenu
+								key={index}
+								onClick={() => {
+									handleOptionClick(item.link);
+									setOpenMenu(false);
+								}}
+								className="cursor-pointer text-base"
+								selected={currentOption === item.link}
+							>
+								{item.title}
+							</S.OptionMenu>
+							{item.subtitle?.map((subItem, ind) => (
+								<S.SubOptionMenu
+									key={ind}
+									onClick={() => {
+										handleOptionClick(subItem.link);
+										setOpenMenu(false);
+									}}
+									className="cursor-pointer text-base"
+									selected={currentOption === subItem.link}
+								>
+									{subItem.name}
+								</S.SubOptionMenu>
+							))}
+						</div>
+					))}
+					<div>
 						<S.OptionMenu
-							key={index}
-							onClick={() => {
-								handleOptionClick(item.link);
+							key={15}
+							onClick={async () => {
+								try {
+									localStorage.removeItem('authenticated');
+									const res = await axios.get('/api/logout');
+									showToast('success', res.data.message);
+									router.push('/login');
+								} catch (error) {
+									showToast('error', error?.message);
+								}
 								setOpenMenu(false);
 							}}
 							className="cursor-pointer text-base"
-							selected={currentOption === item.link}
+							selected={currentOption === '/logout'}
 						>
-							{item.title}
+							Logout
 						</S.OptionMenu>
-					))}
+					</div>
 				</div>
 			</div>
 		</div>

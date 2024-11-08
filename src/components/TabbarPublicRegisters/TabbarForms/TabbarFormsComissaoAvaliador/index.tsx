@@ -17,15 +17,8 @@ import { showToast } from '@/contexts/ToastProvider';
 import { areas, grandesAreas } from '@/mocks/Areas';
 import { instituicoesMock } from '@/mocks/Instituicoes';
 import { checkboxPeriodo, checkboxRole } from '@/mocks/checkboxes';
-import { customStyles } from '@/utils/customStyle';
 
-type CadastroComissaoAvaliadorProps = {
-	eventId: string;
-};
-
-export default function CadastroComissaoAvaliador({
-	eventId,
-}: CadastroComissaoAvaliadorProps) {
+export default function CadastroComissaoAvaliador() {
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const formData = new FormData(e.currentTarget);
@@ -163,7 +156,7 @@ export default function CadastroComissaoAvaliador({
 							className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-red-500"
 							type="button"
 							onClick={() =>
-								router.push(`/criar-evento/${eventId}/cadastrar-instituicao`)
+								router.push(`/criar-evento/1234/cadastrar-instituicao`)
 							}
 						>
 							<TfiPlus height="40px" color="white" />

@@ -19,4 +19,8 @@ export const navigationNotAuthenticatedRoutes: navItemType[] = [
 		link: '/cadastros-publicos',
 		title: 'Cadastrar-se',
 	},
+	{
+		link: '/criar-evento',
+		title: 'Criar Evento',
+	},
 ];

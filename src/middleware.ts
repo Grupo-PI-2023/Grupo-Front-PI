@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { decrypt } from '@/_actions/sessions'
 
-const publicRoutes = ['/', '/cadastros-publicos', '/criar-evento', '/eventos', '/login']
+const publicRoutes = ['/', '/cadastros-publicos', '/criar-evento', '/eventos', '/login', '/logout']
 
 const adminRoutes = [
     '/dashboard/gerenciamento-avaliacoes',

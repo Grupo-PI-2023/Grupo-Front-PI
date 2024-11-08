@@ -16,8 +16,15 @@ import OutlineButton from '@/components/OutlineButton';
 import TextAreaInput from '@/components/TextAreaInput';
 import Title from '@/components/Title';
 
-export default function EditArquivePage() {
+export default function EditArquivePage({
+	params,
+}: {
+	params: {
+		idArquivo: string;
+	};
+}) {
 	const router = useRouter();
+	const idArquivo = params.idArquivo;
 
 	const [resumo, setResumo] = useState('');
 	const [abstract, setAbstract] = useState('');
@@ -103,9 +110,7 @@ export default function EditArquivePage() {
 								id="palavraChave"
 								placeholder="Palavras Chaves....."
 								value={palavraChave}
-								onChange={(e) =>
-									setPalavraChave(e.target.value)
-								}
+								onChange={(e) => setPalavraChave(e.target.value)}
 								rows={2}
 							/>
 							<TextAreaInput
@@ -126,10 +131,7 @@ export default function EditArquivePage() {
 									icon={<IoMdDownload />}
 									customWidth="100%"
 								/>
-								<DefaultButton
-									label="Voltar"
-									customWidth="100%"
-								/>
+								<DefaultButton label="Voltar" customWidth="100%" />
 							</div>
 							<div className="flex w-[20%] flex-col">
 								<DefaultButton

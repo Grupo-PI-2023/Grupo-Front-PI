@@ -341,3 +341,40 @@ export const subAreas: SubAreaType[] = [
 		idArea: 3,
 	},
 ];
+export const especialidades: SubAreaType[] = [
+	{
+		label: 'Álgebra',
+		value: 0,
+		idArea: 0,
+	},
+	{
+		label: 'Geometria',
+		value: 1,
+		idArea: 0,
+	},
+	{
+		label: 'Cálculo',
+		value: 2,
+		idArea: 0,
+	},
+	{
+		label: 'História Antiga',
+		value: 3,
+		idArea: 2,
+	},
+	{
+		label: 'História Moderna',
+		value: 4,
+		idArea: 2,
+	},
+	{
+		label: 'Filosofia Antiga',
+		value: 5,
+		idArea: 3,
+	},
+	{
+		label: 'Filosofia Contemporânea',
+		value: 6,
+		idArea: 3,
+	},
+];

@@ -31,6 +31,7 @@ export default function ViewArticlePage() {
 						subtitle="Visualizar Informações"
 						colorHex="#4B00E0"
 					/>
+					<h1 className="text-7xl">TEM QUE MOCKAR!!!!</h1>
 
 					<form className="rounded-xl bg-[#FDFDFD] p-5 shadow-md">
 						<div className="form">
@@ -59,9 +60,7 @@ export default function ViewArticlePage() {
 								id="palavraChave"
 								placeholder="Palavras Chaves....."
 								value={palavraChave}
-								onChange={(e) =>
-									setPalavraChave(e.target.value)
-								}
+								onChange={(e) => setPalavraChave(e.target.value)}
 								rows={2}
 							/>
 							<TextAreaInput
@@ -98,9 +97,7 @@ export default function ViewArticlePage() {
 								id="areas"
 								placeholder="Áreas de conhecimento..."
 								value={knowlogyArea}
-								onChange={(e) =>
-									setKnowlogyArea(e.target.value)
-								}
+								onChange={(e) => setKnowlogyArea(e.target.value)}
 							/>
 						</div>
 
@@ -114,10 +111,7 @@ export default function ViewArticlePage() {
 						</div>
 
 						<div className="mb-5 flex justify-center gap-8">
-							<DefaultButton
-								label="Recusar"
-								backgroundColorHex="#840120"
-							/>
+							<DefaultButton label="Recusar" backgroundColorHex="#840120" />
 							<DefaultButton
 								label="Avaliar"
 								backgroundColorHex="#4B00E0"

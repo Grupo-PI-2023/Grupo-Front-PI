@@ -6,24 +6,27 @@ import NavbarAuthenticated from '@/components/NavbarAuthenticated';
 import Pagination2 from '@/components/Pagitation/Pagination2';
 import SearchFilter from '@/components/SearchFilter';
 import Title from '@/components/Title';
+import { cardsData } from '@/mocks/EventCards';
 
 export default function Evento() {
 	return (
 		<div>
 			<NavbarAuthenticated />
 
-			<div className="mt-36 flex h-[1280px] flex-col items-center justify-items-stretch">
+			<div className="mt-36 flex flex-col items-center justify-items-stretch">
 				<Title
 					title="Meus Eventos"
 					colorHex="red"
 					subtitle="Todos os eventos que você organiza ou administra."
 				/>
 
-				<div className="ml-[780px] flex flex-col gap-4">
+				<div className="flex w-[60vw] justify-end">
 					<SearchFilter />
 				</div>
 
-				<EventsCard />
+				{cardsData.map((card) => (
+					<EventsCard card={card} key={card.id} manageAvaliations={false} />
+				))}
 			</div>
 
 			<Pagination2 />
