@@ -1,64 +1,43 @@
-'use client';
-
-import { useState } from 'react';
-
 import { useRouter } from 'next/navigation';
 
-import AlertCard from '@/components/AlertCard';
+// import baseURL from '@/_actions/configUrl';
+import { registerUser } from '@/_actions/registerUser';
 import DefaultButton from '@/components/DefaultButton';
 import NormalInput from '@/components/NormalInput';
 import DefaultSelect from '@/components/Select';
 import Title from '@/components/Title';
 import { instituicoesMock } from '@/mocks/Instituicoes';
 
-type CadastroUserProps = {
-	eventId: string;
-};
-
-export default function CadastroUser({ eventId }: CadastroUserProps) {
-	const [name, setName] = useState('');
-	const [cpf, setCpf] = useState('');
-	const [email, setEmail] = useState('');
-	const [instituicao, setInst] = useState('');
-	const [curso, setCurso] = useState('');
+export default function CadastroUser() {
 	const router = useRouter();
 
 	const checkboxPeriodo = ['Matutino', 'Vespertino', 'Noturno'];
-	const [periodo, setPeriodo] = useState('');
 
-	const [showCard, setShowCard] = useState(false);
-
-	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-	};
+	// baseURL.get('')
 
 	return (
 		<div className="container-submenu">
 			<div className="w-[60vw]">
-				<AlertCard message="Aluno cadastrado com sucesso" show={showCard} />
-
 				<Title
 					title="Cadastro como usuário"
 					subtitle="Cadastro como usuário - Aluno"
 					colorHex="#4B00E0"
 				/>
 
-				<form className="card mt-8 w-full" onSubmit={handleSubmit}>
+				<form className="card mt-8 w-full" action={registerUser} method="POST">
 					<div className="flex flex-wrap items-center justify-center gap-5">
 						<NormalInput
 							id="fullName"
 							label="Nome completo"
 							placeholder="Nome do aluno"
 							required
-							value={name}
-							onChange={(e) => setName(e.target.value)}
+							name="nome"
 						/>
 						<NormalInput
 							id="email"
 							label="E-mail"
 							placeholder="emailuser@email.com"
-							value={email}
-							onChange={(e) => setEmail(e.target.value)}
+							name="email"
 							type="email"
 						/>
 						<NormalInput
@@ -67,6 +46,7 @@ export default function CadastroUser({ eventId }: CadastroUserProps) {
 							placeholder="Senha do Usuário"
 							type="password"
 							required
+							name="senha"
 						/>
 						<NormalInput
 							id="confirmPassword"
@@ -74,23 +54,21 @@ export default function CadastroUser({ eventId }: CadastroUserProps) {
 							placeholder="Senha do Usuário"
 							type="password"
 							required
+							name="confirmeSenha"
 						/>
 						<NormalInput
 							id="cpf"
 							label="CPF"
 							placeholder="CPF do Usuário"
-							value={cpf}
-							onChange={(e) => setCpf(e.target.value)}
+							name="cpf"
 							required
 							type="text"
 						/>
 						<DefaultSelect
 							label="Instituição Referente"
 							id="institution"
-							name="institution"
+							name="instituicao"
 							options={instituicoesMock}
-							selected={instituicao}
-							onChange={(e) => setInst(e.target.value)}
 							preSelect={0}
 						/>
 
@@ -98,21 +76,18 @@ export default function CadastroUser({ eventId }: CadastroUserProps) {
 							id="curso"
 							label="Curso"
 							placeholder="Análise e Desenvolvimento de Sistemas"
-							value={curso}
-							onChange={(e) => setCurso(e.target.value)}
+							name="curso"
 							required
 						/>
 
 						<DefaultSelect
 							label="Período de Estudo: "
 							id="turno"
-							name="turno"
+							name="periodo"
 							options={checkboxPeriodo.map((tur, i) => ({
 								label: tur,
 								value: i,
 							}))}
-							selected={periodo}
-							onChange={(e) => setPeriodo(e.target.value)}
 							preSelect={0}
 						/>
 
@@ -125,7 +100,7 @@ export default function CadastroUser({ eventId }: CadastroUserProps) {
 								className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-red-500"
 								type="button"
 								onClick={() =>
-									router.push(`/criar-evento/${eventId}/cadastrar-instituicao`)
+									router.push(`/criar-evento/1234/cadastrar-instituicao`)
 								}
 							>
 								<p className="text-3xl text-white">+</p>
@@ -144,7 +119,11 @@ export default function CadastroUser({ eventId }: CadastroUserProps) {
 						</p>
 					</div>
 					<div className="flex items-center justify-center gap-5">
-						<DefaultButton backgroundColorHex="#8A8A8A" label="Voltar" />
+						<DefaultButton
+							backgroundColorHex="#8A8A8A"
+							label="Voltar"
+							onClick={() => router.back()}
+						/>
 						<DefaultButton
 							backgroundColorHex="#4B00E0"
 							label="Cadastrar"

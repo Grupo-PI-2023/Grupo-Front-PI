@@ -15,18 +15,14 @@ interface CustomSelectInputProps
 	label: string;
 	customWidth?: string;
 	options: OptionsType[];
-	selected?: string;
-	setSelected?: Dispatch<SetStateAction<string>>;
 	preSelect: number;
 }
 
 const Select: React.FC<CustomSelectInputProps> = ({
 	label,
-	selected,
-	setSelected,
 	preSelect,
-	customWidth,
 	options,
+	customWidth,
 	...inputProps
 }) => {
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -44,7 +40,7 @@ const Select: React.FC<CustomSelectInputProps> = ({
 				{options.map((area, index) => {
 					return (
 						<option
-							value={area.label}
+							value={area.value}
 							key={index}
 							selected={preSelect == index}
 						>

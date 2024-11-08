@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Loading = () => {
+export default function Loading() {
 	return (
 		<div className="fixed left-0 top-0 flex h-[100vh] w-[100vw] items-center justify-center bg-slate-800 bg-opacity-15 backdrop-blur-sm">
 			<div className="loader--style2" title="1">
@@ -8,14 +6,11 @@ const Loading = () => {
 					version="1.1"
 					id="loader-1"
 					xmlns="http://www.w3.org/2000/svg"
-					// xmlns:xlink="http://www.w3.org/1999/xlink"
 					x="0px"
 					y="0px"
 					width="10rem"
 					height="10rem"
 					viewBox="0 0 50 50"
-					// style="enable-background:new 0 0 50 50;"
-					// xml:space="preserve"
 				>
 					<path
 						fill="#5321BF"
@@ -35,6 +30,4 @@ const Loading = () => {
 			</div>
 		</div>
 	);
-};
-
-export default Loading;
+}

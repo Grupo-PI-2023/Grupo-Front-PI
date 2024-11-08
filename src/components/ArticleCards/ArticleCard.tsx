@@ -11,9 +11,9 @@ interface CardI {
 	card: CardsDataType;
 }
 
-// ver artigo - src/app/areal-dashboard/meus-arquivos/arquivos-finalizados
-// editar artigo - src/app/areal-dashboard/meus-arquivos/[idArquivo]
-// add palestrante/apresentador - src/app/areal-dashboard/meus-arquivos/[idArquivo]/adicionar-palestrante
+// ver artigo - src/app/dashboard/meus-arquivos/arquivos-finalizados
+// editar artigo - src/app/dashboard/meus-arquivos/[idArquivo]
+// add palestrante/apresentador - src/app/dashboard/meus-arquivos/[idArquivo]/adicionar-palestrante
 
 export default function ArticleCard({ card }: CardI) {
 	const router = useRouter();
@@ -120,7 +120,7 @@ export default function ArticleCard({ card }: CardI) {
 										type="button"
 										onClick={() =>
 											router.push(
-												`/areal-dashboard/meus-arquivos/${card.id}/adicionar-palestrante`
+												`/dashboard/meus-arquivos/${card.id}/adicionar-palestrante`
 											)
 										}
 									>
@@ -133,9 +133,7 @@ export default function ArticleCard({ card }: CardI) {
 									className="p-1 text-[14px] font-medium"
 									type="button"
 									onClick={() =>
-										router.push(
-											`/areal-dashboard/meus-arquivos/arquivos-finalizados`
-										)
+										router.push(`/dashboard/meus-arquivos/arquivos-finalizados`)
 									}
 								>
 									Ver artigo
@@ -159,7 +157,7 @@ export default function ArticleCard({ card }: CardI) {
 									className="p-1 text-[14px] font-medium"
 									type="button"
 									onClick={() =>
-										router.push(`/areal-dashboard/meus-arquivos/${card.id}`)
+										router.push(`/dashboard/meus-arquivos/${card.id}`)
 									}
 								>
 									Editar

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 
 import { FiEye, FiEyeOff } from 'react-icons/fi';
@@ -32,10 +34,10 @@ const NormalInput: React.FC<CustomInputProps> = ({
 						<input
 							{...inputProps}
 							className="w-11/12 rounded-md border-0 bg-white text-sm outline-none"
-							type={passwordVisible ? 'text' : 'password'}
-							value={password}
-							onChange={(e) => setPassword(e.target.value)}
-							name={inputProps.id}
+							// type={passwordVisible ? 'text' : 'password'}
+							// value={password}
+							// onChange={(e) => setPassword(e.target.value)}
+							// name={inputProps.id}
 						/>
 						{passwordVisible ? (
 							<FiEye
@@ -65,11 +67,11 @@ const NormalInput: React.FC<CustomInputProps> = ({
 						className={`w-full rounded-md border border-gray-300 bg-white px-4 py-2`}
 					>
 						<input
-							className={`w-full rounded-md border-0 bg-white text-sm outline-none `}
 							{...inputProps}
-							name={inputProps.id}
-							onChange={inputProps.onChange}
-							value={inputProps.value}
+							className={`w-full rounded-md border-0 bg-white text-sm outline-none `}
+							// name={inputProps.id}
+							// onChange={inputProps.onChange}
+							// value={inputProps.value}
 						/>
 					</div>
 				</div>

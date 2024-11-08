@@ -64,9 +64,7 @@ export default function EventsCard({ card, manageAvaliations }: EventCardsI) {
 						className="flex items-center justify-between gap-3 rounded-lg p-2 py-1.5 text-[12px] font-medium text-[#000000] ring-2 ring-black"
 						type="button"
 						onClick={() =>
-							router.push(
-								`/areal-dashboard/meus-eventos-criados/${card.id}/menu`
-							)
+							router.push(`/dashboard/meus-eventos-criados/${card.id}/menu`)
 						}
 					>
 						Ver evento

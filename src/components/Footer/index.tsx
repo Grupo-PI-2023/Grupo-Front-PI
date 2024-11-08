@@ -1,8 +1,4 @@
-'use client';
-
-import { useEffect, useState } from 'react';
-
-import Image from 'next/image';
+import Link from 'next/link';
 
 import * as S from './styles';
 
@@ -16,6 +12,7 @@ export default function Footer() {
 					</p>
 					<div className="flex items-center justify-center gap-5">
 						<div className="flex flex-col gap-1">
+							<Link href="/eventos">HOME</Link>
 							<p className="text-center text-sm font-normal text-white">
 								Página Inicial
 							</p>
@@ -28,25 +25,10 @@ export default function Footer() {
 							<p className="text-center text-sm font-normal text-white">
 								Meus Eventos
 							</p>
-							<p className="text-center text-sm font-normal text-white">
-								Meus Artigos
-							</p>
 						</div>
 						<div className="flex flex-col gap-1">
 							<p className="text-center text-sm font-normal text-white">
-								Meus Arquivos
-							</p>
-							<p className="text-center text-sm font-normal text-white">
 								Minhas Avaliações
-							</p>
-							<p className="text-center text-sm font-normal text-white">
-								Minhas Salas
-							</p>
-							<p className="text-center text-sm font-normal text-white">
-								Configurações
-							</p>
-							<p className="text-center text-sm font-normal text-white">
-								Acessibilidade
 							</p>
 						</div>
 					</div>
@@ -60,12 +42,6 @@ export default function Footer() {
 							<div className="flex flex-col gap-1">
 								<p className="text-center text-sm font-normal text-white">
 									Página Inicial
-								</p>
-								<p className="text-center text-sm font-normal text-white">
-									Apresentação
-								</p>
-								<p className="text-center text-sm font-normal text-white">
-									Expediente
 								</p>
 							</div>
 							<div className="flex flex-col gap-1">

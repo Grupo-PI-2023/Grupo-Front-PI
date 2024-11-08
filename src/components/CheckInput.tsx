@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useRef, useState } from 'react';
+import React, { Dispatch, SetStateAction, useRef } from 'react';
 
 interface CustomCheckInputProps
 	extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -23,12 +23,8 @@ const CheckInput: React.FC<CustomCheckInputProps> = ({
 				<input
 					className="hidden"
 					type="checkbox"
-					name={inputProps.name}
-					value={inputProps.value}
-					id={inputProps.id}
+					{...inputProps}
 					checked={checked}
-					onChange={inputProps.onChange}
-					disabled={inputProps.disabled}
 					ref={inputRef}
 				/>
 				<label
