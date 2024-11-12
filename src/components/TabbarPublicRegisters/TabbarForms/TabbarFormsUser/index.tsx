@@ -1,19 +1,51 @@
+import { useEffect, useState } from 'react';
+
 import { useRouter } from 'next/navigation';
 
-// import baseURL from '@/_actions/configUrl';
+import baseURL from '@/_actions/configUrl';
 import { registerUser } from '@/_actions/registerUser';
 import DefaultButton from '@/components/DefaultButton';
 import NormalInput from '@/components/NormalInput';
-import DefaultSelect from '@/components/Select';
+import DefaultSelect, { OptionsType } from '@/components/Select';
 import Title from '@/components/Title';
-import { instituicoesMock } from '@/mocks/Instituicoes';
+import { checkboxPeriodo } from '@/mocks/checkboxes';
 
 export default function CadastroUser() {
 	const router = useRouter();
 
-	const checkboxPeriodo = ['Matutino', 'Vespertino', 'Noturno'];
+	const [instituicoes, setInstituicoes] = useState<OptionsType[]>([]);
+	const [loading, setLoading] = useState(true);
+	useEffect(() => {
+		const fetchInstituicoes = async () => {
+			try {
+				const response = await baseURL.get('/instituicao');
 
-	// baseURL.get('')
+				const instituicoesData = response.data?.instituicoes;
+
+				if (Array.isArray(instituicoesData)) {
+					const instituicoesOptions = instituicoesData.map((instituicao) => ({
+						label: instituicao.nome,
+						value: instituicao.id,
+					}));
+					setInstituicoes(instituicoesOptions);
+				} else {
+					console.error(
+						'A resposta não contém um array de instituições',
+						instituicoesData
+					);
+					throw new Error('Formato inesperado na resposta da API');
+				}
+			} catch (error) {
+				console.error('Erro ao carregar as instituições:', error);
+				throw error;
+			} finally {
+				setLoading(false);
+			}
+		};
+
+		// baseURL.get('')
+		fetchInstituicoes();
+	}, []);
 
 	return (
 		<div className="container-submenu">
@@ -68,7 +100,7 @@ export default function CadastroUser() {
 							label="Instituição Referente"
 							id="institution"
 							name="instituicao"
-							options={instituicoesMock}
+							options={instituicoes}
 							preSelect={0}
 						/>
 
@@ -99,9 +131,7 @@ export default function CadastroUser() {
 							<button
 								className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-red-500"
 								type="button"
-								onClick={() =>
-									router.push(`/criar-evento/1234/cadastrar-instituicao`)
-								}
+								onClick={() => router.push(`/cadastrar-instituicao`)}
 							>
 								<p className="text-3xl text-white">+</p>
 							</button>

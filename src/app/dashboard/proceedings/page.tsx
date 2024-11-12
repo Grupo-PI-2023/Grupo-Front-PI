@@ -21,7 +21,7 @@ export default function Proceedings() {
 	return (
 		<div>
 			<NavbarAuthenticated />
-			<div className="align-center container mt-36 flex w-[100vw] flex-col items-center justify-center">
+			<div className="align-center container my-36 flex w-[100vw] flex-col items-center justify-center">
 				<Title
 					title="Proceedings Evento"
 					subtitle="Todos os proceedings do evento"
