@@ -61,12 +61,12 @@ export default function CadastrarUsuario({
 	};
 
 	const handleOrganizador = () => {
-		setOrganizador(true);
+		setOrganizadorChange(true);
 		setAvaliador(false);
 	};
 
 	const handleAvaliador = () => {
-		setOrganizador(false);
+		setOrganizadorChange(false);
 		setAvaliador(true);
 	};
 
@@ -89,6 +89,7 @@ export default function CadastrarUsuario({
 	const [declined, setDeclines] = useState(false);
 
 	const [organizador, setOrganizador] = useState(true);
+	const [organizadorChange, setOrganizadorChange] = useState(true);
 	const [avaliador, setAvaliador] = useState(false);
 	const [users, setUsers] = useState(UsersFunction);
 
@@ -109,7 +110,7 @@ export default function CadastrarUsuario({
 						className="mb-4 flex w-[29%] items-center justify-around rounded-2xl border border-transparent bg-[#F4F4F4] p-2"
 						style={{ boxShadow: '0px 4px 4px 0px #00000040' }}
 					>
-						{organizador ? (
+						{organizadorChange ? (
 							<>
 								<p className="cursor-default p-1.5">Organizador</p>
 								<p
