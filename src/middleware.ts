@@ -26,28 +26,28 @@ const avaliadorRoutes = [
 
 export default async function middleware(req: NextRequest) {
     // // Check if the current route is protected or public
-    // const path = req.nextUrl.pathname
-    // const isPublicRoute = publicRoutes.includes(path)
-    // const isAdminRoute = adminRoutes.includes(path)
-    // const isAvaliadorRoute = avaliadorRoutes.includes(path)
+    const path = req.nextUrl.pathname
+    const isPublicRoute = publicRoutes.includes(path)
+    const isAdminRoute = adminRoutes.includes(path)
+    const isAvaliadorRoute = avaliadorRoutes.includes(path)
 
-    // const cookie = req.cookies.get('session')?.value
-    // const session = await decrypt(cookie)
+    const cookie = req.cookies.get('session')?.value
+    const session = await decrypt(cookie)
 
     // // Redirect to /login if the user is not authenticated
-    // if (!isPublicRoute && !session) {
-    //     return NextResponse.redirect(new URL('/login', req.nextUrl))
-    // }
+    if (!isPublicRoute && !session) {
+        return NextResponse.redirect(new URL('/login', req.nextUrl))
+    }
 
-    // if (session && isAdminRoute && !(session.role.includes('Admin'))) {
-    //     return NextResponse.redirect(new URL('/login', req.nextUrl))
-    // }
+    if (session && isAdminRoute && !(session.role.includes('Admin'))) {
+        return NextResponse.redirect(new URL('/login', req.nextUrl))
+    }
 
-    // if (session && isAvaliadorRoute && !(session.role.includes('Avaliador'))) {
-    //     return NextResponse.redirect(new URL('/login', req.nextUrl))
-    // }
+    if (session && isAvaliadorRoute && !(session.role.includes('Avaliador'))) {
+        return NextResponse.redirect(new URL('/login', req.nextUrl))
+    }
 
-    // return NextResponse.next()
+    return NextResponse.next()
 }
 
 // Routes Middleware should not run on
