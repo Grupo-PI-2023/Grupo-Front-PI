@@ -112,7 +112,7 @@ export default function CadastrarUsuario({
 					>
 						{organizadorChange ? (
 							<>
-								<p className="cursor-default p-1.5">Organizador</p>
+								<p className="cursor-default p-1.5">Editor Chefe</p>
 								<p
 									className="cursor-pointer rounded-xl bg-[#DD4467] p-1.5 text-white"
 									onClick={handleAvaliador}
@@ -137,9 +137,9 @@ export default function CadastrarUsuario({
 							<label className="mr-64 text-base" htmlFor="cad">
 								Cadastrar Manualmente:
 							</label>
-							{organizador ? (
+							{organizadorChange ? (
 								<button className="mb-6 rounded-xl border-2 border-solid  border-black bg-transparent p-4 text-center text-lg text-black">
-									Organizador{' '}
+									Editor Chefe{' '}
 								</button>
 							) : (
 								<button className="mb-6 rounded-xl border-2 border-solid  border-black bg-transparent p-4 text-center text-lg text-black">
