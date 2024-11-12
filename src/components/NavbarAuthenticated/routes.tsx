@@ -75,7 +75,7 @@ export const navigationAuthenticatedRoutes: navItemType[] = [
 		title: 'Proceedings',
 	},
 	{
-		link: '/dashboard/certificados',
+		link: '/dashboard/certificates',
 		title: 'Certificados',
 	},
 ];
