@@ -17,11 +17,7 @@ import Title from '@/components/Title';
 import { showToast } from '@/contexts/ToastProvider';
 import { instituitions } from '@/mocks/Instituitions';
 
-export default function CadastrarUsuario({
-	params,
-}: {
-	params: { idEvento: string };
-}) {
+export default function CadastrarInstituicao() {
 	const router = useRouter();
 	const handleNextButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
