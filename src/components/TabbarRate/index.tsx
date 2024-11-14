@@ -30,7 +30,7 @@ export default function TabbarRate({
 			case 'rate':
 				return (
 					<RateArticle
-						handleOptionClick={() => handleOptionClick('rate')}
+						handleOptionClick={handleOptionClick}
 						idArquivo={idArquivo}
 					/>
 				);

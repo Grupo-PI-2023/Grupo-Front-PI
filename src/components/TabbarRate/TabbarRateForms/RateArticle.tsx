@@ -110,7 +110,7 @@ export default function RateArticle({
 			<div className="mt-8 flex flex-row items-center justify-center gap-6">
 				<button
 					className="w-40 rounded-xl border p-2.5 text-center text-sm font-medium text-white"
-					onClick={() => router.back()}
+					onClick={() => handleOptionClick('articles-rate')}
 					style={{ backgroundColor: '#8A8A8A' }}
 				>
 					Voltar

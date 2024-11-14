@@ -51,6 +51,7 @@ const Rating: React.FC<RatingProps> = ({
 							onChange={() => handleRatingChange(value)}
 							className="peer hidden"
 							disabled={disabled}
+							required
 						/>
 						<label
 							htmlFor={`radio-${value}-${title}`}
