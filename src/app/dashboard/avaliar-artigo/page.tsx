@@ -31,7 +31,7 @@ export default function ArtigosAvaliarPrincipal() {
 	return (
 		<div>
 			<Navbar />
-			<div className="container mt-52 flex w-2/4 mx-auto flex-col justify-center">
+			<div className="container mt-52 flex w-full  flex-col justify-center">
 				<Title
 					title="Artigo"
 					subtitle="Todos os artigos direcionados a você para a avaliação"
