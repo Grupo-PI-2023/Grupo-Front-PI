@@ -16,6 +16,7 @@ import { articlesToRate } from '@/mocks/ArtigosRate';
 import OutlineButton from '@/components/OutlineButton';
 import { IoMdDownload } from 'react-icons/io';
 import { IoEyeOutline } from 'react-icons/io5';
+import DefaultButton from '@/components/DefaultButton';
 
 export default function ArtigosAvaliarPrincipal() {
 	const router = useRouter();
@@ -33,7 +34,7 @@ export default function ArtigosAvaliarPrincipal() {
 			<Navbar />
 			<div className="container mt-52 flex w-full  flex-col justify-center">
 				<Title
-					title="Artigo"
+					title="A"
 					subtitle="Todos os artigos direcionados a você para a avaliação"
 					colorHex="#EF0037"
 				/>
@@ -106,7 +107,9 @@ export default function ArtigosAvaliarPrincipal() {
 											? <div className="text-green-500 underline">{article.status}</div>
 											: article.status === 'Reprovado'
 												? <div className="text-red-500 underline">{article.status}</div>
-												: <div className="text-blue-500 underline">{article.status}</div>
+												: article.status === 'Em andamento'
+													? <div className="text-blue-500 underline">{article.status}</div>
+													: <div className="text-black underline">{article.status}</div>
 										}
 									</td>
 									<td className="mt-3 flex h-full flex-row items-center justify-center gap-3 px-20 py-3 wrap">
@@ -159,6 +162,14 @@ export default function ArtigosAvaliarPrincipal() {
 							))}
 						</tbody>
 					</table>
+
+					<div className='flex flex-row w-full justify-center mt-12'>
+						<button className='mb-6 flex justify-center w-[200px] items-center
+          					  rounded-xl border-none px-4 py-2 text-center
+          					  text-base font-medium bg-[#B9012D] hover:bg-red-700 text-white'>Voltar
+						</button>
+					</div>
+
 				</div>
 			</div>
 			<Footer />
