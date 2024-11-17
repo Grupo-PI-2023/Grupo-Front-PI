@@ -68,7 +68,7 @@ export default function CadastrarAdm() {
 				<div className="w-1/2">
 					<Title
 						title="Cadastrar Usuários"
-						subtitle="Gerencie administradores do site, cuidado cadastrar, pois o administrador do site terá gerenciamento total da site"
+						subtitle="Gerencie os membros de comissão do Site"
 						colorHex="#ef0037"
 					/>
 				</div>
