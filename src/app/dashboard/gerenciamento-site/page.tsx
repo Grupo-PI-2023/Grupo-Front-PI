@@ -45,21 +45,9 @@ export default function EventoMenu({
 					<div className="mt-12 flex w-full flex-col items-center justify-center">
 						<div className="w-1/2">
 							<div className="flex flex-col gap-6">
-								{/* <div
-									className="flex cursor-pointer items-center gap-4 rounded-md border-2 border-l-4 border-[#e3e3e3] border-l-[#0391C9] bg-[#F5F5F5] p-3 shadow-xl"
-									onClick={() => router.push(`/eventos/${params.eventId}`)}
-								>
-									<LuEye className="h-10 w-10" color="#0391C9" />
-									<div className="flex flex-col gap-0.5">
-										<p className="text-base font-normal">
-											Visualizar evento como participante
-										</p>
-									</div>
-								</div> */}
 								<div
 									className="flex gap-4 rounded-md border-2 border-l-4 border-[#e3e3e3] border-l-[#4B00E0] bg-[#F5F5F5] p-5 shadow-xl"
 									style={{ cursor: 'pointer' }}
-									onClick={() => router.push('/dashboard/editar/editar-evento')}
 								>
 									<AiOutlineStar color="black" className="h-10 w-10" />
 									<div className="flex flex-col gap-0.5">
@@ -70,7 +58,8 @@ export default function EventoMenu({
 											Gerenciamento de Administradores do site
 										</p>
 										<p className="text-sm font-medium">
-											Adicione as informações sobre a data, horário e localização do evento
+											Adicione as informações sobre a data, horário e
+											localização do evento
 										</p>
 									</div>
 								</div>
@@ -81,7 +70,8 @@ export default function EventoMenu({
 											Gerenciamento de usuários
 										</p>
 										<p className="text-sm font-medium">
-											Cadastre uma ou mais atividades (caso não possua não preencha)
+											Cadastre uma ou mais atividades (caso não possua não
+											preencha)
 										</p>
 									</div>
 								</div>
@@ -93,20 +83,20 @@ export default function EventoMenu({
 											Gerenciamento de Instituições
 										</p>
 										<p className="text-sm font-medium">
-											Cadastre ou envie o link para os membros da equipe e administre os já cadastrados
+											Cadastre ou envie o link para os membros da equipe e
+											administre os já cadastrados
 										</p>
 									</div>
 								</div>
 
 								<h1
-									className="text-left text-2xl font-bold text-black mt-12"
+									className="mt-12 text-left text-2xl font-bold text-black"
 									style={{ color: '#4B00E0' }}
 								>
 									Gerenciamento das áreas de conhecimento
 								</h1>
 
-								<div className='grid grid-cols-2 gap-8'>
-
+								<div className="grid grid-cols-2 gap-8">
 									<div className="flex gap-4 rounded-md border-2 border-l-4 border-[#e3e3e3] border-l-[#4B00E0] bg-[#F5F5F5] p-5 shadow-xl">
 										<BiBrain className="h-12 w-12" color="black" />
 										<div className="flex flex-col gap-0.5">
@@ -154,7 +144,6 @@ export default function EventoMenu({
 											</p>
 										</div>
 									</div>
-
 								</div>
 							</div>
 							<div className="mt-12 flex items-center justify-center gap-5">
