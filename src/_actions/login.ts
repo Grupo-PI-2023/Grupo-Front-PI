@@ -9,9 +9,10 @@ export const login = async (formData: FormData) => {
             senha: formData.get('senha'), // name do campo no form
         })
         const { token, role } = res.data //roles = ['Admin', 'Editor', 'Avaliador', 'Autor']
+        console.log(token, role)
         await createSession(token, role ? role : ['Autor'])
         return { success: true, message: 'Login feito com sucesso!', role };
     } catch (error) {
-        return { success: false, message: 'Erro ao fazer o login!' };
+        return { error: false, message: 'Erro ao fazer o login!' };
     }
 }

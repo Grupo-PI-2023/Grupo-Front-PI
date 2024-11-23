@@ -10,7 +10,7 @@ import CheckInput from '@/components/CheckInput';
 import Footer from '@/components/Footer';
 import ImgInput from '@/components/ImgInput';
 import IncrementInput from '@/components/IncrementInput';
-import NavbarAuthenticated from '@/components/NavbarAuthenticated';
+import Navbar from '@/components/Navbar';
 import { showToast } from '@/contexts/ToastProvider';
 import { checkboxEvento, checkboxGerar } from '@/mocks/checkboxes';
 
@@ -68,7 +68,7 @@ export default function CriarEventoPage({
 
 	return (
 		<div>
-			<NavbarAuthenticated />
+			<Navbar />
 			<div className="container mb-6 mt-52 flex justify-center">
 				<div className="w-[60vw]">
 					<h1

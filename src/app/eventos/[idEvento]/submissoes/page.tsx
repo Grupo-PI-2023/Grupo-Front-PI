@@ -10,17 +10,17 @@ import { TfiEmail } from 'react-icons/tfi';
 import CultureFest from '@/assets/CultureFest.png';
 import ArticleModel from '@/assets/Modelo de apresentação.png';
 import Footer from '@/components/Footer';
-import NavbarAuthenticated from '@/components/NavbarAuthenticated';
+import Navbar from '@/components/Navbar';
 
 export default function PageMenuSubmissao({
 	params,
 }: {
-	params: { eventId: string };
+	params: { idEvento: string };
 }) {
 	const router = useRouter();
 	return (
 		<div>
-			<NavbarAuthenticated />
+			<Navbar />
 			<div className="container">
 				<div className="w-11/12">
 					<div className="flex justify-between gap-16">
@@ -46,7 +46,7 @@ export default function PageMenuSubmissao({
 										style={{ backgroundColor: '#4B00E0' }}
 										onClick={() =>
 											router.push(
-												`/eventos/${params.eventId}/submissoes/submeter`
+												`/eventos/${params.idEvento}/submissoes/submeter`
 											)
 										}
 									>

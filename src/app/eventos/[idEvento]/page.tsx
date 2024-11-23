@@ -22,11 +22,15 @@ import DefaultButton from '@/components/DefaultButton';
 // import EventInformations from '@/components/EventInformations';
 // import OtherEvents from '@/components/OtherEvents';
 import Footer from '@/components/Footer';
-import NavbarAuthenticated from '@/components/NavbarAuthenticated';
+import Navbar from '@/components/Navbar';
 import OutlineButton from '@/components/OutlineButton';
 import { eventThemeMocks } from '@/mocks/EventThemes';
 
-export default function VerEvento({ params }: { params: { eventId: string } }) {
+export default function VerEvento({
+	params,
+}: {
+	params: { idEvento: string };
+}) {
 	const router = useRouter();
 	const [subscribed, setSubscribed] = useState(false);
 
@@ -42,7 +46,7 @@ export default function VerEvento({ params }: { params: { eventId: string } }) {
 
 	return (
 		<div>
-			<NavbarAuthenticated />
+			<Navbar />
 
 			<div className="container mt-44 w-[1280px]">
 				{subscribed ? (
@@ -54,7 +58,7 @@ export default function VerEvento({ params }: { params: { eventId: string } }) {
 								textColorHex="#4B00E0"
 								customWidth="220px"
 								onClick={() =>
-									router.push(`/eventos/${params.eventId}/submissoes`)
+									router.push(`/eventos/${params.idEvento}/submissoes`)
 								}
 							/>
 							<button className="flex items-center gap-2 rounded-full border border-black px-3 py-1 text-sm text-black">

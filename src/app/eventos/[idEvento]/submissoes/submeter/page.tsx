@@ -9,7 +9,7 @@ import { FaRegUser } from 'react-icons/fa';
 import DefaultButton from '@/components/DefaultButton';
 import FileInput from '@/components/FileInput';
 import Footer from '@/components/Footer';
-import Navbar from '@/components/NavbarAuthenticated';
+import Navbar from '@/components/Navbar';
 import NormalInput from '@/components/NormalInput';
 import Select from '@/components/Select';
 import TextAreaInput from '@/components/TextAreaInput';
@@ -22,7 +22,7 @@ import { checkboxPeriodo } from '@/mocks/checkboxes';
 export default function SubmeterArquivoPage({
 	params,
 }: {
-	params: { eventId: string };
+	params: { idEvento: string };
 }) {
 	const router = useRouter();
 
